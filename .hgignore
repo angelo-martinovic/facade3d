@@ -1,0 +1,21 @@
+syntax: glob
+*.aux
+*.blg
+*.brf
+*.log
+*.pdf
+*~
+*.backup
+*.directory
+*.mat
+*.eps
+*.zip
+*.ply
+.smpd
+data/**
+output/**
+tmp/**
+code/condor/**
+
+
+
