@@ -1,0 +1,1017 @@
+2014-11-28 09:50:16 {7fec4b0f1a80} [ ObjectsDetectorFactory ] : Parsed the binary model file /esat/sadr/amartino/atlas/detector/models/window-generic.bin
+2014-11-28 09:50:16 {7fec4b0f1a80} [ ObjectsDetectorFactory ] : Parsed the binary model file /esat/sadr/amartino/atlas/detector/models/window-generic.bin
+2014-11-28 09:50:16 {7fec4b0f1a80} [ ObjectsDetectorFactory ] : Parsed the binary model file /esat/sadr/amartino/atlas/detector/models/window-generic.bin
+2014-11-28 09:50:16 {7fec4b0f1a80} [ SoftCascadeOverIntegralChannelsModel ] : Parsing model Model created via boosted_learning
+2014-11-28 09:50:16 {7fec4b0f1a80} [ SoftCascadeOverIntegralChannelsModel ] : The soft cascade contains 2000 stages
+2014-11-28 09:50:16 {7fec4b0f1a80} [ SoftCascadeOverIntegralChannelsModel ] : Checking model with occlusion 'bottom' 0.000
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale -1, search range min (x,y) == (0, 0), max (x,y) == (0, 0), image (width, height) == (18, 29)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale -1 is fine, min (x, y) == (0, 0), max (x,y) == (18, 29), width, height == (18, 29), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+2014-11-28 09:50:16 {7fec4b0f1a80} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Will not use a soft cascade at run time
+2014-11-28 09:50:16 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : cv::gpu::CudaMem::canMapHostMemory() == 1
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseApplication ] : Entering into main_loop
+2014-11-28 09:50:16 {7fec4b0f1a80} [ ImagesFromDirectory ] : read file "/esat/sadr/amartino/monge428New/data2/work/detections/IMG_5506.jpg"
+2014-11-28 09:50:16 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : ::set_image resizing the search_ranges using input size (815,800)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.800 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.800 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.800 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.800 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.800 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.814 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.814 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.814 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.814 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.814 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.828 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.828 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.828 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.828 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.828 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.842 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.842 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.842 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.842 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.842 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.857 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.857 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.857 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.857 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.857 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.872 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.872 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.872 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.872 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.872 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.887 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.887 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.887 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.887 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.887 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.902 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.902 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.902 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.902 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.902 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.917 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.917 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.917 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.917 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.917 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.933 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.933 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.933 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.933 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.933 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.949 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.949 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.949 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.949 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.949 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.966 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.966 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.966 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.966 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.966 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.982 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.982 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.982 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.982 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.982 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.999 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.999 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.999 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.999 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 0.999 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.017 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.017 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.017 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.017 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.017 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.034 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.034 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.034 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.034 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.034 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.052 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.052 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.052 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.052 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.052 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.070 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.070 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.070 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.070 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.070 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.089 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.089 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.089 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.089 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.089 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.108 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.108 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.108 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.108 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.108 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.127 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.127 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.127 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.127 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.127 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.146 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.146 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.146 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.146 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.146 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.166 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.166 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.166 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.166 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.166 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.186 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.186 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.186 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.186 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.186 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.207 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.207 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.207 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.207 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.207 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.227 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.227 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.227 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.227 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.227 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.249 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.249 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.249 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.249 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.249 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.270 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.270 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.270 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.270 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.270 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.292 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.292 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.292 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.292 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.292 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.314 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.314 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.314 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.314 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.314 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.337 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.337 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.337 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.337 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.337 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.360 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.360 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.360 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.360 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.360 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.384 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.384 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.384 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.384 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.384 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.408 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.408 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.408 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.408 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.408 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.432 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.432 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.432 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.432 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.432 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.457 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.457 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.457 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.457 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.457 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.482 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.482 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.482 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.482 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.482 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.507 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.507 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.507 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.507 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.507 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.534 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.534 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.534 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.534 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.534 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.560 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.560 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.560 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.560 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ BaseIntegralChannelsDetector ] : Detection window scale 1.560 has strides (x,y) == (0.000, 0.000) [image pixels] =>	(1, 1) [channel pixels]
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 0, search range min (x,y) == (0, 0), max (x,y) == (491, 221), image (width, height) == (509, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 0 is fine, min (x, y) == (0, 0), max (x,y) == (509, 250), width, height == (509, 250), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 1, search range min (x,y) == (0, 0), max (x,y) == (346, 221), image (width, height) == (364, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 1 is fine, min (x, y) == (0, 0), max (x,y) == (364, 250), width, height == (364, 250), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 2, search range min (x,y) == (0, 0), max (x,y) == (265, 221), image (width, height) == (283, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 2 is fine, min (x, y) == (0, 0), max (x,y) == (283, 250), width, height == (283, 250), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 3, search range min (x,y) == (0, 0), max (x,y) == (213, 221), image (width, height) == (231, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 3 is fine, min (x, y) == (0, 0), max (x,y) == (231, 250), width, height == (231, 250), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 4, search range min (x,y) == (0, 0), max (x,y) == (178, 221), image (width, height) == (196, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 4 is fine, min (x, y) == (0, 0), max (x,y) == (196, 250), width, height == (196, 250), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 5, search range min (x,y) == (0, 0), max (x,y) == (482, 217), image (width, height) == (500, 246)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 5 is fine, min (x, y) == (0, 0), max (x,y) == (500, 246), width, height == (500, 246), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 6, search range min (x,y) == (0, 0), max (x,y) == (339, 217), image (width, height) == (357, 246)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 6 is fine, min (x, y) == (0, 0), max (x,y) == (357, 246), width, height == (357, 246), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 7, search range min (x,y) == (0, 0), max (x,y) == (260, 217), image (width, height) == (278, 246)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 7 is fine, min (x, y) == (0, 0), max (x,y) == (278, 246), width, height == (278, 246), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 8, search range min (x,y) == (0, 0), max (x,y) == (209, 217), image (width, height) == (227, 246)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 8 is fine, min (x, y) == (0, 0), max (x,y) == (227, 246), width, height == (227, 246), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 9, search range min (x,y) == (0, 0), max (x,y) == (174, 217), image (width, height) == (192, 246)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 9 is fine, min (x, y) == (0, 0), max (x,y) == (192, 246), width, height == (192, 246), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 10, search range min (x,y) == (0, 0), max (x,y) == (474, 212), image (width, height) == (492, 241)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 10 is fine, min (x, y) == (0, 0), max (x,y) == (492, 241), width, height == (492, 241), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 11, search range min (x,y) == (0, 0), max (x,y) == (333, 212), image (width, height) == (351, 241)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 11 is fine, min (x, y) == (0, 0), max (x,y) == (351, 241), width, height == (351, 241), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 12, search range min (x,y) == (0, 0), max (x,y) == (255, 212), image (width, height) == (273, 241)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 12 is fine, min (x, y) == (0, 0), max (x,y) == (273, 241), width, height == (273, 241), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 13, search range min (x,y) == (0, 0), max (x,y) == (205, 212), image (width, height) == (223, 241)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 13 is fine, min (x, y) == (0, 0), max (x,y) == (223, 241), width, height == (223, 241), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 14, search range min (x,y) == (0, 0), max (x,y) == (171, 212), image (width, height) == (189, 241)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 14 is fine, min (x, y) == (0, 0), max (x,y) == (189, 241), width, height == (189, 241), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 15, search range min (x,y) == (0, 0), max (x,y) == (466, 208), image (width, height) == (484, 237)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 15 is fine, min (x, y) == (0, 0), max (x,y) == (484, 237), width, height == (484, 237), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 16, search range min (x,y) == (0, 0), max (x,y) == (327, 208), image (width, height) == (345, 237)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 16 is fine, min (x, y) == (0, 0), max (x,y) == (345, 237), width, height == (345, 237), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 17, search range min (x,y) == (0, 0), max (x,y) == (251, 208), image (width, height) == (269, 237)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 17 is fine, min (x, y) == (0, 0), max (x,y) == (269, 237), width, height == (269, 237), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 18, search range min (x,y) == (0, 0), max (x,y) == (202, 208), image (width, height) == (220, 237)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 18 is fine, min (x, y) == (0, 0), max (x,y) == (220, 237), width, height == (220, 237), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 19, search range min (x,y) == (0, 0), max (x,y) == (168, 208), image (width, height) == (186, 237)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 19 is fine, min (x, y) == (0, 0), max (x,y) == (186, 237), width, height == (186, 237), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 20, search range min (x,y) == (0, 0), max (x,y) == (457, 204), image (width, height) == (475, 233)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 20 is fine, min (x, y) == (0, 0), max (x,y) == (475, 233), width, height == (475, 233), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 21, search range min (x,y) == (0, 0), max (x,y) == (322, 204), image (width, height) == (340, 233)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 21 is fine, min (x, y) == (0, 0), max (x,y) == (340, 233), width, height == (340, 233), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 22, search range min (x,y) == (0, 0), max (x,y) == (246, 204), image (width, height) == (264, 233)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 22 is fine, min (x, y) == (0, 0), max (x,y) == (264, 233), width, height == (264, 233), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 23, search range min (x,y) == (0, 0), max (x,y) == (198, 204), image (width, height) == (216, 233)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 23 is fine, min (x, y) == (0, 0), max (x,y) == (216, 233), width, height == (216, 233), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 24, search range min (x,y) == (0, 0), max (x,y) == (165, 204), image (width, height) == (183, 233)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 24 is fine, min (x, y) == (0, 0), max (x,y) == (183, 233), width, height == (183, 233), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 25, search range min (x,y) == (0, 0), max (x,y) == (449, 200), image (width, height) == (467, 229)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 25 is fine, min (x, y) == (0, 0), max (x,y) == (467, 229), width, height == (467, 229), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 26, search range min (x,y) == (0, 0), max (x,y) == (316, 200), image (width, height) == (334, 229)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 26 is fine, min (x, y) == (0, 0), max (x,y) == (334, 229), width, height == (334, 229), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 27, search range min (x,y) == (0, 0), max (x,y) == (242, 200), image (width, height) == (260, 229)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 27 is fine, min (x, y) == (0, 0), max (x,y) == (260, 229), width, height == (260, 229), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 28, search range min (x,y) == (0, 0), max (x,y) == (194, 200), image (width, height) == (212, 229)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 28 is fine, min (x, y) == (0, 0), max (x,y) == (212, 229), width, height == (212, 229), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 29, search range min (x,y) == (0, 0), max (x,y) == (162, 200), image (width, height) == (180, 229)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 29 is fine, min (x, y) == (0, 0), max (x,y) == (180, 229), width, height == (180, 229), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 30, search range min (x,y) == (0, 0), max (x,y) == (441, 196), image (width, height) == (459, 225)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 30 is fine, min (x, y) == (0, 0), max (x,y) == (459, 225), width, height == (459, 225), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 31, search range min (x,y) == (0, 0), max (x,y) == (310, 196), image (width, height) == (328, 225)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 31 is fine, min (x, y) == (0, 0), max (x,y) == (328, 225), width, height == (328, 225), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 32, search range min (x,y) == (0, 0), max (x,y) == (237, 196), image (width, height) == (255, 225)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 32 is fine, min (x, y) == (0, 0), max (x,y) == (255, 225), width, height == (255, 225), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 33, search range min (x,y) == (0, 0), max (x,y) == (191, 196), image (width, height) == (209, 225)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 33 is fine, min (x, y) == (0, 0), max (x,y) == (209, 225), width, height == (209, 225), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 34, search range min (x,y) == (0, 0), max (x,y) == (159, 196), image (width, height) == (177, 225)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 34 is fine, min (x, y) == (0, 0), max (x,y) == (177, 225), width, height == (177, 225), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 35, search range min (x,y) == (0, 0), max (x,y) == (434, 193), image (width, height) == (452, 222)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 35 is fine, min (x, y) == (0, 0), max (x,y) == (452, 222), width, height == (452, 222), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 36, search range min (x,y) == (0, 0), max (x,y) == (304, 193), image (width, height) == (322, 222)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 36 is fine, min (x, y) == (0, 0), max (x,y) == (322, 222), width, height == (322, 222), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 37, search range min (x,y) == (0, 0), max (x,y) == (233, 193), image (width, height) == (251, 222)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 37 is fine, min (x, y) == (0, 0), max (x,y) == (251, 222), width, height == (251, 222), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 38, search range min (x,y) == (0, 0), max (x,y) == (187, 193), image (width, height) == (205, 222)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 38 is fine, min (x, y) == (0, 0), max (x,y) == (205, 222), width, height == (205, 222), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 39, search range min (x,y) == (0, 0), max (x,y) == (156, 193), image (width, height) == (174, 222)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 39 is fine, min (x, y) == (0, 0), max (x,y) == (174, 222), width, height == (174, 222), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 40, search range min (x,y) == (0, 0), max (x,y) == (426, 189), image (width, height) == (444, 218)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 40 is fine, min (x, y) == (0, 0), max (x,y) == (444, 218), width, height == (444, 218), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 41, search range min (x,y) == (0, 0), max (x,y) == (299, 189), image (width, height) == (317, 218)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 41 is fine, min (x, y) == (0, 0), max (x,y) == (317, 218), width, height == (317, 218), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 42, search range min (x,y) == (0, 0), max (x,y) == (229, 189), image (width, height) == (247, 218)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 42 is fine, min (x, y) == (0, 0), max (x,y) == (247, 218), width, height == (247, 218), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 43, search range min (x,y) == (0, 0), max (x,y) == (184, 189), image (width, height) == (202, 218)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 43 is fine, min (x, y) == (0, 0), max (x,y) == (202, 218), width, height == (202, 218), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 44, search range min (x,y) == (0, 0), max (x,y) == (153, 189), image (width, height) == (171, 218)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 44 is fine, min (x, y) == (0, 0), max (x,y) == (171, 218), width, height == (171, 218), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 45, search range min (x,y) == (0, 0), max (x,y) == (418, 185), image (width, height) == (436, 214)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 45 is fine, min (x, y) == (0, 0), max (x,y) == (436, 214), width, height == (436, 214), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 46, search range min (x,y) == (0, 0), max (x,y) == (294, 185), image (width, height) == (312, 214)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 46 is fine, min (x, y) == (0, 0), max (x,y) == (312, 214), width, height == (312, 214), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 47, search range min (x,y) == (0, 0), max (x,y) == (224, 185), image (width, height) == (242, 214)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 47 is fine, min (x, y) == (0, 0), max (x,y) == (242, 214), width, height == (242, 214), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 48, search range min (x,y) == (0, 0), max (x,y) == (180, 185), image (width, height) == (198, 214)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 48 is fine, min (x, y) == (0, 0), max (x,y) == (198, 214), width, height == (198, 214), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 49, search range min (x,y) == (0, 0), max (x,y) == (150, 185), image (width, height) == (168, 214)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 49 is fine, min (x, y) == (0, 0), max (x,y) == (168, 214), width, height == (168, 214), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 50, search range min (x,y) == (0, 0), max (x,y) == (411, 181), image (width, height) == (429, 210)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 50 is fine, min (x, y) == (0, 0), max (x,y) == (429, 210), width, height == (429, 210), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 51, search range min (x,y) == (0, 0), max (x,y) == (288, 181), image (width, height) == (306, 210)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 51 is fine, min (x, y) == (0, 0), max (x,y) == (306, 210), width, height == (306, 210), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 52, search range min (x,y) == (0, 0), max (x,y) == (220, 181), image (width, height) == (238, 210)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 52 is fine, min (x, y) == (0, 0), max (x,y) == (238, 210), width, height == (238, 210), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 53, search range min (x,y) == (0, 0), max (x,y) == (177, 181), image (width, height) == (195, 210)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 53 is fine, min (x, y) == (0, 0), max (x,y) == (195, 210), width, height == (195, 210), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 54, search range min (x,y) == (0, 0), max (x,y) == (147, 181), image (width, height) == (165, 210)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 54 is fine, min (x, y) == (0, 0), max (x,y) == (165, 210), width, height == (165, 210), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 55, search range min (x,y) == (0, 0), max (x,y) == (404, 178), image (width, height) == (422, 207)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 55 is fine, min (x, y) == (0, 0), max (x,y) == (422, 207), width, height == (422, 207), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 56, search range min (x,y) == (0, 0), max (x,y) == (283, 178), image (width, height) == (301, 207)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 56 is fine, min (x, y) == (0, 0), max (x,y) == (301, 207), width, height == (301, 207), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 57, search range min (x,y) == (0, 0), max (x,y) == (216, 178), image (width, height) == (234, 207)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 57 is fine, min (x, y) == (0, 0), max (x,y) == (234, 207), width, height == (234, 207), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 58, search range min (x,y) == (0, 0), max (x,y) == (174, 178), image (width, height) == (192, 207)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 58 is fine, min (x, y) == (0, 0), max (x,y) == (192, 207), width, height == (192, 207), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 59, search range min (x,y) == (0, 0), max (x,y) == (144, 178), image (width, height) == (162, 207)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 59 is fine, min (x, y) == (0, 0), max (x,y) == (162, 207), width, height == (162, 207), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 60, search range min (x,y) == (0, 0), max (x,y) == (397, 174), image (width, height) == (415, 203)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 60 is fine, min (x, y) == (0, 0), max (x,y) == (415, 203), width, height == (415, 203), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 61, search range min (x,y) == (0, 0), max (x,y) == (278, 174), image (width, height) == (296, 203)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 61 is fine, min (x, y) == (0, 0), max (x,y) == (296, 203), width, height == (296, 203), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 62, search range min (x,y) == (0, 0), max (x,y) == (212, 174), image (width, height) == (230, 203)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 62 is fine, min (x, y) == (0, 0), max (x,y) == (230, 203), width, height == (230, 203), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 63, search range min (x,y) == (0, 0), max (x,y) == (170, 174), image (width, height) == (188, 203)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 63 is fine, min (x, y) == (0, 0), max (x,y) == (188, 203), width, height == (188, 203), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 64, search range min (x,y) == (0, 0), max (x,y) == (141, 174), image (width, height) == (159, 203)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 64 is fine, min (x, y) == (0, 0), max (x,y) == (159, 203), width, height == (159, 203), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 65, search range min (x,y) == (0, 0), max (x,y) == (389, 171), image (width, height) == (407, 200)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 65 is fine, min (x, y) == (0, 0), max (x,y) == (407, 200), width, height == (407, 200), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 66, search range min (x,y) == (0, 0), max (x,y) == (273, 171), image (width, height) == (291, 200)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 66 is fine, min (x, y) == (0, 0), max (x,y) == (291, 200), width, height == (291, 200), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 67, search range min (x,y) == (0, 0), max (x,y) == (208, 171), image (width, height) == (226, 200)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 67 is fine, min (x, y) == (0, 0), max (x,y) == (226, 200), width, height == (226, 200), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 68, search range min (x,y) == (0, 0), max (x,y) == (167, 171), image (width, height) == (185, 200)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 68 is fine, min (x, y) == (0, 0), max (x,y) == (185, 200), width, height == (185, 200), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 69, search range min (x,y) == (0, 0), max (x,y) == (139, 171), image (width, height) == (157, 200)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 69 is fine, min (x, y) == (0, 0), max (x,y) == (157, 200), width, height == (157, 200), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 70, search range min (x,y) == (0, 0), max (x,y) == (383, 167), image (width, height) == (401, 196)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 70 is fine, min (x, y) == (0, 0), max (x,y) == (401, 196), width, height == (401, 196), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 71, search range min (x,y) == (0, 0), max (x,y) == (268, 167), image (width, height) == (286, 196)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 71 is fine, min (x, y) == (0, 0), max (x,y) == (286, 196), width, height == (286, 196), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 72, search range min (x,y) == (0, 0), max (x,y) == (204, 167), image (width, height) == (222, 196)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 72 is fine, min (x, y) == (0, 0), max (x,y) == (222, 196), width, height == (222, 196), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 73, search range min (x,y) == (0, 0), max (x,y) == (164, 167), image (width, height) == (182, 196)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 73 is fine, min (x, y) == (0, 0), max (x,y) == (182, 196), width, height == (182, 196), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 74, search range min (x,y) == (0, 0), max (x,y) == (136, 167), image (width, height) == (154, 196)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 74 is fine, min (x, y) == (0, 0), max (x,y) == (154, 196), width, height == (154, 196), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 75, search range min (x,y) == (0, 0), max (x,y) == (376, 164), image (width, height) == (394, 193)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 75 is fine, min (x, y) == (0, 0), max (x,y) == (394, 193), width, height == (394, 193), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 76, search range min (x,y) == (0, 0), max (x,y) == (263, 164), image (width, height) == (281, 193)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 76 is fine, min (x, y) == (0, 0), max (x,y) == (281, 193), width, height == (281, 193), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 77, search range min (x,y) == (0, 0), max (x,y) == (201, 164), image (width, height) == (219, 193)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 77 is fine, min (x, y) == (0, 0), max (x,y) == (219, 193), width, height == (219, 193), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 78, search range min (x,y) == (0, 0), max (x,y) == (161, 164), image (width, height) == (179, 193)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 78 is fine, min (x, y) == (0, 0), max (x,y) == (179, 193), width, height == (179, 193), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 79, search range min (x,y) == (0, 0), max (x,y) == (133, 164), image (width, height) == (151, 193)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 79 is fine, min (x, y) == (0, 0), max (x,y) == (151, 193), width, height == (151, 193), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 80, search range min (x,y) == (0, 0), max (x,y) == (369, 161), image (width, height) == (387, 190)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 80 is fine, min (x, y) == (0, 0), max (x,y) == (387, 190), width, height == (387, 190), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 81, search range min (x,y) == (0, 0), max (x,y) == (258, 161), image (width, height) == (276, 190)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 81 is fine, min (x, y) == (0, 0), max (x,y) == (276, 190), width, height == (276, 190), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 82, search range min (x,y) == (0, 0), max (x,y) == (197, 161), image (width, height) == (215, 190)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 82 is fine, min (x, y) == (0, 0), max (x,y) == (215, 190), width, height == (215, 190), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 83, search range min (x,y) == (0, 0), max (x,y) == (158, 161), image (width, height) == (176, 190)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 83 is fine, min (x, y) == (0, 0), max (x,y) == (176, 190), width, height == (176, 190), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 84, search range min (x,y) == (0, 0), max (x,y) == (131, 161), image (width, height) == (149, 190)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 84 is fine, min (x, y) == (0, 0), max (x,y) == (149, 190), width, height == (149, 190), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 85, search range min (x,y) == (0, 0), max (x,y) == (362, 158), image (width, height) == (380, 187)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 85 is fine, min (x, y) == (0, 0), max (x,y) == (380, 187), width, height == (380, 187), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 86, search range min (x,y) == (0, 0), max (x,y) == (254, 158), image (width, height) == (272, 187)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 86 is fine, min (x, y) == (0, 0), max (x,y) == (272, 187), width, height == (272, 187), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 87, search range min (x,y) == (0, 0), max (x,y) == (193, 158), image (width, height) == (211, 187)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 87 is fine, min (x, y) == (0, 0), max (x,y) == (211, 187), width, height == (211, 187), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 88, search range min (x,y) == (0, 0), max (x,y) == (155, 158), image (width, height) == (173, 187)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 88 is fine, min (x, y) == (0, 0), max (x,y) == (173, 187), width, height == (173, 187), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 89, search range min (x,y) == (0, 0), max (x,y) == (128, 158), image (width, height) == (146, 187)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 89 is fine, min (x, y) == (0, 0), max (x,y) == (146, 187), width, height == (146, 187), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 90, search range min (x,y) == (0, 0), max (x,y) == (356, 154), image (width, height) == (374, 183)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 90 is fine, min (x, y) == (0, 0), max (x,y) == (374, 183), width, height == (374, 183), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 91, search range min (x,y) == (0, 0), max (x,y) == (249, 154), image (width, height) == (267, 183)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 91 is fine, min (x, y) == (0, 0), max (x,y) == (267, 183), width, height == (267, 183), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 92, search range min (x,y) == (0, 0), max (x,y) == (190, 154), image (width, height) == (208, 183)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 92 is fine, min (x, y) == (0, 0), max (x,y) == (208, 183), width, height == (208, 183), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 93, search range min (x,y) == (0, 0), max (x,y) == (152, 154), image (width, height) == (170, 183)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 93 is fine, min (x, y) == (0, 0), max (x,y) == (170, 183), width, height == (170, 183), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 94, search range min (x,y) == (0, 0), max (x,y) == (126, 154), image (width, height) == (144, 183)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 94 is fine, min (x, y) == (0, 0), max (x,y) == (144, 183), width, height == (144, 183), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 95, search range min (x,y) == (0, 0), max (x,y) == (350, 151), image (width, height) == (368, 180)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 95 is fine, min (x, y) == (0, 0), max (x,y) == (368, 180), width, height == (368, 180), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 96, search range min (x,y) == (0, 0), max (x,y) == (245, 151), image (width, height) == (263, 180)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 96 is fine, min (x, y) == (0, 0), max (x,y) == (263, 180), width, height == (263, 180), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 97, search range min (x,y) == (0, 0), max (x,y) == (186, 151), image (width, height) == (204, 180)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 97 is fine, min (x, y) == (0, 0), max (x,y) == (204, 180), width, height == (204, 180), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 98, search range min (x,y) == (0, 0), max (x,y) == (149, 151), image (width, height) == (167, 180)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 98 is fine, min (x, y) == (0, 0), max (x,y) == (167, 180), width, height == (167, 180), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 99, search range min (x,y) == (0, 0), max (x,y) == (123, 151), image (width, height) == (141, 180)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 99 is fine, min (x, y) == (0, 0), max (x,y) == (141, 180), width, height == (141, 180), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 100, search range min (x,y) == (0, 0), max (x,y) == (343, 148), image (width, height) == (361, 177)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 100 is fine, min (x, y) == (0, 0), max (x,y) == (361, 177), width, height == (361, 177), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 101, search range min (x,y) == (0, 0), max (x,y) == (240, 148), image (width, height) == (258, 177)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 101 is fine, min (x, y) == (0, 0), max (x,y) == (258, 177), width, height == (258, 177), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 102, search range min (x,y) == (0, 0), max (x,y) == (183, 148), image (width, height) == (201, 177)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 102 is fine, min (x, y) == (0, 0), max (x,y) == (201, 177), width, height == (201, 177), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 103, search range min (x,y) == (0, 0), max (x,y) == (146, 148), image (width, height) == (164, 177)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 103 is fine, min (x, y) == (0, 0), max (x,y) == (164, 177), width, height == (164, 177), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 104, search range min (x,y) == (0, 0), max (x,y) == (121, 148), image (width, height) == (139, 177)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 104 is fine, min (x, y) == (0, 0), max (x,y) == (139, 177), width, height == (139, 177), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 105, search range min (x,y) == (0, 0), max (x,y) == (337, 145), image (width, height) == (355, 174)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 105 is fine, min (x, y) == (0, 0), max (x,y) == (355, 174), width, height == (355, 174), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 106, search range min (x,y) == (0, 0), max (x,y) == (236, 145), image (width, height) == (254, 174)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 106 is fine, min (x, y) == (0, 0), max (x,y) == (254, 174), width, height == (254, 174), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 107, search range min (x,y) == (0, 0), max (x,y) == (179, 145), image (width, height) == (197, 174)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 107 is fine, min (x, y) == (0, 0), max (x,y) == (197, 174), width, height == (197, 174), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 108, search range min (x,y) == (0, 0), max (x,y) == (143, 145), image (width, height) == (161, 174)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 108 is fine, min (x, y) == (0, 0), max (x,y) == (161, 174), width, height == (161, 174), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 109, search range min (x,y) == (0, 0), max (x,y) == (118, 145), image (width, height) == (136, 174)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 109 is fine, min (x, y) == (0, 0), max (x,y) == (136, 174), width, height == (136, 174), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 110, search range min (x,y) == (0, 0), max (x,y) == (331, 142), image (width, height) == (349, 171)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 110 is fine, min (x, y) == (0, 0), max (x,y) == (349, 171), width, height == (349, 171), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 111, search range min (x,y) == (0, 0), max (x,y) == (231, 142), image (width, height) == (249, 171)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 111 is fine, min (x, y) == (0, 0), max (x,y) == (249, 171), width, height == (249, 171), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 112, search range min (x,y) == (0, 0), max (x,y) == (176, 142), image (width, height) == (194, 171)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 112 is fine, min (x, y) == (0, 0), max (x,y) == (194, 171), width, height == (194, 171), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 113, search range min (x,y) == (0, 0), max (x,y) == (141, 142), image (width, height) == (159, 171)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 113 is fine, min (x, y) == (0, 0), max (x,y) == (159, 171), width, height == (159, 171), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 114, search range min (x,y) == (0, 0), max (x,y) == (116, 142), image (width, height) == (134, 171)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 114 is fine, min (x, y) == (0, 0), max (x,y) == (134, 171), width, height == (134, 171), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 115, search range min (x,y) == (0, 0), max (x,y) == (325, 139), image (width, height) == (343, 168)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 115 is fine, min (x, y) == (0, 0), max (x,y) == (343, 168), width, height == (343, 168), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 116, search range min (x,y) == (0, 0), max (x,y) == (227, 139), image (width, height) == (245, 168)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 116 is fine, min (x, y) == (0, 0), max (x,y) == (245, 168), width, height == (245, 168), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 117, search range min (x,y) == (0, 0), max (x,y) == (173, 139), image (width, height) == (191, 168)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 117 is fine, min (x, y) == (0, 0), max (x,y) == (191, 168), width, height == (191, 168), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 118, search range min (x,y) == (0, 0), max (x,y) == (138, 139), image (width, height) == (156, 168)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 118 is fine, min (x, y) == (0, 0), max (x,y) == (156, 168), width, height == (156, 168), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 119, search range min (x,y) == (0, 0), max (x,y) == (114, 139), image (width, height) == (132, 168)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 119 is fine, min (x, y) == (0, 0), max (x,y) == (132, 168), width, height == (132, 168), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 120, search range min (x,y) == (0, 0), max (x,y) == (319, 137), image (width, height) == (337, 166)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 120 is fine, min (x, y) == (0, 0), max (x,y) == (337, 166), width, height == (337, 166), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 121, search range min (x,y) == (0, 0), max (x,y) == (223, 137), image (width, height) == (241, 166)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 121 is fine, min (x, y) == (0, 0), max (x,y) == (241, 166), width, height == (241, 166), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 122, search range min (x,y) == (0, 0), max (x,y) == (169, 137), image (width, height) == (187, 166)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 122 is fine, min (x, y) == (0, 0), max (x,y) == (187, 166), width, height == (187, 166), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 123, search range min (x,y) == (0, 0), max (x,y) == (135, 137), image (width, height) == (153, 166)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 123 is fine, min (x, y) == (0, 0), max (x,y) == (153, 166), width, height == (153, 166), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 124, search range min (x,y) == (0, 0), max (x,y) == (112, 137), image (width, height) == (130, 166)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 124 is fine, min (x, y) == (0, 0), max (x,y) == (130, 166), width, height == (130, 166), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 125, search range min (x,y) == (0, 0), max (x,y) == (314, 134), image (width, height) == (332, 163)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 125 is fine, min (x, y) == (0, 0), max (x,y) == (332, 163), width, height == (332, 163), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 126, search range min (x,y) == (0, 0), max (x,y) == (219, 134), image (width, height) == (237, 163)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 126 is fine, min (x, y) == (0, 0), max (x,y) == (237, 163), width, height == (237, 163), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 127, search range min (x,y) == (0, 0), max (x,y) == (166, 134), image (width, height) == (184, 163)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 127 is fine, min (x, y) == (0, 0), max (x,y) == (184, 163), width, height == (184, 163), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 128, search range min (x,y) == (0, 0), max (x,y) == (133, 134), image (width, height) == (151, 163)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 128 is fine, min (x, y) == (0, 0), max (x,y) == (151, 163), width, height == (151, 163), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 129, search range min (x,y) == (0, 0), max (x,y) == (109, 134), image (width, height) == (127, 163)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 129 is fine, min (x, y) == (0, 0), max (x,y) == (127, 163), width, height == (127, 163), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 130, search range min (x,y) == (0, 0), max (x,y) == (308, 131), image (width, height) == (326, 160)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 130 is fine, min (x, y) == (0, 0), max (x,y) == (326, 160), width, height == (326, 160), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 131, search range min (x,y) == (0, 0), max (x,y) == (215, 131), image (width, height) == (233, 160)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 131 is fine, min (x, y) == (0, 0), max (x,y) == (233, 160), width, height == (233, 160), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 132, search range min (x,y) == (0, 0), max (x,y) == (163, 131), image (width, height) == (181, 160)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 132 is fine, min (x, y) == (0, 0), max (x,y) == (181, 160), width, height == (181, 160), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 133, search range min (x,y) == (0, 0), max (x,y) == (130, 131), image (width, height) == (148, 160)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 133 is fine, min (x, y) == (0, 0), max (x,y) == (148, 160), width, height == (148, 160), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 134, search range min (x,y) == (0, 0), max (x,y) == (107, 131), image (width, height) == (125, 160)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 134 is fine, min (x, y) == (0, 0), max (x,y) == (125, 160), width, height == (125, 160), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 135, search range min (x,y) == (0, 0), max (x,y) == (303, 128), image (width, height) == (321, 157)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 135 is fine, min (x, y) == (0, 0), max (x,y) == (321, 157), width, height == (321, 157), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 136, search range min (x,y) == (0, 0), max (x,y) == (211, 128), image (width, height) == (229, 157)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 136 is fine, min (x, y) == (0, 0), max (x,y) == (229, 157), width, height == (229, 157), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 137, search range min (x,y) == (0, 0), max (x,y) == (160, 128), image (width, height) == (178, 157)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 137 is fine, min (x, y) == (0, 0), max (x,y) == (178, 157), width, height == (178, 157), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 138, search range min (x,y) == (0, 0), max (x,y) == (128, 128), image (width, height) == (146, 157)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 138 is fine, min (x, y) == (0, 0), max (x,y) == (146, 157), width, height == (146, 157), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 139, search range min (x,y) == (0, 0), max (x,y) == (105, 128), image (width, height) == (123, 157)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 139 is fine, min (x, y) == (0, 0), max (x,y) == (123, 157), width, height == (123, 157), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 140, search range min (x,y) == (0, 0), max (x,y) == (297, 126), image (width, height) == (315, 155)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 140 is fine, min (x, y) == (0, 0), max (x,y) == (315, 155), width, height == (315, 155), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 141, search range min (x,y) == (0, 0), max (x,y) == (207, 126), image (width, height) == (225, 155)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 141 is fine, min (x, y) == (0, 0), max (x,y) == (225, 155), width, height == (225, 155), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 142, search range min (x,y) == (0, 0), max (x,y) == (157, 126), image (width, height) == (175, 155)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 142 is fine, min (x, y) == (0, 0), max (x,y) == (175, 155), width, height == (175, 155), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 143, search range min (x,y) == (0, 0), max (x,y) == (125, 126), image (width, height) == (143, 155)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 143 is fine, min (x, y) == (0, 0), max (x,y) == (143, 155), width, height == (143, 155), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 144, search range min (x,y) == (0, 0), max (x,y) == (103, 126), image (width, height) == (121, 155)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 144 is fine, min (x, y) == (0, 0), max (x,y) == (121, 155), width, height == (121, 155), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 145, search range min (x,y) == (0, 0), max (x,y) == (292, 123), image (width, height) == (310, 152)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 145 is fine, min (x, y) == (0, 0), max (x,y) == (310, 152), width, height == (310, 152), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 146, search range min (x,y) == (0, 0), max (x,y) == (203, 123), image (width, height) == (221, 152)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 146 is fine, min (x, y) == (0, 0), max (x,y) == (221, 152), width, height == (221, 152), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 147, search range min (x,y) == (0, 0), max (x,y) == (154, 123), image (width, height) == (172, 152)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 147 is fine, min (x, y) == (0, 0), max (x,y) == (172, 152), width, height == (172, 152), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 148, search range min (x,y) == (0, 0), max (x,y) == (123, 123), image (width, height) == (141, 152)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 148 is fine, min (x, y) == (0, 0), max (x,y) == (141, 152), width, height == (141, 152), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 149, search range min (x,y) == (0, 0), max (x,y) == (101, 123), image (width, height) == (119, 152)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 149 is fine, min (x, y) == (0, 0), max (x,y) == (119, 152), width, height == (119, 152), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 150, search range min (x,y) == (0, 0), max (x,y) == (286, 120), image (width, height) == (304, 149)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 150 is fine, min (x, y) == (0, 0), max (x,y) == (304, 149), width, height == (304, 149), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 151, search range min (x,y) == (0, 0), max (x,y) == (199, 120), image (width, height) == (217, 149)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 151 is fine, min (x, y) == (0, 0), max (x,y) == (217, 149), width, height == (217, 149), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 152, search range min (x,y) == (0, 0), max (x,y) == (151, 120), image (width, height) == (169, 149)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 152 is fine, min (x, y) == (0, 0), max (x,y) == (169, 149), width, height == (169, 149), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 153, search range min (x,y) == (0, 0), max (x,y) == (120, 120), image (width, height) == (138, 149)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 153 is fine, min (x, y) == (0, 0), max (x,y) == (138, 149), width, height == (138, 149), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 154, search range min (x,y) == (0, 0), max (x,y) == (99, 120), image (width, height) == (117, 149)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 154 is fine, min (x, y) == (0, 0), max (x,y) == (117, 149), width, height == (117, 149), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 155, search range min (x,y) == (0, 0), max (x,y) == (281, 118), image (width, height) == (299, 147)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 155 is fine, min (x, y) == (0, 0), max (x,y) == (299, 147), width, height == (299, 147), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 156, search range min (x,y) == (0, 0), max (x,y) == (196, 118), image (width, height) == (214, 147)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 156 is fine, min (x, y) == (0, 0), max (x,y) == (214, 147), width, height == (214, 147), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 157, search range min (x,y) == (0, 0), max (x,y) == (148, 118), image (width, height) == (166, 147)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 157 is fine, min (x, y) == (0, 0), max (x,y) == (166, 147), width, height == (166, 147), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 158, search range min (x,y) == (0, 0), max (x,y) == (118, 118), image (width, height) == (136, 147)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 158 is fine, min (x, y) == (0, 0), max (x,y) == (136, 147), width, height == (136, 147), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 159, search range min (x,y) == (0, 0), max (x,y) == (97, 118), image (width, height) == (115, 147)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 159 is fine, min (x, y) == (0, 0), max (x,y) == (115, 147), width, height == (115, 147), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 160, search range min (x,y) == (0, 0), max (x,y) == (276, 115), image (width, height) == (294, 144)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 160 is fine, min (x, y) == (0, 0), max (x,y) == (294, 144), width, height == (294, 144), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 161, search range min (x,y) == (0, 0), max (x,y) == (192, 115), image (width, height) == (210, 144)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 161 is fine, min (x, y) == (0, 0), max (x,y) == (210, 144), width, height == (210, 144), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 162, search range min (x,y) == (0, 0), max (x,y) == (145, 115), image (width, height) == (163, 144)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 162 is fine, min (x, y) == (0, 0), max (x,y) == (163, 144), width, height == (163, 144), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 163, search range min (x,y) == (0, 0), max (x,y) == (116, 115), image (width, height) == (134, 144)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 163 is fine, min (x, y) == (0, 0), max (x,y) == (134, 144), width, height == (134, 144), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 164, search range min (x,y) == (0, 0), max (x,y) == (95, 115), image (width, height) == (113, 144)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 164 is fine, min (x, y) == (0, 0), max (x,y) == (113, 144), width, height == (113, 144), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 165, search range min (x,y) == (0, 0), max (x,y) == (271, 113), image (width, height) == (289, 142)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 165 is fine, min (x, y) == (0, 0), max (x,y) == (289, 142), width, height == (289, 142), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 166, search range min (x,y) == (0, 0), max (x,y) == (189, 113), image (width, height) == (207, 142)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 166 is fine, min (x, y) == (0, 0), max (x,y) == (207, 142), width, height == (207, 142), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 167, search range min (x,y) == (0, 0), max (x,y) == (143, 113), image (width, height) == (161, 142)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 167 is fine, min (x, y) == (0, 0), max (x,y) == (161, 142), width, height == (161, 142), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 168, search range min (x,y) == (0, 0), max (x,y) == (113, 113), image (width, height) == (131, 142)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 168 is fine, min (x, y) == (0, 0), max (x,y) == (131, 142), width, height == (131, 142), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 169, search range min (x,y) == (0, 0), max (x,y) == (93, 113), image (width, height) == (111, 142)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 169 is fine, min (x, y) == (0, 0), max (x,y) == (111, 142), width, height == (111, 142), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 170, search range min (x,y) == (0, 0), max (x,y) == (266, 110), image (width, height) == (284, 139)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 170 is fine, min (x, y) == (0, 0), max (x,y) == (284, 139), width, height == (284, 139), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 171, search range min (x,y) == (0, 0), max (x,y) == (185, 110), image (width, height) == (203, 139)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 171 is fine, min (x, y) == (0, 0), max (x,y) == (203, 139), width, height == (203, 139), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 172, search range min (x,y) == (0, 0), max (x,y) == (140, 110), image (width, height) == (158, 139)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 172 is fine, min (x, y) == (0, 0), max (x,y) == (158, 139), width, height == (158, 139), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 173, search range min (x,y) == (0, 0), max (x,y) == (111, 110), image (width, height) == (129, 139)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 173 is fine, min (x, y) == (0, 0), max (x,y) == (129, 139), width, height == (129, 139), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 174, search range min (x,y) == (0, 0), max (x,y) == (91, 110), image (width, height) == (109, 139)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 174 is fine, min (x, y) == (0, 0), max (x,y) == (109, 139), width, height == (109, 139), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 175, search range min (x,y) == (0, 0), max (x,y) == (261, 108), image (width, height) == (279, 137)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 175 is fine, min (x, y) == (0, 0), max (x,y) == (279, 137), width, height == (279, 137), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 176, search range min (x,y) == (0, 0), max (x,y) == (182, 108), image (width, height) == (200, 137)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 176 is fine, min (x, y) == (0, 0), max (x,y) == (200, 137), width, height == (200, 137), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 177, search range min (x,y) == (0, 0), max (x,y) == (137, 108), image (width, height) == (155, 137)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 177 is fine, min (x, y) == (0, 0), max (x,y) == (155, 137), width, height == (155, 137), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 178, search range min (x,y) == (0, 0), max (x,y) == (109, 108), image (width, height) == (127, 137)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 178 is fine, min (x, y) == (0, 0), max (x,y) == (127, 137), width, height == (127, 137), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 179, search range min (x,y) == (0, 0), max (x,y) == (89, 108), image (width, height) == (107, 137)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 179 is fine, min (x, y) == (0, 0), max (x,y) == (107, 137), width, height == (107, 137), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 180, search range min (x,y) == (0, 0), max (x,y) == (257, 106), image (width, height) == (275, 135)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 180 is fine, min (x, y) == (0, 0), max (x,y) == (275, 135), width, height == (275, 135), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 181, search range min (x,y) == (0, 0), max (x,y) == (178, 106), image (width, height) == (196, 135)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 181 is fine, min (x, y) == (0, 0), max (x,y) == (196, 135), width, height == (196, 135), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 182, search range min (x,y) == (0, 0), max (x,y) == (135, 106), image (width, height) == (153, 135)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 182 is fine, min (x, y) == (0, 0), max (x,y) == (153, 135), width, height == (153, 135), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 183, search range min (x,y) == (0, 0), max (x,y) == (107, 106), image (width, height) == (125, 135)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 183 is fine, min (x, y) == (0, 0), max (x,y) == (125, 135), width, height == (125, 135), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 184, search range min (x,y) == (0, 0), max (x,y) == (88, 106), image (width, height) == (106, 135)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 184 is fine, min (x, y) == (0, 0), max (x,y) == (106, 135), width, height == (106, 135), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 185, search range min (x,y) == (0, 0), max (x,y) == (252, 103), image (width, height) == (270, 132)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 185 is fine, min (x, y) == (0, 0), max (x,y) == (270, 132), width, height == (270, 132), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 186, search range min (x,y) == (0, 0), max (x,y) == (175, 103), image (width, height) == (193, 132)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 186 is fine, min (x, y) == (0, 0), max (x,y) == (193, 132), width, height == (193, 132), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 187, search range min (x,y) == (0, 0), max (x,y) == (132, 103), image (width, height) == (150, 132)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 187 is fine, min (x, y) == (0, 0), max (x,y) == (150, 132), width, height == (150, 132), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 188, search range min (x,y) == (0, 0), max (x,y) == (105, 103), image (width, height) == (123, 132)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 188 is fine, min (x, y) == (0, 0), max (x,y) == (123, 132), width, height == (123, 132), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 189, search range min (x,y) == (0, 0), max (x,y) == (86, 103), image (width, height) == (104, 132)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 189 is fine, min (x, y) == (0, 0), max (x,y) == (104, 132), width, height == (104, 132), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 190, search range min (x,y) == (0, 0), max (x,y) == (247, 101), image (width, height) == (265, 130)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 190 is fine, min (x, y) == (0, 0), max (x,y) == (265, 130), width, height == (265, 130), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 191, search range min (x,y) == (0, 0), max (x,y) == (172, 101), image (width, height) == (190, 130)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 191 is fine, min (x, y) == (0, 0), max (x,y) == (190, 130), width, height == (190, 130), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 192, search range min (x,y) == (0, 0), max (x,y) == (129, 101), image (width, height) == (147, 130)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 192 is fine, min (x, y) == (0, 0), max (x,y) == (147, 130), width, height == (147, 130), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 193, search range min (x,y) == (0, 0), max (x,y) == (103, 101), image (width, height) == (121, 130)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 193 is fine, min (x, y) == (0, 0), max (x,y) == (121, 130), width, height == (121, 130), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 194, search range min (x,y) == (0, 0), max (x,y) == (84, 101), image (width, height) == (102, 130)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 194 is fine, min (x, y) == (0, 0), max (x,y) == (102, 130), width, height == (102, 130), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 195, search range min (x,y) == (0, 0), max (x,y) == (243, 99), image (width, height) == (261, 128)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 195 is fine, min (x, y) == (0, 0), max (x,y) == (261, 128), width, height == (261, 128), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 196, search range min (x,y) == (0, 0), max (x,y) == (168, 99), image (width, height) == (186, 128)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 196 is fine, min (x, y) == (0, 0), max (x,y) == (186, 128), width, height == (186, 128), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 197, search range min (x,y) == (0, 0), max (x,y) == (127, 99), image (width, height) == (145, 128)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 197 is fine, min (x, y) == (0, 0), max (x,y) == (145, 128), width, height == (145, 128), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 198, search range min (x,y) == (0, 0), max (x,y) == (100, 99), image (width, height) == (118, 128)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 198 is fine, min (x, y) == (0, 0), max (x,y) == (118, 128), width, height == (118, 128), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Starting check for scale 199, search range min (x,y) == (0, 0), max (x,y) == (82, 99), image (width, height) == (100, 128)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ check_stages_and_range_visitor ] : Scale 199 is fine, min (x, y) == (0, 0), max (x,y) == (100, 128), width, height == (100, 128), (touches all borders)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 2038, scaled_y == 1000
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (2038, 1000)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (510, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1456, scaled_y == 1000
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1456, 1000)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (364, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1132, scaled_y == 1000
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1132, 1000)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (283, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 927, scaled_y == 1000
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (927, 1000)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (232, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 784, scaled_y == 1000
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (784, 1000)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (196, 250)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 2003, scaled_y == 984
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (2003, 984)
+2014-11-28 09:50:16 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (501, 246)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1431, scaled_y == 984
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1431, 984)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (358, 246)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1113, scaled_y == 984
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1113, 984)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (279, 246)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 911, scaled_y == 984
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (911, 984)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (228, 246)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 771, scaled_y == 984
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (771, 984)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (193, 246)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1969, scaled_y == 967
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1969, 967)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (493, 242)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1407, scaled_y == 967
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1407, 967)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (352, 242)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1094, scaled_y == 967
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1094, 967)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (274, 242)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 895, scaled_y == 967
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (895, 967)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (224, 242)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 758, scaled_y == 967
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (758, 967)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (190, 242)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1936, scaled_y == 950
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1936, 950)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (484, 238)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1383, scaled_y == 950
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1383, 950)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (346, 238)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1076, scaled_y == 950
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1076, 950)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (269, 238)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 880, scaled_y == 950
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (880, 950)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (220, 238)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 745, scaled_y == 950
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (745, 950)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (187, 238)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1903, scaled_y == 934
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1903, 934)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (476, 234)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1360, scaled_y == 934
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1360, 934)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (340, 234)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1058, scaled_y == 934
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1058, 934)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (265, 234)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 865, scaled_y == 934
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (865, 934)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (217, 234)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 732, scaled_y == 934
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (732, 934)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (183, 234)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1871, scaled_y == 918
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1871, 918)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (468, 230)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1336, scaled_y == 918
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1336, 918)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (334, 230)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1040, scaled_y == 918
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1040, 918)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (260, 230)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 851, scaled_y == 918
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (851, 918)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (213, 230)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 720, scaled_y == 918
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (720, 918)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (180, 230)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1839, scaled_y == 903
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1839, 903)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (460, 226)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1314, scaled_y == 903
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1314, 903)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (329, 226)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1022, scaled_y == 903
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1022, 903)
+2014-11-28 09:50:17 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (256, 226)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 836, scaled_y == 903
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (836, 903)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (209, 226)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 708, scaled_y == 903
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (708, 903)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (177, 226)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1808, scaled_y == 888
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1808, 888)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (452, 222)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1291, scaled_y == 888
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1291, 888)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (323, 222)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1005, scaled_y == 888
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1005, 888)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (252, 222)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 822, scaled_y == 888
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (822, 888)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (206, 222)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 696, scaled_y == 888
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (696, 888)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (174, 222)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1777, scaled_y == 872
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1777, 872)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (445, 218)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1270, scaled_y == 872
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1270, 872)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (318, 218)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 988, scaled_y == 872
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (988, 872)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (247, 218)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 808, scaled_y == 872
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (808, 872)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (202, 218)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 684, scaled_y == 872
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (684, 872)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (171, 218)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1747, scaled_y == 858
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1747, 858)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (437, 215)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1248, scaled_y == 858
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1248, 858)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (312, 215)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 971, scaled_y == 858
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (971, 858)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (243, 215)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 794, scaled_y == 858
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (794, 858)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (199, 215)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 672, scaled_y == 858
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (672, 858)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (168, 215)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1717, scaled_y == 843
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1717, 843)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (430, 211)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1227, scaled_y == 843
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1227, 843)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (307, 211)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 954, scaled_y == 843
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (954, 843)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (239, 211)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 781, scaled_y == 843
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (781, 843)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (196, 211)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 661, scaled_y == 843
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (661, 843)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (166, 211)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1688, scaled_y == 829
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1688, 829)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (422, 208)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1206, scaled_y == 829
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1206, 829)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (302, 208)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 938, scaled_y == 829
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (938, 829)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (235, 208)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 768, scaled_y == 829
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (768, 829)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (192, 208)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 650, scaled_y == 829
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (650, 829)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (163, 208)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1660, scaled_y == 815
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1660, 815)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (415, 204)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1186, scaled_y == 815
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1186, 815)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (297, 204)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 922, scaled_y == 815
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (922, 815)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (231, 204)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 755, scaled_y == 815
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (755, 815)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (189, 204)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 639, scaled_y == 815
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (639, 815)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (160, 204)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1631, scaled_y == 801
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1631, 801)
+2014-11-28 09:50:18 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (408, 201)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1165, scaled_y == 801
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1165, 801)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (292, 201)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 907, scaled_y == 801
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (907, 801)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (227, 201)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 742, scaled_y == 801
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (742, 801)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (186, 201)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 628, scaled_y == 801
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (628, 801)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (157, 201)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1604, scaled_y == 787
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1604, 787)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (401, 197)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1146, scaled_y == 787
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1146, 787)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (287, 197)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 891, scaled_y == 787
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (891, 787)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (223, 197)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 729, scaled_y == 787
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (729, 787)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (183, 197)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 617, scaled_y == 787
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (617, 787)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (155, 197)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1576, scaled_y == 774
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1576, 774)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (394, 194)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1126, scaled_y == 774
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1126, 774)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (282, 194)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 876, scaled_y == 774
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (876, 774)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (219, 194)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 717, scaled_y == 774
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (717, 774)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (180, 194)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 607, scaled_y == 774
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (607, 774)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (152, 194)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1550, scaled_y == 761
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1550, 761)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (388, 191)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1107, scaled_y == 761
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1107, 761)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (277, 191)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 861, scaled_y == 761
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (861, 761)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (216, 191)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 705, scaled_y == 761
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (705, 761)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (177, 191)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 596, scaled_y == 761
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (596, 761)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (149, 191)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1523, scaled_y == 748
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1523, 748)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (381, 187)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1088, scaled_y == 748
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1088, 748)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (272, 187)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 847, scaled_y == 748
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (847, 748)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (212, 187)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 693, scaled_y == 748
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (693, 748)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (174, 187)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 586, scaled_y == 748
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (586, 748)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (147, 187)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1498, scaled_y == 735
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1498, 735)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (375, 184)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1070, scaled_y == 735
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1070, 735)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (268, 184)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 832, scaled_y == 735
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (832, 735)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (208, 184)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 681, scaled_y == 735
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (681, 735)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (171, 184)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 576, scaled_y == 735
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (576, 735)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (144, 184)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1472, scaled_y == 723
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1472, 723)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (368, 181)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1052, scaled_y == 723
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (1052, 723)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (263, 181)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 818, scaled_y == 723
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (818, 723)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (205, 181)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 669, scaled_y == 723
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (669, 723)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (168, 181)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 567, scaled_y == 723
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Input image dimensions (567, 723)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ IntegralChannelsForPedestrians ] : Shrunk Channel size (142, 181)
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1447, scaled_y == 711
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1034, scaled_y == 711
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 804, scaled_y == 711
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 658, scaled_y == 711
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 557, scaled_y == 711
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1423, scaled_y == 698
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1016, scaled_y == 698
+2014-11-28 09:50:19 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 791, scaled_y == 698
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 647, scaled_y == 698
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 547, scaled_y == 698
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1398, scaled_y == 687
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 999, scaled_y == 687
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 777, scaled_y == 687
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 636, scaled_y == 687
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 538, scaled_y == 687
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1375, scaled_y == 675
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 982, scaled_y == 675
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 764, scaled_y == 675
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 625, scaled_y == 675
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 529, scaled_y == 675
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1351, scaled_y == 664
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 965, scaled_y == 664
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 751, scaled_y == 664
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 615, scaled_y == 664
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 520, scaled_y == 664
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1328, scaled_y == 652
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 949, scaled_y == 652
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 738, scaled_y == 652
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 604, scaled_y == 652
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 511, scaled_y == 652
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1306, scaled_y == 641
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 933, scaled_y == 641
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 726, scaled_y == 641
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 594, scaled_y == 641
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 503, scaled_y == 641
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1284, scaled_y == 630
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 917, scaled_y == 630
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 713, scaled_y == 630
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 584, scaled_y == 630
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 494, scaled_y == 630
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1262, scaled_y == 620
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 902, scaled_y == 620
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 701, scaled_y == 620
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 574, scaled_y == 620
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 486, scaled_y == 620
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1241, scaled_y == 609
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 886, scaled_y == 609
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 689, scaled_y == 609
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 564, scaled_y == 609
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 477, scaled_y == 609
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1219, scaled_y == 599
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 871, scaled_y == 599
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 678, scaled_y == 599
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 555, scaled_y == 599
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 469, scaled_y == 599
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1199, scaled_y == 589
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 856, scaled_y == 589
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 666, scaled_y == 589
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 545, scaled_y == 589
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 461, scaled_y == 589
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1178, scaled_y == 579
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 842, scaled_y == 579
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 655, scaled_y == 579
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 536, scaled_y == 579
+2014-11-28 09:50:20 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 454, scaled_y == 579
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1158, scaled_y == 569
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 828, scaled_y == 569
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 644, scaled_y == 569
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 527, scaled_y == 569
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 446, scaled_y == 569
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1139, scaled_y == 559
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 814, scaled_y == 559
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 633, scaled_y == 559
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 518, scaled_y == 559
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 438, scaled_y == 559
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1119, scaled_y == 550
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 800, scaled_y == 550
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 622, scaled_y == 550
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 509, scaled_y == 550
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 431, scaled_y == 550
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1100, scaled_y == 540
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 786, scaled_y == 540
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 612, scaled_y == 540
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 500, scaled_y == 540
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 424, scaled_y == 540
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1082, scaled_y == 531
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 773, scaled_y == 531
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 601, scaled_y == 531
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 492, scaled_y == 531
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 416, scaled_y == 531
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1063, scaled_y == 522
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 760, scaled_y == 522
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 591, scaled_y == 522
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 484, scaled_y == 522
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 409, scaled_y == 522
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 1045, scaled_y == 513
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 747, scaled_y == 513
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 581, scaled_y == 513
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 475, scaled_y == 513
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : scaled_x == 402, scaled_y == 513
+2014-11-28 09:50:21 {7fec4b0f1a80} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 1969007
+2014-11-28 09:50:28 {7fec4b0f1a80} [ ObjectsDetectionApplication ] : Created recording file /esat/sadr/amartino/monge428New/data2/work/detections/detections.data_sequence
