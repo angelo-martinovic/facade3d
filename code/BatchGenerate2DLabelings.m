@@ -24,9 +24,7 @@ function BatchGenerate2DLabelings(modelName)
     nImages = length(file_str_idx);
     
     outputDir = [dirName 'work/output-' modelName '/'];
-    if ~exist(outputDir,'dir')
-        mkdir(outputDir);
-    end
+    mkdirIfNotExist(outputDir);
 
     tic;
     pb = ProgressBar(length(cameras));

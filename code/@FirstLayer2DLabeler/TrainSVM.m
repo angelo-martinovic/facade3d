@@ -1,13 +1,11 @@
 %     - Uses the output of PrepareData.m to train a superpixel classifier on the training set.
 function TrainSVM(obj)
 
-    cacheFolder = [obj.dirName 'work/cache/'];
+    cacheFolder = get_adr('cache',obj.config);
     cacheFilename = [cacheFolder 'temp_' obj.baseName '.mat'];
     
     % Caching
-    if ~exist(cacheFolder,'dir')
-        mkdir(cacheFolder);
-    end
+    mkdirIfNotExist(cacheFolder);
     
     if ~exist(cacheFilename,'file')
         
@@ -67,9 +65,8 @@ function TrainSVM(obj)
     disp(['Accuracy on the test set: ' num2str(accuracy(1))]);
     
     disp('Saving the SVM model.');
-    classifierFolder = [obj.dirName 'work/classifier/'];
-    if ~exist(classifierFolder,'dir')
-        mkdir(classifierFolder);
-    end
+    classifierFolder = get_adr('2D_classifier',obj.config);
+    mkdirIfNotExist(classifierFolder);
+
     save([classifierFolder obj.classifierName '.mat'],'model','sumAll','rangeAll');   
 end

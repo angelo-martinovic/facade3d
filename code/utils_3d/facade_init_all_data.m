@@ -4,7 +4,6 @@
 
 
 
-test_data_separ = 1;
 si_dimensions = .3;
 
 
@@ -12,14 +11,14 @@ si_dimensions = .3;
 
 %% read data + descriptors
 %---- read basic data
-fprintf('  read SScene_An.... dataset = ''%s'' ',dataset);
+fprintf('  read SScene_An.... dataset = ''%s'' ',datasetConfig.name);
 clear train_data scene
 global train_data scene
-train_data = SScene_An(path_mat_data_dir,postfix_path_data_orig);
-train_data = train_data.read_mat_data();
+train_data = SScene_An();%path_mat_data_dir,postfix_path_data_orig);
+train_data = train_data.read_mat_data( datasetConfig );
 
 %--- read/calc  desc
-train_data = train_data.process_data('compute_get_si','si_dimensions',si_dimensions);
+train_data = train_data.process_data('compute_get_si','si_dimensions',si_dimensions,'datasetConfig',datasetConfig);
 
 %--- fix labeling ids
 train_data.lindex = train_data.lindex-1; %%% applies to monge where zero should be background crap...

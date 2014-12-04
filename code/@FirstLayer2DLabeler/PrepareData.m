@@ -1,15 +1,14 @@
 % Gets all images, rectifies, segments, extracts features, runs detectors on test set.
 function PrepareData(obj)
     %% 1st layer - prepare data
-
-
-    % Source folder
-    dirName = obj.dirName;
-
+    
     % Create work folder
-    workFolder = [dirName 'work/'];
-    if ~exist(workFolder,'dir')
-        mkdir(workFolder);
+    workFolder = get_adr('work',obj.config);
+    mkdirIfNotExist(workFolder);
+    
+    cacheDir = get_adr('cache',obj.config);
+    if exist(cacheDir,'dir')
+        delete([cacheDir '*.mat']);
     end
 
     %% Get the list of all images
@@ -17,7 +16,7 @@ function PrepareData(obj)
     file_str_idx = obj.LoadFilenames(subset);
 
     imageNames = strcat(file_str_idx,'.jpg');%cellfun(@(x)strcat(x,'.jpg'),file_str_idx,'UniformOutput',false);
-    imageFilenames = strcat([dirName 'image/'],imageNames);%cellfun(@(x)strcat(,x),imageNames,'UniformOutput',false);
+    imageFilenames = strcat(get_adr('2D_images',obj.config),imageNames);%cellfun(@(x)strcat(,x),imageNames,'UniformOutput',false);
 
     %% Run rectification
     tic;

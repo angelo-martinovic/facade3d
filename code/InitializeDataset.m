@@ -1,8 +1,12 @@
 function datasetConfig = InitializeDataset(datasetName)
 
+    % General
     datasetConfig.name              = datasetName;
-
-    datasetConfig.dataLocation      = '../data/'; %     path_mat_data_dir         = '/esat/sadr/amartino/monge428New/data/';
+    datasetConfig.nClasses          = 7;
+    datasetConfig.ignoreClasses     = [0 8];
+    datasetConfig.cm                = HaussmannColormap()/255;  
+    
+    datasetConfig.dataLocation      = '../data/'; 
     datasetConfig.outputLocation    = '../output/';
     
     % 2D
@@ -14,7 +18,6 @@ function datasetConfig = InitializeDataset(datasetName)
         datasetConfig.evalList          = 'listeval.txt';
         datasetConfig.fullList          = 'listall.txt';
         
-    datasetConfig.classifier        = 'SVM';
     
     
     % 3D
@@ -26,7 +29,12 @@ function datasetConfig = InitializeDataset(datasetName)
     datasetConfig.depth             = 'pcl_depth.mat';  % Generated 
     
     
-
+    % Parameters
+                                 %[3D 2D det pairwise]
+    datasetConfig.CRF3D.weights = [0 1 0 1];
+    
+    
+%     path_mat_data_dir         = '/esat/sadr/amartino/monge428New/data/';
 %     postfix_path_data_orig{1} = 'pcloud_gt_train_new_GCO_old.ply';   %%% train
 %     postfix_path_data_orig{2} = 'pcloud_gt_test_new_GCO_old.ply';    %%% test
 %     postfix_path_data_orig{3} = 'splitData.mat';                     %%% full pcl
