@@ -3,54 +3,27 @@ classdef ThirdLayer2DLabeler < handle
     %   Detailed explanation goes here
     
     properties
-            dirName = '/esat/sadr/amartino/monge428New/data/';
-            modelName = 'monge428New_lowres';
+            config = [];  
+            splitName = [];
+
             
-            gtTrainFilename = 'pcloud_gt_test_new_GCO.ply';
-            gtTestFilename = 'pcloud_gt_test_new_GCO.ply';
-            meshName = 'fullRes_mesh_colors_normals.ply';
-            facadeSplit = 'fullRes_mesh_splitData.mat';
-            
-            evalListFilename = 'listeval_full.txt';
-            trainListFilename = 'listtrain.txt';
-            allListFilename = 'listall.txt';
-            
-            splitName = '3D';
-            % TODO
-%             classifier3D = '/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge482_fullres/res2angelo/3D_layer1-2000-200.mat';
-%             classifierName = 'SVM';
-            
-            % low-res
-%             gtFilename = 'fullRes_pcloud_test_new_GCO.ply'; % high-res
-            
-            nClasses = 7;
-            cm = []; % Colormap
+            nClasses = [];
+
 
             fineTuneGravityVector = true;
             condorEnabled = false;
-            
-            allPoints = [];
-            allColors = [];
+
     end
     
     methods
-        function tl = ThirdLayer2DLabeler(dirName,modelName,gtTrainFilename,gtTestFilename,meshName,facadeSplit)
-            tl.dirName = dirName;
-            tl.modelName = modelName;
-            tl.gtTrainFilename = gtTrainFilename;
-            tl.gtTestFilename = gtTestFilename;
-            tl.meshName = meshName;
-            tl.facadeSplit = facadeSplit;
-            
-            tl.Configure();
+        function tl = ThirdLayer2DLabeler(datasetConfig,splitName)
+            tl.config = datasetConfig;
+            tl.splitName = splitName;
+            tl.nClasses = datasetConfig.nClasses;
+
         end
-        
-        
-        Project2DOntoPointCloud(obj,labelingSource);
-        filenames = LoadFilenames(obj,subset);
-        
-        LabelPointCloud(obj,weights);
-        
+
+               
         SplitPointCloud(obj);
         g=GetGravityVector(obj,facadeID,facadeNormal);
         FitPlanes(obj);
@@ -62,25 +35,11 @@ classdef ThirdLayer2DLabeler < handle
         OrthoImagesBackProject(obj);
         ReassemblePointCloud(obj);
         
-        function Configure(obj)
-            obj.cm = HaussmannColormap();
-        end
-        
-        % Lazy reading
-        function [points,colors] = GetAllPoints(obj)
-            if isempty(obj.allPoints)
-                [obj.allPoints,~,obj.allColors] = ReadPCLFromPly([obj.dirName obj.meshName]);
-            end
 
-            points = obj.allPoints;
-            colors = obj.allColors;
-            
-        end
-        
         %Calculates 3D positions of cameras
         function [camerapos,cameras] = GetCameraPos(obj)
             
-            cameras = ImportCameras([obj.dirName 'cameras.txt']);
+            cameras = ImportCameras(get_addr('cameras',obj.config));
             camerapos = zeros(length(cameras),3);
 
             for i=1:length(cameras)
@@ -95,26 +54,17 @@ classdef ThirdLayer2DLabeler < handle
         
         function facadeIDs = GetFacadeIDs(obj)
             % Get facade separation info
-            ss = load([obj.dirName 'work/pcl/split/' obj.splitName '/' obj.modelName '_facadeIDs.mat']);
+            ss = load(get_adr('facadeIDs',obj.config,obj.splitName));
             facadeIDs = ss.facadeIDs';
 
             facadeIDs = facadeIDs(facadeIDs~=0); % Skip background
         end
        
-        function [scoreBefore,scoreAfter] = EvaluateLabeling(obj)
-            % Before 3rd layer
-            labFilename = [obj.dirName 'work/pcl/models/' obj.splitName '.ply'];
-            gt = [obj.dirName obj.gtTestFilename];
-            fprintf('Evaluating %s...\n',labFilename);
-            try
-                scoreBefore = EvaluateMeshLabeling(labFilename,gt);
-            catch
-                fprintf('No labeling found.\n');
-            end
-            
+        function score = EvaluateLabeling(obj)
+
             % After 3rd layer
-            labFilename = [obj.dirName 'work/pcl/models/' obj.splitName '_2Dlayer3.ply'];
-            gt = [obj.dirName obj.gtTestFilename];
+            labFilename = get_adr('3D_L3_Ortho2D_labeling',obj.config,obj.splitName);
+            gt = get_adr('pcl_gt_test',obj.config);
             fprintf('Evaluating %s...\n',labFilename);
             try
                 scoreAfter = EvaluateMeshLabeling(labFilename,gt);

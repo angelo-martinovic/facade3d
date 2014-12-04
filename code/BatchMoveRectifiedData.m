@@ -4,9 +4,7 @@ function BatchMoveRectifiedData
     sourcePath = [cmvsPath 'visualize/'];
     
     targetPath = [cmvsPath 'visualizeRect/'];
-    if ~exist(targetPath,'dir')
-        mkdir(targetPath);
-    end
+    mkdirIfNotExist(targetPath);
     
     cameras = ImportCameras([cmvsPath 'cameras_v2.txt']);
 

@@ -4,18 +4,17 @@ classdef FirstLayer2DLabeler < handle
     %   Detailed explanation goes here
     
     properties
-            % Base properties
-            dirName = '/esat/sadr/amartino/monge428New/data/';
-            baseName = 'monge428New';
+            config = [];   
+            baseName = [];
+            
             classifierName = 'SVM';
             
-            cm = []; % Colormap
             detectors = { };
             
             % List of images
-            evalListFilename = 'listeval_full.txt';
-            trainListFilename = 'listtrain.txt';
-            allListFilename = 'listall.txt';
+            evalListFilename = [];
+            trainListFilename = []; 
+            allListFilename = []; 
             
             % Paths
             edisonLoc = '/esat/sadr/amartino/atlas/edison/';
@@ -23,8 +22,8 @@ classdef FirstLayer2DLabeler < handle
             biclopLoc = '/esat/sadr/amartino/atlas/biclop/';
             
             % Parameters
-            nClasses = 7;
-            ignoreClasses = [0 8];
+            nClasses = [];
+            ignoreClasses = [];
             nFeats = 225;
             resizedImagesHeight = 800;
             minRegionArea = 150;
@@ -40,14 +39,17 @@ classdef FirstLayer2DLabeler < handle
                 'weightSegmentationUnary', [],...
                 'weightPairwise', [],...
                 'labelcost',[]);
+            
+            pclName = [];
     end
     
     methods
         %% Constructor
-        function fl = FirstLayer2DLabeler(dirName,baseName,classifierName)
-            fl.dirName = dirName;
-            fl.baseName = baseName;
-            fl.classifierName = classifierName;
+        function fl = FirstLayer2DLabeler(datasetConfig)
+            
+            fl.config = datasetConfig;
+            fl.baseName = datasetConfig.name;
+            fl.nClasses = datasetConfig.nClasses;
             
             fl.Configure();
         end
@@ -66,13 +68,11 @@ classdef FirstLayer2DLabeler < handle
         
         LabelImagesATLAS(obj);
         
-        
+        Project2DOntoPointCloud(obj);
         
 
         %% Builtin methods
         function Configure(obj)
-            
-            obj.cm = HaussmannColormap()/255;
             
             % Detectors
             obj.detectors{1}.name = 'window-generic';
@@ -86,7 +86,7 @@ classdef FirstLayer2DLabeler < handle
             obj.crf.weightPairwise = 0.3725;
             
             l = load('config/haussmannLabelCost.mat');
-            obj.crf.labelCost = l.labelCost(1:obj.nClasses,1:obj.nClasses);
+            obj.crf.labelCost = l.labelCost(1:obj.config.nClasses,1:obj.config.nClasses);
            
         end
         
@@ -94,10 +94,10 @@ classdef FirstLayer2DLabeler < handle
         % Runs Hayko's evaluation on 2D image labeling
         function [scoreL1, scoreL2] = EvaluateLabeling(obj)
            
-            outputFolder1 = [obj.dirName 'work/classifier/' obj.classifierName '/layer1/'];
+            outputFolder1 = [get_adr('work',obj.config) 'classifier/' obj.classifierName '/layer1/'];
             scoreL1 = obj.EvaluateImageLabeling(outputFolder1);
 
-            outputFolder2 = [obj.dirName 'work/classifier/' obj.classifierName '/layer2/'];
+            outputFolder2 = [get_adr('work',obj.config) 'classifier/' obj.classifierName '/layer2/'];
             scoreL2 = obj.EvaluateImageLabeling(outputFolder2);
             
         end
@@ -110,11 +110,11 @@ classdef FirstLayer2DLabeler < handle
 
             %% EVALUATION TASK 1 - Image labeling - vanilla 2d img labeling task
             fprintf('Loading data...\n');
-            [gt, res] = evaluation_load_folder ([obj.dirName 'labels/'], outputFolder, {file_str_idx}, numViews, obj.cm);
+            [gt, res] = evaluation_load_folder (get_adr('2D_labels',obj.config), outputFolder, {file_str_idx}, numViews, obj.config.cm);
             fprintf('Done!\n');
             fprintf('Evaluating...\n');
-            score = evaluation_multilabel(gt,res,obj.ignoreClasses+1);
-
+            score = evaluation_multilabel(gt,res,obj.config.ignoreClasses + 1);
+            disp(score);
 
         end
         

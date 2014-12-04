@@ -12,13 +12,14 @@ function [t,x,segsPerImage,imageNames] = LoadData(obj,subset)
         return;
     end
     
-    origImageNames = strcat([obj.dirName 'work/'],imageNames);
+    origImageNames = strcat(get_adr('work',obj.config),imageNames);
     
-    segFilenames = strcat(origImageNames,'.seg');
-    groundTruthFilenames = strcat(strcat([obj.dirName 'labels/'],imageNames),'.png');
-    featureFilenames = strcat(origImageNames,'.features.txt');
-    scaleFilenames = strcat(origImageNames,'_scale.dat');
-    rectFilenames = strcat(origImageNames,'_rect.dat');
+    groundTruthFilenames = strcat(strcat(get_adr('2D_labels',obj.config),imageNames),'.png');
+    
+    segFilenames        = strcat(origImageNames,'.seg');
+    featureFilenames    = strcat(origImageNames,'.features.txt');
+    scaleFilenames      = strcat(origImageNames,'_scale.dat');
+    rectFilenames       = strcat(origImageNames,'_rect.dat');
     
     allSegDistributions = zeros(0,obj.nClasses);
     allSegs = zeros(0,obj.nFeats);

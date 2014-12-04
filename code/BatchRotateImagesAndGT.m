@@ -5,9 +5,7 @@ function BatchRotateImagesAndGT
     sourcePath = [cmvsPath 'visualizeRect/'];
     
     targetPath = [cmvsPath 'visualizeRotated/'];
-    if ~exist(targetPath,'dir')
-        mkdir(targetPath);
-    end
+    mkdirIfNotExist(targetPath);
     
     cameras = ImportCameras([cmvsPath 'cameras_v2.txt']);
 
