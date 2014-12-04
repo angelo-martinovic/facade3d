@@ -24,7 +24,7 @@ cvx_setup   %%% you need cvx for optimization!!!
 
 
 %--- read labeling
-fprintf('  ============================  <strong>3rd layer</strong> ============================ \n             ...path_input = ''%s''\n  --------------------------------------------------------\n',path_input_type_into_3rd);
+fprintf('  =======================  <strong>3rd layer</strong> ======================= \n             ...inputName = ''%s''\n  ----------------------------------------------------------\n',inputName);
 
 
 
@@ -40,7 +40,7 @@ end
 time_cumsum = 0;
 for facade_id = facade_ids_go,
     fprintf('     ____________facadeID=%s____________\n',num2str(facade_id));
-    grav_vec = load([path_grav_vec,'/monge428New_fullRes_split_',num2str(facade_id),'_plane.mat']);
+    grav_vec = load(get_adr('grav_vec',datasetConfig,facade_id));
     grav_vec = grav_vec.g';
     if isempty(grav_vec), fprintf('              ...no grav vec...\n'); continue; end;
     tic;
@@ -91,7 +91,7 @@ for facade_id = facade_ids_go,
     
     time_cumsum = time_cumsum+toc;
     if 0,save_res_per_facade2file,
-        path2save = scene.get_adr('wa_bboxes',input_type_into_3rd,facade_id);
+        path2save = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
         fprintf('  ...savig bbox to %s\n',path2save);
         save(path2save,'bbox','bbox_ga','bbox_new','nrm');
         fprintf('  ...done\n');

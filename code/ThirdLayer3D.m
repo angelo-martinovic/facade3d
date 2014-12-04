@@ -3,20 +3,12 @@
 
 
 
-%% ========================================================================
-%
-%      3D: Weak arch rules... = Layer 3
-%
-%  ========================================================================
+function ThirdLayer3D(datasetConfig , inputName)
 
-input_type_into_3rd = 'layer1+3D_3DCRF';'layer1+3D_3DCRF';%'layer1+3D_3DCRF';'layer1_3DCRF';'3D_3DCRF';'layer1+3D_3DCRF';'3D_3DCRF';'layer1+3D_3DCRF';'layer1_3DCRF';'layer1+3D_3DCRF';'3D_3DCRF';  % 3D_3DCRF  layer1+3D_3DCRF  layer1_3DCRF
-
-
-path_cprbs_results = '/esat/sadr/amartino/monge428New/data/work/pcl/models/';
-path_grav_vec      = '/esat/sadr/amartino/monge428New/data/work/pcl/split/monge428New_fullRes_layer1+3D_3DCRF/';
-path_cprb_probl    = '/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge428_27/res2angelo/';
-path_images_source = path_grav_vec;
-path_im_data_file  = '/esat/sadr/amartino/monge428New/data/work/pcl/split/monge428New_fullRes_layer1_3DCRF/';
+global scene train_data
+if ~exist('scene','var') || isempty(scene);
+     facade_init_all_data
+end
 
 
 %--- fce to check which points are inside box
@@ -24,20 +16,17 @@ pts_in_bbox = @(pts_facade,tmp_corner) pts_facade(1,:)<tmp_corner(1) & pts_facad
 
 
 
-%--- read cprb from before
-path_input_type_into_3rd = fullfile(path_cprbs_results,['monge428New_',input_type_into_3rd,'.ply']);
-[~,~,vertexColData] = read_ply(path_input_type_into_3rd,'pcl');
-
-idx_use = sum(vertexColData')~=0;
-rgb_data_cprb = vertexColData(idx_use,:);
+%--- read cprb from before results
+[~,~,rgb_data_cprb] = read_ply(get_adr('3D_L2_labeling',datasetConfig,inputName),'pcl');
+rgb_data_cprb = rgb_data_cprb(scene.p_index,:);
 cprb = knnsearch(scene.get_class_colormap,rgb_data_cprb)'-1;
 
+%--- which facades to process
+facade_ids_go = 3;%unique(scene.facade_id);  %%% ids of facedes
 
 
-
-if 0, %% run 3rd layer again! :)
-    save_res_per_facade2file = 0;  %%% if to save results
-    facade_ids_go = unique(scene.facade_id);  %%% ids of facedes
+if 1, %% run 3rd layer again! :)
+    save_res_per_facade2file = 1;  %%% if to save results
     facade_run_3Layer3D;
 end
     
@@ -46,20 +35,19 @@ end
 
 
 
+
+%--- what to export
+plot_boxes_while_optimizing                     = 1;   %%% plot boxes before and after optimization :)
+export_result_to_full_scene_ply                 = 0;   %%% for andelos's evaluation
+save_separate_rgb_projected3dfacades            = 1;   %%% each facade with boxes for projections  to 3ds max:)
+
+
+
+
+
 %--- can be always on -> this defines what to calculate from 3rd layer boxes   
 store_bbox = 1;  %%% if I want to store all boxes (yes for export)
 estiamte_door_box = 1; %%% always on!
-
-
-%--- what to export
-plot_facades_into_images_save_them_separate     = 0;   %%% plot matlab images 
-plot_boxes_while_optimizing                     = 1;   %%% plot boxes before and after optimization :)
-plot_facade_3d_boxes_matlab                     = 1;   %%% plot matlab images of 3d boxes results :)
-export_result_to_full_scene_ply                 = 0;   %%% for andelos's evaluation
-
-%--- now 3ds max exports! :)
-save_separate_rgb_projected3dfacades            = 0;   %%% each facade with boxes for projections :)
-
 
 
 %--- init some vars
@@ -72,8 +60,9 @@ labeling_cprb_doors = [];
 if estiamte_door_box, %%% door needs probability map, not just labeling...
     labeling_cprb_doors = scene.create_oidx_from_lidx('cprb',cprb,'K',7,'cl',4,'max_objs',100);
     labeling_cprb_doors = labeling_cprb_doors.oindex;
-    prob_classes = load(fullfile(path_cprb_probl,['3D_layer1-',num2str(2000),'-',num2str(200),'.mat']));
-    prob_classes = prob_classes.dt(4:4+numel(scene.get_class_names),:);
+    prob_classes = load(get_adr('3D_L2_unaries',datasetConfig,inputName));
+    %prob_classes = load(fullfile(path_cprb_probl,['3D_layer1-',num2str(2000),'-',num2str(200),'.mat']));
+    prob_classes = prob_classes.prb;%prob_classes.prb(4:4+numel(scene.get_class_names),:);
 end
 
 
@@ -86,14 +75,16 @@ end
 %        & and estimate boxes during that..
 %--------------------------------------------------------------------------
 time_cumsum_3rd_end = 0;
-for facade_id = unique(scene.facade_id),
+fprintf('===============================================================================\n   Use precalculated bboxes of wind+balc, estimate rest, project it to pcl and show the result! \n------------------------------------------------------------------------------');
+for facade_id = facade_ids_go,
     if facade_id < 2,
         continue;
     end
     %--- read boxes
     idx_in_facade = find(scene.facade_id==facade_id);
-    fprintf('    facade id=%i, #pts=%.1fK,  ',facade_id,length(idx_in_facade)/1e3);
-    path_data = scene.get_adr('wa_bboxes',input_type_into_3rd,facade_id);
+    fprintf('   ----------------------------\n      facade id=%i, #pts=%.1fK,  ',facade_id,length(idx_in_facade)/1e3);
+    %path_data = scene.get_adr('wa_bboxes',input_type_into_3rd,facade_id);
+    path_data = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
     if ~exist(path_data,'file');
         fprintf('Does not exist!\n');
         continue;
@@ -102,7 +93,7 @@ for facade_id = unique(scene.facade_id),
     fprintf('    ...bbox file %s \n         created at  %s\n',path_data,t.date);
     load(path_data);  %%% read normals, bbox, bbox_ga and bbox_new
     %--- read grav. vector
-    grav_vec = load([path_grav_vec,'/monge428New_fullRes_split_',num2str(facade_id),'_plane.mat']);
+    grav_vec = load( get_adr('grav_vec',datasetConfig,facade_id) );
     grav_vec = grav_vec.g';
    
     tic;
@@ -165,23 +156,23 @@ for facade_id = unique(scene.facade_id),
             tri_oid     = [tri_oid t_qdr(1,:)*0+oid  t_qdr(1,:)*0+oid];
         end
     end
-    cam_set = @() eval(' axis equal off; campos([0 -1 3]); camup([-1 0 0]); camzoom(0.8); camproj(''orthographic''); set(gcf, ''Position'', [400 400 800 600]); set(gcf, ''Color'', [1 1 1]); zoom(1.2);');
     if plot_boxes_while_optimizing
-        path2save = '../export/pics_optim_wa_boxes/';
+        cam_set = @() eval(' axis equal off; campos([0 -1 3]); camup([-1 0 0]); camzoom(0.8); camproj(''orthographic''); set(gcf, ''Position'', [400 400 800 600]); set(gcf, ''Color'', [1 1 1]); zoom(1.2);');
+        path2save = ['../output/export/3D_3L_facades_boxes/'];
         cmap = scene.get_class_colormap();cmap = cmap(2:end,:);
         try; close all; end;
         % hf=figure(); honza_scatter(pts_facade,pts_facade(1,:)*0+20,cmap(cprb(idx_in_facade),:)/255,'filled');  set(hf,'Position',[0,0,600,700]); set(gcf, 'Color', [1 1 1]); zoom(1.2); axis off equal; view(90,90);
-        % im = screencapture(hf); delete(hf); imwrite(imcrop(im,[10 80 size(im,2)-20 size(im,1)-120]),[path2save,num2str(facade_id),'_',input_type_into_3rd,'_0prob.jpg']);
+        % im = screencapture(hf); delete(hf); imwrite(imcrop(im,[10 80 size(im,2)-20 size(im,1)-120]),[path2save,num2str(facade_id),'_',inputName,'_0prob.jpg']);
         try delete(hf); end;  hf=figure(); for cnt=1:length(bbox.class), col=[1 0 0];if bbox.class(cnt)==3,col=[.5 0 1];end;  honza_plot_3d_cube(bbox.corners([3 6],cnt),bbox.corners([2 5],cnt),bbox.corners([1 4],cnt),'FaceColor',col,'FaceAlpha',.35); hold on; end; cam_set();
-        export_fig([path2save,num2str(facade_id),'_',input_type_into_3rd,'_1initial.jpg']);
+        export_fig([path2save,num2str(facade_id),'_',inputName,'_1initial.jpg']);
         try delete(hf); end;   hf=figure(); for cnt=1:length(bbox_ga.class), col=[1 0 0];if bbox_ga.class(cnt)==3,col=[.5 0 1];end;  honza_plot_3d_cube(bbox_ga.corners([3 6],cnt),bbox_ga.corners([2 5],cnt),bbox_ga.corners([1 4],cnt),'FaceColor',col,'FaceAlpha',.35); hold on; end;  cam_set();
-        export_fig([path2save,num2str(facade_id),'_',input_type_into_3rd,'_2ga.jpg']);
+        export_fig([path2save,num2str(facade_id),'_',inputName,'_2ga.jpg']);
         try delete(hf); end;   hf=figure(); for cnt=1:length(bbox_new.class), col=[1 0 0];if bbox_new.class(cnt)==3,col=[.5 0 1];end;  honza_plot_3d_cube(bbox_new.corners([3 6],cnt),bbox_new.corners([2 5],cnt),bbox_new.corners([1 4],cnt),'FaceColor',col,'FaceAlpha',.35); hold on; end; cam_set();
-        export_fig([path2save,num2str(facade_id),'_',input_type_into_3rd,'_3optim.jpg']);
+        export_fig([path2save,num2str(facade_id),'_',inputName,'_3optim.jpg']);
         try delete(hf); end; close all;
         hf = figure(32); for cnt=1:length(tbox.class); col=cmap(tbox.class(cnt),:)/255; honza_plot_3d_cube(tbox.corners([3 6],cnt),tbox.corners([2 5],cnt),tbox.corners([1 4],cnt),'FaceColor',col,'FaceAlpha',1); hold on; end; alpha(0.8); cam_set();
-        export_fig([path2save,num2str(facade_id),'_',input_type_into_3rd,'_4fac.jpg']); delete(hf);
-        fprintf('         bbox saved to: %s: %s_%i...\n',path2save,input_type_into_3rd,facade_id);
+        export_fig([path2save,num2str(facade_id),'_',inputName,'_4fac.jpg']); delete(hf);
+        fprintf('         bbox saved to: %s - %s - facid=%i...\n',path2save,inputName,facade_id);
     end
 end
 
@@ -190,11 +181,12 @@ end
 
 %--- separate facades for 3ds max as BOXES with RGB projection :)
 if save_separate_rgb_projected3dfacades,
-    path_3ds_export_fac = '../export/separ_facades/';
-    for facade_id = unique(pts_facid),
+    fprintf('====================================================\n               export results to 3ds max\n-----------------------------------------------------');
+    path_3ds_export_fac = '../output/export/3D_3L_facades_3ds/';
+    for facade_id = facade_ids_go,
         
-        im_path = [path_images_source,'monge428New_fullRes_split_',num2str(facade_id),'_ortho_colors.png'];
-        %im_path = ['/esat/sadr/amartino/monge428New/data/work/pcl/split/monge428New_fullRes_layer1+3D_3DCRF/monge428New_fullRes_split_',num2str(facade_id),'_ortho_labeling.png'];
+        im_path = get_adr('image',datasetConfig,facade_id);
+        im_path = ['/esat/sadr/amartino/monge428New/data/work/pcl/split/monge428New_fullRes_layer1+3D_3DCRF/monge428New_fullRes_split_',num2str(facade_id),'_ortho_labeling.png'];
         path_fac_img = sprintf('%s/%i.png',path_3ds_export_fac,facade_id);
         path_fac_obj = sprintf('%s/%i',path_3ds_export_fac,facade_id);
         
@@ -205,9 +197,9 @@ if save_separate_rgb_projected3dfacades,
         
         %--- now 3D :) ----------------------------------------------------  
         %--- read angelo's datra to images and find corners
-        dt_plane_andelo = load([path_im_data_file,'/monge428New_fullRes_split_',num2str(facade_id),'_plane.mat']);
+        dt_plane_andelo = load(get_adr('image_data',datasetConfig,facade_id));
         im_corners = dt_plane_andelo.plane.b;
-        load(scene.get_adr('wa_bboxes',input_type_into_3rd,facade_id));  %%% read boxes for actual facade...
+        load(get_adr('3DL_bboxes',datasetConfig,inputName,facade_id));  %%% read boxes for actual facade...
         [~,pts_mean]      = project_in3d_pts_to_planes_normal( scene.pts(:,scene.facade_id==facade_id) , nrm , [] , grav_vec);
         im_corners_proj   = project_in3d_pts_to_planes_normal(im_corners([1 3 5; 2 4 6]') ,nrm,pts_mean, grav_vec);
 

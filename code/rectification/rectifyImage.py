@@ -678,7 +678,7 @@ def rectify(imageName, saveName, cropImg):
 	cropImage = cropImg
 	"""main rectification funciton"""
 	random.seed()
-	linesname= str(random.random())[2:] + '.txt'	
+	linesname= '../tmp/' + str(random.random())[2:] + '.txt'	
 	command = lineDetect + " " + "'" + imageName + "'" + " " + linesname
 	print command
 	os.system(command)
