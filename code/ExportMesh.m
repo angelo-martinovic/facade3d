@@ -51,7 +51,7 @@ function ExportMesh(filename,points,normals,colors,faces,faceColors)
     end
     header = sprintf('%send_header\n',header);
 
-
+  
     f=fopen(filename,'w');
     fprintf(f,'%s',header);
 

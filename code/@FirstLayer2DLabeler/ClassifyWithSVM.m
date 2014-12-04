@@ -1,13 +1,15 @@
 %     - Uses the pretrained classifier with the given name to classify the images in the test set.
 function ClassifyWithSVM(obj)
-
+    
+    nClasses = obj.nClasses;
+    
     % -- Load the SVM
     disp('Loading the model.');
-    classifierFolder = [obj.dirName 'work/classifier/'];
+    classifierFolder = get_adr('2D_classifier',obj.config);
     load([classifierFolder obj.classifierName '.mat'],'model','sumAll','rangeAll');
     
     % Caching
-    cacheFolder = [obj.dirName 'work/cache/'];
+    cacheFolder = get_adr('cache',obj.config);
     cacheFilename = [cacheFolder 'temp_' obj.baseName '.mat'];
     
     if ~exist(cacheFilename,'file')
@@ -54,7 +56,7 @@ function ClassifyWithSVM(obj)
     % classes, and reorder the rows based on the model
     yProb = yProb';
     
-    yProb2 = zeros(obj.nClasses,size(yProb,2)); 
+    yProb2 = zeros(nClasses,size(yProb,2)); 
     yProb2(model.Label,:) = yProb;
 %     yProb = yProb(order,:);
     
@@ -64,14 +66,12 @@ function ClassifyWithSVM(obj)
     % Output predictions for each image separately
     count=1;
     for i=1:length(segsPerImage)
-        yProbSubset = yProb(1:obj.nClasses+1,count:count+segsPerImage{i}-1);
+        yProbSubset = yProb(1:nClasses+1,count:count+segsPerImage{i}-1);
         count = count+segsPerImage{i};
         
         % Create the directory if it doesnt exist
-        classificationDir = [obj.dirName '/work/classifier/' obj.classifierName '/'];
-        if ~exist(classificationDir,'dir')
-            mkdir(classificationDir);
-        end
+        classificationDir = get_adr('2D_classification',obj.config,obj.classifierName);
+        mkdirIfNotExist(classificationDir);
         
         % Write out the prediction file
         dlmwrite([classificationDir imageNames{i} '.marginal.txt'],yProbSubset',' ');

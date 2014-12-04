@@ -23,7 +23,6 @@ classdef SScene_An
         si;
         dist2plane;
         nxyz;
-%         assgn;
         heigh;
         heigh_inv; 
         lindex;
@@ -31,14 +30,10 @@ classdef SScene_An
         p_index;
         file_index;
         flag;
-        %f;
         rgb;
         facade_id;
                
-%         flann;
-        
         source_file = '';
-        path_data   = '';
         read_file_name   = '';
     end
     
@@ -46,80 +41,37 @@ classdef SScene_An
     methods
         
         
-        function obj = SScene_An(path_data,file_name)
-            obj.path_data    = path_data;
-            if iscell(file_name),
-                for a=1:length(file_name)
-                    obj.source_file{a}  = fullfile(path_data,file_name{a});
-                end
-            else
-                obj.source_file  = fullfile(path_data,file_name);
-            end
-            obj.read_file_name = file_name;
-            
-%             obj.flann.('pts').index = [];
-%             obj.flann.('desc').index = [];
+        function obj = SScene_An( )
+%             obj.path_data    = path_data;
+%             if iscell(file_name),
+%                 for a=1:length(file_name)
+%                     obj.source_file{a}  = fullfile(path_data,file_name{a});
+%                 end
+%             else
+%                 obj.source_file  = fullfile(path_data,file_name);
+%             end
+%             obj.read_file_name = file_name;
         end
         
         
-        function out = get_adr(obj,type,par1,par2)
-            out = [];
-            path_desc =  '/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge428_27/';
-            switch type
-                case 'desc'
-                    out = fullfile(path_desc,['desc_',par1,'-imSiz=',num2str(par2),'.mat']);
-                case 'cameras'
-                    out = '/esat/sadr/amartino/monge428/reconstruction.nvm.cmvs/00/cameras_v2.txt';
-                case 'wa_bboxes'
-                      out = fullfile('/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge428_27/','3rd_layer',['result_NEW',num2str(par1),'_facadeid=',num2str(par2),'.mat']);
-            end
-            
-            
-        end
-        
+%         function out = get_adr(obj,type,par1,par2)
+%              out = ['sdsd.sdsdsd'];
+% %             path_desc =  '/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge428_27/';
+% %             switch type
+% %                 case 'desc'
+% %                %     out = fullfile(path_desc,['desc_',par1,'-imSiz=',num2str(par2),'.mat']);
+% %                 case 'cameras'
+% %                     out = '/esat/sadr/amartino/monge428/reconstruction.nvm.cmvs/00/cameras_v2.txt';
+% %                     %[datasetConfig.dataLocation,datasetConfig.cameras]
+% %                 case 'wa_bboxes'
+% %                       out = fullfile('/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge428_27/','3rd_layer',['result_NEW',num2str(par1),'_facadeid=',num2str(par2),'.mat']);
+% %             end
+%             
+%             
+%         end
+%         
 
-        
-%         %%=================================================================
-%         %%=================================================================
-%         %% FLANN - indexing
-%         %%=================================================================
-%         % scene = scene.flann_create('pts');
-%         function obj = flann_create(obj,data_type,varargin)
-%             p = inputParser;
-%             p.addOptional('recompute', 0);
-%             p.parse(varargin{:}); fldnames = fieldnames(p.Results); for a=1:length(fldnames), eval([fldnames{a},' = p.Results.',fldnames{a},';']); end;
-% 
-%             %--- if it is computed and no recomputing needed, just dont do anything 
-%             if ~isempty(obj.flann.(data_type).index) && ~recompute,
-%                 return;
-%             end
-%             obj.flann_free(data_type);
-%             %--- create_index
-%             switch data_type
-%                 case 'pts'                              
-%                     [obj.flann.(data_type).index,obj.flann.(data_type).paramters] = honza_flann([],obj.pts,'build_index','trees',20,'alg','linear');
-%                 case 'desc'
-%                     [obj.flann.(data_type).index,obj.flann.(data_type).paramters] = honza_flann([],obj.desc,'build_index','trees',-1);
-%             end
-%             fprintf('  ...SScene: flann for %s indexed in mem',data_type);
-%         end
-%         % scene = scene.flann_free('pts');
-%         function obj = flann_free(obj,data_type)
-%             if ~isempty(obj.flann.(data_type).index),
-%                 honza_flann([],[],'free_mem','index',obj.flann.(data_type).index);
-%                 obj.flann.(data_type).index = [];
-%                 fprintf('  ...SScene: flann for %s deleted from mem',data_type);
-%             end
-%         end
-%         % X = [1 2 3; 4 5 6]';
-%         % [i,d] = scene.flann_search(X,'pts');
-%         function [i,d] = flann_search(obj,X,data_type,varargin)
-%             p = inputParser;
-%             p.addOptional('N', 1e3);
-%             p.addOptional('return_d2', 0);
-%             p.parse(varargin{:}); fldnames = fieldnames(p.Results); for a=1:length(fldnames), eval([fldnames{a},' = p.Results.',fldnames{a},';']); end;
-%             [i,d] = honza_flann(X,[],'search','N',N,'index',obj.flann.(data_type).index,'parameters',obj.flann.(data_type).paramters);
-%         end
+      
         
         %%=================================================================
         %%=================================================================
@@ -134,6 +86,7 @@ classdef SScene_An
             obj.nxyz    = obj.nxyz(:,id_keep);
             obj.rgb     = obj.rgb(:,id_keep);
             if ~isempty(obj.dist2plane),    obj.dist2plane    = obj.dist2plane(:,id_keep); end;
+            if ~isempty(obj.p_index),       obj.p_index       = obj.p_index(id_keep); end;
             if ~isempty(obj.desc),          obj.desc    = obj.desc(:,id_keep); end;
             if ~isempty(obj.si),            obj.si      = obj.si(:,id_keep);  end;
             if ~isempty(obj.heigh_inv),     obj.heigh_inv      = obj.heigh_inv(:,id_keep);  end;
@@ -168,17 +121,17 @@ classdef SScene_An
         %%=================================================================     
         
 
-        function obj = read_mat_data(obj)
+        function obj = read_mat_data(obj,datasetConfig)
             %--- read plys with pts, rgb, labelings...
-            fprintf('    ...SScene: reading plys %s \n',obj.source_file{1});%,obj.source_file{2});
-            [pts,~           ,vertexColor1] = read_ply(obj.source_file{1},'pcl');   %%% pts + test labeling
-            [~  ,~           ,vertexColor2] = read_ply(obj.source_file{2},'pcl');   %%% pts + train labeling
-            [~  ,vertexNormal,vertexColor4] = read_ply(obj.source_file{4},'pcl');   %%% here is color
+            fprintf('    ...SScene: reading plys %s \n',datasetConfig.dataLocation);
+            [pts,~           ,vertexColor1] = read_ply( [datasetConfig.dataLocation,datasetConfig.groundTruthTrain] ,'pcl');   %%% pts + test labeling
+            [~  ,~           ,vertexColor2] = read_ply( [datasetConfig.dataLocation,datasetConfig.groundTruthTest] ,'pcl');   %%% pts + train labeling
+            [~  ,vertexNormal,vertexColor4] = read_ply( [datasetConfig.dataLocation,datasetConfig.pointCloud] ,'pcl');   %%% here is color + normals
             %--- add flags where is train and where is test
             obj.flag = uint16(pts(:,1)*0)';
             obj.flag(sum(vertexColor1')>0) = 1;
             obj.flag(sum(vertexColor2')>0) = 2;
-            %--- read color map and joinf train+test to create one lindex
+            %--- read color map and join train+test to create one lindex
             tmp_lindex = vertexColor1+vertexColor2;
             un_li = obj.get_class_colormap;
             lindex = knnsearch(un_li,tmp_lindex);
@@ -186,21 +139,22 @@ classdef SScene_An
             obj.pts         = pts';
             obj.nxyz        = vertexNormal';
             obj.rgb         = vertexColor4';
+            obj.p_index     = 1:length(lindex);
             %--- facade split, it was computed from RF! 
-            pts_split_label    = load(obj.source_file{3});
-            obj.facade_id    = pts_split_label.splitLabels';
+            pts_split_label    = load([datasetConfig.dataLocation,datasetConfig.splitData]);
+            obj.facade_id      = pts_split_label.splitLabels';
             %--- indexes
             obj.lindex  = lindex';
             obj.oindex  = lindex'*0;
             disp('   ...SScene:init: pts+lindex+rgb+nxy done');
             %--- depth
-            path_dist2plane = obj.source_file{5};
+            path_dist2plane = [datasetConfig.dataLocation,datasetConfig.depth];
             kk = load(path_dist2plane);
             kk.depth(isnan(kk.depth)) = 0;
             obj.dist2plane = kk.depth';
             disp('   ...SScene:init: depth done');
             %--- heigh
-            cams = ImportCameras(obj.get_adr('cameras'));
+            cams = ImportCameras([datasetConfig.dataLocation,datasetConfig.cameras]);
             cams = cellfun(@(x) x.cameraPosition' , cams,'UniformOutput',0);
             cams = [cams{:}];
             i = knnsearch(cams([1 3],:)',obj.pts([1 3],:)');
@@ -209,7 +163,6 @@ classdef SScene_An
             obj.heigh_inv = obj.heigh*0;
             for a=unique(i)',
                 obj.heigh_inv(i==a) = -obj.heigh(i==a)+min(obj.heigh(i==a));
-                
             end
             disp('   ...SScene:init: heigh(2,:) according to cameras done ')
         end
@@ -301,7 +254,24 @@ classdef SScene_An
             %--- print I did soemthing
             disp(['     ...exported ',num2str(size(data2save.pts)),' points to : ',adr_mesh]);
         end
- 
+        
+        
+        function export_as_full_pcl_data(obj,datasetConfig,cprb,path2save)
+            fprintf('  ...saving result\n');
+            pts_full = read_ply( [datasetConfig.dataLocation,datasetConfig.groundTruthTrain] ,'pcl');
+            i_pcl2full = knnsearch(obj.pts',pts_full);
+            
+            cprb_full = cprb(i_pcl2full);
+            %cprb_full(full_pcl.flag~=2)=0;
+            
+            %--- save to andelo
+            cmap = obj.get_class_colormap();
+%             path2save =  get_adr('L1_labeling',datasetConfig,type);%'[ADD.data.dtsol,'/2andelo/full_pcl_labeling_',input_type_into_3rd,'_3D3rdLayer.ply'];
+            checkAdr_and_createDir( path2save );
+            ExportMesh(path2save , pts_full ,[],cmap(cprb_full+1,:),[],[]);
+            fprintf(['   ...result saved as pcl in the full-pcl.ply format for evaluation. path=',path2save]);
+        end
+        
         
        
         
@@ -323,6 +293,7 @@ classdef SScene_An
             p.addOptional('D', []);
             p.addOptional('V', []);
             p.addOptional('si_dimensions', [.2 .25 .3 .35 .4]);
+            p.addOptional('datasetConfig', []);
             p.parse(varargin{:}); fldnames = fieldnames(p.Results); for a=1:length(fldnames), eval([fldnames{a},' = p.Results.',fldnames{a},';']); end;
             out1=[]; out2=[]; out3=[]; out4=[]; out5=[];
             switch method
@@ -340,7 +311,8 @@ classdef SScene_An
                     disp('  ::SScene.m:: calculating/reading desc');
                     obj.si = [];
                     for imSiz = si_dimensions;
-                        path_desc = obj.get_adr('desc','spinImagePC',imSiz);
+                        %path_desc = scene.get_adr('desc','spinImagePC',imSiz);
+                        path_desc = get_adr('desc3d',datasetConfig,'spinImagePC',imSiz);
                         if ~exist(path_desc,'file');
                             [~,i] = sort(obj.pts(3,:)); %%% if they are not sorted, SI does not work!!!!
                             pts_sorted = obj.pts(:,i);
@@ -590,8 +562,11 @@ classdef SScene_An
             colormap('jet'); colorbar;
             set(gcf, 'Color', [1 1 1]); axis equal off;
         end
-   
-      
+        
+        
+    
+        
+        
         
         
         
@@ -600,3 +575,5 @@ classdef SScene_An
         
     end
 end
+
+

@@ -1,23 +1,23 @@
 function SplitPointCloud(obj)
-    %% Load points
-    load([obj.dirName 'work/pcl/probs/' obj.splitName '.mat']);
+    %% Load layer 2 unaries
+    load(get_adr('3D_L2_unaries',obj.config,obj.splitName));
     potentials = unary';
 
     %% Load original pcl
-    [points,colors] = obj.GetAllPoints();
+    [points,~,colors] = ReadPCLFromPly(get_adr('pcl',obj.config));
 
     %% Load our pcl labeling
-    [pointsNoisy,~,colorsNoisy]=ReadPCLFromPly([obj.dirName 'work/pcl/models/' obj.splitName '.ply']);
+    [pointsNoisy,~,colorsNoisy]=ReadPCLFromPly(get_adr('3D_L2_labeling',obj.config,obj.splitName));
     assert(all(all(pointsNoisy-points<1e-3)))
-    labeling = Colors2Labels(colorsNoisy,obj.cm);
+    labeling = Colors2Labels(colorsNoisy,obj.config.cm);
 
     %% Load test GT
-    [pointsGT,~,colorsGT]=ReadPCLFromPly([obj.dirName obj.gtTestFilename]);
+    [pointsGT,~,colorsGT]=ReadPCLFromPly(get_adr('pcl_gt_test',obj.config));
     assert(all(all(pointsGT-points<1e-3)))
-    labelingGT = Colors2Labels(colorsGT,obj.cm);
+    labelingGT = Colors2Labels(colorsGT,obj.config.cm);
 
     %% Load splitting data
-    ss=load ([obj.dirName obj.facadeSplit]);
+    ss=load (get_adr('split',obj.config));
     splitLabels = ss.splitLabels;
 
     %% Get eval subset
@@ -34,11 +34,10 @@ function SplitPointCloud(obj)
     facadeIDs = unique(splitLabels);
     nFacades = size(facadeIDs,1);
 
-    outputFolder = [obj.dirName 'work/pcl/split/' obj.splitName '/'];
-    if ~exist(outputFolder,'dir')
-        mkdir(outputFolder);
-    end
-    save([outputFolder obj.modelName '_facadeIDs.mat'],'facadeIDs');
+    outputFolder = get_adr('splitOutputDir',obj.config,obj.splitName);
+    mkdirIfNotExist(outputFolder);
+    
+    save(get_adr('facadeIDs',obj.config,obj.splitName),'facadeIDs');
     tic;
     for i=1:nFacades
 
@@ -56,14 +55,13 @@ function SplitPointCloud(obj)
         vertexSubsetOrigColors = colors(splitLabels==facadeID,:);
 
         % Save
-        cmap = HaussmannColormap();
-        vertexSubsetColors = cmap(vertexSubsetLabeling+1,:);
-        vertexSubsetColorsGT = cmap(vertexSubsetLabelingGT+1,:);
+        vertexSubsetColors = round(255*obj.config.cm(vertexSubsetLabeling+1,:));
+        vertexSubsetColorsGT = round(255*obj.config.cm(vertexSubsetLabelingGT+1,:));
 
-        save([outputFolder obj.modelName '_split_' num2str(facadeID) '_potentials.mat'],'vertexSubsetPotentials');
-        ExportMesh([outputFolder obj.modelName '_split_' num2str(facadeID) '_labeling.ply'],pointSubset,[],vertexSubsetColors,[],[]);
-        ExportMesh([outputFolder obj.modelName '_split_' num2str(facadeID) '_GT.ply'],      pointSubset,[],vertexSubsetColorsGT,[],[]);
-        ExportMesh([outputFolder obj.modelName '_split_' num2str(facadeID) '_colors.ply'],  pointSubset,[],vertexSubsetOrigColors,[],[]);
+        save(get_adr('splitPotentials',obj.config,obj.splitName,num2str(facadeID)),'vertexSubsetPotentials');
+        ExportMesh(get_adr('splitLabeling',obj.config,obj.splitName,num2str(facadeID)),pointSubset,[],vertexSubsetColors,[],[]);
+        ExportMesh(get_adr('splitGT',obj.config,obj.splitName,num2str(facadeID)),      pointSubset,[],vertexSubsetColorsGT,[],[]);
+        ExportMesh(get_adr('splitColors',obj.config,obj.splitName,num2str(facadeID)),  pointSubset,[],vertexSubsetOrigColors,[],[]);
     end
     facadeSplitTime = toc;
     fprintf('Elapsed %d seconds.\n',facadeSplitTime);
