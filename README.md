@@ -27,3 +27,16 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+
+### Creating 3D facade from WA
+
+![2run_script.jpg](https://bitbucket.org/repo/deay7R/images/4177371873-2run_script.jpg)
+
+
+![3gui.jpg](https://bitbucket.org/repo/deay7R/images/2092428085-3gui.jpg)
+
+
+![43ds.jpg](https://bitbucket.org/repo/deay7R/images/912925717-43ds.jpg)
+
+
+![5render.jpg](https://bitbucket.org/repo/deay7R/images/671782614-5render.jpg)
