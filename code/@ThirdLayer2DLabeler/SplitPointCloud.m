@@ -1,4 +1,6 @@
 function SplitPointCloud(obj)
+    fprintf('Splitting point cloud into facade point clouds...\n');
+    fprintf('Loading data...\n');
     %% Load layer 2 unaries
     load(get_adr('3D_L2_unaries',obj.config,obj.splitName));
     potentials = unary';
@@ -39,6 +41,7 @@ function SplitPointCloud(obj)
     
     save(get_adr('facadeIDs',obj.config,obj.splitName),'facadeIDs');
     tic;
+    fprintf('Splitting...\n');
     for i=1:nFacades
 
         facadeID = facadeIDs(i);

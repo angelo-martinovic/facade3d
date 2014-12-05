@@ -64,6 +64,19 @@ switch type
         adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '/' datasetConfig.name '_split_' par2 '_GT.ply'];
     case 'splitColors'
         adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '/' datasetConfig.name '_split_' par2 '_colors.ply'];
+    case 'splitPlane'
+        adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '/' datasetConfig.name '_split_' par2 '_plane.mat'];
+        
+    case 'orthoColors'
+        adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '/' datasetConfig.name '_split_' par2 '_ortho_colors.png'];
+    case 'orthoLabels'
+        adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '/' datasetConfig.name '_split_' par2 '_ortho_labeling.png'];
+    case 'orthoPotentials'
+        adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '/' datasetConfig.name '_split_' par2 '_ortho_potentials.mat'];
+    case 'orthoLabelingLayer3Img'    
+        adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '/' datasetConfig.name '_split_' par2 '_ortho_labeling_layer3.png'];
+    case 'orthoLabelingLayer3Ply'    
+        adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '/' datasetConfig.name '_split_' par2 '_ortho_labeling_layer3.ply'];
         
     case '3D_L3_Ortho2D'
         adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '_Ortho2D/'];
@@ -72,6 +85,9 @@ switch type
     
     case '3D_L3_Ortho2D_labeling'
         adr = [datasetConfig.outputLocation 'work/pcl/models/' datasetConfig.name '_' par1 '_L3_Ortho2D.ply'];
+    case '3D_L3_Ortho2D_labeling_overlay'
+        adr = [datasetConfig.outputLocation 'work/pcl/models/' datasetConfig.name '_' par1 '_L3_Ortho2D_overlay.ply'];
+        
     case '3D_L3_Pure3D_labeling'
         adr = [datasetConfig.outputLocation 'work/pcl/models/' datasetConfig.name '_' par1 '_L3_Pure3D.ply'];
         

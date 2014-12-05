@@ -1,9 +1,7 @@
 function FitPlanes(obj)
-
+    fprintf('Fitting planes to each facade...\n');
     camerapos = obj.GetCameraPos();
     facadeIDs = obj.GetFacadeIDs();
-
-    splitDir = [obj.dirName 'work/pcl/split/' obj.splitName '/'];
     
     N = length(facadeIDs);
     planes = cell(N,1);
@@ -16,7 +14,7 @@ function FitPlanes(obj)
         fprintf('----\nProcessing facade %d (%d of %d) ...\n----',facadeID,i,N);
 
         % Get facade points
-        [points,~,~] = ReadPCLFromPly([splitDir obj.modelName '_split_' num2str(facadeID) '_labeling.ply']);
+        [points,~,~] = ReadPCLFromPly(get_adr('splitLabeling',obj.config,obj.splitName,num2str(facadeID)));
 
         % Fit a plane to the facade
         fprintf('Fitting plane ...');
@@ -68,7 +66,7 @@ function FitPlanes(obj)
         end
         plane = planes{i}; %#ok<NASGU>
 %         g = gravityVectors{i}; %#ok<NASGU>
-        save([splitDir obj.modelName '_split_' num2str(facadeID) '_plane.mat'],'plane','g');
+        save(get_adr('splitPlane',obj.config,obj.splitName,num2str(facadeID)),'plane','g');
     end
     fitPlaneTime = toc;
     fprintf('Elapsed time: %d\n',fitPlaneTime);

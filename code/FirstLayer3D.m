@@ -47,8 +47,8 @@ if 1,
     path_labeling = get_adr('3D_L1_labeling',datasetConfig,'3D');
     % scene.export_as_full_pcl_data( datasetConfig , cprb , path_labeling ); %%% export labeling
     path_prb = get_adr('3D_L1_unaries',datasetConfig,'3D');
-    dt = [scene.pts ; prb];
-    save( path_prb , 'dt' );
+    %dt = [scene.pts ; prb];
+    save( path_prb , 'prb' );
     fprintf('   results saved to: %s and %s\n',path_labeling,path_prb);
 end
 

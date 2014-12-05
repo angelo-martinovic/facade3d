@@ -22,7 +22,7 @@ rgb_data_cprb = rgb_data_cprb(scene.p_index,:);
 cprb = knnsearch(scene.get_class_colormap,rgb_data_cprb)'-1;
 
 %--- which facades to process
-facade_ids_go = 3;%unique(scene.facade_id);  %%% ids of facedes
+facade_ids_go = 2;%unique(scene.facade_id);  %%% ids of facedes
 
 
 if 1, %% run 3rd layer again! :)
@@ -62,7 +62,7 @@ if estiamte_door_box, %%% door needs probability map, not just labeling...
     labeling_cprb_doors = labeling_cprb_doors.oindex;
     prob_classes = load(get_adr('3D_L2_unaries',datasetConfig,inputName));
     %prob_classes = load(fullfile(path_cprb_probl,['3D_layer1-',num2str(2000),'-',num2str(200),'.mat']));
-    prob_classes = prob_classes.prb;%prob_classes.prb(4:4+numel(scene.get_class_names),:);
+    prob_classes = prob_classes.unary;%prob_classes.prb(4:4+numel(scene.get_class_names),:);
 end
 
 
@@ -159,6 +159,7 @@ for facade_id = facade_ids_go,
     if plot_boxes_while_optimizing
         cam_set = @() eval(' axis equal off; campos([0 -1 3]); camup([-1 0 0]); camzoom(0.8); camproj(''orthographic''); set(gcf, ''Position'', [400 400 800 600]); set(gcf, ''Color'', [1 1 1]); zoom(1.2);');
         path2save = ['../output/export/3D_3L_facades_boxes/'];
+        checkAdr_and_createDir(path2save);
         cmap = scene.get_class_colormap();cmap = cmap(2:end,:);
         try; close all; end;
         % hf=figure(); honza_scatter(pts_facade,pts_facade(1,:)*0+20,cmap(cprb(idx_in_facade),:)/255,'filled');  set(hf,'Position',[0,0,600,700]); set(gcf, 'Color', [1 1 1]); zoom(1.2); axis off equal; view(90,90);
@@ -192,6 +193,7 @@ if save_separate_rgb_projected3dfacades,
         
         im = imread(im_path);   %% read andelos image
         im = imrotate(im,90);
+        checkAdr_and_createDir(path_fac_img);
         imwrite(im , path_fac_img);
         fprintf('   ...image copy %s -> %s\n',im_path,path_fac_img);
         

@@ -1,24 +1,16 @@
 function ReassemblePointCloud(obj)
     % Load full mesh
-
     points = [];
     colors = [];
 
-    splitDir = [obj.dirName 'work/pcl/split/' obj.baseName '_' obj.splitName '/'];
-    ss = load([splitDir obj.baseName '_facadeIDs.mat']);
-    facadeIDs = ss.facadeIDs';
+    facadeIDs = obj.GetFacadeIDs();
 
     tic;
     pb = ProgressBar(length(facadeIDs));
     for i=1:length(facadeIDs)
-        facadeID = facadeIDs(i);
+        facadeID = num2str(facadeIDs(i));
 
-        if facadeID==0
-            pb.progress;
-            continue;
-        end
-
-        filename = [splitDir obj.baseName '_split_' num2str(facadeID) '_labeling_layer3.ply'];
+        filename = get_adr('orthoLabelingLayer3Ply',obj.config,obj.splitName,facadeID);
         if ~exist(filename,'file')
             warning([filename ' does not exist.']);
             continue;
@@ -33,8 +25,8 @@ function ReassemblePointCloud(obj)
     end
     pb.stop;
 
-    fprintf('Loading the full mesh...');
-    [pointsFull,~,colorsFull]=ReadPCLFromPly([obj.dirName obj.meshName]);
+    fprintf('Loading the full point cloud...');
+    [pointsFull,~,colorsFull] = ReadPCLFromPly(get_adr('pcl',obj.config));
     fprintf('Done!\n');
     
     fprintf('KNN search...');
@@ -47,8 +39,8 @@ function ReassemblePointCloud(obj)
     colorsMixed = round(mean(cat(3,colorsNew,colorsFull),3));
 
     fprintf('Exporting mesh...');
-    ExportMesh([obj.dirName 'work/pcl/models/' obj.baseName '_'  obj.splitName '_2Dlayer3.ply'],pointsFull,[],colorsNew,[],[]);
-    ExportMesh([obj.dirName 'work/pcl/models/' obj.baseName '_'  obj.splitName '_2Dlayer3_overlay.ply'],pointsFull,[],colorsMixed,[],[]);
+    ExportMesh(get_adr('3D_L3_Ortho2D_labeling',obj.config,obj.splitName,facadeID),pointsFull,[],colorsNew,[],[]);
+    ExportMesh(get_adr('3D_L3_Ortho2D_labeling_overlay',obj.config,obj.splitName,facadeID),pointsFull,[],colorsMixed,[],[]);
 
     reassembleTime = toc;
     fprintf('Elapsed %d seconds.\n',reassembleTime);

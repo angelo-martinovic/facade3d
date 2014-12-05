@@ -1,0 +1,6 @@
+SpatialBandwidth = 7;
+RangeBandwidth = 6.5;
+MinimumRegionArea = 45;
+Speedup = MEDIUM;
+DisplayProgress OFF;
+Load('tmpLink/IMG_5504.ppm',IMAGE);Segment;

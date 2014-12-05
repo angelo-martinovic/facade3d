@@ -286,10 +286,11 @@ function ret = checkBB(balc, win, dw)
 end
 
 function [boundingBoxes, medianw, medianh, poolBB] = getBoundingBoxesPool(classidx, outImg, pm, hyperParameters)
+    poolBB = [];
     if hyperParameters.legacy
         [boundingBoxes, medianw, medianh, poolBB] = getBoundingBoxesPoolOld(classidx, outImg, pm);
-    else
-        [boundingBoxes, medianw, medianh, poolBB] = getBoundingBoxesPoolNew(classidx, outImg, pm, hyperParameters);
+    else 
+        [boundingBoxes, medianw, medianh] = getBoundingBoxesPoolNew(classidx, outImg, pm, hyperParameters);
     end
 end
 

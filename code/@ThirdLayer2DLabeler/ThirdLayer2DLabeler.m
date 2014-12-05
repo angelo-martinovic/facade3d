@@ -10,7 +10,7 @@ classdef ThirdLayer2DLabeler < handle
             nClasses = [];
 
 
-            fineTuneGravityVector = true;
+            fineTuneGravityVector = false;
             condorEnabled = false;
 
     end
@@ -39,7 +39,7 @@ classdef ThirdLayer2DLabeler < handle
         %Calculates 3D positions of cameras
         function [camerapos,cameras] = GetCameraPos(obj)
             
-            cameras = ImportCameras(get_addr('cameras',obj.config));
+            cameras = ImportCameras(get_adr('cameras',obj.config));
             camerapos = zeros(length(cameras),3);
 
             for i=1:length(cameras)
@@ -64,13 +64,24 @@ classdef ThirdLayer2DLabeler < handle
 
             % After 3rd layer
             labFilename = get_adr('3D_L3_Ortho2D_labeling',obj.config,obj.splitName);
-            gt = get_adr('pcl_gt_test',obj.config);
+            gtFilename = get_adr('pcl_gt_test',obj.config);
             fprintf('Evaluating %s...\n',labFilename);
-            try
-                scoreAfter = EvaluateMeshLabeling(labFilename,gt);
-            catch
-                fprintf('No labeling found.\n');
-            end
+           
+            % Get labeling
+            [points_full,~,colors_full]=ReadPCLFromPly(labFilename);
+            labels_full = Colors2Labels(colors_full,obj.config.cm);
+
+            % Get GT
+            [pointsGT_full,~,colorsGT_full]=ReadPCLFromPly(gtFilename);
+            labelsGT_full = Colors2Labels(colorsGT_full,obj.config.cm);
+
+            assert(isequal(size(points_full),size(pointsGT_full)));
+            assert(isequal(size(colorsGT_full),size(colors_full)));
+
+            ignoreClasses = obj.config.ignoreClasses+1;
+
+            score = evaluation_multilabel(labelsGT_full,labels_full,ignoreClasses);
+            disp(score);
         end
         
 
