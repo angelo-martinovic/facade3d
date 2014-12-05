@@ -17,7 +17,7 @@ classdef FirstLayer2DLabeler < handle
             allListFilename = []; 
             
             % Paths
-            edisonLoc = '/esat/sadr/amartino/atlas/edison/';
+            edisonLoc = 'edison/';
             lasicLoc = '/esat/sadr/amartino/atlas/lasik-2.4/';
             biclopLoc = '/esat/sadr/amartino/atlas/biclop/';
             

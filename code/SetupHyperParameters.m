@@ -16,7 +16,7 @@ end
 function hyperParameters = SetupHyperParametersDefault()
     hyperParameters = struct();
 
-    hyperParameters.legacy = false; % ECCV code
+    hyperParameters.legacy = false; % when true: ECCV'12 code, false: CVPR'15
     
     hyperParameters.parallel = true;
     hyperParameters.visualize = false;
@@ -32,9 +32,9 @@ function hyperParameters = SetupHyperParametersDefault()
     hyperParameters.gridweight = 1;   %5;
     hyperParameters.coOccWeight = 1;  %10;
 
-%     hyperParameters.ga.nGenerations = 300;
-%     hyperParameters.ga.stallGenLimit = 30;
-%     hyperParameters.ga.populationSize = 1000;
+    hyperParameters.ga.nGenerations = 300;
+    hyperParameters.ga.stallGenLimit = 30;
+    hyperParameters.ga.populationSize = 1000;
 
     hyperParameters.objClasses = [1 3 4];
     hyperParameters.winClass = 1; 
@@ -42,7 +42,7 @@ function hyperParameters = SetupHyperParametersDefault()
     hyperParameters.doorClass = 4;
 
     hyperParameters.principles.alignment = true;
-    hyperParameters.principles.similarity = false;
+    hyperParameters.principles.similarity = false; % Requires VLFEAT and SSIM
     hyperParameters.principles.symmetry = true;
     hyperParameters.principles.verticalRegionOrder = true;
     hyperParameters.principles.door = true;

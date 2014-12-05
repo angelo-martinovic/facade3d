@@ -1,4 +1,9 @@
 function bbx = similarityVoting(im,bbs, draw, dw, dh, cls, maxnum)
+    addpath '/esat/sadr/amartino/Code/vlfeat-0.9.19/toolbox/';
+    addpath '/esat/sadr/amartino/Code/ssim/';
+    
+    vl_setup;
+    
     old_bbs = bbs;
     %make the boxes bigger to contain window surroundings
     for i=1:size(bbs,1)

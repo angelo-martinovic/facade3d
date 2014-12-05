@@ -20,7 +20,7 @@
 
 
 
-cvx_setup   %%% you need cvx for optimization!!!
+%cvx_setup   %%% you need cvx for optimization!!!
 
 
 %--- read labeling
@@ -90,9 +90,10 @@ for facade_id = facade_ids_go,
 
     
     time_cumsum = time_cumsum+toc;
-    if 0,save_res_per_facade2file,
+    if save_res_per_facade2file,
         path2save = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
         fprintf('  ...savig bbox to %s\n',path2save);
+        checkAdr_and_createDir(path2save);
         save(path2save,'bbox','bbox_ga','bbox_new','nrm');
         fprintf('  ...done\n');
     end

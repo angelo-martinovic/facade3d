@@ -1,8 +1,8 @@
-function score =scoreCoOccurence(boxes, dh)
+function score =scoreCoOccurence(boxes, hyperParameters)
 
     score = 0;
-    balcs = boxes(:, boxes(5,:) == 3);
-    wins = boxes(:, boxes(5,:) == 1);
+    balcs = boxes(:, boxes(5,:) == hyperParameters.balcClass);
+    wins = boxes(:, boxes(5,:) == hyperParameters.winClass);
     hitmap = zeros(1, size(wins,2));
     for i=1:size(balcs,2)
         b = balcs(:,i);

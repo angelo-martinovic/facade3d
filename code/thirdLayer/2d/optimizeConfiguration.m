@@ -1,12 +1,11 @@
 function [best_score, best_boxes] = optimizeConfiguration(pool, outImg, hyperParameters)
     
-%     id = 1:size(pool,2);
-%     pool = [pool; id];
     nvars = size(pool,2);
     
-    if 0,
+    if ~(hyperParameters.legacy)
+        % New code
         % Find overlapping elements
-        [~, ~, A] = create_ol_matrix(pool);
+        [~, ~, A] = create_ol_matrix_new(pool);
 
         % Create the wdata matrix - unary term (penalty)
         
@@ -80,6 +79,8 @@ function [best_score, best_boxes] = optimizeConfiguration(pool, outImg, hyperPar
 
         % Linear term - normalize
         wdata = wdata_initial;
+        
+        nvars = length(wdata);
     %     wdata = wdata - min(wdata);
         wdata = wdata' / sum(abs(wdata));
         wdata = -wdata;
@@ -116,8 +117,8 @@ function [best_score, best_boxes] = optimizeConfiguration(pool, outImg, hyperPar
         best_boxes = pool(:,x>0.5);
         best_score = cvx_optval;
     else
-
-    %% GA 
+    %% Old code
+    % Genetic algorithm 
         % Find overlapping elements
         [ol_matrix, ~]= create_ol_matrix(pool);
 
@@ -146,7 +147,7 @@ function [best_score, best_boxes] = optimizeConfiguration(pool, outImg, hyperPar
         
         if hyperParameters.visualize
             optionsGA = gaoptimset(optionsGA,...
-            'OutputFcns',{@(x,y,z) ShowLabeling(x,y,z, pool,hyperParameters)},...
+            'OutputFcns',{@(x,y,z) ShowLabeling(x,y,z, pool, size(outImg), hyperParameters)},...
             'PlotFcns',{@gaplotbestf, @gaplotdistance ,@gaplotrange, @gaplotstopping});
         end
         
@@ -165,7 +166,7 @@ function [best_score, best_boxes] = optimizeConfiguration(pool, outImg, hyperPar
     end
 end
 
-function [state,options,optchanged]=ShowLabeling(options,state,flag,pool,hyperParameters)
+function [state,options,optchanged]=ShowLabeling(options,state,flag,pool,imageSize,hyperParameters)
     optchanged = [];
     
     % If the optimization is running
@@ -177,7 +178,7 @@ function [state,options,optchanged]=ShowLabeling(options,state,flag,pool,hyperPa
         tmp_boxes = [pool(:,x==1)];
         
         % Show the best labeling so far
-        figure(100);imagesc(LabelingFromBoxes(tmp_boxes,true,hyperParameters));
+        figure(100);imagesc(LabelingFromBoxes(tmp_boxes,true,imageSize,hyperParameters));
         axis equal;
         title(num2str(state.Best(end)));
     end

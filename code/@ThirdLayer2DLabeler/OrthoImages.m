@@ -1,27 +1,28 @@
 function OrthoImages(obj)
 
+    fprintf('Creating ortho images...');
+    
     facadeIDs = obj.GetFacadeIDs();
     [camerapos,cameras] = obj.GetCameraPos();
-    splitDir = [obj.dirName 'work/pcl/split/' obj.splitName '/'];
     
     tic;
     for i=1:length(facadeIDs)
-        facadeID = facadeIDs(i);
+        facadeID = num2str(facadeIDs(i));
         
-        fprintf('----\nProcessing facade %d (%d of %d) ...\n----',facadeID,i,length(facadeIDs));
+        fprintf('----\nProcessing facade ID %s (%d of %d) ...\n----',facadeID,i,length(facadeIDs));
 
         % Original colors
-        [~,~,origColors] = ReadPCLFromPly([splitDir obj.modelName '_split_' num2str(facadeID) '_colors.ply']);
+        [~,~,origColors] = ReadPCLFromPly(get_adr('splitColors',obj.config,obj.splitName,facadeID));
 
         % Potentials
-        ss = load([splitDir obj.modelName '_split_' num2str(facadeID) '_potentials.mat']); %loads vertexSubsetPotentials
+        ss = load(get_adr('splitPotentials',obj.config,obj.splitName,facadeID)); %loads vertexSubsetPotentials
         vertexSubsetPotentials = ss.vertexSubsetPotentials;
 
         % Labeling
-        [points,~,labelColors] = ReadPCLFromPly([splitDir obj.modelName '_split_' num2str(facadeID) '_labeling.ply']);
+        [points,~,labelColors] = ReadPCLFromPly(get_adr('splitLabeling',obj.config,obj.splitName,facadeID));
 
         % Facade plane
-        ss=load([splitDir obj.modelName '_split_' num2str(facadeID) '_plane.mat']);
+        ss=load(get_adr('splitPlane',obj.config,obj.splitName,facadeID));
         plane = ss.plane;
         
         v = bsxfun(@minus,points,plane.p');    % vectors from points to plane origin
@@ -71,7 +72,7 @@ function OrthoImages(obj)
                 end
             end
            g = bestG;
-           save([splitDir obj.modelName '_split_' num2str(facadeID) '_plane.mat'],'plane','g');
+           save(get_adr('splitPlane',obj.config,obj.splitName,facadeID),'plane','g');
         end
         
        % Get the ortho labeling, ortho potentials, and 3D positions of
@@ -98,7 +99,7 @@ function OrthoImages(obj)
             width = cameras{camIdx}.principalPoint(1)*2;
 
             imgName = cameras{camIdx}.originalImageFilename(1:end-4);
-            imageFilename = [obj.dirName 'image/' imgName '.jpg'];
+            imageFilename = [get_adr('2D_images',obj.config) imgName '.jpg'];
 
             if exist(imageFilename,'file')
 
@@ -133,13 +134,13 @@ function OrthoImages(obj)
        orthoImage = imrotate(orthoImage,180);
        orthoImage = fliplr(orthoImage);
        figure(200);imagesc(orthoImage);axis equal;drawnow;
-       imwrite(orthoImage,[splitDir obj.modelName '_split_' num2str(facadeID)  '_ortho_colors.png']);
+       imwrite(orthoImage,get_adr('orthoColors',obj.config,obj.splitName,facadeID));
         
        figure(300);imagesc(orthoLabel);axis equal;drawnow;
-       imwrite(orthoLabel,[splitDir obj.modelName '_split_' num2str(facadeID)  '_ortho_labeling.png']);
+       imwrite(orthoLabel,get_adr('orthoLabels',obj.config,obj.splitName,facadeID));
 
        figure(400);imagesc(orthoPotentials(:,:,1));axis equal;drawnow;
-       save([splitDir obj.modelName '_split_' num2str(facadeID)  '_ortho_potentials.mat'],'orthoPotentials');
+       save(get_adr('orthoPotentials',obj.config,obj.splitName,facadeID),'orthoPotentials');
 
        
     end

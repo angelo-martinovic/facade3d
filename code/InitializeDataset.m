@@ -6,6 +6,10 @@ function datasetConfig = InitializeDataset(datasetName)
     datasetConfig.ignoreClasses     = [0 8];
     datasetConfig.cm                = HaussmannColormap()/255;  
     
+    datasetConfig.parallel.enabled  = true;
+    datasetConfig.parallel.nWorkers = 2;
+    
+    
     datasetConfig.dataLocation      = '../data/'; 
     datasetConfig.outputLocation    = '../output/';
     

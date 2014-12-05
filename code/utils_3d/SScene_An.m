@@ -310,16 +310,16 @@ classdef SScene_An
                 case 'compute_get_si', %%% if desc does not exists, compute it, otherwise, jsut load and store it in obj.desc where it shold be :) 
                     disp('  ::SScene.m:: calculating/reading desc');
                     obj.si = [];
-                    for imSiz = si_dimensions;
+                    for imSize = si_dimensions;
                         %path_desc = scene.get_adr('desc','spinImagePC',imSiz);
-                        path_desc = get_adr('desc3d',datasetConfig,'spinImagePC',imSiz);
+                        path_desc = get_adr('desc3d',datasetConfig,'spinImagePC',imSize);
                         if ~exist(path_desc,'file');
                             [~,i] = sort(obj.pts(3,:)); %%% if they are not sorted, SI does not work!!!!
                             pts_sorted = obj.pts(:,i);
                             %--- compute desc
-                            binSize = CFG.def.desc.(desc_method).binSize;  %%% bins in that radius
+                            binSize = 8;  %%% bins in that radius
                             tic; 
-                            spinImgs = compSpinImages(pts_sorted, imSize, binSize, 10);
+                            spinImgs = compSpinImages(pts_sorted', imSize, binSize, 10, datasetConfig.parallel);
                             fprintf('done in %fsec\n',toc);
                             spinImgs = spinImgs(:,[3 4 5 6 7],:); %%% border is nothing...
                             desc = zeros(binSize*5 , size(pts_sorted,1));  %%% 3 is relevant that I took three dimensions 
