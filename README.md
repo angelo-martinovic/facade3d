@@ -2,33 +2,12 @@
 
 ![rendering.jpg](https://bitbucket.org/repo/deay7R/images/402738020-rendering.jpg)
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### Running the application
+First, open the ```setup.m``` file and change the paths to the necessary libraries on your system. You will require:
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* ```libSVM``` SVM library, http://www.csie.ntu.edu.tw/~cjlin/libsvm/, for the first layer
+* ```GC_optimization``` software for energy minimization with graph cuts, http://www.csd.uwo.ca/faculty/olga/software.html, for the second layer
+* ```CVX``` Matlab software for disciplined convex programming, http://cvxr.com/cvx/, for the third layer
 
 ### Creating 3D facade from WA
 
