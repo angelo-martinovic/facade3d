@@ -9,6 +9,10 @@ First, open the ```setup.m``` file and change the paths to the necessary librari
 * ```GC_optimization``` software for energy minimization with graph cuts, http://www.csd.uwo.ca/faculty/olga/software.html, for the second layer
 * ```CVX``` Matlab software for disciplined convex programming, http://cvxr.com/cvx/, for the third layer
 
+Next, set up your dataset. Our code comes with an example dataset, with parameters provided in ```InitializeDataset.m```. Modify this file if your dataset requires it.
+
+Finally, run the main script ```facade_run.m```.
+
 ### Creating 3D facade from WA
 
 Result of Matlab 3DFacade is a set of hypothesized windows, balconies, walls and other objects on the facade. All of them are represented in a form of boxes. To make facades looking realistic, one need to consider windows create holes in the wall and the texture should be projected on the final mesh. This boolean operation for ,,digging'' holes window holes in the mesh of the wall is not an easy problem. For that, we use 3ds max to perform these operations and to visualize facade in a nice way as one can set lights, cast shadows, use shaders or any kind of post-processing technique you can imagine very easily. Now, we will show how to run this code
