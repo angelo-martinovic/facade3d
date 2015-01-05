@@ -1,3 +1,11 @@
+Instructions:
+
+Run the script facade_run.m.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% OLD INSTRUCTIONS! %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Use the functions in this order:
 
 PrepareData()
