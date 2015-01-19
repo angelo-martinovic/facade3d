@@ -17,7 +17,7 @@ Finally, run the main script ```facade_run.m```.
 
 Result of Matlab 3DFacade is a set of hypothesized windows, balconies, walls and other objects on the facade. All of them are represented in a form of boxes. To make facades looking realistic, one need to consider windows create holes in the wall and the texture should be projected on the final mesh. This boolean operation for ,,digging'' holes window holes in the mesh of the wall is not an easy problem. For that, we use 3ds max to perform these operations and to visualize facade in a nice way as one can set lights, cast shadows, use shaders or any kind of post-processing technique you can imagine very easily. Now, we will show how to run this code
 
-### Drawing estimating 3D Facades in 3ds max
+### Rendering estimated Facades in 3ds max
 
 First, Matlab exports our result to ```output/export/3D_3L_facades_3ds/*``` as several files for each facade,
 
