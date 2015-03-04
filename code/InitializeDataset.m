@@ -6,25 +6,43 @@ function datasetConfig = InitializeDataset(datasetName)
     datasetConfig.ignoreClasses     = [0 8];
     datasetConfig.cm                = HaussmannColormap()/255;  
     
-    datasetConfig.parallel.enabled  = true;
-    datasetConfig.parallel.nWorkers = 2;
+    datasetConfig.nWorkers = 4;    % Set to 0 to run everything in serial on 1 CPU
+
+    % Logging
+    sl = ScreenLogger(VerbosityLevel.Verbose);
+    fl = FileLogger(VerbosityLevel.Info,['log_' datasetConfig.name '.txt']);
     
-    
+    dl = DispatchingLogger.getInstance();
+    dl.Clear();
+    dl.Subscribe(sl);
+    dl.Subscribe(fl);
+   
+    % Paths
+    datasetConfig.useCache          = true;
+    datasetConfig.rectificationNeeded  = true;
     datasetConfig.dataLocation      = '../data/'; 
     datasetConfig.outputLocation    = '../output/';
+%     datasetConfig.dataLocation      = '../dataFullRes/'; 
+%     datasetConfig.outputLocation    = '../outputFullRes/';
     
-    % 2D
+    
     datasetConfig.imageLocation     = 'images/';    % Relative to dataLocation
     datasetConfig.labelLocation     = 'labels/';
     
-        % Train-test split
-        datasetConfig.trainList         = 'listtrain.txt';
-        datasetConfig.evalList          = 'listeval.txt';
-        datasetConfig.fullList          = 'listall.txt';
+    % Train-test split
+    datasetConfig.trainList         = 'listtrain.txt';
+    datasetConfig.evalList          = 'listeval.txt';
+    datasetConfig.fullList          = 'listall.txt';
         
-    
-    
-    % 3D
+    datasetConfig.skipAll3D         = false; % If true, will perform only image segmentation
+   
+    %% 2D
+    datasetConfig.c2D = c2D_SVM_gould_winDet(datasetConfig); % CVPR15 submission version
+%     datasetConfig.c2D = c2D_SVM_gould(datasetConfig);
+%     datasetConfig.c2D = c2D_SVM_cnn_winDet(datasetConfig);
+%     datasetConfig.c2D = c2D_SVM_cnn(datasetConfig);     
+            
+    %% 3D
     datasetConfig.pointCloud        = 'pcl.ply';
     datasetConfig.cameras           = 'cameras.txt';
     datasetConfig.groundTruthTrain  = 'pcl_gt_train.ply';
@@ -34,20 +52,10 @@ function datasetConfig = InitializeDataset(datasetName)
     
     
     % Parameters
-                                 %[3D 2D det pairwise]
-    datasetConfig.CRF3D.weights = [0 1 0 1];
+    datasetConfig.c3D = c3D_3D_2D(datasetConfig);
+%     datasetConfig.c3D = c3D_2D();
     
     
-%     path_mat_data_dir         = '/esat/sadr/amartino/monge428New/data/';
-%     postfix_path_data_orig{1} = 'pcloud_gt_train_new_GCO_old.ply';   %%% train
-%     postfix_path_data_orig{2} = 'pcloud_gt_test_new_GCO_old.ply';    %%% test
-%     postfix_path_data_orig{3} = 'splitData.mat';                     %%% full pcl
-%     postfix_path_data_orig{4} = 'mesh_colors_normals.ply';%pcloud_colors.ply';           
-%     postfix_path_data_orig{5} = 'mesh_depth.mat';                    %%% depth
-    %postfix_path_data_orig{6} = '/esat/sadr/amartino/monge428/reconstruction.nvm.cmvs/00/cameras_v2.txt';
-
-  
-
 
 end
 

@@ -1,15 +1,10 @@
 %
 %
-%
-%
-%
+
 %
 %
 %   Matlab class for PCL
 %         used for cvpr'15
-%
-%
-%
 %
 %
 %%
@@ -33,8 +28,11 @@ classdef SScene_An
         rgb;
         facade_id;
                
+        origIndices;
+        
         source_file = '';
         read_file_name   = '';
+
     end
     
     
@@ -85,6 +83,7 @@ classdef SScene_An
             obj.pts     = obj.pts(:,id_keep);
             obj.nxyz    = obj.nxyz(:,id_keep);
             obj.rgb     = obj.rgb(:,id_keep);
+            obj.origIndices = find(id_keep);
             if ~isempty(obj.dist2plane),    obj.dist2plane    = obj.dist2plane(:,id_keep); end;
             if ~isempty(obj.p_index),       obj.p_index       = obj.p_index(id_keep); end;
             if ~isempty(obj.desc),          obj.desc    = obj.desc(:,id_keep); end;
@@ -123,7 +122,8 @@ classdef SScene_An
 
         function obj = read_mat_data(obj,datasetConfig)
             %--- read plys with pts, rgb, labelings...
-            fprintf('    ...SScene: reading plys %s \n',datasetConfig.dataLocation);
+            dl = DispatchingLogger.getInstance();
+            dl.Log(VerbosityLevel.Debug,sprintf(' - SScene: reading plys %s \n',datasetConfig.dataLocation));
             [pts,~           ,vertexColor1] = read_ply( [datasetConfig.dataLocation,datasetConfig.groundTruthTrain] ,'pcl');   %%% pts + test labeling
             [~  ,~           ,vertexColor2] = read_ply( [datasetConfig.dataLocation,datasetConfig.groundTruthTest] ,'pcl');   %%% pts + train labeling
             [~  ,vertexNormal,vertexColor4] = read_ply( [datasetConfig.dataLocation,datasetConfig.pointCloud] ,'pcl');   %%% here is color + normals
@@ -146,13 +146,13 @@ classdef SScene_An
             %--- indexes
             obj.lindex  = lindex';
             obj.oindex  = lindex'*0;
-            disp('   ...SScene:init: pts+lindex+rgb+nxy done');
+            dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:init: features pts+lindex+rgb+nxy done.\n'));
             %--- depth
             path_dist2plane = [datasetConfig.dataLocation,datasetConfig.depth];
             kk = load(path_dist2plane);
             kk.depth(isnan(kk.depth)) = 0;
             obj.dist2plane = kk.depth';
-            disp('   ...SScene:init: depth done');
+            dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:init: feature: depth done.\n'));
             %--- heigh
             cams = ImportCameras([datasetConfig.dataLocation,datasetConfig.cameras]);
             cams = cellfun(@(x) x.cameraPosition' , cams,'UniformOutput',0);
@@ -164,7 +164,7 @@ classdef SScene_An
             for a=unique(i)',
                 obj.heigh_inv(i==a) = -obj.heigh(i==a)+min(obj.heigh(i==a));
             end
-            disp('   ...SScene:init: heigh(2,:) according to cameras done ')
+            dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:init: feature: height(2,:) according to cameras done.\n'));
         end
         
         
@@ -251,17 +251,25 @@ classdef SScene_An
 %             end
             %--- save mesh
             io_save_data3dsmax(adr_mesh,'meshbin',data2save.pts,[],col','center',0);
-            %--- print I did soemthing
-            disp(['     ...exported ',num2str(size(data2save.pts)),' points to : ',adr_mesh]);
+            %--- print I did something
+            dl.Log(VerbosityLevel.Debug,sprintf(' - exported %d points to : %s\n',num2str(size(data2save.pts)),adr_mesh));
         end
         
         
         function export_as_full_pcl_data(obj,datasetConfig,cprb,path2save)
-            fprintf('  ...saving result\n');
+            dl = DispatchingLogger.getInstance();
+            dl.Log(VerbosityLevel.Debug,sprintf(' - - saving result\n'));
+ 
             pts_full = read_ply( [datasetConfig.dataLocation,datasetConfig.groundTruthTrain] ,'pcl');
-            i_pcl2full = knnsearch(obj.pts',pts_full);
             
-            cprb_full = cprb(i_pcl2full);
+%             dl.Log(VerbosityLevel.Debug,sprintf(' - - performing KNN search...\n'));
+%             i_pcl2full = knnsearch(obj.pts',pts_full);
+            
+            cprb_full = zeros(size(pts_full,1),1);
+            cprb_full(obj.origIndices) = cprb;
+%             dl.Log(VerbosityLevel.Debug,sprintf(' - - - done.\n'));
+            
+%             cprb_full = cprb(i_pcl2full);
             %cprb_full(full_pcl.flag~=2)=0;
             
             %--- save to andelo
@@ -269,7 +277,7 @@ classdef SScene_An
 %             path2save =  get_adr('L1_labeling',datasetConfig,type);%'[ADD.data.dtsol,'/2andelo/full_pcl_labeling_',input_type_into_3rd,'_3D3rdLayer.ply'];
             checkAdr_and_createDir( path2save );
             ExportMesh(path2save , pts_full ,[],cmap(cprb_full+1,:),[],[]);
-            fprintf(['   ...result saved as pcl in the full-pcl.ply format for evaluation. path=',path2save]);
+            dl.Log(VerbosityLevel.Debug,sprintf(' - - result saved as pcl in the full-pcl.ply format for evaluation. path=%s\n',path2save));
         end
         
         
@@ -282,7 +290,8 @@ classdef SScene_An
         %%=================================================================
         %--- fucntions to add negative descs and so on...
         function [obj,out1,out2,out3,out4,out5] = process_data(obj,method,varargin)
-            global ADD CFG
+%             global ADD CFG
+            dl = DispatchingLogger.getInstance();
             p = inputParser;
             p.addOptional('cls', []);
             p.addOptional('ids', []);
@@ -293,6 +302,9 @@ classdef SScene_An
             p.addOptional('D', []);
             p.addOptional('V', []);
             p.addOptional('si_dimensions', [.2 .25 .3 .35 .4]);
+            p.addOptional('binSize', []);
+            p.addOptional('imgW', []);
+            p.addOptional('split', []);
             p.addOptional('datasetConfig', []);
             p.parse(varargin{:}); fldnames = fieldnames(p.Results); for a=1:length(fldnames), eval([fldnames{a},' = p.Results.',fldnames{a},';']); end;
             out1=[]; out2=[]; out3=[]; out4=[]; out5=[];
@@ -303,48 +315,87 @@ classdef SScene_An
                     obj.lindex = obj.lindex -1;
                     if 1 && ~isempty(obj.dist2plane),
                         tr_dist2plane = .8;
-                        disp(['...also deleteing points that has >',num2str(tr_dist2plane),' dist2plane...']);
+                        
+                        dl.Log(VerbosityLevel.Debug,...
+                            sprintf(' - - ...also deleting points which have > %f dist2plane.',...
+                            num2str(tr_dist2plane)));
                         obj = obj.keep_spec_data_ids(abs(obj.dist2plane)<tr_dist2plane);
                     end
                     
                 case 'compute_get_si', %%% if desc does not exists, compute it, otherwise, jsut load and store it in obj.desc where it shold be :) 
-                    disp('  ::SScene.m:: calculating/reading desc');
                     obj.si = [];
-                    for imSize = si_dimensions;
-                        %path_desc = scene.get_adr('desc','spinImagePC',imSiz);
-                        path_desc = get_adr('desc3d',datasetConfig,'spinImagePC',imSize);
-                        if ~exist(path_desc,'file');
-                            [~,i] = sort(obj.pts(3,:)); %%% if they are not sorted, SI does not work!!!!
-                            pts_sorted = obj.pts(:,i);
+                    
+                    [~,i] = sort(obj.pts(3,:)); %%% if they are not sorted, SI does not work!!!!
+                    pts_sorted = obj.pts(:,i);
+                    %--- sort back
+                    unsorted = 1:size(obj.pts,2);
+                    i_sort_back = i;
+                    i_sort_back(i) = unsorted;
+                    
+                    % Variables required when running in parallel
+                    dims = si_dimensions;
+                    dc = datasetConfig;
+                    subset = split;
+                    binSz = binSize;
+                    imW = imgW;
+                    
+                    nDim = length(dims);
+                    desc_all = cell(1,nDim);
+                    paths_all = cell(1,nDim);
+                    tic;
+                    for dimIdx = 1:nDim % use parfor(dimIdx = 1:nDim,dc.nWorkers) for parallel
+                        imSize = dims(dimIdx);
+                        paths_all{dimIdx} = get_adr('desc3d',dc,['spinImagePC_split' subset],imSize);
+                        if ~exist(paths_all{dimIdx},'file');
                             %--- compute desc
-                            binSize = 8;  %%% bins in that radius
-                            tic; 
-                            spinImgs = compSpinImages(pts_sorted', imSize, binSize, 10, datasetConfig.parallel);
-                            fprintf('done in %fsec\n',toc);
+                            dl.Log(VerbosityLevel.Debug,sprintf(' - - SScene:: calculating spin images with size %.2f\n',imSize));
+                            spinImgs = compSpinImages(pts_sorted', imSize, binSz, imW);%datasetConfig.parallel);
+%                             spinImgs = compSpinImages2(pts_sorted', imSize, binSize, imgW);%datasetConfig.parallel);
+                            % ANDELO: attempt to use MATLAB's internal
+                            % kd_tree implementation, paralelizable
+                            % but requires MASSIVE amounts of memory
+%                             tic; 
+%                             spinImgs2 = compSpinImages2(pts_sorted', imSize, binSize, 10);%datasetConfig.parallel);
+%                             fprintf('done in %fsec\n',toc);
+%                             assert(isequal(spinImgs,spinImgs2));
+
                             spinImgs = spinImgs(:,[3 4 5 6 7],:); %%% border is nothing...
-                            desc = zeros(binSize*5 , size(pts_sorted,1));  %%% 3 is relevant that I took three dimensions 
-                            for a=1:size(spinImgs,3),
-                                tdesc = reshape(spinImgs(:,:,a),1,[]);
-                                desc(:,a) = tdesc';
-                            end
-                            %--- sort back
-                            unsorted = 1:size(obj.pts,2);
-                            i_sort_back = i;
-                            i_sort_back(i) = unsorted;
-                            desc = desc(:,i_sort_back);
-                            %--- check dir and save
-                            checkAdr_and_createDir(path_desc);
-                            save(path_desc,'desc');
+%                             desc_single = zeros(binSz*5 , size(pts_sorted,1));  %%% 3 is relevant that I took three dimensions 
+%                             for a=1:size(spinImgs,3),
+%                                 tdesc = reshape(spinImgs(:,:,a),1,[]);
+%                                 desc_single(:,a) = tdesc';
+%                             end
+                            desc_single = reshape(spinImgs,binSz*5,size(spinImgs,3));
+%                             assert(isequal(desc_single,d2));
+                            desc_all{dimIdx} = desc_single(:,i_sort_back);
+                            
                         end
-                        t = dir(path_desc);
-                        fprintf('  SScene:reading desc from %s, created at:%s\n',path_desc,t.date);
-                        t = load(path_desc);
-                        obj.si = [obj.si ; t.desc];
-                        clear t;
                     end
+                    dl.Log(VerbosityLevel.Info,sprintf(' - -  done in %.2fsec\n',toc));
+                    
+                    for dimIdx = 1:nDim
+                        desc = desc_all{dimIdx}; %#ok<PROP>
+                        if ~isempty(desc) %#ok<PROP>
+                            % just calculated, save it
+                            checkAdr_and_createDir(paths_all{dimIdx});
+                            save(paths_all{dimIdx},'desc');
+                            obj.si = [obj.si ; desc];%#ok<PROP>
+                        else
+                            % file exists, load it
+                            t = dir(paths_all{dimIdx});
+                            dl.Log(VerbosityLevel.Debug,...
+                                sprintf(' - SScene:reading desc from %s, created at:%s\n',...
+                                paths_all{dimIdx},t.date));
+                            
+                            t = load(paths_all{dimIdx});
+                            obj.si = [obj.si ; t.desc];
+                            clear t;
+                        end
+                    end
+                            
                     
                 case 'create_desc_from_weak_descs',
-                    disp('  ::SScene.m:: adding si,rgb,si+dist2plane :) ... to desc + normalize it!');
+                    dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:: adding si,rgb,si+dist2plane :) ... to desc + normalize it!\n'));
                     lab = rgb2lab(obj.rgb')';
                     X_si = obj.si;
                     X          = [obj.rgb ; lab ; obj.heigh ; obj.heigh_inv ; obj.nxyz ; obj.dist2plane ; X_si];
@@ -473,16 +524,13 @@ classdef SScene_An
                 global ADD
                 path_save = fullfile(ADD.data.dtsol,'res2angelo','bbox_result01.mat');
                 save(path_save,'wins');
-                disp([' ...SScene_an:fit_bbox2center:  windows saved to file ',path_save]);
+                dl.Log(VerbosityLevel.Debug,sprintf(' - SScene_an:fit_bbox2center:  windows saved to file %s',path_save));
             end
             
             
         end
         
-                
-            
-            
-        
+   
         
 %         %%=================================================================
 %         %%=================================================================
@@ -521,11 +569,6 @@ classdef SScene_An
             end
         end
 
-        
-
-        
-        
-        
          %%=================================================================
          %%=================================================================
          %% PLOT FUNCTIONS
@@ -563,15 +606,6 @@ classdef SScene_An
             set(gcf, 'Color', [1 1 1]); axis equal off;
         end
         
-        
-    
-        
-        
-        
-        
-        
-        
-      
         
     end
 end

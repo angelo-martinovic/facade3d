@@ -1,5 +1,6 @@
 function file_str_idx = LoadFilenames(obj,subset)
-
+    dl = DispatchingLogger.getInstance();
+    
     if strcmp(subset,'eval')
         filelist_str = obj.config.evalList;
     elseif strcmp(subset,'train')
@@ -7,14 +8,15 @@ function file_str_idx = LoadFilenames(obj,subset)
     elseif strcmp(subset,'all')
         filelist_str = obj.config.fullList;
     else
-        error('Unknown subset!');
+        dl.Log(VerbosityLevel.Error,sprintf('Unknown subset!'));
+        error('Critical error. Terminating.');
     end
 
     % LOAD DATA FILE NAMES & INDEX
     fid = fopen([obj.config.dataLocation filelist_str]);
     file_str_idx = textscan(fid, '%s'); fclose(fid);
     numViews = length(file_str_idx{1});
-    fprintf('[Loaded %d filenames]', numViews);
+    dl.Log(VerbosityLevel.Debug,sprintf(' - - Loaded %d filenames.\n', numViews));
     
     file_str_idx = file_str_idx{1};
 end

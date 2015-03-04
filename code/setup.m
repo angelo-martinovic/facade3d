@@ -2,38 +2,70 @@
 % addpath(genpath('/esat/sadr/amartino/Code/matlabtools/'));
 clear all classes;
 
-
-% Graph cuts
-addpath /esat/sadr/amartino/Code/GCMex2.3/
-
-% SVM training
-addpath /esat/sadr/amartino/Code/libsvm-3.14/matlab/
-
-% Hayko's code
-addpath('/esat/sadr/amartino/monge428New/eccv2014_dataset/');
-
-% Local folders
-addpath condor/
-addpath mesh/
+%% Local folder structure
+addpath condor/                 % Calculation on the cluster
+addpath config/
+addpath logger/
+addpath tools/                  % Helper functions
+addpath mesh/                   
 addpath planes/
-addpath firstLayer/
-addpath libs/
+addpath utils_3d/
 addpath(genpath('thirdLayer/'));
 
+%% External software
+    %% Layer 1
+        % CNN 
+        % Type: 2D feature extraction, recommended
+        % URL: http://www.vlfeat.org/matconvnet/
+        addpath external/matconvnet/matlab/
+        addpath external/matconvnet/models/ % Put the path to your CNN models here
 
-% 3d
+        % STAIR vision library v2.4 
+        % Type: 2D feature extraction, optional
+        % http://ai.stanford.edu/~sgould/svl/
+        addpath external/lasik/
 
+        % BICLOP/DOPPIA 
+        % Type: 2D object detector, optional
+        addpath external/biclop/
 
-%  addpath /users/visics/jknopp/libraries/mat_general/  %%% for compSpinImages
- addpath /users/visics/jknopp/libraries/mat_kdtree/lib/  %%% library needed by  spinIm needs  
- addpath /users/visics/jknopp/libraries/mat_kdtree/src/
+        % libLINEAR
+        % Type: classifier, recommended
+        % URL: http://www.csie.ntu.edu.tw/~cjlin/liblinear/
+        addpath external/liblinear/matlab/
 
-addpath utils_3d
-addpath ~jknopp/libraries/cvx/  %%% 3rd layer needs cvx...
+        % libSVM
+        % Type: classifier, optional
+        % URL: http://www.csie.ntu.edu.tw/~cjlin/libsvm/
+        addpath external/libsvm/matlab/
 
-addpath /users/visics/jknopp/libraries/export_fig/ %%% library for exporting figures
+        % KD-tree 
+        % type: library for 3D feature extraction (spinImages), required
+        % URL: http://www.mathworks.com/matlabcentral/fileexchange/4586-k-d-tree
+        addpath external/mat_kdtree/lib/ 
+        addpath external/mat_kdtree/src/ 
 
+    %% Layer 2
+        % Graph cuts
+        % Type: CRF solver, required
+        % URL: http://vision.ucla.edu/~brian/gcmex.html
+        addpath external/GCMex2.3/
 
+    %% Layer 3
+        % CVX
+        % Type: library for disciplined convex programming, required
+        % URL: http://cvxr.com/cvx/
+        addpath external/cvx/ 
+        % cvx_setup % Uncomment if your cvx is not set-up at MATLAB startup.
 
+    %% MISC
+        % ECCV 2014 
+        % Type: evaluation protocol from eccv14, required
+        % URL: http://www.vision.ee.ethz.ch/~rhayko/paper/eccv2014_riemenschneider_multiviewsemseg/
+        addpath external/eccv2014_eval/
 
-cvx_setup
+        % export_fig
+        % Type: library for exporting matlab figures
+        % URL: http://www.mathworks.com/matlabcentral/fileexchange/23629-export-fig
+        addpath external/export_fig/ 
+
