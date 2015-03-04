@@ -1,56 +1,53 @@
 % Type is train, valid, or eval
 % [t,x] : t are target values, x are input values
 function [t,x,segsPerImage,imageNames] = LoadData(obj,subset)
-
+    dl = DispatchingLogger.getInstance();
     imageNames = obj.LoadFilenames(subset);
     
     % Empty set
     if (isempty(imageNames))
         t=[]; x=[];
         segsPerImage=[]; 
-        warning('Data not found.');
+        dl.Log(VerbosityLevel.Warning,sprintf('Data not found'));
         return;
     end
     
-    origImageNames = strcat(get_adr('work',obj.config),imageNames);
-    
-    groundTruthFilenames = strcat(strcat(get_adr('2D_labels',obj.config),imageNames),'.png');
-    
-    segFilenames        = strcat(origImageNames,'.seg');
-    featureFilenames    = strcat(origImageNames,'.features.txt');
-    scaleFilenames      = strcat(origImageNames,'_scale.dat');
-    rectFilenames       = strcat(origImageNames,'_rect.dat');
-    
-    allSegDistributions = zeros(0,obj.nClasses);
-    allSegs = zeros(0,obj.nFeats);
+    allSegDistributions = zeros(0,obj.config.nClasses);
+    allSegs = [];
     
     segsPerImage= cell(0);
-    pb = ProgressBar(length(segFilenames));
-    missingFiles = zeros(1,length(segFilenames));
-    for i=1:length(segFilenames)
-        if ~exist(segFilenames{i},'file')
-            warning('Image %d not found',i);
+    missingFiles = zeros(1,length(imageNames));
+    for i=1:length(imageNames)
+        segName = get_adr('2D_segmentation',obj.config,imageNames{i});
+        if ~exist(segName,'file')
+            dl.Log(VerbosityLevel.Warning,sprintf('Image %d segmentation not found\n',i));
             missingFiles(i) = 1;
-            pb.progress;
             continue;
         end
         
-        segmentation = dlmread(segFilenames{i});
-        if exist(groundTruthFilenames{i}, 'file')
-            groundTruth = imread(groundTruthFilenames{i});
-            groundTruth = Image2Label(groundTruth);
+        segmentation = dlmread(segName);
+        
+        gtFile = get_adr('2D_label',obj.config,imageNames{i});
+        if exist(gtFile, 'file')
+            gt = imread(gtFile);
+            groundTruth = Image2Labels(double(gt), obj.config.cm);
         else
-            warning('No ground truth');
+            dl.Log(VerbosityLevel.Warning,sprintf('Image %d ground truth not found\n',i));
             groundTruth = zeros(size(segmentation));
         end
-        features = dlmread(featureFilenames{i});
+        features = [];
+        for f=1:length(obj.config.c2D.featureExtractors)
+            featureName = obj.config.c2D.featureExtractors{f}.name;
+            feats_f = load(get_adr('2D_features',obj.config,imageNames{i},featureName));
+            features = [features feats_f.features];
+        end
         
         % Scale
-        sc = dlmread(scaleFilenames{i});
+        sc = dlmread(get_adr('2D_scale',obj.config,imageNames{i}));
         target = zeros(sc(1),sc(2));
         
         % Rectify ground truth
-        h = dlmread(rectFilenames{i});
+        h = dlmread(get_adr('2D_rectParams',obj.config,imageNames{i}));
         h = reshape(inv(reshape(h,3,3)),1,9);
         groundTruth = rewarp(target,groundTruth,h);
         groundTruth = imresize(groundTruth,size(segmentation),'nearest');
@@ -61,7 +58,7 @@ function [t,x,segsPerImage,imageNames] = LoadData(obj,subset)
         % Number of segments in the image
         numSegs = max(segmentation(:));
         
-        segDistributions = zeros(numSegs,obj.nClasses);
+        segDistributions = zeros(numSegs,obj.config.nClasses);
         for r=1:numSegs
             res2 = groundTruth(segmentation==r);  
             label = mode(res2);
@@ -70,13 +67,14 @@ function [t,x,segsPerImage,imageNames] = LoadData(obj,subset)
                res2(res2==0)=[];
                label = mode(res2);
             end
-            if (label>=1 && label<=obj.nClasses)
+            if (label>=1 && label<=obj.config.nClasses)
                 segDistributions(r,label)=1;
             end
 
         end
         voidIndices = (sum(segDistributions,2)==0);
         
+        % Ignore void-labeled segments in training set
         if strcmp(subset,'train')
             segDistributions = segDistributions(~voidIndices,:);
             features = features(~voidIndices,:);
@@ -88,16 +86,13 @@ function [t,x,segsPerImage,imageNames] = LoadData(obj,subset)
         allSegDistributions = [allSegDistributions; segDistributions];
         allSegs = [allSegs; features];
         
-        pb.progress;
     end
-    pb.stop;
-    disp('Done');
 
     imageNames = imageNames(missingFiles==0);
-    t = allSegDistributions';
-    t = bsxfun(@rdivide,t,sum(t));
+    t = allSegDistributions;
+    t = bsxfun(@rdivide,t,sum(t,2));
     clear allSegDistributions;
 
-    x = allSegs';
+    x = allSegs;
     clear allSegs;
 end

@@ -68,7 +68,7 @@ score = EvaluateMeshLabeling(l,gt)
 
 %%
 fprintf('Layer 1 + majority vote\n------------\n');
-l = [loc baseName '_layer1_maj.ply'];
+l = [loc baseName '_2D_layer1_majorityVote.ply'];
 score = EvaluateMeshLabeling(l,gt)
 
 %%
@@ -83,7 +83,7 @@ score = EvaluateMeshLabeling(l,gt)
 
 %%
 fprintf('Layer 2 (Layer 1 + Detectors + 2D CRF) + majority vote\n------------\n');
-l = [loc baseName '_layer2_maj.ply'];
+l = [loc baseName '_2D_layer2_majorityVote.ply'];
 score = EvaluateMeshLabeling(l,gt)
 
 %%

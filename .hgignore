@@ -14,8 +14,10 @@ syntax: glob
 .smpd
 data/**
 output/**
+dataFullRes/**
+outputFullRes/**
 tmp/**
 code/condor/**
-
+code/objects_detection.out.txt
 
 

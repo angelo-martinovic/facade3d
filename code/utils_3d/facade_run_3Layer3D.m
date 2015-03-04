@@ -40,7 +40,8 @@ end
 time_cumsum = 0;
 for facade_id = facade_ids_go,
     fprintf('     ____________facadeID=%s____________\n',num2str(facade_id));
-    grav_vec = load(get_adr('grav_vec',datasetConfig,facade_id));
+    grav_vec = load(get_adr('splitPlane',datasetConfig,inputName,facade_id));%load(get_adr('grav_vec',datasetConfig,facade_id));
+    
     grav_vec = grav_vec.g';
     if isempty(grav_vec), fprintf('              ...no grav vec...\n'); continue; end;
     tic;

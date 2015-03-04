@@ -690,9 +690,11 @@ def rectify(imageName, saveName, cropImg):
 		cv.imwrite(saveName, img)
 		saveNameHom = os.path.splitext(saveName)[0] + "_rect.dat"
 		hom.tofile(saveNameHom, " ")
+		print saveNameHom
 		imageDims = np.array([img.shape[0], img.shape[1]])
 		saveNameDims = os.path.splitext(saveName)[0] + "_scale.dat"
 		imageDims.tofile(saveNameDims, " ")	
+		print saveNameDims
 
 	else:
 		try:

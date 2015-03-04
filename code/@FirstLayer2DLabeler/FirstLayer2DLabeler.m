@@ -5,121 +5,67 @@ classdef FirstLayer2DLabeler < handle
     
     properties
             config = [];   
-            baseName = [];
-            
-            classifierName = 'SVM';
-            
-            detectors = { };
-            
-            % List of images
-            evalListFilename = [];
-            trainListFilename = []; 
-            allListFilename = []; 
-            
-            % Paths
-            edisonLoc = 'edison/';
-            lasicLoc = '/esat/sadr/amartino/atlas/lasik-2.4/';
-            biclopLoc = '/esat/sadr/amartino/atlas/biclop/';
-            
-            % Parameters
-            nClasses = [];
-            ignoreClasses = [];
-            nFeats = 225;
-            resizedImagesHeight = 800;
-            minRegionArea = 150;
-            
-            svm = struct(...
-                'log2c',-1,...
-                'log2g',-3,...
-                'maxTrainExamples',1e6,...
-                'maxTestExamples',1e3...
-                );
-            
-            crf = struct(...
-                'weightSegmentationUnary', [],...
-                'weightPairwise', [],...
-                'labelcost',[]);
-            
-            pclName = [];
     end
-    
-    methods
-        %% Constructor
+    %%
+    methods (Access = public)
+        % Constructor
         function fl = FirstLayer2DLabeler(datasetConfig)
-            
             fl.config = datasetConfig;
-            fl.baseName = datasetConfig.name;
-            fl.nClasses = datasetConfig.nClasses;
-            
-            fl.Configure();
         end
         
-        
-        %% Methods
         PrepareData(obj);
         
         filenames = LoadFilenames(obj,subset);
         
         [t,x,segsPerImage,imageNames] = LoadData(obj,subset);
         
-        TrainSVM(obj);
+        TrainClassifier(obj);
         
-        ClassifyWithSVM(obj);
+        EvaluateClassifier(obj);
         
         LabelImagesATLAS(obj);
         
         Project2DOntoPointCloud(obj);
-        
-
-        %% Builtin methods
-        function Configure(obj)
-            
-            % Detectors
-            obj.detectors{1}.name = 'window-generic';
-            obj.detectors{1}.class = 1;
-            obj.detectors{1}.configFile = '/esat/sadr/amartino/atlas/detector/configs/window-generic.ini';
-            obj.detectors{1}.modelFile = '/esat/sadr/amartino/atlas/detector/models/window-generic.bin';
-            obj.detectors{1}.crfWeight = 0.4029 ;
-            
-            % CRF
-            obj.crf.weightSegmentationUnary = 0.2450;
-            obj.crf.weightPairwise = 0.3725;
-            
-            l = load('config/haussmannLabelCost.mat');
-            obj.crf.labelCost = l.labelCost(1:obj.config.nClasses,1:obj.config.nClasses);
-           
-        end
-        
        
-        % Runs Hayko's evaluation on 2D image labeling
+        % Runs ECCV 2014 evaluation on 2D image labeling
         function [scoreL1, scoreL2] = EvaluateLabeling(obj)
            
-            outputFolder1 = [get_adr('work',obj.config) 'classifier/' obj.classifierName '/layer1/'];
+            outputFolder1 = [get_adr('2D_classification',obj.config,obj.config.c2D.classifier.name) 'layer1/'];
             scoreL1 = obj.EvaluateImageLabeling(outputFolder1);
 
-            outputFolder2 = [get_adr('work',obj.config) 'classifier/' obj.classifierName '/layer2/'];
+            outputFolder2 = [get_adr('2D_classification',obj.config,obj.config.c2D.classifier.name) 'layer2/'];
             scoreL2 = obj.EvaluateImageLabeling(outputFolder2);
             
         end
-        
+    end
+    %%
+    methods(Access = private)
         function score = EvaluateImageLabeling(obj,outputFolder)
-            file_str_idx = obj.LoadFilenames('eval');
-            numViews = length(file_str_idx);
-            display(['Evaluating on ' num2str(numViews) ' images.'])
+            dl = DispatchingLogger.getInstance();
             
-
-            %% EVALUATION TASK 1 - Image labeling - vanilla 2d img labeling task
-            fprintf('Loading data...\n');
-            [gt, res] = evaluation_load_folder (get_adr('2D_labels',obj.config), outputFolder, {file_str_idx}, numViews, obj.config.cm);
-            fprintf('Done!\n');
-            fprintf('Evaluating...\n');
+            imageNames = obj.LoadFilenames('eval');
+            numViews = length(imageNames);
+            dl.Log(VerbosityLevel.Info,sprintf('Evaluating on %d images.\n',numViews));
+            
+            % EVALUATION TASK 1 - Image labeling - vanilla 2d img labeling task
+            dl.Log(VerbosityLevel.Info,sprintf('Loading data...\n'));
+            
+            [gt, res] = evaluation_load_folder (get_adr('2D_labels',obj.config), outputFolder,...
+                {imageNames}, numViews, obj.config.cm);
+            
+            dl.Log(VerbosityLevel.Info,sprintf('Done! Evaluating...\n'));
             score = evaluation_multilabel(gt,res,obj.config.ignoreClasses + 1);
-            disp(score);
-
+            dl.Log(VerbosityLevel.Info,sprintf('Done!\n'));
+            
+            % Save the output
+            save([outputFolder 'results.mat'],'score');
+            
+            dl.Log(VerbosityLevel.Info,...
+                sprintf('Evaluated the 2D labeling of %d images in %s. Pascal IoU score: %.2f.\n',...
+                numViews,outputFolder,score.mean_pascal));
+  
         end
         
-
     end
     
 end
-
