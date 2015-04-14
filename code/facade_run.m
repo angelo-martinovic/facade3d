@@ -18,8 +18,9 @@ dl = DispatchingLogger.getInstance();
     
     fl2D.PrepareData();      % Resize, rectify, segment, extract features, run detectors
     fl2D.TrainClassifier();  % Train SVM on region features from the train set
-    fl2D.RunClassifier();    % Use the trained SVM to classify new images in the test set
-    fl2D.LabelImagesATLAS(); % Label images with SVM (layer 1), detectors and CRF (layer 2)
+    fl2D.RunClassifier();    % Use the trained SVM to classify superpixels in the test set
+    fl2D.LabelImagesATLAS(); % Label images with: - classified superpixels (layer 1)
+                             %                    - detectors and CRF (layer 2)
 
     EvaluateImageLabeling(datasetConfig,imageNames,fl2D.GetOutputFolderLayer1()); % Eval layer 1
     EvaluateImageLabeling(datasetConfig,imageNames,fl2D.GetOutputFolderLayer2()); % Eval layer 2
@@ -27,9 +28,9 @@ dl = DispatchingLogger.getInstance();
 %% =====================================
 % Projection of 2D classification to point cloud
 % ======================================    
-    [f1,f2] = fl2D.Project2DOntoPointCloud(); 
-    EvaluateMeshLabeling(datasetConfig,f1); % Evaluate layer 1 projected on pcl
-    EvaluateMeshLabeling(datasetConfig,f2); % Evaluate layer 2 projected on pcl
+    fl2D.Project2DOntoPointCloud(); 
+    EvaluateMeshLabeling(datasetConfig,fl2D.GetOutputProjectedLayer1()); % Evaluate layer 1 projected on pcl
+    EvaluateMeshLabeling(datasetConfig,fl2D.GetOutputProjectedLayer2()); % Evaluate layer 2 projected on pcl
     
 %% ======================================
 % First layer 3D: Point cloud labeling
@@ -37,12 +38,11 @@ dl = DispatchingLogger.getInstance();
     fl3D = FirstLayer3DLabeler(datasetConfig); % Initialize data, calculate descriptors
     scene = fl3D.test_data;
        
-    fl3D.PrepareData(obj);          % Prepare descriptors
-    fl3D.TrainClassifier(obj);      % Train 3D point cloud classifier
-    fl3D.EvaluateClassifier(obj);   % Evaluate classifier
-    fl3D.SaveResults(obj);  
+    fl3D.PrepareData();          % Prepare descriptors
+    fl3D.TrainClassifier();      % Train 3D point cloud classifier
+    fl3D.RunClassifier();        % Run classifier on test set
     
-    EvaluateMeshLabeling(datasetConfig,fl3D.GetPCLLabeling()); % Evaluate layer 1 projected on pcl
+    EvaluateMeshLabeling(datasetConfig,fl3D.GetPCLLabeling()); % Evaluate pcl labeling
 
 %% =====================================
 % Second layer 3D: 3D CRF
