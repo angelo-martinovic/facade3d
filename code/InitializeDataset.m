@@ -24,6 +24,10 @@ function datasetConfig = InitializeDataset(datasetName)
     datasetConfig.outputLocation    = '../output/';
 %     datasetConfig.dataLocation      = '../dataFullRes/'; 
 %     datasetConfig.outputLocation    = '../outputFullRes/';
+%     datasetConfig.dataLocation      = '../dataSfM/'; 
+%     datasetConfig.outputLocation    = '../outputSfM/';
+%     datasetConfig.dataLocation      = '../dataPMVS/'; 
+%     datasetConfig.outputLocation    = '../outputPMVS/';
     
     
     datasetConfig.imageLocation     = 'images/';    % Relative to dataLocation
@@ -52,8 +56,13 @@ function datasetConfig = InitializeDataset(datasetName)
     
     
     % Parameters
-    datasetConfig.c3D = c3D_3D_2D(datasetConfig);
+    datasetConfig.c3D = c3D_3D(datasetConfig);
 %     datasetConfig.c3D = c3D_2D();
+%     datasetConfig.c3D = c3D_2D_winDet();
+%     datasetConfig.c3D = c3D_3D_2D(datasetConfig);
+%     datasetConfig.c3D = c3D_3D_2D_winDet(datasetConfig);
+
+
     
     
 

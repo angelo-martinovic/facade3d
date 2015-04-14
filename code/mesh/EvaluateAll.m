@@ -1,17 +1,19 @@
-dirName = '/esat/sadr/amartino/monge428New/data/';
+dirName = datasetConfig.dataLocation;%'/esat/sadr/amartino/Facade3D/dataFullRes/';
 
-loc = '/esat/sadr/amartino/monge428New/data/work/pcl/models/';
+loc = get_adr('pclModelDir', datasetConfig);
 
-highRes = true;
-if highRes
-    % High-res mesh
-    baseName = 'monge428New_fullRes';
-    gt = '/esat/sadr/amartino/monge428New/data/fullRes_pcloud_test_new_GCO.ply';
-else
-    % Low-res mesh
-    baseName = 'monge428New';
-    gt = '/esat/sadr/amartino/monge428New/data/pcloud_gt_test_new_GCO.ply';
-end
+gt = get_adr('pcl_gt_test',datasetConfig);
+baseName = datasetConfig.name;
+% highRes = false;
+% if highRes
+%     % High-res mesh
+%     baseName = 'monge428_fullRes';
+%     gt = '/esat/sadr/amartino/monge428New/data/fullRes_pcloud_test_new_GCO.ply';
+% else
+%     % Low-res mesh
+%     baseName = 'monge428';
+%     gt = '/esat/sadr/amartino/monge428New/data/pcloud_gt_test_new_GCO.ply';
+% end
 
 
 %% 
@@ -73,12 +75,12 @@ score = EvaluateMeshLabeling(l,gt)
 
 %%
 fprintf('Layer 1 + MAP\n------------\n');
-l = [loc baseName '_layer1.ply'];
+l = [loc baseName '_2D_3DMAP.ply'];
 score = EvaluateMeshLabeling(l,gt)
 
 %%
 fprintf('Layer 1 + 3D CRF\n------------\n');
-l = [loc baseName '_layer1_3DCRF.ply'];
+l = [loc baseName '_2D_3DCRF.ply'];
 score = EvaluateMeshLabeling(l,gt)
 
 %%
@@ -125,7 +127,7 @@ score = EvaluateMeshLabeling(l,gt)
 %%
 
 fprintf('2D 3rd layer\n------------\n');
-l = [loc baseName '_3D_3DCRF_2Dlayer3.ply'];
+l = [loc baseName '_3D_3DCRF_L3_Ortho2D.ply'];
 score = EvaluateMeshLabeling(l,gt)
 
 %%
@@ -147,6 +149,31 @@ score = EvaluateMeshLabeling(l,gt)
 %%
 %% 3D 3rd layer
 %%
+
+%%
+fprintf('3D 3rd layer on top of 3D\n------------\n');
+l = [loc baseName '_3D_3DCRF_L3_Pure3D.ply'];
+score = EvaluateMeshLabeling(l,gt)
+
+%%
+fprintf('3D 3rd layer on top of 2D\n------------\n');
+l = [loc baseName '_2D_3DCRF_L3_Pure3D.ply'];
+score = EvaluateMeshLabeling(l,gt)
+
+%%
+fprintf('3D 3rd layer on top of 3D+2D\n------------\n');
+l = [loc baseName '_3D+2D_3DCRF_L3_Pure3D.ply'];
+score = EvaluateMeshLabeling(l,gt)
+
+%%
+%old
+fprintf('3D 3rd layer on top of 3D-old\n------------\n');
+l = ['/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge428_27/2andelo/full_pcl_labeling_3D_3DCRF_3D3rdLayer.ply'];
+score = EvaluateMeshLabeling(l,gt)
+
+
+%%
+
 datasets = {'monge482_fullres'}; % 'monge428_27',
 % datasets = {'monge428_27'}; 
 types={'layer1+3D_3DCRF'}; % 
@@ -174,7 +201,7 @@ gt = '/esat/sadr/amartino/monge428New/data/pcloud_gt_test_new_GCO.ply';
 l = '/esat/sadr/amartino/monge428New/data/work/pcl/models/monge428New_layer1+3D_3DCRF_2Dlayer3.ply';
 score = EvaluateMeshLabeling(l,gt)
 
-
+%%
 gt = '/esat/sadr/amartino/monge428New/data/pcloud_gt_test_new_GCO.ply';
 l = '/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge428_27/2andelo/full_pcl_labeling_layer1+3D_3DCRF_3D3rdLayer.ply';
 score = EvaluateMeshLabeling(l,gt)

@@ -1,9 +1,16 @@
 %     - Uses the output of PrepareData.m to train a superpixel classifier on the training set.
 function TrainClassifier(obj)
-    cf = obj.config;
+
     dl = DispatchingLogger.getInstance();
+    cf = obj.config;
     classifier = cf.c2D.classifier; 
     
+     if cf.useCache && ~exist(get_adr('2D_classifier',cf,classifier.name),'file')
+         dl.Log(VerbosityLevel.Info,...
+            sprintf('Classifier %s already trained. Will use cache.\n',classifier.name));
+         return;
+     end
+
     dl.Log(VerbosityLevel.Info,...
         sprintf('Training the %s superpixel classifier...\n',classifier.name));
     

@@ -16,7 +16,7 @@ end
 function hyperParameters = SetupHyperParametersDefault()
     hyperParameters = struct();
 
-    hyperParameters.legacy = false; % when true: ECCV'12 code, false: CVPR'15
+    hyperParameters.legacy = true; % when true: third layer ECCV'12 code, false: CVPR'15
     
     hyperParameters.parallel = true;
     hyperParameters.visualize = false;
@@ -27,14 +27,22 @@ function hyperParameters = SetupHyperParametersDefault()
     hyperParameters.parMinHeight = 10;
     
     hyperParameters.parMaxMedWinSize = 50;
-                                      % ECCV params
-    hyperParameters.dataweight = 1;   %80; 
-    hyperParameters.gridweight = 1;   %5;
-    hyperParameters.coOccWeight = 1;  %10;
-
-    hyperParameters.ga.nGenerations = 300;
-    hyperParameters.ga.stallGenLimit = 30;
-    hyperParameters.ga.populationSize = 1000;
+    
+    if hyperParameters.legacy
+        % ECCV12 params
+        hyperParameters.dataweight = 80; 
+        hyperParameters.gridweight = 5;
+        hyperParameters.coOccWeight = 10;
+        
+        hyperParameters.ga.nGenerations = 300;
+        hyperParameters.ga.stallGenLimit = 30;
+        hyperParameters.ga.populationSize = 1000;
+    else
+        % CVPR15 params
+        hyperParameters.dataweight = 1;   %80; 
+        hyperParameters.gridweight = 1;   %5;
+        hyperParameters.coOccWeight = 1;  %10;
+    end
 
     hyperParameters.objClasses = [1 3 4];
     hyperParameters.winClass = 1; 
@@ -58,12 +66,16 @@ end
 function hyperParameters = SetupHyperParametersLocal(hyperParameters)
     hyperParameters.parallel = false;
     hyperParameters.visualize = true;
-%     hyperParameters.ga.populationSize = 10;
+    if hyperParameters.legacy
+        hyperParameters.ga.populationSize = 10;
+    end
 end
 
 function hyperParameters = SetupHyperParametersCondor(hyperParameters)
     hyperParameters.parallel = true;
     hyperParameters.visualize = false;
-%     hyperParameters.ga.populationSize = 1000;
+    if hyperParameters.legacy
+        hyperParameters.ga.populationSize = 1000;
+    end
 
 end

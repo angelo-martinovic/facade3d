@@ -1,5 +1,8 @@
 function labels = Colors2Labels(colors,cm)
 
+    if max(cm(:))<2
+        cm = round(255*cm);
+    end
     labels = knnsearch(cm,colors)-1;
 %   labels = zeros(size(colors,1),1);
 % 

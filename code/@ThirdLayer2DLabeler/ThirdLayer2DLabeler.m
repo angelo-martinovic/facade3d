@@ -6,12 +6,10 @@ classdef ThirdLayer2DLabeler < handle
             config = [];  
             splitName = [];
 
-            
             nClasses = [];
 
-
-            fineTuneGravityVector = false;
-            condorEnabled = false;
+            fineTuneGravityVector = true;
+            condorEnabled = true;
 
     end
     
@@ -20,7 +18,6 @@ classdef ThirdLayer2DLabeler < handle
             tl.config = datasetConfig;
             tl.splitName = splitName;
             tl.nClasses = datasetConfig.nClasses;
-
         end
 
                
@@ -29,7 +26,7 @@ classdef ThirdLayer2DLabeler < handle
         FitPlanes(obj);
         OrthoImages(obj);
         
-        RunThirdLayer(obj);
+        submitted=RunThirdLayer(obj);
         WaitForCondor(obj);
         
         OrthoImagesBackProject(obj);

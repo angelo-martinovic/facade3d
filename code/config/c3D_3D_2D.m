@@ -18,8 +18,8 @@ classdef c3D_3D_2D < c3D
             % CRF
             c3D.crf = crf3D();
             c3D.crf.weight2DClassification = 1;
-            c3D.crf.weight3DClassification = 0;
-            c3D.crf.weightPairwise = 1;
+            c3D.crf.weight3DClassification = 1;
+            c3D.crf.weightPairwise = 0.3725;% 0.1;
             
            
         

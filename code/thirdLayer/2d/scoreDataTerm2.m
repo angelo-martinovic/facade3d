@@ -33,14 +33,10 @@ function energy = scoreDataTerm2(outImg, bboxes, hyperParameters)
             continue;
         end
         
-
-        
-        
-
         mat1= locationLUT & probMapLabel;   % true positives
         mat2=~locationLUT & probMapLabel;   % false negatives
                            % true positive ratio                 % false negative ratio
-        energy = energy -  sum(sum(mat1))/locationLUTelements +  sum(sum(mat2))/sum(sum(probMapLabel)) ;
+        energy = energy -  sum(sum(mat1))/locationLUTelements +  sum(sum(mat2))/sum(sum(probMapLabel));
       
 
     end

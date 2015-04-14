@@ -16,6 +16,10 @@ data/**
 output/**
 dataFullRes/**
 outputFullRes/**
+dataPMVS/**
+outputPMVS/**
+dataSfM/**
+outputSfM/**
 tmp/**
 code/condor/**
 code/objects_detection.out.txt

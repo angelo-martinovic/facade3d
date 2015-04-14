@@ -82,8 +82,13 @@ switch type
         
     case 'pcl_3DCRF_labeling'
         adr = [datasetConfig.outputLocation 'work/pcl/models/' datasetConfig.name '_' par1 '_3DCRF.ply'];
+    case 'pcl_3DMAP_labeling'
+        adr = [datasetConfig.outputLocation 'work/pcl/models/' datasetConfig.name '_' par1 '_3DMAP.ply'];
     case 'pcl_3DCRF_unaries'
         adr = [datasetConfig.outputLocation 'work/pcl/probs/' datasetConfig.name '_' par1 '_3DCRF.mat'];
+        
+    case 'projectedTo2D'
+        adr = [datasetConfig.outputLocation 'work/projected-' par1 '/'];      
         
     case 'splitOutputDir'
         adr = [datasetConfig.outputLocation 'work/pcl/split/' datasetConfig.name '_' par1 '/'];
@@ -129,8 +134,17 @@ switch type
     case 'desc3d'
         adr = fullfile(datasetConfig.outputLocation,['work/pcl/desc/' datasetConfig.name '_' par1,'_imSiz=',num2str(par2),'.mat']);
     case 'classifier3d'
-%         adr = fullfile('/users/visics/amartino/',[datasetConfig.name '_3Dclassifier_' par1 '.mat']);
         adr = fullfile(datasetConfig.outputLocation,['work/pcl/' datasetConfig.name '_3Dclassifier_' par1 '.mat']);
+    case 'classifier3d_error'
+        adr = fullfile(datasetConfig.outputLocation,['work/pcl/' datasetConfig.name '_3Dclassifier_' par1 '_error.mat']);
+    case 'classifier3d_trainTime'
+        adr = fullfile(datasetConfig.outputLocation,['work/pcl/' datasetConfig.name '_3Dclassifier_' par1 '_trainTime.mat']);
+    case 'classifier3d_testTime'
+        adr = fullfile(datasetConfig.outputLocation,['work/pcl/' datasetConfig.name '_3Dclassifier_' par1 '_trainTime.mat']);
+ 
+    case 'score'
+        adr = [par1 '_score.mat'];
+    
     otherwise
         error('Unrecognized type!');
 end

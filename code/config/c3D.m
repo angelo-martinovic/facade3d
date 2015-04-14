@@ -7,11 +7,11 @@ classdef c3D < handle
         
         plotResults = false;
         
-        featureExtractors
+        featureExtractors = {};
         
-        classifier
+        classifier =[];
         
-        crf
+        crf=[];
    
     end
         

@@ -1,6 +1,6 @@
 function OrthoImages(obj)
-
-    fprintf('Creating ortho images...');
+    dl = DispatchingLogger.getInstance();
+    dl.Log(VerbosityLevel.Info,sprintf('Creating ortho images...\n'));
     
     facadeIDs = obj.GetFacadeIDs();
     [camerapos,cameras] = obj.GetCameraPos();
@@ -8,18 +8,22 @@ function OrthoImages(obj)
     tic;
     for i=1:length(facadeIDs)
         facadeID = num2str(facadeIDs(i));
+        if facadeID==0, continue; end;
         
-        fprintf('----\nProcessing facade ID %s (%d of %d) ...\n----',facadeID,i,length(facadeIDs));
+        dl.Log(VerbosityLevel.Debug,...
+            sprintf(' - Processing facade ID %s (%d of %d) ...\n',facadeID,i,length(facadeIDs)));
 
         % Original colors
-        [~,~,origColors] = ReadPCLFromPly(get_adr('splitColors',obj.config,obj.splitName,facadeID));
+        [~,~,origColors] = ReadPCLFromPly(...
+            get_adr('splitColors',obj.config,obj.splitName,facadeID));
 
         % Potentials
-        ss = load(get_adr('splitPotentials',obj.config,obj.splitName,facadeID)); %loads vertexSubsetPotentials
+        ss = load(get_adr('splitPotentials',obj.config,obj.splitName,facadeID));
         vertexSubsetPotentials = ss.vertexSubsetPotentials;
 
         % Labeling
-        [points,~,labelColors] = ReadPCLFromPly(get_adr('splitLabeling',obj.config,obj.splitName,facadeID));
+        [points,~,labelColors] = ReadPCLFromPly(...
+            get_adr('splitLabeling',obj.config,obj.splitName,facadeID));
 
         % Facade plane
         ss=load(get_adr('splitPlane',obj.config,obj.splitName,facadeID));
@@ -34,10 +38,14 @@ function OrthoImages(obj)
         end
        
         if isempty(plane)
-            error('No main plane found! Ortho-rectification cannot continue.');
+            dl.Log(VerbosityLevel.Error,...
+                sprintf(' - No main plane found! Ortho-rectification cannot continue.\n'));
+            error('Critical error. Terminating.');
         end
   
-        plane.b = [min(projPoints(1,:)) max(projPoints(1,:)) min(projPoints(2,:)) max(projPoints(2,:)) min(projPoints(3,:)) max(projPoints(3,:))];
+        plane.b = [min(projPoints(1,:)) max(projPoints(1,:)) ...
+                   min(projPoints(2,:)) max(projPoints(2,:)) ...
+                   min(projPoints(3,:)) max(projPoints(3,:))];
 
         g = ss.g;
        
@@ -45,6 +53,9 @@ function OrthoImages(obj)
         bestG = ss.g;
         % Fine tune the gravity vector
         if obj.fineTuneGravityVector
+            dl.Log(VerbosityLevel.Debug,...
+                        sprintf(' - - Fine-tuning the gravity vector...\n'));
+                    
             for xvec=0%-0.05:0.01:0.05
                 for zvec=-0.05:0.01:0.05
                     yvec = sqrt(1-xvec*xvec-zvec*zvec);
@@ -53,7 +64,8 @@ function OrthoImages(obj)
 
                     % Tentative ortho image
                     [orthoImage,~] = ProjectToOrtho(plane,g,projPoints,origColors);
-                  
+                    orthoImage = orthoImage/255;
+                    
                     % Get edge information, project on the vertical line
                     bw = edge(rgb2gray(orthoImage));
                     hp = sum(bw,2)/size(bw,2);
@@ -63,7 +75,8 @@ function OrthoImages(obj)
                     % horizontal direction)
                     hp= sort(hp,'descend');
                     curHP = mean(hp(1:10));
-                    fprintf('xvec:%f,zvec:%f,curHP:%f\n',xvec,zvec,curHP);
+                    dl.Log(VerbosityLevel.Debug,...
+                        sprintf(' - - xvec:%f,zvec:%f,curHP:%f\n',xvec,zvec,curHP));
 
                     if curHP>bestHP
                         bestHP = curHP;
@@ -82,16 +95,16 @@ function OrthoImages(obj)
        [orthoPotentials,~] = ProjectToOrtho(plane,g,projPoints,vertexSubsetPotentials);
      
        %% Create the ortho image by averaging the projected colors from different cameras
-       % (Provides better quality than the nearest neighbor labeling from
-       % the point cloud)
+       % (Provides better quality than the nearest neighbor labeling from the point cloud)
 
        % Get nc closest cameras
-       nc = 10;
+       nc = 10; % TODO: set as parameter
        idx = knnsearch(camerapos,plane.p','K',nc);
     
        colorsPerPoint = zeros(length(iPointsR),nc,3);    
        % For each image
-       fprintf('Projecting %d images onto the ortho image points\n',nc);
+       dl.Log(VerbosityLevel.Debug,...
+        sprintf(' - - Projecting %d images onto the ortho image points...\n',nc));
        for j=1:nc
             camIdx = idx(j);
 
@@ -108,7 +121,9 @@ function OrthoImages(obj)
                 if height==size(origImg,2) && width==size(origImg,1)
                     origImg = imrotate(origImg,90);
                 else
-                    error('Camera-image size mismatch!');
+                    dl.Log(VerbosityLevel.Error,...
+                        sprintf(' - - Camera-image size mismatch!\n'));
+                    error('Critical error. Terminating.');
                 end
 
                 % Backproject the colors
@@ -116,9 +131,9 @@ function OrthoImages(obj)
                     colorsPerPoint(:,j,c) = BackProjectLabeling(iPointsR,origImg(:,:,c),cameras{camIdx});
                 end
 
-                fprintf('o');
+%                 fprintf('o');
             else
-                fprintf('x');
+%                 fprintf('x');
                 continue;
             end
 
@@ -133,19 +148,22 @@ function OrthoImages(obj)
        orthoImage = reshape(newColors,[size(orthoImageOld,1),size(orthoImageOld,2),3]);
        orthoImage = imrotate(orthoImage,180);
        orthoImage = fliplr(orthoImage);
-       figure(200);imagesc(orthoImage);axis equal;drawnow;
+       
+       orthoLabel = orthoLabel/255;
+       
+       % TODO: set a flag for visualization
+       figure(200);imagesc(orthoImage);title('Ortho-projected image');axis equal;drawnow;
        imwrite(orthoImage,get_adr('orthoColors',obj.config,obj.splitName,facadeID));
         
-       figure(300);imagesc(orthoLabel);axis equal;drawnow;
+       figure(300);imagesc(orthoLabel);title('Ortho-projected 2nd layer labeling');axis equal;drawnow;
        imwrite(orthoLabel,get_adr('orthoLabels',obj.config,obj.splitName,facadeID));
 
-       figure(400);imagesc(orthoPotentials(:,:,1));axis equal;drawnow;
+       figure(400);imagesc(orthoPotentials(:,:,1));title('Ortho-projected 2nd layer potentials - class 1');axis equal;drawnow;
        save(get_adr('orthoPotentials',obj.config,obj.splitName,facadeID),'orthoPotentials');
 
        
     end
-    orthoTime = toc;
-    fprintf('Elapsed time: %d seconds.\n',orthoTime);
+    dl.Log(VerbosityLevel.Info,sprintf('Done. Elapsed time: %.2f seconds.\n',toc));
 end
 
 
@@ -176,7 +194,7 @@ function [orthoImage,iPointsR] = ProjectToOrtho(plane,g,projPoints,origColors)
     minY = min(pointsT(2,:)); maxY = max(pointsT(2,:));
     meanZ = mean(pointsT(3,:));
 
-    %                     b = [minX maxX minY maxY min(pointsT(3,:)) max(pointsT(3,:))];
+    % b = [minX maxX minY maxY min(pointsT(3,:)) max(pointsT(3,:))];
     rHeight = maxY-minY;
     rWidth = maxX-minX;
 
@@ -194,7 +212,7 @@ function [orthoImage,iPointsR] = ProjectToOrtho(plane,g,projPoints,origColors)
     [idx,~] = knnsearch(pointsT',iPoints');
         
     % Ortho - colors
-    newColors = origColors(idx,:)/255;
+    newColors = origColors(idx,:);
     orthoImage = reshape(newColors,[size(xx,1),size(xx,2),size(newColors,2)]);
     orthoImage = imrotate(orthoImage,180);
     orthoImage = fliplr(orthoImage);

@@ -1,32 +1,26 @@
-function RunThirdLayerSingle(facadeID, dirName, baseName, splitName, hyperSetup)
+function RunThirdLayerSingle(splitName,facadeID,hyperSetup)
+    facadeID = num2str(facadeID);
     
-    % Hyper-parameters?
+    % Read config from temp file
+    load('datasetConfig.mat');
+    
+    % Set-up the hyper-parameters of the third layer
     hyperParameters = SetupHyperParameters(hyperSetup);
     
-    if hyperParameters.parallel
-        
-        poolobj = gcp('nocreate'); % If pool doesnt exist, do not create a new one.
-        if isempty(poolobj)
-            parpool(12);
-        end
-    end
-   
-    dirName = [dirName 'work/pcl/split/' baseName '_' splitName '/'];
+%     if datasetConfig.nWorkers>1
+%         InitializeParallel(datasetConfig.nWorkers);
+%     end
 
-    imgName = [baseName '_split_' num2str(facadeID) '_ortho_colors.png'];
-    labName = [baseName '_split_' num2str(facadeID) '_ortho_labeling.png'];
-    potName = [baseName '_split_' num2str(facadeID) '_ortho_potentials.mat'];
-    
     % Labeled image
-    labImage = imread([dirName labName]);
-    outImg = Image2Label(labImage);
+    labImage = imread(get_adr('orthoLabels',datasetConfig,splitName,facadeID));
+    outImg = Image2Labels(double(labImage),datasetConfig.cm);
         
     % Original image
-    origImg = imread([dirName imgName]);
+    origImg = imread(get_adr('orthoColors',datasetConfig,splitName,facadeID));
     origImg = double(origImg)/256;
         
     % Per-pixel probabilities
-    ss = load([dirName potName]);
+    ss = load(get_adr('orthoPotentials',datasetConfig,splitName,facadeID));
     segMap = ss.orthoPotentials;
     segMap  = exp(-segMap);
            
@@ -39,12 +33,8 @@ function RunThirdLayerSingle(facadeID, dirName, baseName, splitName, hyperSetup)
         subplot(122);imagesc(thirdLayerOutput);axis equal;
     end
 
-    thirdLayerImage = Label2Image(thirdLayerOutput);
+    thirdLayerImage = Label2Image(thirdLayerOutput,datasetConfig.cm);
 
-    imwrite(thirdLayerImage,[dirName baseName '_split_' num2str(facadeID) '_ortho_labeling_layer3.png']);
+    imwrite(thirdLayerImage,get_adr('orthoLabelingLayer3Img',datasetConfig,splitName,facadeID));
         
-    if hyperParameters.parallel
-        delete(gcp);
-    end
-
 end
