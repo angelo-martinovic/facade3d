@@ -1,8 +1,9 @@
 % Various stuff
 % addpath(genpath('/esat/sadr/amartino/Code/matlabtools/'));
-clear all classes;
+%clear all classes;
 
 %% Local folder structure
+addpath batch/
 addpath condor/                 % Calculation on the cluster
 addpath config/
 addpath logger/
@@ -56,7 +57,11 @@ addpath(genpath('thirdLayer/'));
         % Type: library for disciplined convex programming, required
         % URL: http://cvxr.com/cvx/
         addpath external/cvx/ 
-        % cvx_setup % Uncomment if your cvx is not set-up at MATLAB startup.
+        
+        % Comment the following lines if your cvx is set-up at MATLAB startup.
+        %cvx_setup /users/visics/amartino/Documents/cvxLicense/cvx_license_4.dat % Point this to your license file
+        %cvx_solver mosek
+        %cvx_save_prefs
 
     %% MISC
         % ECCV 2014 

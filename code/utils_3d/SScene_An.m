@@ -90,7 +90,7 @@ classdef SScene_An
             if ~isempty(obj.si),            obj.si      = obj.si(:,id_keep);  end;
             if ~isempty(obj.heigh_inv),     obj.heigh_inv      = obj.heigh_inv(:,id_keep);  end;
             if ~isempty(obj.flag),          obj.flag      = obj.flag(id_keep);  end;
-            if ~isempty(obj.facade_id),     obj.facade_id      = obj.facade_id(id_keep);  end;
+%             if ~isempty(obj.facade_id),     obj.facade_id      = obj.facade_id(id_keep);  end;
         end
 
     

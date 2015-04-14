@@ -26,9 +26,12 @@ function score =scoreCoOccurence(boxes, hyperParameters)
         
         
     end
-%     score = score + sum(hitmap>1); % VERSION M
     
-    score = score/size(balcs,2) + sum(hitmap>1)/size(wins,2);
+    if hyperParameters.legacy
+        score = score + sum(hitmap>1);
+    else
+        score = score/size(balcs,2) + sum(hitmap>1)/size(wins,2);
+    end
 
 end
 

@@ -145,6 +145,7 @@ switch method,
         out3 = Xtest;
         
     case 'learn' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        error = 0;
         switch unary_classifier
             case 'rf'         
                 if obj.config.nWorkers>1
@@ -167,6 +168,8 @@ switch method,
                 
                 if strcmp(oob_pred,'Off')
                     model = model.compact();
+                else
+                    error = oobError(model);
                 end
             case 'svm'
                 model  = svmtrain(Y',full(X)','-b 1');
@@ -184,6 +187,7 @@ switch method,
                 model = train(Y', sparse(X') ,cmd);
         end
         out1 = model;
+        out2 = error;
         
     case 'test' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         prb = [];

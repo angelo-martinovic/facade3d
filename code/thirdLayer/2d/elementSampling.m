@@ -59,6 +59,7 @@ function output = elementSampling(origImg,sgmp,outImg,hyperParameters)
     if isfield(hyperParameters,'doorClass')
         PM_door = sgmp(:,:,hyperParameters.doorClass);
         [door_boundingBoxes, ~,~] = getBoundingBoxesPool(hyperParameters.doorClass, outImg, PM_door, hyperParameters);
+%         initElements = [initElements door_boundingBoxes];
         objMask = objMask | outImg==hyperParameters.doorClass;
     end
     
@@ -85,6 +86,7 @@ function output = elementSampling(origImg,sgmp,outImg,hyperParameters)
 
     %% Symmetry
     assert(max(initElements(3,:))<=size(outImg,2),'Invalid object before symmetry');    
+     assert(min(initElements(1,:))>=0,'Invalid object before symmetry');   
     if hyperParameters.principles.symmetry
         disp('--Principle: Symmetry...');
         if hyperParameters.principles.verticalRegionOrder
@@ -112,6 +114,7 @@ function output = elementSampling(origImg,sgmp,outImg,hyperParameters)
 
     end
     assert(max(initElements(3,:))<=size(outImg,2),'Invalid object after symmetry');   
+    assert(min(initElements(1,:))>=0,'Invalid object after symmetry');   
    
    %% Sampling
    current_boxes = initElements;
@@ -156,6 +159,7 @@ function output = elementSampling(origImg,sgmp,outImg,hyperParameters)
    end
    
    assert(max(best_boxes(3,:))<=size(outImg,2),'Invalid object after optimization');
+    assert(min(best_boxes(1,:))>=0,'Invalid object after optimization');   
  
    %% Alignment
    if hyperParameters.visualize
@@ -167,24 +171,36 @@ function output = elementSampling(origImg,sgmp,outImg,hyperParameters)
        
        windows = best_boxes(:,(best_boxes(5,:) == hyperParameters.winClass));
        rest1 = best_boxes(:,(best_boxes(5,:) ~= hyperParameters.winClass));
-       windows = fminunc(@(x) objfun3(x,PM_win,win_ddw, win_ddh), windows, opts);
+       try
+        windows = fminunc(@(x) objfun3(x,PM_win,win_ddw, win_ddh), windows, opts);
+       catch
+        warning('Window alignment failed due to a weird MATLAB bug.');
+       end
        best_boxes = [windows rest1];
        
        if isfield(hyperParameters,'balcClass')
            balcs = best_boxes(:,(best_boxes(5,:) == hyperParameters.balcClass));
            rest2 = best_boxes(:,(best_boxes(5,:) ~= hyperParameters.balcClass));
-           balcs = fminunc(@(x) objfun3(x,PM_balc,balc_ddw, balc_ddh), balcs, opts);
+           try
+            balcs = fminunc(@(x) objfun3(x,PM_balc,balc_ddw, balc_ddh), balcs, opts);
+           catch
+               warning('Balcony alignment failed due to a weird MATLAB bug.');
+           end
            best_boxes = [balcs rest2];
        end
-   end
-   if hyperParameters.visualize
-    figure(101);imagesc(LabelingFromBoxes(best_boxes,true,size(outImg),hyperParameters));axis equal;
    end
    
    % Remove boxes violating the borders
    best_boxes(:,best_boxes(3,:)>size(outImg,2)) = [];
+   best_boxes(:,best_boxes(1,:)<=0) = [];
    
    assert(max(best_boxes(3,:))<=size(outImg,2),'Invalid object after alignment');
+   assert(min(best_boxes(1,:))>0,'Invalid object after alignment');   
+    
+   if hyperParameters.visualize
+    figure(101);imagesc(LabelingFromBoxes(best_boxes,true,size(outImg),hyperParameters));axis equal;
+   end
+   
     
    %% Output
    disp('--Creating the output label map...');
@@ -287,11 +303,11 @@ end
 
 function [boundingBoxes, medianw, medianh, poolBB] = getBoundingBoxesPool(classidx, outImg, pm, hyperParameters)
     poolBB = [];
-    if hyperParameters.legacy
-        [boundingBoxes, medianw, medianh, poolBB] = getBoundingBoxesPoolOld(classidx, outImg, pm);
+   if hyperParameters.legacy
+       [boundingBoxes, medianw, medianh, poolBB] = getBoundingBoxesPoolOld(classidx, outImg, pm);
     else 
         [boundingBoxes, medianw, medianh] = getBoundingBoxesPoolNew(classidx, outImg, pm, hyperParameters);
-    end
+   end
 end
 
 % Extracts bounding boxes with a pool of alternatives

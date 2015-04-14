@@ -40,11 +40,11 @@ end
 time_cumsum = 0;
 for facade_id = facade_ids_go,
     fprintf('     ____________facadeID=%s____________\n',num2str(facade_id));
-    grav_vec = load(get_adr('splitPlane',datasetConfig,inputName,facade_id));%load(get_adr('grav_vec',datasetConfig,facade_id));
+    grav_vec = load(get_adr('splitPlane',datasetConfig,inputName,num2str(facade_id)));%load(get_adr('grav_vec',datasetConfig,facade_id));
     
     grav_vec = grav_vec.g';
     if isempty(grav_vec), fprintf('              ...no grav vec...\n'); continue; end;
-    tic;
+%     tic;
     idx_in_facade = find(scene.facade_id==facade_id);
     if length(idx_in_facade)<3e3, continue; end %%% not enough points in this segment -> it is small , so we need to compensate :)
     nrm = mean(scene.nxyz(:,idx_in_facade),2);
@@ -90,7 +90,7 @@ for facade_id = facade_ids_go,
     bbox_new.id      = bbox_new.id(~small_boxes);
 
     
-    time_cumsum = time_cumsum+toc;
+%     time_cumsum = time_cumsum+toc;
     if save_res_per_facade2file,
         path2save = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
         fprintf('  ...savig bbox to %s\n',path2save);

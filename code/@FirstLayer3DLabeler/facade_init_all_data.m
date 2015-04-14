@@ -9,6 +9,10 @@ function facade_init_all_data(obj)
     fullScene = fullScene.read_mat_data( obj.config );
 
     spinImageExtractorIdx = find(cellfun(@(x)strcmp(x.name,'spinImage'),obj.config.c3D.featureExtractors),1);
+    if isempty(spinImageExtractorIdx)
+        dl.Log(VerbosityLevel.Error,sprintf('Spin image extractor undefined! Check InitializeDataset.m and set datasetConfig.c3D to a 3D extractor'));
+        error('Critical error. Terminating.');
+    end
     spinImageExtractor = obj.config.c3D.featureExtractors{spinImageExtractorIdx};
     
      %--- separate into train/test
@@ -48,7 +52,7 @@ function facade_init_all_data(obj)
 
     %--- also desc
     obj.test_data = test_data.process_data('create_desc_from_weak_descs','minX',minDESC,'maxX',maxDESC,'V',V,'D',D);
-
+    
     dl.Log(VerbosityLevel.Info,sprintf(' - init done.\n'));
 end
 

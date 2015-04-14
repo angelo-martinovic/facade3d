@@ -151,10 +151,10 @@ end
 %     wdata_old = wdata;
     wdata = wdata-.5*wquad;
     
-    cvx_begin %quiet
+    cvx_begin quiet
         cvx_solver mosek
-        cvx_solver_settings('MSK_IPAR_NUM_THREADS',8)   % 1 thread
-        cvx_solver_settings('MSK_DPAR_MIO_MAX_TIME',10) % max 10 seconds
+        cvx_solver_settings('MSK_IPAR_NUM_THREADS',1)   % 1 thread
+        cvx_solver_settings('MSK_DPAR_MIO_MAX_TIME',20) % max 10 seconds
         variable x(nvars) binary
         minimize wdata'*x + .5*x.''*Q*x'
         subject to

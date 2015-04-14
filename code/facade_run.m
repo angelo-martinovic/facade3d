@@ -1,59 +1,98 @@
-% Set paths
-setup;
-
-% Set up the dataset: file locations, file names
-datasetConfig = InitializeDataset('monge428');
-
+setup; % Set paths
+datasetConfig = InitializeDataset('monge428'); % Set up the dataset: file locations, file names
 
 if datasetConfig.nWorkers>1
     InitializeParallel(datasetConfig.nWorkers);
 end
     
-%% angelo
-% Input: images and labels
-% Output: classified images of the test set and the projected classification on the
-% point cloud
-% FirstLayer2D(datasetConfig);
+rng(1); % For reproducibility
 
-if datasetConfig.skipAll3D
-    return;
-end
+dl = DispatchingLogger.getInstance();
+ 
+%% ======================================
+% First+second layer 2D: Image labeling
+% =======================================
 
-%% honza
-% Input: point cloud
-% Output: classified point cloud
-scene = FirstLayer3D(datasetConfig);
+    fl2D = FirstLayer2DLabeler ( datasetConfig );
+    imageNames = fl2D.LoadFilenames('eval');
+    
+    fl2D.PrepareData();      % Resize, rectify, segment, extract features, run detectors
+    fl2D.TrainClassifier();  % Train SVM on region features from the train set
+    fl2D.RunClassifier();    % Use the trained SVM to classify new images in the test set
+    fl2D.LabelImagesATLAS(); % Label images with SVM (layer 1), detectors and CRF (layer 2)
 
-%% angelo
-% Input: classified point clouds
-% Output: combined classified point cloud 
-inputName = SecondLayer(datasetConfig);
+    EvaluateImageLabeling(datasetConfig,imageNames,fl2D.GetOutputFolderLayer1()); % Eval layer 1
+    EvaluateImageLabeling(datasetConfig,imageNames,fl2D.GetOutputFolderLayer2()); % Eval layer 2
+    
+%% =====================================
+% Projection of 2D classification to point cloud
+% ======================================    
+    [f1,f2] = fl2D.Project2DOntoPointCloud(); 
+    EvaluateMeshLabeling(datasetConfig,f1); % Evaluate layer 1 projected on pcl
+    EvaluateMeshLabeling(datasetConfig,f2); % Evaluate layer 2 projected on pcl
+    
+%% ======================================
+% First layer 3D: Point cloud labeling
+% =======================================
+    fl3D = FirstLayer3DLabeler(datasetConfig); % Initialize data, calculate descriptors
+    scene = fl3D.test_data;
+       
+    fl3D.PrepareData(obj);          % Prepare descriptors
+    fl3D.TrainClassifier(obj);      % Train 3D point cloud classifier
+    fl3D.EvaluateClassifier(obj);   % Evaluate classifier
+    fl3D.SaveResults(obj);  
+    
+    EvaluateMeshLabeling(datasetConfig,fl3D.GetPCLLabeling()); % Evaluate layer 1 projected on pcl
 
-return;
+%% =====================================
+% Second layer 3D: 3D CRF
+% ======================================
 
-%% angelo
-% Input: classified point cloud
-% Output: improved classification of point cloud
-ThirdLayer2D(datasetConfig,inputName);
+    sl3D = SecondLayer3DLabeler(datasetConfig);
+    modelName = sl3D.GetOutputNameCRF();
+    
+    sl3D.LabelPointCloudWithUnaries();
+    sl3D.SavePotentialsAndLabels();
 
-%% honza
-% Input: classified point cloud
-% Output: improved classification of point cloud
-ThirdLayer3D(datasetConfig,inputName,scene);
+%% =====================================
+% Projection of 3D classification to images
+% ======================================
+    outputFolder = BatchGenerate2DLabelings(datasetConfig,imageNames,modelName); % Generate images
+    EvaluateImageLabeling(datasetConfig,imageNames,outputFolder);  % Evaluate projection
 
-%%
-EvaluateAll(datasetConfig);
+%% =====================================
+% Third layer
+% ======================================
+    %% ======================================
+    % Preprocessing
+    % =======================================
+    tl2D = ThirdLayer2DLabeler (datasetConfig, modelName);
+    tl2D.SplitPointCloud();   % Split point cloud into facade point clouds
+    tl2D.FitPlanes();         % Fit a plane to each facade
+    
+    %% ======================================
+    % Ortho 2D version
+    % =======================================
+    tl2D.OrthoImages();       % Create ortho images, labelings, unaries by projecting onto the plane
 
-
-
-
-
-
-
-
-
-
-
-
+    submittedToCluster = tl2D.RunThirdLayer(); % Run ortho2D third layer
+    if submittedToCluster
+        dl.Log(VerbosityLevel.Info,...
+            sprintf(['Jobs submitted to condor.' ...
+            'Run the remaining commands when condor jobs have finished.\n']));
+        return;
+    end
+    
+    tl2D.OrthoImagesBackProject();  % Back-project the labeling to facade 3D point clouds
+    tl2D.ReassemblePointCloud();    % Join the labeled facades into the original point cloud
+    tl2D.EvaluateLabeling();        % Evaluate
+    
+    %% ======================================
+    % 3D version
+    % =======================================
+    ThirdLayer3D(datasetConfig,modelName,scene);
+    
+%=======================================
+%=======================================
 
 

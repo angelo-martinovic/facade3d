@@ -1,12 +1,16 @@
 function OrthoImagesBackProject(obj)
-
+    dl = DispatchingLogger.getInstance();
+    dl.Log(VerbosityLevel.Info,...
+        sprintf('Back-projecting 3rd layer labelings to the point cloud...\n'));
+        
     facadeIDs = obj.GetFacadeIDs();
 
     tic;
     for i=1:length(facadeIDs)
        facadeID = num2str(facadeIDs(i));
 
-       fprintf('----\nProcessing facade ID %s (%d of %d) ...\n----',facadeID,i,length(facadeIDs));
+       dl.Log(VerbosityLevel.Debug,...
+            sprintf(' - Processing facade ID %s (%d of %d) ...\n',facadeID,i,length(facadeIDs)));
 
        % Labeling
        [points,~,~] = ReadPCLFromPly(get_adr('splitLabeling',obj.config,obj.splitName,facadeID));
@@ -17,7 +21,9 @@ function OrthoImagesBackProject(obj)
        g= ss.g;
 
        if isempty(plane)
-           error('No main plane found! Ortho-rectification cannot continue.');
+           dl.Log(VerbosityLevel.Error,...
+               sprintf(' - No main plane found! Ortho-rectification cannot continue.\n'));
+           error('Critical error. Terminating.');
        end
 
        v = bsxfun(@minus,points,plane.p');    % vectors from points to plane origin
@@ -73,7 +79,8 @@ function OrthoImagesBackProject(obj)
        % Get the ortho-image
        orthoImageFilename = get_adr('orthoLabelingLayer3Img',obj.config,obj.splitName,facadeID);
        if ~exist(orthoImageFilename,'file')
-           warning('%s does not exist.\n',orthoImageFilename);
+           dl.Log(VerbosityLevel.Warning,...
+               sprintf(' - Ortho labeling %s does not exist.\n',orthoImageFilename));
            continue;
        end
        orthoImage = imread(orthoImageFilename);
@@ -81,8 +88,12 @@ function OrthoImagesBackProject(obj)
        orthoImage = imrotate(orthoImage,180);
        orthoImageColors = reshape(orthoImage,[size(orthoImage,1)*size(orthoImage,2),3]);
 
-       assert(isequal(size(orthoImageColors,1),size(iPoints,2)),...
-           'Read ortho image size: %d %d, sampled points: %d %d',size(orthoImage,1),size(orthoImage,2),iHeight,iWidth);
+       if ~isequal(size(orthoImageColors,1),size(iPoints,2))
+           dl.Log(VerbosityLevel.Error,...
+               sprintf(' - - Read ortho image size: %d %d, sampled points: %d %d',...
+               size(orthoImage,1),size(orthoImage,2),iHeight,iWidth));
+           error('Critical error. Terminating.');
+       end
 
        % Project the points to the world coordinate system
        iPointsT = bsxfun(@plus,iPoints,o);
@@ -96,6 +107,5 @@ function OrthoImagesBackProject(obj)
 
        ExportMesh(get_adr('orthoLabelingLayer3Ply',obj.config,obj.splitName,facadeID),points,[],pointSubsetColors,[],[]);
     end
-    orthoTime = toc;
-    fprintf('Elapsed time: %d seconds.\n',orthoTime);
+    dl.Log(VerbosityLevel.Info,sprintf('Done. Elapsed time: %.2f seconds.\n',toc));
 end

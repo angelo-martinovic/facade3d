@@ -66,17 +66,22 @@ if exist('labeling_cprb_doors','var') && ~isempty(labeling_cprb_doors),
         if d==0,
             continue;
         end
+        boundsY = [max(pts_facade,[],2) ; min(pts_facade,[],2)];
+        boundsY = boundsY([5 2]);
+        
         tmp_corners = [max(pts_facade(:,doors_labels_local==d),[],2) ; min(pts_facade(:,doors_labels_local==d),[],2)];
+%         tmp_corners = [max(pts_facade,[],2) ; min(pts_facade,[],2)];
         %--- optimize
         tmp_corners(1) = line_floor;
         tmp_cor = tmp_corners;
         tmp_center = (tmp_corners(1:3)+tmp_corners(4:6))/2;
         score = -5e6;
-        for pos_y = -.3+tmp_center(2):.1:.3+tmp_center(2)  %%% its horiziontal postion
-            for width = median_size(2,1)*1.5:median_size(1,1)*.2:median_size(2,1)*2.5
-                for heigh = median_size(1,1)*1.5:median_size(1,1)*.5:median_size(1,1)*4
+%         for pos_y = -.3+tmp_center(2):.1:.3+tmp_center(2)  %%% its horiziontal postion
+         for width = median_size(2,1)*1.5:median_size(1,1)*.2:median_size(2,1)*2.5
+            for pos_y = boundsY(1)+width/2:median_size(1,1)*.2:boundsY(2)-width/2
+                for height = median_size(1,1)*1.5:median_size(1,1)*.5:median_size(1,1)*4
                     
-                    tmp_cor(4) = line_floor-heigh; %%% upper
+                    tmp_cor(4) = line_floor-height; %%% upper
                     tmp_cor([2 5]) = [width/2 -width/2]+pos_y;
                     
                     idx_pts_in_box_      = logical(pts_in_bbox(pts_facade,tmp_cor));
@@ -92,35 +97,53 @@ if exist('labeling_cprb_doors','var') && ~isempty(labeling_cprb_doors),
             end
         end
         if ~isempty(tmp_corners)
+            honza_scatter(pts_facade,pts_facade(1,:)*0+15,prob_classes_local(4,:),'filled'); honza_plot_3d_cube(tmp_corners([3 6]),tmp_corners([2 5]),tmp_corners([1 4]),'FaceColor','r','FaceAlpha',.8); view(90,90);    
+            title(num2str(score));
             door_corners = [door_corners tmp_corners];
             door_scores  = [door_scores score];
         end
     end
         
+% %      honza_scatter(pts_facade,pts_facade(1,:)*0+15,prob_classes_local(4,:),'filled'); honza_plot_3d_cube(tmp_corners([3 6]),tmp_corners([2 5]),tmp_corners([1 4]),'FaceColor','r','FaceAlpha',.8); view(90,90);    
+%         honza_scatter(pts_facade,pts_facade(1,:)*0+15,prob_classes_local(4,:),'filled'); honza_plot_3d_cube(tmp_corners([3 6]),tmp_corners([2 5]),tmp_corners([1 4]),'FaceColor','r','FaceAlpha',.8); view(90,90);    
+%         
+%         if ~isempty(tmp_corners)
+%             door_corners = [door_corners tmp_corners];
+%             door_scores  = [door_scores score];
+%             bbox.corners = [bbox.corners [tmp_corners(1:2); bbox_shop_corners(3)+0.1;  tmp_corners(4:5); bbox_shop_corners(6)-0.1]];
+%             bbox.class = [bbox.class 4];
+% %             cnt=size(door_corners,2);
+% %             honza_plot_3d_cube(door_corners([3 6],cnt),door_corners([2 5],cnt),door_corners([1 4],cnt),'FaceColor','r','FaceAlpha',1); hold on;
+% %             text(door_corners(1,cnt),door_corners(2,cnt),door_corners(3,cnt),num2str(cnt));
+%         end
+        
     %--- test overlap
-    pool = [door_corners([5 4 2 1],:)];
-    for d=1:length(door_scores),
-        bbox1 = pool(:,d);
-        use_d = 1;
-        for d_test = 1:length(door_scores)
-            if d==d_test, continue; end;
-            bbox2 = pool(:,d_test);
-            max_x1 = max(bbox1(1), bbox2(1));
-            min_x2 = min(bbox1(3), bbox2(3));
-            overlap_x = (min_x2 - max_x1);
-            overlap_x = overlap_x > .5*(bbox2(3)-bbox2(1));
-            overlap = ~(bbox2(3) < bbox1(1) | bbox2(1) > bbox1(3)  );
-            if overlap,
-                if door_scores(d)<door_scores(d_test),
-                    use_d = 0;
-                end
-            end   
-        end    
-        if use_d
-            bbox.corners = [bbox.corners [door_corners(1:2,d); bbox_shop_corners(3)+0.1;  door_corners(4:5,d); bbox_shop_corners(6)-0.1]];
-            bbox.class = [bbox.class 4];
-        end
-    end
+%     pool = [door_corners([5 4 2 1],:)];
+%     for d=1:length(door_scores),
+%         bbox1 = pool(:,d);
+%         use_d = 1;
+%         for d_test = 1:length(door_scores)
+%             if d==d_test, continue; end;
+%             bbox2 = pool(:,d_test);
+%             max_x1 = max(bbox1(1), bbox2(1));
+%             min_x2 = min(bbox1(3), bbox2(3));
+%             overlap_x = (min_x2 - max_x1);
+%             overlap_x = overlap_x > .5*(bbox2(3)-bbox2(1));
+%             overlap = ~(bbox2(3) < bbox1(1) | bbox2(1) > bbox1(3)  );
+%             if overlap,
+%                 if door_scores(d)<door_scores(d_test),
+%                     use_d = 0;
+%                 end
+%             end   
+%         end    
+%         if use_d
+%             bbox.corners = [bbox.corners [door_corners(1:2,d); bbox_shop_corners(3)+0.1;  door_corners(4:5,d); bbox_shop_corners(6)-0.1]];
+%             bbox.class = [bbox.class 4];
+%         end
+%     end
+    [~,d] = max(door_scores);
+    bbox.corners = [bbox.corners [door_corners(1:2,d); bbox_shop_corners(3)+0.1;  door_corners(4:5,d); bbox_shop_corners(6)-0.1]];
+    bbox.class = [bbox.class 4];
 end
 
 end
@@ -132,8 +155,8 @@ end
 
 
 
-%%  get lines that sepraates shop from waal from roof...
-function [line_floor line_top line_shopeWall line_wallRoof line_roofSky] =  get_separ_lines (cprb_facade,pts_facade)
+%%  get lines that sepraates shop from wall from roof...
+function [line_floor, line_top, line_shopeWall, line_wallRoof, line_roofSky] =  get_separ_lines (cprb_facade,pts_facade)
 
 
 %--- window->wall... blac->wall
@@ -183,12 +206,6 @@ end
 
 
 
-
-
-
-
-
-
 %% energy of the current sepration lines
 function energy = energy_(lines,cprb_facade,pts_facade,ln_floor,ln_top)
 pts_dim        = pts_facade(1,:);
@@ -202,7 +219,7 @@ norm_val = [ 0 abs(lines(1)-lines(2)) 0 0 abs(lines(2)-lines(3)) abs(ln_top-line
 
 energy = 0;
 for class = [2 5 6 7],%1:unique(cprb_facade),
-    energy = energy - sum(cprb_new(cprb_new==class)==cprb_facade(cprb_new==class))/sum(cprb_facade==class);   %/norm_val(class)
+    energy = energy - sum(cprb_new(cprb_new==class)==cprb_facade(cprb_new==class));%/sum(cprb_facade==class);   %/norm_val(class)
 end
 
     

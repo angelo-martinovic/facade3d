@@ -1,7 +1,7 @@
 function labels = Image2Labels(image,cm)
 
     colors = reshape(image,[size(image,1)*size(image,2) 3]);
-    labels = Colors2Labels(colors,round(255*cm));
+    labels = Colors2Labels(colors,cm);
     labels = reshape(labels,[size(image,1) size(image,2)]);
 %   labels = zeros(size(colors,1),1);
 % 
