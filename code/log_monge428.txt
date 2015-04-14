@@ -5409,3 +5409,20 @@ detections_to_wnd_eval_normalized.py: error: Could not find the data sequence
 [14-Apr-2015 17:26:17][I] Evaluated the 2D labeling of 202 images in ../output/work/classifier/nonlinSVM/layer1/. Pascal IoU score: 54.46.
 [14-Apr-2015 17:27:19][I]  - Evaluating on 202 images.
 [14-Apr-2015 17:27:47][I]  - Evaluated the 2D labeling of 202 images in ../output/work/classifier/nonlinSVM/layer1/. Results stored in ../output/work/classifier/nonlinSVM/layer1/results.mat. Pascal IoU score: 54.46.
+[14-Apr-2015 18:12:06][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_2D_layer1_majorityVote.ply.
+[14-Apr-2015 18:12:10][I] Stored the result in ../output/work/pcl/models/monge428_2D_layer1_majorityVote.ply_results.mat. Pascal IoU score: 54.68.
+[14-Apr-2015 18:12:24][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_2D_layer2_majorityVote.ply.
+[14-Apr-2015 18:12:28][I] Stored the result in ../output/work/pcl/models/monge428_2D_layer2_majorityVote.ply_results.mat. Pascal IoU score: 56.10.
+[14-Apr-2015 18:28:15][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_rf.ply.
+[14-Apr-2015 18:29:56][I]  - read SScene_An.... dataset = 'monge428' 
+[14-Apr-2015 18:30:06][I]  - Extracting descriptors from train set...
+[14-Apr-2015 18:30:06][I]  - -  done in 0.01sec
+[14-Apr-2015 18:30:22][I]  - read SScene_An.... dataset = 'monge428' 
+[14-Apr-2015 18:30:29][I]  - Extracting descriptors from train set...
+[14-Apr-2015 18:30:29][I]  - -  done in 0.04sec
+[14-Apr-2015 18:30:31][I]  - Extracting descriptors from test set...
+[14-Apr-2015 18:30:31][I]  - -  done in 0.00sec
+[14-Apr-2015 18:30:32][I]  - Concatenating descriptors...
+[14-Apr-2015 18:30:33][I]  - init done.
+[14-Apr-2015 18:30:46][I]  - Creating correct descriptor format
+[14-Apr-2015 18:30:46][I]  - - done. Elapsed time: 0.02 seconds.

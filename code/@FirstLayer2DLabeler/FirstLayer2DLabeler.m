@@ -34,6 +34,14 @@ classdef FirstLayer2DLabeler < handle
             outputFolder = [get_adr('2D_classification',obj.config,obj.config.c2D.classifier.name) 'layer2/'];
         end
         
+        function outputFile = GetOutputProjectedLayer1(obj)
+            outputFile = get_adr('pcl_labeling',obj.config,'2D_layer1_majorityVote');
+        end
+        
+        function outputFile = GetOutputProjectedLayer2(obj)
+            outputFile = get_adr('pcl_labeling',obj.config,'2D_layer2_majorityVote');
+        end
+        
     end
     %%
     methods(Access = private)

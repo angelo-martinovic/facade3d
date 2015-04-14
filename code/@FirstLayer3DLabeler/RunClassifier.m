@@ -1,4 +1,4 @@
-function EvaluateClassifier(obj)
+function RunClassifier(obj)
     dl = DispatchingLogger.getInstance();
     
     c = obj.config.c3D.classifier;
@@ -11,11 +11,11 @@ function EvaluateClassifier(obj)
     tic;
     load(classifierLoc,'model');
     [obj.prb,obj.cprb]  = obj.facade_unary_class('test','model',model,'Xtest',obj.Xtest); 
-    rfTestTime = toc;    
-    dl.Log(VerbosityLevel.Info,sprintf(' - - done. Elapsed time: %.2f seconds.\n',rfTestTime));
+    testTime = toc;    
+    dl.Log(VerbosityLevel.Info,sprintf(' - - done. Elapsed time: %.2f seconds.\n',testTime));
     
     % Save timing
-    save(get_adr('classifier3d_testTime',obj.config,c.name),'rfTestTime');
+    save(get_adr('classifier3d_testTime',obj.config,c.name),'testTime');
     
     % Save resulting labeled point cloud
     path_labeling = get_adr('pcl_labeling',obj.config,c.name);
