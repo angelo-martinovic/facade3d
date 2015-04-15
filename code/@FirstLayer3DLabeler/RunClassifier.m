@@ -1,7 +1,8 @@
 function RunClassifier(obj)
     dl = DispatchingLogger.getInstance();
     
-    c = obj.config.c3D.classifier;
+    c3d = obj.config.c3D;
+    c = c3d.classifier;
     classifierLoc = get_adr('classifier3d',obj.config,c.name);
     
     % Run classifier on test set
@@ -15,18 +16,18 @@ function RunClassifier(obj)
     dl.Log(VerbosityLevel.Info,sprintf(' - - done. Elapsed time: %.2f seconds.\n',testTime));
     
     % Save timing
-    save(get_adr('classifier3d_testTime',obj.config,c.name),'testTime');
+    save(get_adr('classifier3d_testTime',obj.config,c3d.name),'testTime');
     
     % Save resulting labeled point cloud
-    path_labeling = get_adr('pcl_labeling',obj.config,c.name);
+    path_labeling = get_adr('pcl_labeling',obj.config,c3d.name);
     dl.Log(VerbosityLevel.Info,sprintf(' - Saving the results...\n')); 
-    fl.test_data.export_as_full_pcl_data( obj.config , obj.cprb , path_labeling ); %%% export labeling
+    obj.test_data.export_as_full_pcl_data( obj.config , obj.cprb , path_labeling ); %%% export labeling
     
     % Save resulting probability map per point
     pclProbDir = get_adr('pclProbDir',obj.config);
     mkdirIfNotExist(pclProbDir);
     
-    path_prb = get_adr('pcl_unaries',obj.config,c.name);
+    path_prb = get_adr('pcl_unaries',obj.config,c3d.name);
     prb = obj.prb; %#ok<NASGU>
     save( path_prb , 'prb' );
     dl.Log(VerbosityLevel.Info,sprintf(' - Results saved to: %s and %s\n',path_labeling,path_prb)); 

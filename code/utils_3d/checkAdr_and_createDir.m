@@ -16,7 +16,7 @@ idx_sl  = find(address=='/');
 if isempty(idx_sl), return; end;
 dir_adr = address(1:idx_sl(end));
 if ~exist(dir_adr,'dir');
-    disp(['  creating dir : ',dir_adr]);
+%     disp(['  creating dir : ',dir_adr]);
     mkdir(dir_adr);
     fileattrib(dir_adr,'+w','g');
 end 

@@ -1,4 +1,4 @@
-function [lab1Filename,lab2Filename,gtFilename] = Project2DOntoPointCloud(obj)
+function [lab1Filename,lab2Filename] = Project2DOntoPointCloud(obj)
 
     dl = DispatchingLogger.getInstance();
     dl.Log(VerbosityLevel.Info,sprintf('Projecting labeling onto the point cloud ...\n'));
@@ -149,7 +149,6 @@ function [lab1Filename,lab2Filename,gtFilename] = Project2DOntoPointCloud(obj)
     
     save(get_adr('pcl_unaries',obj.config,'2D'),'unary','unaryDet');
     dl.Log(VerbosityLevel.Info,sprintf(' - Done!\n'));
-    
-    gtFilename = get_adr('pcl_gt_test',obj.config);
+   
 
 end

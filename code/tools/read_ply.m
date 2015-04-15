@@ -23,9 +23,9 @@ function [vertex,vertexNormal,vertexColor,face,faceColor] = read_ply(filename,ty
 
     %% Vertex colors
     if isfield(d.vertex,'red')
-        vertexColor = [d.vertex.red, d.vertex.green, d.vertex.blue];
+        vertexColor = uint8([d.vertex.red, d.vertex.green, d.vertex.blue]);
     elseif isfield(d.vertex,'diffuse_red')
-        vertexColor = [d.vertex.diffuse_red, d.vertex.diffuse_green, d.vertex.diffuse_blue];
+        vertexColor = uint8([d.vertex.diffuse_red, d.vertex.diffuse_green, d.vertex.diffuse_blue]);
     else
         dl.Log(VerbosityLevel.Debug,sprintf(' - - - Vertex colors not found.\n'));
         vertexColor = [];
@@ -54,7 +54,7 @@ function [vertex,vertexNormal,vertexColor,face,faceColor] = read_ply(filename,ty
             end
 
             if isfield(d.face,'red')
-                faceColor = [d.face.red, d.face.green, d.face.blue];
+                faceColor = uint8([d.face.red, d.face.green, d.face.blue]);
             else
                 dl.Log(VerbosityLevel.Debug,sprintf(' - - - Face colors not found.\n'));
             end

@@ -29,30 +29,33 @@ dl = DispatchingLogger.getInstance();
 % Projection of 2D classification to point cloud
 % ======================================    
     fl2D.Project2DOntoPointCloud(); 
-    EvaluateMeshLabeling(datasetConfig,fl2D.GetOutputProjectedLayer1()); % Evaluate layer 1 projected on pcl
-    EvaluateMeshLabeling(datasetConfig,fl2D.GetOutputProjectedLayer2()); % Evaluate layer 2 projected on pcl
+    EvaluateMeshLabeling(datasetConfig,fl2D.GetOutputProjectedLayer1()); % Eval layer 1 projected on PCL
+    EvaluateMeshLabeling(datasetConfig,fl2D.GetOutputProjectedLayer2()); % Eval layer 2 projected on PCL
     
 %% ======================================
 % First layer 3D: Point cloud labeling
 % =======================================
     fl3D = FirstLayer3DLabeler(datasetConfig); % Initialize data, calculate descriptors
-    scene = fl3D.test_data;
+    pcl_test = fl3D.test_data;
+    pcl_all = fl3D.all_data;
        
     fl3D.PrepareData();          % Prepare descriptors
     fl3D.TrainClassifier();      % Train 3D point cloud classifier
     fl3D.RunClassifier();        % Run classifier on test set
     
-    EvaluateMeshLabeling(datasetConfig,fl3D.GetPCLLabeling()); % Evaluate pcl labeling
+    EvaluateMeshLabeling(datasetConfig,fl3D.GetPCLLabeling()); % Evaluate PCL labeling
 
 %% =====================================
 % Second layer 3D: 3D CRF
 % ======================================
 
-    sl3D = SecondLayer3DLabeler(datasetConfig);
-    modelName = sl3D.GetOutputNameCRF();
+    sl3D = SecondLayer3DLabeler(datasetConfig,pcl_all);     % Setup unary potentials
     
-    sl3D.LabelPointCloudWithUnaries();
-    sl3D.SavePotentialsAndLabels();
+    sl3D.Run3DCRF();                                % Run the CRF
+    sl3D.SavePotentialsAndLabels();                 % Save the obtained labeling
+    
+   %modelName = sl3D.GetOutputNameMAP();
+    modelName = sl3D.GetOutputNameCRF();            % Get the generated model name
 
 %% =====================================
 % Projection of 3D classification to images
@@ -90,7 +93,7 @@ dl = DispatchingLogger.getInstance();
     %% ======================================
     % 3D version
     % =======================================
-    ThirdLayer3D(datasetConfig,modelName,scene);
+    ThirdLayer3D(datasetConfig,modelName,pcl_test,pcl_all);
     
 %=======================================
 %=======================================

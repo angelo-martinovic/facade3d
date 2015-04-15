@@ -1,42 +1,51 @@
 
 
-function ThirdLayer3D(datasetConfig , inputName, scene)
+function ThirdLayer3D(datasetConfig, inputName, scene, fullScene)
     tic;
+    dl = DispatchingLogger.getInstance();
+    
+    dl.Log(VerbosityLevel.Debug,...
+    sprintf('Running 3D third layer on top of %s point cloud labeling.\n',inputName));
+
     %--- function to check which points are inside box
     pts_in_bbox = @(pts_facade,tmp_corner) pts_facade(1,:)<tmp_corner(1) & pts_facade(2,:)<tmp_corner(2) & pts_facade(1,:)>tmp_corner(4) & pts_facade(2,:)>tmp_corner(5);
-
 
     %--- read cprb from before results
     [~,~,rgb_data_cprb] = read_ply(get_adr('pcl_labeling',datasetConfig,inputName),'pcl');
     rgb_data_cprb = rgb_data_cprb(scene.p_index,:);
-    cprb = Colors2Labels(rgb_data_cprb,scene.get_class_colormap)';
+    cprb = Colors2Labels(rgb_data_cprb,datasetConfig.cm)';
 
+    pts_split_label    = load([datasetConfig.dataLocation,datasetConfig.splitData]);
+    scene.facade_id      = pts_split_label.splitLabels(scene.p_index)';
+    
     %--- which facades to process
-    facade_ids_go = unique(scene.facade_id);  %%% ids of facedes
+    facade_ids_go = 2;%unique(scene.facade_id);  %%% ids of facedes
     facade_ids_go(facade_ids_go==0)=[]; % Remove the background
-
-    if 1, %% run 3rd layer again! :)
-        save_res_per_facade2file = 1;  %%% if to save results
-        facade_run_3Layer3D;
-    end
-
 
     %--- what to export
     plot_boxes_while_optimizing                     = 0;   %%% plot boxes before and after optimization :)
     export_result_to_full_scene_ply                 = 1;   %%% for andelos's evaluation
     save_separate_rgb_projected3dfacades            = 1;   %%% each facade with boxes for projections  to 3ds max:)
     visualize_full_scene                            = 0;   %%% show the entire re-labeled point cloud
+    save_res_per_facade2file = 1;  %%% if to save results
     
+    dl.Log(VerbosityLevel.Info,...
+    sprintf('- Optimizing for objects (window, balcony, door).\n'));
+
+    facade_run_3Layer3D;
+
+
     %--- can be always on -> this defines what to calculate from 3rd layer boxes   
     store_bbox = 1;  %%% if I want to store all boxes (yes for export)
     estimate_door_box = 1; %%% always on!
 
+    cmap = round(datasetConfig.cm(2:end,:)*255);
 
     %--- init some vars
     cprb_new_objs = cprb;
     if store_bbox, %%% if I may export to 3ds and want to have 
         pts = []; tri = []; tri_color = []; pts_facid=[]; tri_facid=[]; pts_ori=[]; pts_classid=[];tri_classid=[]; pts_oid=[]; tri_oid=[];
-        cmap = scene.get_class_colormap();cmap = cmap(2:end,:);     
+%         cmap = scene.get_class_colormap();cmap = cmap(2:end,:);     
     end
 %     labeling_cprb_doors = [];
     if estimate_door_box, %%% door needs probability map, not just labeling...
@@ -50,26 +59,30 @@ function ThirdLayer3D(datasetConfig , inputName, scene)
 
 
     %==========================================================================
-    %------- Juhuuu!!  now project boxes to pcl and update the probm.
-    %        & and estimate boxes during that..
+    %------- Now project boxes to pcl and update the probability map.
+    %        Also estimate 3D boxes.
     %--------------------------------------------------------------------------
-    time_cumsum_3rd_end = 0;
-    fprintf('===============================================================================\n   Use precalculated bboxes of wind+balc, estimate rest, project it to pcl and show the result! \n------------------------------------------------------------------------------');
+%     time_cumsum_3rd_end = 0;
+    dl.Log(VerbosityLevel.Info,...
+    sprintf('- Optimizing for stuff (sky, roof, shop, wall).\n'));
+    %.Use precalculated bboxes of wind+balc, estimate rest, project it to pcl and show the result!'));
     for facade_id = facade_ids_go,
         if facade_id < 1,
             continue;
         end
         %--- read boxes
         idx_in_facade = find(scene.facade_id==facade_id);
-        fprintf('   ----------------------------\n      facade id=%i, #pts=%.1fK,  ',facade_id,length(idx_in_facade)/1e3);
-        %path_data = scene.get_adr('wa_bboxes',input_type_into_3rd,facade_id);
+        dl.Log(VerbosityLevel.Info,...
+         sprintf('- - facade id=%i, #pts=%.1fK\n',facade_id,length(idx_in_facade)/1e3));
+
         path_data = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
         if ~exist(path_data,'file');
-            fprintf('Does not exist!\n');
+            dl.Log(VerbosityLevel.Warning,sprintf('- - - No boxes estimated for this facade!\n'));
             continue;
         end
         t = dir(path_data);
-        fprintf('    ...bbox file %s \n         created at  %s\n',path_data,t.date);
+        dl.Log(VerbosityLevel.Debug,...
+            sprintf('- - Reading from %s, created at %s\n',path_data,t.date));
         load(path_data);  %%% read normals, bbox, bbox_ga and bbox_new
         %--- read grav. vector
         grav_vec = load(get_adr('splitPlane',datasetConfig,inputName,num2str(facade_id)));%load( get_adr('grav_vec',datasetConfig,facade_id) );
@@ -79,11 +92,14 @@ function ThirdLayer3D(datasetConfig , inputName, scene)
 
         %---- project optimization to facade's labeling -------------------
         [pts_facade,~] = project_in3d_pts_to_planes_normal( scene.pts(:,idx_in_facade) , nrm , [] , grav_vec);
-        fprintf('         bbox %i->%i->%i\n',length(bbox.id),length(bbox_ga.id),length(bbox_new.id));
+        dl.Log(VerbosityLevel.Debug,...
+            sprintf('- - # of objects: %i->%i->%i\n',length(bbox.id),length(bbox_ga.id),length(bbox_new.id)));
 
+        % TODO: CLASSES ARE HARDCODED HERE!!!!
         %--- Now, lets do something with boxes... firstly reset to wal/sky/balc..
         tbox = facade_estimate_wall_bboxes(bbox_new,cprb,idx_in_facade,pts_facade,pts_in_bbox,labeling_cprb_doors,prob_classes);
         cprb_new_objs(idx_in_facade) = 2; %%% set everything to wall
+        
         %---- now project classes that are not win. or balc.
         for co = [6 5 7 4];
             ids_local  = cprb(idx_in_facade)==co;  %%% idxs in facade
@@ -97,7 +113,7 @@ function ThirdLayer3D(datasetConfig , inputName, scene)
             
         end
 
-        %--- now project the value of each box (win+blac)
+        %--- now project the value of each box (win+balc)
         for b=1:length(bbox_new.class),
             %--- pts in the bbox
             idx_pts_in_box_facade = pts_in_bbox(pts_facade,bbox_new.corners(:,b));
@@ -142,7 +158,7 @@ function ThirdLayer3D(datasetConfig , inputName, scene)
             cam_set = @() eval(' axis equal off; campos([0 -1 3]); camup([-1 0 0]); camzoom(0.8); camproj(''orthographic''); set(gcf, ''Position'', [400 400 800 600]); set(gcf, ''Color'', [1 1 1]); zoom(1.2);');
             path2save = ['../output/export/3D_3L_facades_boxes/'];
             checkAdr_and_createDir(path2save);
-            cmap = scene.get_class_colormap();cmap = cmap(2:end,:);
+%             cmap = scene.get_class_colormap();cmap = cmap(2:end,:);
             try close all; end;
             % hf=figure(); honza_scatter(pts_facade,pts_facade(1,:)*0+20,cmap(cprb(idx_in_facade),:)/255,'filled');  set(hf,'Position',[0,0,600,700]); set(gcf, 'Color', [1 1 1]); zoom(1.2); axis off equal; view(90,90);
             % im = screencapture(hf); delete(hf); imwrite(imcrop(im,[10 80 size(im,2)-20 size(im,1)-120]),[path2save,num2str(facade_id),'_',inputName,'_0prob.jpg']);
@@ -155,16 +171,18 @@ function ThirdLayer3D(datasetConfig , inputName, scene)
             try delete(hf); end; close all;
             hf = figure(32); for cnt=1:length(tbox.class); col=cmap(tbox.class(cnt),:)/255; honza_plot_3d_cube(tbox.corners([3 6],cnt),tbox.corners([2 5],cnt),tbox.corners([1 4],cnt),'FaceColor',col,'FaceAlpha',1); hold on; end; alpha(0.8); cam_set();
             export_fig([path2save,num2str(facade_id),'_',inputName,'_4fac.jpg']); delete(hf);
-            fprintf('         bbox saved to: %s - %s - facid=%i...\n',path2save,inputName,facade_id);
+            dl.Log(VerbosityLevel.Debug,...
+                sprintf(' - - Bbox saved to: %s - %s - facade ID=%i...\n',path2save,inputName,facade_id));
         end
     end
 
 
-
+    dl.Log(VerbosityLevel.Info,sprintf('- Elapsed time for calculation: %.2f\n',toc));
+    tic;
 
     %--- separate facades for 3ds max as BOXES with RGB projection :)
     if save_separate_rgb_projected3dfacades,
-        fprintf('====================================================\n               export results to 3ds max\n-----------------------------------------------------');
+        dl.Log(VerbosityLevel.Info, sprintf('- Exporting results to 3ds Max.\n'));
         path_3ds_export_fac = '../output/export/3D_3L_facades_3ds/';
         for facade_id = facade_ids_go,
 
@@ -177,7 +195,7 @@ function ThirdLayer3D(datasetConfig , inputName, scene)
             im = imrotate(im,90);
             checkAdr_and_createDir(path_fac_img);
             imwrite(im , path_fac_img);
-            fprintf('   ...image copy %s -> %s\n',im_path,path_fac_img);
+            dl.Log(VerbosityLevel.Info, sprintf(' - - Copying image %s to texture %s\n',im_path,path_fac_img));
 
             %--- now 3D :) ----------------------------------------------------  
             %--- read angelo's datra to images and find corners
@@ -186,7 +204,7 @@ function ThirdLayer3D(datasetConfig , inputName, scene)
 
             boxFile = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
             if ~exist(boxFile,'file');
-                fprintf('Does not exist!\n');
+                dl.Log(VerbosityLevel.Warning,sprintf('File %s does not exist!\n',boxFile));
                 continue;
             end
             load(boxFile);  %%% read boxes for actual facade...
@@ -213,51 +231,35 @@ function ThirdLayer3D(datasetConfig , inputName, scene)
             fwrite(fid, size(data2save,2),'single');
             fwrite(fid, data2save(:),'single'); %%% vertices + thir colorfacade_save_facades_boxes_for_3ds
             fclose(fid);
-            disp(['   ...bin boxes saved for 3ds to: ',path_fac_obj,'_wallWin.boxesbin']);
+            
+            dl.Log(VerbosityLevel.Info,...
+                sprintf(' - - 3ds Max files expored to: %s_wallWin.boxesbin\n',path_fac_obj));
 
-            %--- save blaconies
+            %--- save balconies
             id2save = 3; facade_save_facades_boxes_for_3ds(pts_ori , tri , pts_facid==facade_id & pts_classid==id2save ,...
                 tri_facid==facade_id & tri_classid==id2save , im_corners_proj , [path_fac_obj,'_balc.obj'],move_in_x);
         end
     end
 
-
-    fprintf('Calculation part: %.2f',toc);
-    tic;
-
     %--- project to full pcl (with background)  and save to andelo :)
     if export_result_to_full_scene_ply
         %--- project to full pcl
-        if ~exist('full_pcl','var') || isempty(full_pcl) || ~strcmp(scene.read_file_name{1},full_pcl.read_file_name{1}),  %%% if does not exist, is empty, or nto the same as current :)  
-            disp('  ...reading full res PLC...');
-            fullScene = SScene_An();%path_mat_data_dir,postfix_path_data_orig);
-            fullScene = fullScene.read_mat_data( datasetConfig);
-
-    %         full_pcl = SScene_An(path_mat_data_dir,postfix_path_data_orig);  %%% this is where clicking result saved
-    %         full_pcl = full_pcl.read_mat_data();
-            % TODO: eliminate this by pre-calculating or something
-            i_pcl2full = knnsearch(scene.pts',fullScene.pts'); 
-        else
-            disp('   ...full-pcl exists. Ahhh, thanks god I dont have to read it again :)');
-        end
-        %cprb_full = full_pcl.lindex*0;    
-        cprb_full = cprb_new_objs(i_pcl2full);
-        cprb_full(fullScene.flag~=2)=0;
+        cprb_full = zeros(1,size(fullScene.pts,2));
+        cprb_full(scene.p_index) = cprb_new_objs;
+        cmap = round(datasetConfig.cm*255);
         %--- visualize
         if visualize_full_scene
-            cmap = full_pcl.get_class_colormap();  %cmap = cmap(2:end,:);
             colors_show = uint8((cmap(cprb_full+1,:)+full_pcl.rgb'*2)/3);
             full_pcl.plot_opengl_scene([full_pcl.lindex',cprb_full',cprb(i_pcl2full)'],'Q_rgb',colors_show);
         end
-        %--- save to andelo
-        cmap = fullScene.get_class_colormap();
 
-        path2save_full_2andelo = get_adr('3D_L3_Pure3D_labeling',datasetConfig,inputName); %  [ADD.data.dtsol,'/2andelo/full_pcl_labeling_',input_type_into_3rd,'_3D3rdLayer.ply'];
-        ExportMesh(path2save_full_2andelo , fullScene.pts',[],cmap(cprb_full+1,:),[],[]);
-        disp(['   ...result saved as pcl in the full-pcl.ply format for evaluation. path=',path2save_full_2andelo]);
+        path2save_full = get_adr('3D_L3_Pure3D_labeling',datasetConfig,inputName); 
+        ExportMesh(path2save_full , fullScene.pts',[],cmap(cprb_full+1,:),[],[]);
+        dl.Log(VerbosityLevel.Info,...
+                sprintf('- - Result saved to %s as a point cloud for evaluation.\n',path2save_full));
     end
     
-    fprintf('Saving part: %.2f',toc);
+    dl.Log(VerbosityLevel.Info,sprintf(' - Elapsed time for saving: %.2f\n',toc));
 
 end
     

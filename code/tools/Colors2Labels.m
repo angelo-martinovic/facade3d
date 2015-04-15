@@ -3,7 +3,7 @@ function labels = Colors2Labels(colors,cm)
     if max(cm(:))<2
         cm = round(255*cm);
     end
-    labels = knnsearch(cm,colors)-1;
+    labels = knnsearch(cm,double(colors))-1;
 %   labels = zeros(size(colors,1),1);
 % 
 %   labels((colors(:,1)==255) & (colors(:,2)==0) & (colors(:,3)==0)) = 1;%Window

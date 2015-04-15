@@ -5426,3 +5426,276 @@ detections_to_wnd_eval_normalized.py: error: Could not find the data sequence
 [14-Apr-2015 18:30:33][I]  - init done.
 [14-Apr-2015 18:30:46][I]  - Creating correct descriptor format
 [14-Apr-2015 18:30:46][I]  - - done. Elapsed time: 0.02 seconds.
+[14-Apr-2015 18:31:16][I]  - Loading the classifier from ../output/work/pcl/monge428_3Dclassifier_rf.mat, created on 19-Feb-2015 16:17:31.
+[14-Apr-2015 18:31:46][I]  - - done. Elapsed time: 30.14 seconds.
+[14-Apr-2015 18:32:12][I]  - Running the 3D classifier on the test set...
+[14-Apr-2015 18:33:08][I]  - - done. Elapsed time: 56.23 seconds.
+[14-Apr-2015 18:33:08][I]  - Saving the results...
+[14-Apr-2015 18:39:25][I]  - Running the 3D classifier on the test set...
+[14-Apr-2015 18:40:22][I]  - - done. Elapsed time: 56.41 seconds.
+[14-Apr-2015 18:40:22][I]  - Saving the results...
+[14-Apr-2015 18:40:25][I]  - Results saved to: ../output/work/pcl/models/monge428_rf.ply and ../output/work/pcl/probs/monge428_rf.mat
+[14-Apr-2015 18:41:14][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_rf.ply.
+[14-Apr-2015 18:41:18][I] Stored the result in ../output/work/pcl/models/monge428_rf.ply_results.mat. Pascal IoU score: 51.42.
+[14-Apr-2015 18:46:52][I]  - Found the following unary potentials: 
+[14-Apr-2015 18:46:52][I]  - - 3D classification
+[14-Apr-2015 18:46:53][I]  - - 2D classification
+[14-Apr-2015 18:48:54][I]  - Found the following unary potentials: 
+[14-Apr-2015 18:48:54][I]  - - 3D classification
+[14-Apr-2015 18:50:37][I]  - Found the following unary potentials: 
+[14-Apr-2015 18:50:54][I]  - Found the following unary potentials: 
+[14-Apr-2015 18:50:54][I]  - - 3D classification
+[14-Apr-2015 18:51:10][I]  - Found the following unary potentials: 
+[14-Apr-2015 18:51:10][I]  - - 3D classification
+[15-Apr-2015 11:01:18][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 11:01:29][I]  - Extracting descriptors from train set...
+[15-Apr-2015 11:01:30][I]  - -  done in 0.06sec
+[15-Apr-2015 11:01:31][I]  - Extracting descriptors from test set...
+[15-Apr-2015 11:01:31][I]  - -  done in 0.00sec
+[15-Apr-2015 11:01:33][I]  - Concatenating descriptors...
+[15-Apr-2015 11:01:35][I]  - init done.
+[15-Apr-2015 11:02:30][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:02:45][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:03:15][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:04:02][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:04:02][I]  - - 3D classification
+[15-Apr-2015 11:04:03][I]  - - 2D classification
+[15-Apr-2015 11:04:14][I]  - Using the following energy function:
+[15-Apr-2015 11:04:14][I]  - 1.00*3D + 0.37*pairwise
+[15-Apr-2015 11:04:14][I]  - Running the graph cut...
+[15-Apr-2015 11:04:21][I]  - Using the following energy function:
+[15-Apr-2015 11:04:21][I]  - 1.00*3D + 0.37*pairwise
+[15-Apr-2015 11:04:21][I]  - Running the graph cut...
+[15-Apr-2015 11:05:35][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:05:35][I]  - - 3D classification
+[15-Apr-2015 11:05:35][I]  - - 2D classification
+[15-Apr-2015 11:05:48][I]  - Using the following energy function:
+[15-Apr-2015 11:05:48][I]  - 1.00*3D + 0.37*pairwise
+[15-Apr-2015 11:05:55][I]  - Running the graph cut...
+[15-Apr-2015 11:06:16][I]  - Using the following energy function:
+[15-Apr-2015 11:06:16][I]  - 1.00*3D + 0.37*pairwise
+[15-Apr-2015 11:06:18][I]  - Running the graph cut...
+[15-Apr-2015 11:06:20][I]  - Done. Elapsed time: 2.70 seconds.
+[15-Apr-2015 11:07:00][I]  - Saving and evaluating the point clouds...
+[15-Apr-2015 11:07:00][I]  - MAP...
+[15-Apr-2015 11:07:03][I] Evaluating point cloud labeling ../data/pcl_gt_test.ply.
+[15-Apr-2015 11:07:47][I]  - Saving and evaluating the point clouds...
+[15-Apr-2015 11:07:47][I]  - MAP...
+[15-Apr-2015 11:07:50][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DMAP.ply.
+[15-Apr-2015 11:07:54][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DMAP.ply_results.mat. Pascal IoU score: 47.97.
+[15-Apr-2015 11:07:54][I]  - CRF...
+[15-Apr-2015 11:07:56][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DCRF.ply.
+[15-Apr-2015 11:08:00][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DCRF.ply_results.mat. Pascal IoU score: 50.37.
+[15-Apr-2015 11:08:00][I] Done.
+[15-Apr-2015 11:09:04][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_rf.ply.
+[15-Apr-2015 11:09:08][I] Stored the result in ../output/work/pcl/models/monge428_rf.ply_results.mat. Pascal IoU score: 51.42.
+[15-Apr-2015 11:09:37][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:09:37][I]  - - 3D classification
+[15-Apr-2015 11:09:38][I]  - - 2D classification
+[15-Apr-2015 11:09:38][I]  - Using the following energy function:
+[15-Apr-2015 11:09:38][I]  - 1.00*3D + 0.37*pairwise
+[15-Apr-2015 11:09:40][I]  - Running the graph cut...
+[15-Apr-2015 11:09:43][I]  - Done. Elapsed time: 2.90 seconds.
+[15-Apr-2015 11:09:44][I]  - Saving and evaluating the point clouds...
+[15-Apr-2015 11:09:44][I]  - MAP...
+[15-Apr-2015 11:09:47][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DMAP.ply.
+[15-Apr-2015 11:09:51][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DMAP.ply_results.mat. Pascal IoU score: 47.97.
+[15-Apr-2015 11:09:51][I]  - CRF...
+[15-Apr-2015 11:09:54][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DCRF.ply.
+[15-Apr-2015 11:09:58][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DCRF.ply_results.mat. Pascal IoU score: 50.37.
+[15-Apr-2015 11:09:58][I] Done.
+[15-Apr-2015 11:11:21][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_rf.ply.
+[15-Apr-2015 11:11:25][I] Stored the result in ../output/work/pcl/models/monge428_rf.ply_results.mat. Pascal IoU score: 51.42.
+[15-Apr-2015 11:17:34][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:17:34][I]  - - 3D classification
+[15-Apr-2015 11:17:35][I]  - - 2D classification
+[15-Apr-2015 11:17:35][I]  - Using the following energy function:
+[15-Apr-2015 11:17:35][I]  - 1.00*3D + 0.00*pairwise
+[15-Apr-2015 11:17:37][I]  - Running the graph cut...
+[15-Apr-2015 11:17:38][I]  - Done. Elapsed time: 1.36 seconds.
+[15-Apr-2015 11:17:39][I]  - Saving and evaluating the point clouds...
+[15-Apr-2015 11:17:39][I]  - MAP...
+[15-Apr-2015 11:17:42][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DMAP.ply.
+[15-Apr-2015 11:17:46][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DMAP.ply_results.mat. Pascal IoU score: 47.97.
+[15-Apr-2015 11:17:46][I]  - CRF...
+[15-Apr-2015 11:17:49][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DCRF.ply.
+[15-Apr-2015 11:17:53][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DCRF.ply_results.mat. Pascal IoU score: 47.97.
+[15-Apr-2015 11:17:53][I] Done.
+[15-Apr-2015 11:19:17][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:19:17][I]  - - 3D classification
+[15-Apr-2015 11:19:17][I]  - - 2D classification
+[15-Apr-2015 11:19:17][I]  - Using the following energy function:
+[15-Apr-2015 11:19:17][I]  - 1.00*3D + 0.00*pairwise
+[15-Apr-2015 11:19:19][I]  - Running the graph cut...
+[15-Apr-2015 11:19:21][I]  - Done. Elapsed time: 1.35 seconds.
+[15-Apr-2015 11:19:22][I]  - Saving and evaluating the point clouds...
+[15-Apr-2015 11:19:22][I]  - MAP...
+[15-Apr-2015 11:19:25][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DMAP.ply.
+[15-Apr-2015 11:19:29][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DMAP.ply_results.mat. Pascal IoU score: 47.97.
+[15-Apr-2015 11:19:29][I]  - CRF...
+[15-Apr-2015 11:19:32][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DCRF.ply.
+[15-Apr-2015 11:19:36][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DCRF.ply_results.mat. Pascal IoU score: 47.97.
+[15-Apr-2015 11:19:36][I] Done.
+[15-Apr-2015 11:24:17][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D.ply.
+[15-Apr-2015 11:24:21][I] Stored the result in ../output/work/pcl/models/monge428_3D.ply_results.mat. Pascal IoU score: 47.97.
+[15-Apr-2015 11:26:24][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 11:26:35][I]  - Extracting descriptors from train set...
+[15-Apr-2015 11:26:35][I]  - -  done in 0.01sec
+[15-Apr-2015 11:28:00][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D.ply.
+[15-Apr-2015 11:28:04][I] Stored the result in ../output/work/pcl/models/monge428_3D.ply_results.mat. Pascal IoU score: 51.42.
+[15-Apr-2015 11:28:38][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:28:38][I]  - - 3D classification
+[15-Apr-2015 11:28:39][I]  - - 2D classification
+[15-Apr-2015 11:28:39][I]  - Using the following energy function:
+[15-Apr-2015 11:28:39][I]  - 1.00*3D + 0.00*pairwise
+[15-Apr-2015 11:28:41][I]  - Running the graph cut...
+[15-Apr-2015 11:28:42][I]  - Done. Elapsed time: 1.61 seconds.
+[15-Apr-2015 11:28:43][I]  - Saving and evaluating the point clouds...
+[15-Apr-2015 11:28:43][I]  - MAP...
+[15-Apr-2015 11:28:47][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DMAP.ply.
+[15-Apr-2015 11:28:51][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DMAP.ply_results.mat. Pascal IoU score: 51.42.
+[15-Apr-2015 11:28:51][I]  - CRF...
+[15-Apr-2015 11:28:54][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DCRF.ply.
+[15-Apr-2015 11:28:58][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DCRF.ply_results.mat. Pascal IoU score: 51.42.
+[15-Apr-2015 11:28:58][I] Done.
+[15-Apr-2015 11:29:12][I]  - Found the following unary potentials: 
+[15-Apr-2015 11:29:12][I]  - - 3D classification
+[15-Apr-2015 11:29:13][I]  - - 2D classification
+[15-Apr-2015 11:29:13][I]  - Using the following energy function:
+[15-Apr-2015 11:29:13][I]  - 1.00*3D + 0.37*pairwise
+[15-Apr-2015 11:29:15][I]  - Running the graph cut...
+[15-Apr-2015 11:29:19][I]  - Done. Elapsed time: 3.27 seconds.
+[15-Apr-2015 11:29:20][I]  - Saving and evaluating the point clouds...
+[15-Apr-2015 11:29:20][I]  - MAP...
+[15-Apr-2015 11:29:23][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DMAP.ply.
+[15-Apr-2015 11:29:27][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DMAP.ply_results.mat. Pascal IoU score: 51.42.
+[15-Apr-2015 11:29:27][I]  - CRF...
+[15-Apr-2015 11:29:30][I] Evaluating point cloud labeling ../output/work/pcl/models/monge428_3D_3DCRF.ply.
+[15-Apr-2015 11:29:34][I] Stored the result in ../output/work/pcl/models/monge428_3D_3DCRF.ply_results.mat. Pascal IoU score: 52.09.
+[15-Apr-2015 11:29:34][I] Done.
+[15-Apr-2015 11:30:03][I]  - Projecting the 3D_3DCRF point cloud labeling to images...
+[15-Apr-2015 11:35:28][I]  - Elapsed 3.248663e+02 seconds.
+[15-Apr-2015 11:35:28][I]  - Evaluating on 202 images.
+[15-Apr-2015 11:35:57][I]  - Evaluated the 2D labeling of 202 images in ../output/work/projected-3D_3DCRF/.Results stored in ../output/work/projected-3D_3DCRF/results.mat. Pascal IoU score: 53.22.
+[15-Apr-2015 11:52:59][I] Splitting the scene into individual facades...
+[15-Apr-2015 11:52:59][I] - Loading data...
+[15-Apr-2015 11:53:06][I]  - Performing splitting...
+[15-Apr-2015 11:53:10][I]  - Done. Elapsed time: 3.31 seconds.
+[15-Apr-2015 11:53:17][I] Fitting a plane to each facade...
+[15-Apr-2015 11:53:19][I] Done. Elapsed time: 0.95 seconds.
+[15-Apr-2015 14:31:45][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 14:31:55][I]  - Extracting descriptors from train set...
+[15-Apr-2015 14:31:56][I]  - -  done in 0.01sec
+[15-Apr-2015 14:33:35][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 14:33:43][I]  - Extracting descriptors from train set...
+[15-Apr-2015 14:33:43][I]  - -  done in 0.06sec
+[15-Apr-2015 14:33:45][I]  - Extracting descriptors from test set...
+[15-Apr-2015 14:33:45][I]  - -  done in 0.00sec
+[15-Apr-2015 14:33:46][I]  - Concatenating descriptors...
+[15-Apr-2015 14:33:47][I]  - init done.
+[15-Apr-2015 14:34:36][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 14:38:26][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 14:40:24][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 14:40:40][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 14:40:51][I]  - Extracting descriptors from train set...
+[15-Apr-2015 14:40:51][I]  - -  done in 0.01sec
+[15-Apr-2015 16:06:12][I] - Optimizing for objects (windows,balconies,doors).
+[15-Apr-2015 16:06:30][I] - Optimizing for objects (windows,balconies,doors).
+[15-Apr-2015 16:06:57][I] - Optimizing for stuff (sky, roof, shop, wall).
+[15-Apr-2015 16:06:57][I] - - facade id=2, #pts=24.8K,  
+[15-Apr-2015 16:17:22][I]  - Elapsed time for calculation: 653.55
+[15-Apr-2015 16:17:35][I] - Optimizing for objects (windows,balconies,doors).
+[15-Apr-2015 16:18:01][I] - Optimizing for stuff (sky, roof, shop, wall).
+[15-Apr-2015 16:18:01][I] - - facade id=2, #pts=24.8K,  
+[15-Apr-2015 16:18:07][I]  - Elapsed time for calculation: 33.95
+[15-Apr-2015 16:18:07][I] - Exporting results to 3ds Max.
+[15-Apr-2015 16:18:08][I] image copy ../output/work/pcl/split/monge428_3D_3DCRF/monge428_split_2_ortho_labeling.png -> ../output/export/3D_3L_facades_3ds//2.png
+[15-Apr-2015 16:18:08][I]  - - 3ds Max files expored to: ../output/export/3D_3L_facades_3ds//2_wallWin.boxesbin
+[15-Apr-2015 16:19:25][I] - - Result saved to ../output/work/pcl/models/monge428_3D_3DCRF_L3_Pure3D.ply as a point cloud for evaluation.
+[15-Apr-2015 16:19:25][I]  - Elapsed time for saving: 77.77
+[15-Apr-2015 16:27:06][I] - Optimizing for objects (windows,balconies,doors).
+[15-Apr-2015 16:27:32][I] - Optimizing for stuff (sky, roof, shop, wall).
+[15-Apr-2015 16:27:32][I] - - facade id=2, #pts=24.8K,  
+[15-Apr-2015 16:27:38][I]  - Elapsed time for calculation: 34.04
+[15-Apr-2015 16:27:38][I] - Exporting results to 3ds Max.
+[15-Apr-2015 16:27:38][I] image copy ../output/work/pcl/split/monge428_3D_3DCRF/monge428_split_2_ortho_labeling.png -> ../output/export/3D_3L_facades_3ds//2.png
+[15-Apr-2015 16:27:39][I]  - - 3ds Max files expored to: ../output/export/3D_3L_facades_3ds//2_wallWin.boxesbin
+[15-Apr-2015 16:28:53][I] - - Result saved to ../output/work/pcl/models/monge428_3D_3DCRF_L3_Pure3D.ply as a point cloud for evaluation.
+[15-Apr-2015 16:28:53][I]  - Elapsed time for saving: 74.58
+[15-Apr-2015 16:32:43][I] - Optimizing for objects (windows,balconies,doors).
+[15-Apr-2015 16:33:09][I] - Optimizing for stuff (sky, roof, shop, wall).
+[15-Apr-2015 16:33:09][I] - - facade id=2, #pts=24.8K,  
+[15-Apr-2015 16:33:15][I]  - Elapsed time for calculation: 33.50
+[15-Apr-2015 16:33:15][I] - Exporting results to 3ds Max.
+[15-Apr-2015 16:33:15][I]  - - Copying image ../output/work/pcl/split/monge428_3D_3DCRF/monge428_split_2_ortho_labeling.png to texture ../output/export/3D_3L_facades_3ds//2.png
+[15-Apr-2015 16:33:15][I]  - - 3ds Max files expored to: ../output/export/3D_3L_facades_3ds//2_wallWin.boxesbin
+[15-Apr-2015 16:34:30][I] - - Result saved to ../output/work/pcl/models/monge428_3D_3DCRF_L3_Pure3D.ply as a point cloud for evaluation.
+[15-Apr-2015 16:34:30][I]  - Elapsed time for saving: 74.86
+[15-Apr-2015 16:50:22][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 16:50:33][I]  - Extracting descriptors from train set...
+[15-Apr-2015 16:50:33][I]  - -  done in 0.05sec
+[15-Apr-2015 16:50:35][I]  - Extracting descriptors from test set...
+[15-Apr-2015 16:50:35][I]  - -  done in 0.00sec
+[15-Apr-2015 16:50:36][I]  - Concatenating descriptors...
+[15-Apr-2015 16:50:38][I]  - init done.
+[15-Apr-2015 16:51:35][I]  - Found the following unary potentials: 
+[15-Apr-2015 16:51:35][I]  - - 3D classification
+[15-Apr-2015 16:51:36][I]  - - 2D classification
+[15-Apr-2015 17:01:23][I] - Optimizing for objects (window, balcony, door).
+[15-Apr-2015 17:01:52][I] - Optimizing for stuff (sky, roof, shop, wall).
+[15-Apr-2015 17:01:52][I] - - facade id=2, #pts=24.8K
+[15-Apr-2015 17:02:03][I] - Elapsed time for calculation: 604.52
+[15-Apr-2015 17:02:03][I] - Exporting results to 3ds Max.
+[15-Apr-2015 17:02:03][I]  - - Copying image ../output/work/pcl/split/monge428_3D_3DCRF/monge428_split_2_ortho_labeling.png to texture ../output/export/3D_3L_facades_3ds//2.png
+[15-Apr-2015 17:02:04][I]  - - 3ds Max files expored to: ../output/export/3D_3L_facades_3ds//2_wallWin.boxesbin
+[15-Apr-2015 17:09:24][I] - Optimizing for objects (window, balcony, door).
+[15-Apr-2015 17:18:23][I] - Optimizing for stuff (sky, roof, shop, wall).
+[15-Apr-2015 17:18:23][I] - - facade id=2, #pts=24.8K
+[15-Apr-2015 17:19:03][I] - Elapsed time for calculation: 583.91
+[15-Apr-2015 17:19:03][I] - Exporting results to 3ds Max.
+[15-Apr-2015 17:19:03][I]  - - Copying image ../output/work/pcl/split/monge428_3D_3DCRF/monge428_split_2_ortho_labeling.png to texture ../output/export/3D_3L_facades_3ds//2.png
+[15-Apr-2015 17:19:03][I]  - - 3ds Max files expored to: ../output/export/3D_3L_facades_3ds//2_wallWin.boxesbin
+[15-Apr-2015 17:19:07][I] - - Result saved to ../output/work/pcl/models/monge428_3D_3DCRF_L3_Pure3D.ply as a point cloud for evaluation.
+[15-Apr-2015 17:19:07][I]  - Elapsed time for saving: 3.95
+[15-Apr-2015 17:26:53][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 17:28:47][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 17:29:01][I]  - Extracting descriptors from train set...
+[15-Apr-2015 17:29:01][I]  - -  done in 0.00sec
+[15-Apr-2015 17:30:38][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 17:30:50][I]  - Extracting descriptors from train set...
+[15-Apr-2015 17:30:50][I]  - -  done in 0.05sec
+[15-Apr-2015 17:30:51][I]  - Extracting descriptors from test set...
+[15-Apr-2015 17:30:51][I]  - -  done in 0.00sec
+[15-Apr-2015 17:30:53][I]  - Concatenating descriptors...
+[15-Apr-2015 17:32:28][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 17:34:29][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 17:35:38][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 17:38:44][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 17:40:19][I]  - Extracting descriptors from train set...
+[15-Apr-2015 17:40:19][I]  - -  done in 0.01sec
+[15-Apr-2015 17:40:21][I]  - Extracting descriptors from test set...
+[15-Apr-2015 17:40:21][I]  - -  done in 0.00sec
+[15-Apr-2015 17:40:22][I]  - Concatenating descriptors...
+[15-Apr-2015 17:40:56][I]  - read SScene_An.... dataset = 'monge428' 
+[15-Apr-2015 17:41:15][I]  - Extracting descriptors from train set...
+[15-Apr-2015 17:41:15][I]  - -  done in 0.00sec
+[15-Apr-2015 17:41:16][I]  - Extracting descriptors from test set...
+[15-Apr-2015 17:41:16][I]  - -  done in 0.00sec
+[15-Apr-2015 17:41:18][I]  - Concatenating descriptors...
+[15-Apr-2015 17:41:25][I]  - init done.
+[15-Apr-2015 17:41:55][I]  - Found the following unary potentials: 
+[15-Apr-2015 17:41:55][I]  - - 3D classification
+[15-Apr-2015 17:41:56][I]  - - 2D classification
+[15-Apr-2015 17:47:34][I]  - Found the following unary potentials: 
+[15-Apr-2015 17:47:34][I]  - - 3D classification
+[15-Apr-2015 17:47:35][I]  - - 2D classification
+[15-Apr-2015 17:47:46][I] - Optimizing for objects (window, balcony, door).
+[15-Apr-2015 17:49:00][I] - Optimizing for objects (window, balcony, door).
+[15-Apr-2015 17:49:26][I] - Optimizing for stuff (sky, roof, shop, wall).
+[15-Apr-2015 17:49:26][I] - - facade id=2, #pts=24.8K
+[15-Apr-2015 17:49:32][I] - Elapsed time for calculation: 33.49
+[15-Apr-2015 17:49:32][I] - Exporting results to 3ds Max.
+[15-Apr-2015 17:49:32][I]  - - Copying image ../output/work/pcl/split/monge428_3D_3DCRF/monge428_split_2_ortho_labeling.png to texture ../output/export/3D_3L_facades_3ds//2.png
+[15-Apr-2015 17:49:33][I]  - - 3ds Max files expored to: ../output/export/3D_3L_facades_3ds//2_wallWin.boxesbin
+[15-Apr-2015 17:49:36][I] - - Result saved to ../output/work/pcl/models/monge428_3D_3DCRF_L3_Pure3D.ply as a point cloud for evaluation.
+[15-Apr-2015 17:49:36][I]  - Elapsed time for saving: 4.58

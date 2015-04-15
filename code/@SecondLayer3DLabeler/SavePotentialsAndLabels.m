@@ -8,8 +8,6 @@ function SavePotentialsAndLabels(obj)
     unary(:,obj.idxs) = obj.unary; %#ok<NASGU>
     
     save(get_adr('pcl_3DCRF_unaries',obj.config,outputPCLName),'unary');
-
-    gtFilename = get_adr('pcl_gt_test',obj.config);
     
     % Save and evaluate labeled point cloud
     dl.Log(VerbosityLevel.Info,sprintf(' - Saving and evaluating the point clouds...\n'));
@@ -21,8 +19,8 @@ function SavePotentialsAndLabels(obj)
     outputFilename = get_adr('pcl_3DMAP_labeling',obj.config,outputPCLName);
     ExportMesh(outputFilename,obj.pointsFull,[],colors,[],[]);
     
-    score = EvaluateMeshLabeling(outputFilename,gtFilename);
-    disp(score);
+    score = EvaluateMeshLabeling(obj.config,outputFilename); %#ok<NASGU>
+%     disp(score);
     scoreFilename = get_adr('score',obj.config,outputFilename);
     save(scoreFilename,'score');
     
@@ -33,8 +31,8 @@ function SavePotentialsAndLabels(obj)
     outputFilename = get_adr('pcl_3DCRF_labeling',obj.config,outputPCLName);
     ExportMesh(outputFilename,obj.pointsFull,[],colors,[],[]);
     
-    score = EvaluateMeshLabeling(outputFilename,gtFilename);
-    disp(score);
+    score = EvaluateMeshLabeling(obj.config,outputFilename); %#ok<NASGU>
+%     disp(score);
     scoreFilename = get_adr('score',obj.config,outputFilename);
     save(scoreFilename,'score');
     
