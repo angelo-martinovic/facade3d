@@ -1,11 +1,14 @@
-function initialize(obj)
+function initialize(obj,scene)
     dl = DispatchingLogger.getInstance();
     
     % Load point cloud
-    [obj.pointsFull,~,colorsFull] = ReadPCLFromPly(get_adr('pcl_gt_test',obj.config));
-    
+%     obj.idxs = scene.p_index(:);
+%     [obj.pointsFull,~,colorsFull] = ReadPCLFromPly(get_adr('pcl_gt_test',obj.config));
+    obj.pointsFull = scene.pts';
+%     colorsFull = scene.
     % Indices of the labeled subset
-    obj.idxs  = find(sum(colorsFull,2)~=0);
+%     obj.idxs  = find(sum(colorsFull,2)~=0);
+    obj.idxs = find(scene.flag==2)';
 
     dl.Log(VerbosityLevel.Info,sprintf(' - Found the following unary potentials: \n'));
     probs = [];

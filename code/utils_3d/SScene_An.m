@@ -94,21 +94,21 @@ classdef SScene_An
         end
 
     
-        function cmap  = get_class_colormap(obj,type)
-            type = 'monge428';
-            switch type
-                case 'monge428'
-                    cmap = [0 0 0;
-                        255 0 0;         % red
-                        255  255 0;      % yellow
-                        128  0   255;    % purple
-                        255  128 0;      % orange
-                        0    0   255;    % blue
-                        128  255 255;    % light blue
-                        0    255 0;      % green
-                        0    0   255];   % dark blue
-            end
-        end
+%         function cmap  = get_class_colormap(obj,type)
+%             type = 'monge428';
+%             switch type
+%                 case 'monge428'
+%                     cmap = [0 0 0;
+%                         255 0 0;         % red
+%                         255  255 0;      % yellow
+%                         128  0   255;    % purple
+%                         255  128 0;      % orange
+%                         0    0   255;    % blue
+%                         128  255 255;    % light blue
+%                         0    255 0;      % green
+%                         0    0   255];   % dark blue
+%             end
+%         end
                 
         
         
@@ -133,16 +133,16 @@ classdef SScene_An
             obj.flag(sum(vertexColor2')>0) = 2;
             %--- read color map and join train+test to create one lindex
             tmp_lindex = vertexColor1+vertexColor2;
-            un_li = obj.get_class_colormap;
-            lindex = knnsearch(un_li,tmp_lindex);
+            un_li = round(255*datasetConfig.cm);
+            lindex = uint8(knnsearch(un_li,double(tmp_lindex)));
             %---- assign values to data
             obj.pts         = pts';
             obj.nxyz        = vertexNormal';
             obj.rgb         = vertexColor4';
             obj.p_index     = 1:length(lindex);
             %--- facade split, it was computed from RF! 
-            pts_split_label    = load([datasetConfig.dataLocation,datasetConfig.splitData]);
-            obj.facade_id      = pts_split_label.splitLabels';
+%             pts_split_label    = load([datasetConfig.dataLocation,datasetConfig.splitData]);
+%             obj.facade_id      = pts_split_label.splitLabels';
             %--- indexes
             obj.lindex  = lindex';
             obj.oindex  = lindex'*0;
@@ -177,6 +177,7 @@ classdef SScene_An
         %%=================================================================
   
         function obj = export23ds(obj,adr_path,varargin)
+            error('Unsupported code!');
             p = inputParser;
             p.addOptional('N', 1);
             p.addOptional('n_closest_pts', -1);
@@ -273,7 +274,7 @@ classdef SScene_An
             %cprb_full(full_pcl.flag~=2)=0;
             
             %--- save to andelo
-            cmap = obj.get_class_colormap();
+            cmap = round(datasetConfig.cm*255);%obj.get_class_colormap();
 %             path2save =  get_adr('L1_labeling',datasetConfig,type);%'[ADD.data.dtsol,'/2andelo/full_pcl_labeling_',input_type_into_3rd,'_3D3rdLayer.ply'];
             checkAdr_and_createDir( path2save );
             ExportMesh(path2save , pts_full ,[],cmap(cprb_full+1,:),[],[]);
@@ -430,7 +431,7 @@ classdef SScene_An
             [edges] = knnsearch(obj.pts',obj.pts','K',K);
             edges = edges';
             for k=1:max_objs,  %%% use one point (k) and propagate unitll you see only other classes
-                fprintf('\b\b\b\b\b%5i',k);
+%                 fprintf('\b\b\b\b\b%5i',k);
                 ik = find(cl_idx,1);
                 listgo = edges(:,ik)';
                 obj.oindex(ik)=k;

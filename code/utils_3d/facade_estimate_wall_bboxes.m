@@ -97,8 +97,8 @@ if exist('labeling_cprb_doors','var') && ~isempty(labeling_cprb_doors),
             end
         end
         if ~isempty(tmp_corners)
-            honza_scatter(pts_facade,pts_facade(1,:)*0+15,prob_classes_local(4,:),'filled'); honza_plot_3d_cube(tmp_corners([3 6]),tmp_corners([2 5]),tmp_corners([1 4]),'FaceColor','r','FaceAlpha',.8); view(90,90);    
-            title(num2str(score));
+%             honza_scatter(pts_facade,pts_facade(1,:)*0+15,prob_classes_local(4,:),'filled'); honza_plot_3d_cube(tmp_corners([3 6]),tmp_corners([2 5]),tmp_corners([1 4]),'FaceColor','r','FaceAlpha',.8); view(90,90);    
+%             title(num2str(score));
             door_corners = [door_corners tmp_corners];
             door_scores  = [door_scores score];
         end

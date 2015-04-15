@@ -16,14 +16,18 @@ classdef SecondLayer3DLabeler < handle
 
     methods (Access = public)
         % Constructor
-        function sl = SecondLayer3DLabeler(datasetConfig)
+        function sl = SecondLayer3DLabeler(datasetConfig,scene)
             sl.config = datasetConfig;
-            initialize(sl);
+            initialize(sl,scene);
         end
         
-        LabelPointCloudWithUnaries(obj);
+        Run3DCRF(obj);
     
         SavePotentialsAndLabels(obj)
+        
+        function outputPCLName = GetOutputNameMAP(obj)
+            outputPCLName = [getOutputName(obj) '_3DMAP'];
+        end
         
         function outputPCLName = GetOutputNameCRF(obj)
             outputPCLName = [getOutputName(obj) '_3DCRF'];
@@ -32,7 +36,7 @@ classdef SecondLayer3DLabeler < handle
     end
 
     methods(Access = private)
-       initialize(obj);
+       initialize(obj,scene);
         
        function outputPCLName = getOutputName(obj)
     

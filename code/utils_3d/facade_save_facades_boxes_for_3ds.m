@@ -33,8 +33,9 @@ p(1,p(1,:)>max1) = max1;
 
 try
     path_tmp_file = '../tmp/t_fac.ply';
-    ExportMesh(path_tmp_file',p',[],[],t',[]); system(['unset LD_LIBRARY_PATH; meshlabserver -i ',path_tmp_file,' -o ',path_fac_obj]);
-    disp(['   ...full boboxes saved to ',path_fac_obj]);
+    ExportMesh(path_tmp_file',p',[],[],t',[]); 
+    [~,~] = system(['unset LD_LIBRARY_PATH; meshlabserver -i ',path_tmp_file,' -o ',path_fac_obj]);
+%     disp(['   ...full boboxes saved to ',path_fac_obj]);
 catch
     error('We need to export to obj format, it is done by exporting to ply and meshlabserver converts to obj. Be sure you have meshlabserver in your path, or use soem obj exporter that can saves correctly for 3ds max.');
 end

@@ -6,6 +6,8 @@ p.addOptional('UseParallel', 1);
 p.addOptional('method', 'bins_compress');
 p.parse(varargin{:}); fldnames = fieldnames(p.Results); for a=1:length(fldnames), eval([fldnames{a},' = p.Results.',fldnames{a},';']); end;
 
+dl = DispatchingLogger.getInstance();
+
 %--- precomp that is usefull for both
 n_class_pts_in_cprb = sum(cprb==3 | cprb==1);
 pts_in_cprb         = length(cprb);
@@ -42,7 +44,8 @@ if 0, %%% visulize Aineq
 end
 
 
-fprintf('   ...starting andelos script to run optimiuzation for %i boxes...',nvars);
+dl.Log(VerbosityLevel.Debug,...
+    sprintf(' - - - Optimizing for best subset of %i boxes.\n',nvars));
 
 
      
@@ -154,7 +157,7 @@ end
     cvx_begin quiet
         cvx_solver mosek
         cvx_solver_settings('MSK_IPAR_NUM_THREADS',1)   % 1 thread
-        cvx_solver_settings('MSK_DPAR_MIO_MAX_TIME',20) % max 10 seconds
+        cvx_solver_settings('MSK_DPAR_MIO_MAX_TIME',20) % max 20 seconds
         variable x(nvars) binary
         minimize wdata'*x + .5*x.''*Q*x'
         subject to
@@ -166,7 +169,8 @@ end
     best_score = cvx_optval;
 
 
-fprintf('  score=%f done\n',cvx_optval);
+dl.Log(VerbosityLevel.Debug,...
+    sprintf(' - - - - Score=%f. Done.\n',cvx_optval));
 bbox_new.class   = bbox.class(x>.5);
 bbox_new.id      = bbox.id(x>.5);
 bbox_new.center  = bbox.center(:,x>.5);

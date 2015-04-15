@@ -4,7 +4,8 @@ classdef FirstLayer3DLabeler < handle
     %   Detailed explanation goes here
     
     properties
-        config = [];   
+        config = []; 
+        all_data = [];
         test_data = [];
         train_data = [];
         
@@ -28,15 +29,15 @@ classdef FirstLayer3DLabeler < handle
         
         TrainClassifier(obj);
         
-        EvaluateClassifier(obj);
+        RunClassifier(obj);
          
         PlotResults(obj);
          
         function pclLabeling = GetPCLLabeling(obj)
             cf = obj.config;
-            c = cf.c3D.classifier;
+            c3d = cf.c3D;
  
-            pclLabeling = get_adr('pcl_labeling',cf,c.name);
+            pclLabeling = get_adr('pcl_labeling',cf,c3d.name);
         end
         
         

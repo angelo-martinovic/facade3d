@@ -21,10 +21,7 @@
 
 
 %cvx_setup   %%% you need cvx for optimization!!!
-
-
-%--- read labeling
-fprintf('  =======================  <strong>3rd layer</strong> ======================= \n             ...inputName = ''%s''\n  ----------------------------------------------------------\n',inputName);
+dl = DispatchingLogger.getInstance();
 
 
 
@@ -39,11 +36,15 @@ end
 
 time_cumsum = 0;
 for facade_id = facade_ids_go,
-    fprintf('     ____________facadeID=%s____________\n',num2str(facade_id));
+    dl.Log(VerbosityLevel.Debug,...
+    sprintf('- - Analyzing facade %d...\n',facade_id));
     grav_vec = load(get_adr('splitPlane',datasetConfig,inputName,num2str(facade_id)));%load(get_adr('grav_vec',datasetConfig,facade_id));
     
     grav_vec = grav_vec.g';
-    if isempty(grav_vec), fprintf('              ...no grav vec...\n'); continue; end;
+    if isempty(grav_vec)
+        dl.Log(VerbosityLevel.Warning,sprintf('- - No gravity vector found.\n')); 
+        continue; 
+    end;
 %     tic;
     idx_in_facade = find(scene.facade_id==facade_id);
     if length(idx_in_facade)<3e3, continue; end %%% not enough points in this segment -> it is small , so we need to compensate :)
@@ -93,10 +94,12 @@ for facade_id = facade_ids_go,
 %     time_cumsum = time_cumsum+toc;
     if save_res_per_facade2file,
         path2save = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
-        fprintf('  ...savig bbox to %s\n',path2save);
+        dl.Log(VerbosityLevel.Debug,...
+            sprintf('- - Saving estimated bounding boxes to %s\n',path2save));
         checkAdr_and_createDir(path2save);
         save(path2save,'bbox','bbox_ga','bbox_new','nrm');
-        fprintf('  ...done\n');
+        dl.Log(VerbosityLevel.Debug,...
+            sprintf('- - - Done.\n'));
     end
 
     

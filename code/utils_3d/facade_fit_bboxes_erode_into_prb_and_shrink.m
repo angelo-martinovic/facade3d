@@ -5,7 +5,7 @@
 function bbox = facade_fit_bboxes_erode_into_prb_and_shrink(pts_facade,cprb,idx_in_facade,clIdxs,pts_in_bbox)
 
 %--- check dataset for resolution...
-global CFG
+% global CFG
 %dataset_n_for_closing = [4 10];
 dataset_n_for_closing = [2 5];
 

@@ -1,4 +1,4 @@
-function LabelPointCloudWithUnaries(obj)
+function Run3DCRF(obj)
     
     dl = DispatchingLogger.getInstance();
     dl.Log(VerbosityLevel.Info,sprintf(' - Using the following energy function:\n'));
