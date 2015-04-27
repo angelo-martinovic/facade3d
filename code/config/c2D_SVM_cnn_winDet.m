@@ -12,13 +12,10 @@ classdef c2D_SVM_cnn_winDet < c2D
             f1 = featureExtractorCNN(config);
             c2D.featureExtractors = { f1 };
             
-            c2D.resizedImagesHeight = 800; 
-            c2D.minRegionArea = 150;
-
             c2D.classifier = classifier_linearSVM();
 
             % Detectors
-            d1 = detector_window_generic();
+            d1 = detector_window_generic(config);
             c2D.detectors = { d1 };
 
             % CRF

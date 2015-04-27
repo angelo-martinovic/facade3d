@@ -15,6 +15,8 @@ function [t,x,segsPerImage,imageNames] = LoadData(obj,subset)
     allSegDistributions = zeros(0,obj.config.nClasses);
     allSegs = [];
     
+    pb = ProgressBar(length(imageNames));
+    
     segsPerImage= cell(0);
     missingFiles = zeros(1,length(imageNames));
     for i=1:length(imageNames)
@@ -22,6 +24,7 @@ function [t,x,segsPerImage,imageNames] = LoadData(obj,subset)
         if ~exist(segName,'file')
             dl.Log(VerbosityLevel.Warning,sprintf('Image %d segmentation not found\n',i));
             missingFiles(i) = 1;
+            pb.progress();
             continue;
         end
         
@@ -43,14 +46,22 @@ function [t,x,segsPerImage,imageNames] = LoadData(obj,subset)
         end
         
         % Scale
-        sc = dlmread(get_adr('2D_scale',obj.config,imageNames{i}));
-        target = zeros(sc(1),sc(2));
+        scaleFilename = get_adr('2D_scale',obj.config,imageNames{i});
+        if exist(scaleFilename,'file')
+            sc = dlmread(scaleFilename);
+            target = zeros(sc(1),sc(2));
+        else
+            target = zeros(size(segmentation));
+        end
         
         % Rectify ground truth
-        h = dlmread(get_adr('2D_rectParams',obj.config,imageNames{i}));
-        h = reshape(inv(reshape(h,3,3)),1,9);
-        groundTruth = rewarp(target,groundTruth,h);
-        groundTruth = imresize(groundTruth,size(segmentation),'nearest');
+        rectParamsFilename = get_adr('2D_rectParams',obj.config,imageNames{i});
+        if exist(rectParamsFilename,'file')
+            h = dlmread(rectParamsFilename);
+            h = reshape(inv(reshape(h,3,3)),1,9);
+            groundTruth = rewarp(target,groundTruth,h);
+            groundTruth = imresize(groundTruth,size(segmentation),'nearest');
+        end
        
          % Since segments start from 0
         segmentation = segmentation + 1;   
@@ -86,7 +97,9 @@ function [t,x,segsPerImage,imageNames] = LoadData(obj,subset)
         allSegDistributions = [allSegDistributions; segDistributions];
         allSegs = [allSegs; features];
         
+        pb.progress();
     end
+    pb.stop();
 
     imageNames = imageNames(missingFiles==0);
     t = allSegDistributions;

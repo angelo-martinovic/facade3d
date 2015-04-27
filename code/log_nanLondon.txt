@@ -1,0 +1,1706 @@
+[21-Apr-2015 10:07:19][E] File ../dataLondon/listeval.txt could not be opened!
+[21-Apr-2015 10:08:36][I] Rectifying images ...
+[21-Apr-2015 10:08:42][W] Rectification failed on image 400 with code 1 and message /esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5861.jpg' ../tmp/116092393543.txt
+get vanishing points using ransac
+lines total:  131
+ransacIterations:  8000
+/esat/sadr/amartino/Facade3D/code/rectification/ransac.py:224: RuntimeWarning: invalid value encountered in double_scalars
+  if (model[0]/model[2] >=0 and model[0]/model[2] <= self.w and model[1]/model[2] >=0 and model[1]/model[2] <=self.h):
+/esat/sadr/amartino/Facade3D/code/rectification/ransac.py:224: RuntimeWarning: divide by zero encountered in double_scalars
+  if (model[0]/model[2] >=0 and model[0]/model[2] <= self.w and model[1]/model[2] >=0 and model[1]/model[2] <=self.h):
+^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+    main()
+  File "rectification/rectifyImage.py", line 788, in main
+    rectify(options.imageName, options.saveName, options.cropImage)
+  File "rectification/rectifyImage.py", line 688, in rectify
+    img, hom = rectifyImage(image ,lines, confidences)
+  File "rectification/rectifyImage.py", line 670, in rectifyImage
+    models, bestLines, inlierLines = getVanishingPoints(lines, confidences, image)
+  File "rectification/rectifyImage.py", line 179, in getVanishingPoints
+    debug=debug,return_all=True)
+  File "/esat/sadr/amartino/Facade3D/code/rectification/ransac.py", line 117, in ransac
+    bettermodel = model.fit(betterdata)
+  File "/esat/sadr/amartino/Facade3D/code/rectification/ransac.py", line 203, in fit
+    if (str(k) == "[ 0.  0.  0.]"):
+  File "/usr/lib64/python2.7/site-packages/numpy/core/numeric.py", line 1615, in array_str
+    return array2string(a, max_line_width, precision, suppress_small, ' ', "", str)
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 454, in array2string
+    separator, prefix, formatter=formatter)
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 328, in _array2string
+    _summaryEdgeItems, summary_insert)[:-1]
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 498, in _formatArray
+    s, line = _extendLine(s, line, word, max_line_len, next_line_prefix)
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 457, in _extendLine
+    def _extendLine(s, line, word, max_line_len, next_line_prefix):
+KeyboardInterrupt
+
+[21-Apr-2015 10:08:43][W] Rectification failed on image 399 with code 1 and message /esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5860.jpg' ../tmp/791302112525.txt
+^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+    main()
+  File "rectification/rectifyImage.py", line 788, in main
+    rectify(options.imageName, options.saveName, options.cropImage)
+  File "rectification/rectifyImage.py", line 687, in rectify
+    lines, confidences = readliness(linesname)
+  File "rectification/rectifyImage.py", line 105, in readliness
+    file = open(filename, 'r')
+IOError: [Errno 2] No such file or directory: '../tmp/791302112525.txt'
+
+[21-Apr-2015 10:08:44][W] Rectification failed on image 398 with code 1 and message /esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5859.jpg' ../tmp/0724564469007.txt
+^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+    main()
+  File "rectification/rectifyImage.py", line 788, in main
+    rectify(options.imageName, options.saveName, options.cropImage)
+  File "rectification/rectifyImage.py", line 687, in rectify
+    lines, confidences = readliness(linesname)
+  File "rectification/rectifyImage.py", line 105, in readliness
+    file = open(filename, 'r')
+IOError: [Errno 2] No such file or directory: '../tmp/0724564469007.txt'
+
+[21-Apr-2015 10:08:44][W] Rectification failed on image 397 with code 130 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C
+[21-Apr-2015 10:08:44][W] Rectification failed on image 396 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:08:44][W] Rectification failed on image 395 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:08:45][W] Rectification failed on image 394 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:08:45][W] Rectification failed on image 393 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C
+[21-Apr-2015 10:08:46][W] Rectification failed on image 392 with code 1 and message /esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5845.jpg' ../tmp/442019160563.txt
+^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+    main()
+  File "rectification/rectifyImage.py", line 788, in main
+    rectify(options.imageName, options.saveName, options.cropImage)
+  File "rectification/rectifyImage.py", line 687, in rectify
+    lines, confidences = readliness(linesname)
+  File "rectification/rectifyImage.py", line 105, in readliness
+    file = open(filename, 'r')
+IOError: [Errno 2] No such file or directory: '../tmp/442019160563.txt'
+
+[21-Apr-2015 10:08:46][W] Rectification failed on image 391 with code 130 and message ^C^C^C^C^C^C^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C
+[21-Apr-2015 10:08:46][W] Rectification failed on image 390 with code 130 and message ^C^C^C^C^C^C^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C^C^C
+[21-Apr-2015 10:08:46][W] Rectification failed on image 389 with code 130 and message ^C^C^C^C^C^C^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C
+[21-Apr-2015 10:08:46][W] Rectification failed on image 388 with code 130 and message ^C^C^C^C^C^C^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C^C^C
+[21-Apr-2015 10:08:47][W] Rectification failed on image 387 with code 1 and message ^C^C^C^C^C^C^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+^C^C    import cv2 as cv
+
+
+[21-Apr-2015 10:09:08][I] Rectifying images ...
+[21-Apr-2015 10:09:11][W] Rectification failed on image 400 with code 1 and message /esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5861.jpg' ../tmp/851250923824.txt
+get vanishing points using ransac
+lines total:  131
+ransacIterations:  8000
+/esat/sadr/amartino/Facade3D/code/rectification/ransac.py:224: RuntimeWarning: divide by zero encountered in double_scalars
+  if (model[0]/model[2] >=0 and model[0]/model[2] <= self.w and model[1]/model[2] >=0 and model[1]/model[2] <=self.h):
+/esat/sadr/amartino/Facade3D/code/rectification/ransac.py:224: RuntimeWarning: invalid value encountered in double_scalars
+  if (model[0]/model[2] >=0 and model[0]/model[2] <= self.w and model[1]/model[2] >=0 and model[1]/model[2] <=self.h):
+^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+    main()
+  File "rectification/rectifyImage.py", line 788, in main
+    rectify(options.imageName, options.saveName, options.cropImage)
+  File "rectification/rectifyImage.py", line 688, in rectify
+    img, hom = rectifyImage(image ,lines, confidences)
+  File "rectification/rectifyImage.py", line 670, in rectifyImage
+    models, bestLines, inlierLines = getVanishingPoints(lines, confidences, image)
+  File "rectification/rectifyImage.py", line 179, in getVanishingPoints
+    debug=debug,return_all=True)
+  File "/esat/sadr/amartino/Facade3D/code/rectification/ransac.py", line 117, in ransac
+    bettermodel = model.fit(betterdata)
+  File "/esat/sadr/amartino/Facade3D/code/rectification/ransac.py", line 203, in fit
+    if (str(k) == "[ 0.  0.  0.]"):
+  File "/usr/lib64/python2.7/site-packages/numpy/core/numeric.py", line 1615, in array_str
+    return array2string(a, max_line_width, precision, suppress_small, ' ', "", str)
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 454, in array2string
+    separator, prefix, formatter=formatter)
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 328, in _array2string
+    _summaryEdgeItems, summary_insert)[:-1]
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 497, in _formatArray
+    word = format_function(a[-i]) + separator
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 616, in __call__
+    s = self.format [21-Apr-2015 10:09:11][W] Rectification failed on image 399 with code 1 and message /esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5860.jpg' ../tmp/629630849823.txt
+^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+    main()
+  File "rectification/rectifyImage.py", line 788, in main
+    rectify(options.imageName, options.saveName, options.cropImage)
+  File "rectification/rectifyImage.py", line 687, in rectify
+    lines, confidences = readliness(linesname)
+  File "rectification/rectifyImage.py", line 105, in readliness
+    file = open(filename, 'r')
+IOError: [Errno 2] No such file or directory: '../tmp/629630849823.txt'
+
+[21-Apr-2015 10:09:12][W] Rectification failed on image 398 with code 130 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C
+[21-Apr-2015 10:09:12][W] Rectification failed on image 397 with code 1 and message /esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5858.jpg' ../tmp/794854771536.txt
+^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+^C^C    main()
+
+
+[21-Apr-2015 10:09:13][W] Rectification failed on image 396 with code 130 and message ^C^C^C^C^C^C^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C^C^C
+[21-Apr-2015 10:09:13][W] Rectification failed on image 395 with code 130 and message ^C^C^C^C^C^C^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C
+[21-Apr-2015 10:09:13][W] Rectification failed on image 394 with code 130 and message ^C^C^C^C^C^C^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C^C^C
+[21-Apr-2015 10:09:26][I] Rectifying images ...
+[21-Apr-2015 10:09:31][W] Rectification failed on image 400 with code 1 and message 
+/esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5861.jpg' ../tmp/258126706021.txt
+get vanishing points using ransac
+lines total:  131
+ransacIterations:  8000
+/esat/sadr/amartino/Facade3D/code/rectification/ransac.py:224: RuntimeWarning: invalid value encountered in double_scalars
+  if (model[0]/model[2] >=0 and model[0]/model[2] <= self.w and model[1]/model[2] >=0 and model[1]/model[2] <=self.h):
+/esat/sadr/amartino/Facade3D/code/rectification/ransac.py:224: RuntimeWarning: divide by zero encountered in double_scalars
+  if (model[0]/model[2] >=0 and model[0]/model[2] <= self.w and model[1]/model[2] >=0 and model[1]/model[2] <=self.h):
+^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+    main()
+  File "rectification/rectifyImage.py", line 788, in main
+    rectify(options.imageName, options.saveName, options.cropImage)
+  File "rectification/rectifyImage.py", line 688, in rectify
+    img, hom = rectifyImage(image ,lines, confidences)
+  File "rectification/rectifyImage.py", line 670, in rectifyImage
+    models, bestLines, inlierLines = getVanishingPoints(lines, confidences, image)
+  File "rectification/rectifyImage.py", line 179, in getVanishingPoints
+    debug=debug,return_all=True)
+  File "/esat/sadr/amartino/Facade3D/code/rectification/ransac.py", line 101, in ransac
+    maybemodel = model.fit(maybeinliers)
+  File "/esat/sadr/amartino/Facade3D/code/rectification/ransac.py", line 203, in fit
+    if (str(k) == "[ 0.  0.  0.]"):
+  File "/usr/lib64/python2.7/site-packages/numpy/core/numeric.py", line 1615, in array_str
+    return array2string(a, max_line_width, precision, suppress_small, ' ', "", str)
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 454, in array2string
+    separator, prefix, formatter=formatter)
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 257, in _array2string
+    'float' : FloatFormat(data, precision, suppress_small),
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 541, in __init__
+    self.fillFormat(data)
+  File "/usr/lib64/python2.7/site-packages/numpy/core/arrayprint.py", line 563, in fillFormat
+    or max_val/min_val > 1000.):
+KeyboardInterrupt
+
+[21-Apr-2015 10:09:31][W] Rectification failed on image 399 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:09:31][W] Rectification failed on image 398 with code 1 and message /esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5859.jpg' ../tmp/633196104006.txt
+^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+    main()
+  File "rectification/rectifyImage.py", line 788, in main
+    rectify(options.imageName, options.saveName, options.cropImage)
+  File "rectification/rectifyImage.py", line 687, in rectify
+    lines, confidences = readliness(linesname)
+  File "rectification/rectifyImage.py", line 105, in readliness
+    file = open(filename, 'r')
+IOError: [Errno 2] No such file or directory: '../tmp/633196104006.txt'
+
+[21-Apr-2015 10:09:32][W] Rectification failed on image 397 with code 1 and message ^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:09:32][W] Rectification failed on image 396 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:09:32][W] Rectification failed on image 395 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:09:32][W] Rectification failed on image 394 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:09:33][W] Rectification failed on image 393 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:09:33][W] Rectification failed on image 392 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:09:33][W] Rectification failed on image 391 with code 1 and message ^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+
+[21-Apr-2015 10:09:34][W] Rectification failed on image 390 with code 1 and message /esat/sadr/amartino/Facade3D/code/rectification/lineDetect/detectLines '../dataLondon/images/IMG_5840.jpg' ../tmp/37215542006.txt
+^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 797, in <module>
+^C    main()
+
+
+[21-Apr-2015 10:09:34][W] Rectification failed on image 389 with code 130 and message ^C^C^C^C^C^C^C^CTraceback (most recent call last):
+  File "rectification/rectifyImage.py", line 34, in <module>
+    import cv2 as cv
+KeyboardInterrupt
+^C^C
+[21-Apr-2015 10:11:16][I] Copied 400 images in 7.17 seconds.
+[21-Apr-2015 10:11:22][I] Removed 0 empty images.
+[21-Apr-2015 10:11:22][I] Resizing images to common height: 800 ...
+[21-Apr-2015 10:11:33][I] Image resize time: 11.55 seconds.
+[21-Apr-2015 10:11:33][I] Converting to ppm (needed for meanshift) ...
+[21-Apr-2015 10:11:39][I] Elapsed time: 5.64 seconds.
+[21-Apr-2015 10:13:55][I] Copied 400 images in 2.80 seconds.
+[21-Apr-2015 10:13:55][I] Removed 0 empty images.
+[21-Apr-2015 10:13:55][I] Meanshift segmentation ...
+[21-Apr-2015 10:15:07][E] Error running segmentImage: /esat/sadr/amartino/Facade3D/code
+Running segmentation...
+/esat/sadr/amartino/Facade3D/code/edison/tmp/IMG_5855.ppm
+/esat/sadr/amartino/Facade3D/code/edison/tmp/IMG_5855.ppm
+^C
+[21-Apr-2015 10:15:47][I] Copied 400 images in 2.79 seconds.
+[21-Apr-2015 10:15:47][I] Removed 0 empty images.
+[21-Apr-2015 10:15:47][I] Meanshift segmentation ...
+[21-Apr-2015 10:24:40][I] Copied 400 images in 2.80 seconds.
+[21-Apr-2015 10:24:40][I] Removed 0 empty images.
+[21-Apr-2015 10:24:40][I] Converting to ppm (needed for meanshift) ...
+[21-Apr-2015 10:24:43][I] Elapsed time: 2.36 seconds.
+[21-Apr-2015 10:24:43][I] Meanshift segmentation ...
+[21-Apr-2015 10:36:14][I] Elapsed time: 691.08 seconds.
+[21-Apr-2015 10:36:14][I] Running 1 feature extractors...
+[21-Apr-2015 10:36:14][I] Running feature extractor: gould ...
+[21-Apr-2015 10:42:20][I] Elapsed time for gould: 366.63 seconds.
+[21-Apr-2015 10:42:20][I] Running 1 detectors...
+[21-Apr-2015 10:42:22][I] Running detector window-generic ...
+[21-Apr-2015 10:51:26][E] Undefined variable "D" or class "D.outputFolder".
+[21-Apr-2015 13:39:16][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 13:39:16][I]  - Loading training data...
+[21-Apr-2015 13:43:04][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 13:43:04][I]  - Loading training data...
+[21-Apr-2015 13:44:40][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 13:44:40][I]  - Loading training data...
+[21-Apr-2015 13:49:32][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 13:49:32][I]  - Loading training data...
+[21-Apr-2015 13:51:10][I]  - Training data loading: 98.06 seconds.
+[21-Apr-2015 13:51:12][I]  - Scaling data...
+[21-Apr-2015 13:51:12][I]  - Starting training...
+[21-Apr-2015 14:06:48][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 14:06:49][I]  - Loading training data...
+[21-Apr-2015 14:06:51][I]  - - Loading cache from ../outputLondon/work/cache/classifier_train_nanLondon_nonlinSVM.mat, created on 21-Apr-2015 13:51:12 ...
+[21-Apr-2015 14:06:57][I]  - Scaling data...
+[21-Apr-2015 14:07:48][I]  - Starting training...
+[21-Apr-2015 14:28:13][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 14:28:13][I]  - Loading training data...
+[21-Apr-2015 14:28:13][I]  - - Loading cache from ../outputLondon/work/cache/classifier_train_nanLondon_nonlinSVM.mat, created on 21-Apr-2015 13:51:12 ...
+[21-Apr-2015 14:28:13][I]  - Scaling data...
+[21-Apr-2015 14:28:13][I]  - Starting training...
+[21-Apr-2015 14:28:13][I]  - Training time of nonlinSVM elapsed: 0.05.
+[21-Apr-2015 14:28:13][I]  - Saving the model.
+[21-Apr-2015 14:28:20][I] Classifier nonlinSVM already trained. Will use cache.
+[21-Apr-2015 14:28:39][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 14:28:39][I]  - Loading training data...
+[21-Apr-2015 14:28:39][I]  - - Loading cache from ../outputLondon/work/cache/classifier_train_nanLondon_nonlinSVM.mat, created on 21-Apr-2015 13:51:12 ...
+[21-Apr-2015 14:28:39][I]  - Scaling data...
+[21-Apr-2015 14:28:40][I]  - Starting training...
+[21-Apr-2015 14:28:40][I]  - Training time of nonlinSVM elapsed: 0.02.
+[21-Apr-2015 14:28:40][I]  - Saving the model.
+[21-Apr-2015 14:29:03][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 14:29:03][I]  - Loading training data...
+[21-Apr-2015 14:29:03][I]  - - Loading cache from ../outputLondon/work/cache/classifier_train_nanLondon_nonlinSVM.mat, created on 21-Apr-2015 13:51:12 ...
+[21-Apr-2015 14:29:04][I]  - Scaling data...
+[21-Apr-2015 14:29:04][I]  - Starting training...
+[21-Apr-2015 14:29:04][I]  - Training time of nonlinSVM elapsed: 0.38.
+[21-Apr-2015 14:29:04][I]  - Saving the model.
+[21-Apr-2015 14:29:19][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 14:29:19][I]  - Loading training data...
+[21-Apr-2015 14:29:19][I]  - - Loading cache from ../outputLondon/work/cache/classifier_train_nanLondon_nonlinSVM.mat, created on 21-Apr-2015 13:51:12 ...
+[21-Apr-2015 14:29:19][I]  - Scaling data...
+[21-Apr-2015 14:29:19][I]  - Starting training...
+[21-Apr-2015 14:30:49][I]  - Training time of nonlinSVM elapsed: 89.34.
+[21-Apr-2015 14:30:49][I]  - Saving the model.
+[21-Apr-2015 14:30:56][I] Classifying with nonlinSVM.
+[21-Apr-2015 14:30:56][I]  - Loading the model from ../outputLondon/work/classifier/nonlinSVM.mat, created at 21-Apr-2015 14:30:49.
+[21-Apr-2015 14:30:56][I]  - Loading the testing data...
+[21-Apr-2015 14:30:56][W] Image 1 ground truth not found
+[21-Apr-2015 14:30:57][W] Image 2 ground truth not found
+[21-Apr-2015 14:30:57][W] Image 3 ground truth not found
+[21-Apr-2015 14:30:58][W] Image 4 ground truth not found
+[21-Apr-2015 14:30:58][W] Image 5 ground truth not found
+[21-Apr-2015 14:30:58][W] Image 6 ground truth not found
+[21-Apr-2015 14:30:59][W] Image 7 ground truth not found
+[21-Apr-2015 14:30:59][W] Image 8 ground truth not found
+[21-Apr-2015 14:31:00][W] Image 9 ground truth not found
+[21-Apr-2015 14:31:00][W] Image 10 ground truth not found
+[21-Apr-2015 14:31:01][W] Image 11 ground truth not found
+[21-Apr-2015 14:31:02][W] Image 12 ground truth not found
+[21-Apr-2015 14:31:02][W] Image 13 ground truth not found
+[21-Apr-2015 14:31:03][W] Image 14 ground truth not found
+[21-Apr-2015 14:31:03][W] Image 15 ground truth not found
+[21-Apr-2015 14:31:04][W] Image 16 ground truth not found
+[21-Apr-2015 14:31:04][W] Image 17 ground truth not found
+[21-Apr-2015 14:31:05][W] Image 18 ground truth not found
+[21-Apr-2015 14:31:05][W] Image 19 ground truth not found
+[21-Apr-2015 14:31:05][W] Image 20 ground truth not found
+[21-Apr-2015 14:31:06][W] Image 21 ground truth not found
+[21-Apr-2015 14:31:07][W] Image 22 ground truth not found
+[21-Apr-2015 14:31:07][W] Image 23 ground truth not found
+[21-Apr-2015 14:31:08][W] Image 24 ground truth not found
+[21-Apr-2015 14:31:08][W] Image 25 ground truth not found
+[21-Apr-2015 14:31:09][W] Image 26 ground truth not found
+[21-Apr-2015 14:31:09][W] Image 27 ground truth not found
+[21-Apr-2015 14:31:10][W] Image 28 ground truth not found
+[21-Apr-2015 14:31:10][W] Image 29 ground truth not found
+[21-Apr-2015 14:31:11][W] Image 30 ground truth not found
+[21-Apr-2015 14:31:11][W] Image 31 ground truth not found
+[21-Apr-2015 14:31:12][W] Image 32 ground truth not found
+[21-Apr-2015 14:31:13][W] Image 33 ground truth not found
+[21-Apr-2015 14:31:13][W] Image 34 ground truth not found
+[21-Apr-2015 14:31:14][W] Image 35 ground truth not found
+[21-Apr-2015 14:31:15][W] Image 36 ground truth not found
+[21-Apr-2015 14:31:15][W] Image 37 ground truth not found
+[21-Apr-2015 14:31:16][W] Image 38 ground truth not found
+[21-Apr-2015 14:31:16][W] Image 39 ground truth not found
+[21-Apr-2015 14:31:17][W] Image 40 ground truth not found
+[21-Apr-2015 14:31:17][W] Image 41 ground truth not found
+[21-Apr-2015 14:31:18][W] Image 42 ground truth not found
+[21-Apr-2015 14:31:19][W] Image 43 ground truth not found
+[21-Apr-2015 14:31:19][W] Image 44 ground truth not found
+[21-Apr-2015 14:31:19][W] Image 45 ground truth not found
+[21-Apr-2015 14:31:20][W] Image 46 ground truth not found
+[21-Apr-2015 14:31:20][W] Image 47 ground truth not found
+[21-Apr-2015 14:31:21][W] Image 48 ground truth not found
+[21-Apr-2015 14:31:21][W] Image 49 ground truth not found
+[21-Apr-2015 14:31:22][W] Image 50 ground truth not found
+[21-Apr-2015 14:31:23][W] Image 51 ground truth not found
+[21-Apr-2015 14:31:23][W] Image 52 ground truth not found
+[21-Apr-2015 14:31:24][W] Image 53 ground truth not found
+[21-Apr-2015 14:31:24][W] Image 54 ground truth not found
+[21-Apr-2015 14:31:24][W] Image 55 ground truth not found
+[21-Apr-2015 14:31:25][W] Image 56 ground truth not found
+[21-Apr-2015 14:31:25][W] Image 57 ground truth not found
+[21-Apr-2015 14:31:26][W] Image 58 ground truth not found
+[21-Apr-2015 14:31:26][W] Image 59 ground truth not found
+[21-Apr-2015 14:31:27][W] Image 60 ground truth not found
+[21-Apr-2015 14:31:27][W] Image 61 ground truth not found
+[21-Apr-2015 14:31:28][W] Image 62 ground truth not found
+[21-Apr-2015 14:31:28][W] Image 63 ground truth not found
+[21-Apr-2015 14:31:29][W] Image 64 ground truth not found
+[21-Apr-2015 14:31:29][W] Image 65 ground truth not found
+[21-Apr-2015 14:31:30][W] Image 66 ground truth not found
+[21-Apr-2015 14:31:30][W] Image 67 ground truth not found
+[21-Apr-2015 14:31:30][W] Image 68 ground truth not found
+[21-Apr-2015 14:31:31][W] Image 69 ground truth not found
+[21-Apr-2015 14:31:31][W] Image 70 ground truth not found
+[21-Apr-2015 14:31:32][W] Image 71 ground truth not found
+[21-Apr-2015 14:31:32][W] Image 72 ground truth not found
+[21-Apr-2015 14:31:32][W] Image 73 ground truth not found
+[21-Apr-2015 14:31:33][W] Image 74 ground truth not found
+[21-Apr-2015 14:31:33][W] Image 75 ground truth not found
+[21-Apr-2015 14:31:34][W] Image 76 ground truth not found
+[21-Apr-2015 14:31:55][I] Classifying with nonlinSVM.
+[21-Apr-2015 14:31:55][I]  - Loading the model from ../outputLondon/work/classifier/nonlinSVM.mat, created at 21-Apr-2015 14:30:49.
+[21-Apr-2015 14:31:55][I]  - Loading the testing data...
+[21-Apr-2015 14:32:06][W] Image 1 ground truth not found
+[21-Apr-2015 14:32:06][W] Image 2 ground truth not found
+[21-Apr-2015 14:32:07][W] Image 3 ground truth not found
+[21-Apr-2015 14:32:07][W] Image 4 ground truth not found
+[21-Apr-2015 14:32:08][W] Image 5 ground truth not found
+[21-Apr-2015 14:32:08][W] Image 6 ground truth not found
+[21-Apr-2015 14:32:08][W] Image 7 ground truth not found
+[21-Apr-2015 14:32:09][W] Image 8 ground truth not found
+[21-Apr-2015 14:32:09][W] Image 9 ground truth not found
+[21-Apr-2015 14:32:10][W] Image 10 ground truth not found
+[21-Apr-2015 14:32:10][W] Image 11 ground truth not found
+[21-Apr-2015 14:32:11][W] Image 12 ground truth not found
+[21-Apr-2015 14:32:11][W] Image 13 ground truth not found
+[21-Apr-2015 14:32:12][W] Image 14 ground truth not found
+[21-Apr-2015 14:32:13][W] Image 15 ground truth not found
+[21-Apr-2015 14:32:13][W] Image 16 ground truth not found
+[21-Apr-2015 14:32:14][W] Image 17 ground truth not found
+[21-Apr-2015 14:32:14][W] Image 18 ground truth not found
+[21-Apr-2015 14:32:14][W] Image 19 ground truth not found
+[21-Apr-2015 14:32:15][W] Image 20 ground truth not found
+[21-Apr-2015 14:32:15][W] Image 21 ground truth not found
+[21-Apr-2015 14:32:16][W] Image 22 ground truth not found
+[21-Apr-2015 14:32:16][W] Image 23 ground truth not found
+[21-Apr-2015 14:32:17][W] Image 24 ground truth not found
+[21-Apr-2015 14:32:17][W] Image 25 ground truth not found
+[21-Apr-2015 14:32:18][W] Image 26 ground truth not found
+[21-Apr-2015 14:32:18][W] Image 27 ground truth not found
+[21-Apr-2015 14:32:19][W] Image 28 ground truth not found
+[21-Apr-2015 14:32:19][W] Image 29 ground truth not found
+[21-Apr-2015 14:32:20][W] Image 30 ground truth not found
+[21-Apr-2015 14:32:20][W] Image 31 ground truth not found
+[21-Apr-2015 14:32:21][W] Image 32 ground truth not found
+[21-Apr-2015 14:32:22][W] Image 33 ground truth not found
+[21-Apr-2015 14:32:23][W] Image 34 ground truth not found
+[21-Apr-2015 14:32:23][W] Image 35 ground truth not found
+[21-Apr-2015 14:32:24][W] Image 36 ground truth not found
+[21-Apr-2015 14:32:24][W] Image 37 ground truth not found
+[21-Apr-2015 14:32:25][W] Image 38 ground truth not found
+[21-Apr-2015 14:32:25][W] Image 39 ground truth not found
+[21-Apr-2015 14:32:26][W] Image 40 ground truth not found
+[21-Apr-2015 14:32:26][W] Image 41 ground truth not found
+[21-Apr-2015 14:32:27][W] Image 42 ground truth not found
+[21-Apr-2015 14:32:28][W] Image 43 ground truth not found
+[21-Apr-2015 14:32:28][W] Image 44 ground truth not found
+[21-Apr-2015 14:32:28][W] Image 45 ground truth not found
+[21-Apr-2015 14:32:29][W] Image 46 ground truth not found
+[21-Apr-2015 14:32:29][W] Image 47 ground truth not found
+[21-Apr-2015 14:32:30][W] Image 48 ground truth not found
+[21-Apr-2015 14:32:30][W] Image 49 ground truth not found
+[21-Apr-2015 14:32:31][W] Image 50 ground truth not found
+[21-Apr-2015 14:32:31][W] Image 51 ground truth not found
+[21-Apr-2015 14:32:32][W] Image 52 ground truth not found
+[21-Apr-2015 14:32:32][W] Image 53 ground truth not found
+[21-Apr-2015 14:32:33][W] Image 54 ground truth not found
+[21-Apr-2015 14:32:33][W] Image 55 ground truth not found
+[21-Apr-2015 14:32:33][W] Image 56 ground truth not found
+[21-Apr-2015 14:32:34][W] Image 57 ground truth not found
+[21-Apr-2015 14:32:34][W] Image 58 ground truth not found
+[21-Apr-2015 14:32:35][W] Image 59 ground truth not found
+[21-Apr-2015 14:32:35][W] Image 60 ground truth not found
+[21-Apr-2015 14:32:36][W] Image 61 ground truth not found
+[21-Apr-2015 14:32:36][W] Image 62 ground truth not found
+[21-Apr-2015 14:32:37][W] Image 63 ground truth not found
+[21-Apr-2015 14:32:37][W] Image 64 ground truth not found
+[21-Apr-2015 14:32:38][W] Image 65 ground truth not found
+[21-Apr-2015 14:32:38][W] Image 66 ground truth not found
+[21-Apr-2015 14:32:38][W] Image 67 ground truth not found
+[21-Apr-2015 14:32:39][W] Image 68 ground truth not found
+[21-Apr-2015 14:32:39][W] Image 69 ground truth not found
+[21-Apr-2015 14:32:39][W] Image 70 ground truth not found
+[21-Apr-2015 14:32:40][W] Image 71 ground truth not found
+[21-Apr-2015 14:32:40][W] Image 72 ground truth not found
+[21-Apr-2015 14:32:41][W] Image 73 ground truth not found
+[21-Apr-2015 14:32:41][W] Image 74 ground truth not found
+[21-Apr-2015 14:32:41][W] Image 75 ground truth not found
+[21-Apr-2015 14:32:42][W] Image 76 ground truth not found
+[21-Apr-2015 14:32:42][W] Image 77 ground truth not found
+[21-Apr-2015 14:32:43][W] Image 78 ground truth not found
+[21-Apr-2015 14:32:43][W] Image 79 ground truth not found
+[21-Apr-2015 14:32:44][W] Image 80 ground truth not found
+[21-Apr-2015 14:32:44][W] Image 81 ground truth not found
+[21-Apr-2015 14:32:45][W] Image 82 ground truth not found
+[21-Apr-2015 14:32:45][W] Image 83 ground truth not found
+[21-Apr-2015 14:32:46][W] Image 84 ground truth not found
+[21-Apr-2015 14:32:47][W] Image 85 ground truth not found
+[21-Apr-2015 14:32:47][W] Image 86 ground truth not found
+[21-Apr-2015 14:32:47][W] Image 87 ground truth not found
+[21-Apr-2015 14:32:48][W] Image 88 ground truth not found
+[21-Apr-2015 14:32:48][W] Image 89 ground truth not found
+[21-Apr-2015 14:32:49][W] Image 90 ground truth not found
+[21-Apr-2015 14:32:49][W] Image 91 ground truth not found
+[21-Apr-2015 14:32:50][W] Image 92 ground truth not found
+[21-Apr-2015 14:32:50][W] Image 93 ground truth not found
+[21-Apr-2015 14:32:51][W] Image 94 ground truth not found
+[21-Apr-2015 14:32:51][W] Image 95 ground truth not found
+[21-Apr-2015 14:32:52][W] Image 96 ground truth not found
+[21-Apr-2015 14:32:52][W] Image 97 ground truth not found
+[21-Apr-2015 14:32:53][W] Image 98 ground truth not found
+[21-Apr-2015 14:32:54][W] Image 99 ground truth not found
+[21-Apr-2015 14:32:54][W] Image 100 ground truth not found
+[21-Apr-2015 14:32:55][W] Image 101 ground truth not found
+[21-Apr-2015 14:32:55][W] Image 102 ground truth not found
+[21-Apr-2015 14:32:56][W] Image 103 ground truth not found
+[21-Apr-2015 14:32:56][W] Image 104 ground truth not found
+[21-Apr-2015 14:32:57][W] Image 105 ground truth not found
+[21-Apr-2015 14:32:57][W] Image 106 ground truth not found
+[21-Apr-2015 14:32:58][W] Image 107 ground truth not found
+[21-Apr-2015 14:32:59][W] Image 108 ground truth not found
+[21-Apr-2015 14:32:59][W] Image 109 ground truth not found
+[21-Apr-2015 14:33:00][W] Image 110 ground truth not found
+[21-Apr-2015 14:33:00][W] Image 111 ground truth not found
+[21-Apr-2015 14:33:01][W] Image 112 ground truth not found
+[21-Apr-2015 14:33:02][W] Image 113 ground truth not found
+[21-Apr-2015 14:33:02][W] Image 114 ground truth not found
+[21-Apr-2015 14:33:03][W] Image 115 ground truth not found
+[21-Apr-2015 14:33:03][W] Image 116 ground truth not found
+[21-Apr-2015 14:33:04][W] Image 117 ground truth not found
+[21-Apr-2015 14:33:05][W] Image 118 ground truth not found
+[21-Apr-2015 14:33:05][W] Image 119 ground truth not found
+[21-Apr-2015 14:33:06][W] Image 120 ground truth not found
+[21-Apr-2015 14:33:07][W] Image 121 ground truth not found
+[21-Apr-2015 14:33:07][W] Image 122 ground truth not found
+[21-Apr-2015 14:33:08][W] Image 123 ground truth not found
+[21-Apr-2015 14:33:08][W] Image 124 ground truth not found
+[21-Apr-2015 14:33:09][W] Image 125 ground truth not found
+[21-Apr-2015 14:33:10][W] Image 126 ground truth not found
+[21-Apr-2015 14:33:11][W] Image 127 ground truth not found
+[21-Apr-2015 14:33:11][W] Image 128 ground truth not found
+[21-Apr-2015 14:33:12][W] Image 129 ground truth not found
+[21-Apr-2015 14:33:13][W] Image 130 ground truth not found
+[21-Apr-2015 14:33:13][W] Image 131 ground truth not found
+[21-Apr-2015 14:33:14][W] Image 132 ground truth not found
+[21-Apr-2015 14:33:15][W] Image 133 ground truth not found
+[21-Apr-2015 14:33:16][W] Image 134 ground truth not found
+[21-Apr-2015 14:33:16][W] Image 135 ground truth not found
+[21-Apr-2015 14:33:17][W] Image 136 ground truth not found
+[21-Apr-2015 14:33:17][W] Image 137 ground truth not found
+[21-Apr-2015 14:33:18][W] Image 138 ground truth not found
+[21-Apr-2015 14:33:18][W] Image 139 ground truth not found
+[21-Apr-2015 14:33:19][W] Image 140 ground truth not found
+[21-Apr-2015 14:33:20][W] Image 141 ground truth not found
+[21-Apr-2015 14:33:20][W] Image 142 ground truth not found
+[21-Apr-2015 14:33:20][W] Image 143 ground truth not found
+[21-Apr-2015 14:33:21][W] Image 144 ground truth not found
+[21-Apr-2015 14:33:21][W] Image 145 ground truth not found
+[21-Apr-2015 14:33:22][W] Image 146 ground truth not found
+[21-Apr-2015 14:33:22][W] Image 147 ground truth not found
+[21-Apr-2015 14:33:23][W] Image 148 ground truth not found
+[21-Apr-2015 14:33:23][W] Image 149 ground truth not found
+[21-Apr-2015 14:33:24][W] Image 150 ground truth not found
+[21-Apr-2015 14:33:24][W] Image 151 ground truth not found
+[21-Apr-2015 14:33:25][W] Image 152 ground truth not found
+[21-Apr-2015 14:33:25][W] Image 153 ground truth not found
+[21-Apr-2015 14:33:26][W] Image 154 ground truth not found
+[21-Apr-2015 14:33:26][W] Image 155 ground truth not found
+[21-Apr-2015 14:33:27][W] Image 156 ground truth not found
+[21-Apr-2015 14:33:27][W] Image 157 ground truth not found
+[21-Apr-2015 14:33:27][W] Image 158 ground truth not found
+[21-Apr-2015 14:33:28][W] Image 159 ground truth not found
+[21-Apr-2015 14:33:28][W] Image 160 ground truth not found
+[21-Apr-2015 14:33:29][W] Image 161 ground truth not found
+[21-Apr-2015 14:33:29][W] Image 162 ground truth not found
+[21-Apr-2015 14:33:30][W] Image 163 ground truth not found
+[21-Apr-2015 14:33:30][W] Image 164 ground truth not found
+[21-Apr-2015 14:33:30][W] Image 165 ground truth not found
+[21-Apr-2015 14:33:31][W] Image 166 ground truth not found
+[21-Apr-2015 14:33:31][W] Image 167 ground truth not found
+[21-Apr-2015 14:33:32][W] Image 168 ground truth not found
+[21-Apr-2015 14:33:32][W] Image 169 ground truth not found
+[21-Apr-2015 14:33:33][W] Image 170 ground truth not found
+[21-Apr-2015 14:33:33][W] Image 171 ground truth not found
+[21-Apr-2015 14:33:34][W] Image 172 ground truth not found
+[21-Apr-2015 14:33:34][W] Image 173 ground truth not found
+[21-Apr-2015 14:33:35][W] Image 174 ground truth not found
+[21-Apr-2015 14:33:35][W] Image 175 ground truth not found
+[21-Apr-2015 14:33:36][W] Image 176 ground truth not found
+[21-Apr-2015 14:33:36][W] Image 177 ground truth not found
+[21-Apr-2015 14:33:37][W] Image 178 ground truth not found
+[21-Apr-2015 14:33:37][W] Image 179 ground truth not found
+[21-Apr-2015 14:33:38][W] Image 180 ground truth not found
+[21-Apr-2015 14:33:38][W] Image 181 ground truth not found
+[21-Apr-2015 14:33:39][W] Image 182 ground truth not found
+[21-Apr-2015 14:33:40][W] Image 183 ground truth not found
+[21-Apr-2015 14:33:40][W] Image 184 ground truth not found
+[21-Apr-2015 14:33:41][W] Image 185 ground truth not found
+[21-Apr-2015 14:33:41][W] Image 186 ground truth not found
+[21-Apr-2015 14:33:42][W] Image 187 ground truth not found
+[21-Apr-2015 14:33:42][W] Image 188 ground truth not found
+[21-Apr-2015 14:33:43][W] Image 189 ground truth not found
+[21-Apr-2015 14:33:43][W] Image 190 ground truth not found
+[21-Apr-2015 14:33:44][W] Image 191 ground truth not found
+[21-Apr-2015 14:33:44][W] Image 192 ground truth not found
+[21-Apr-2015 14:33:45][W] Image 193 ground truth not found
+[21-Apr-2015 14:33:46][W] Image 194 ground truth not found
+[21-Apr-2015 14:33:46][W] Image 195 ground truth not found
+[21-Apr-2015 14:33:47][W] Image 196 ground truth not found
+[21-Apr-2015 14:33:47][W] Image 197 ground truth not found
+[21-Apr-2015 14:33:48][W] Image 198 ground truth not found
+[21-Apr-2015 14:33:49][W] Image 199 ground truth not found
+[21-Apr-2015 14:33:49][W] Image 200 ground truth not found
+[21-Apr-2015 14:33:49][I]  - Evaluation data loading: 114.24 seconds.
+[21-Apr-2015 14:33:53][I]  - Scaling data...
+[21-Apr-2015 14:33:53][I]  - Predicting output...
+[21-Apr-2015 14:35:31][I] Training the nonlinSVM superpixel classifier...
+[21-Apr-2015 14:35:31][I]  - Loading training data...
+[21-Apr-2015 14:35:31][I]  - - Loading cache from ../outputLondon/work/cache/classifier_train_nanLondon_nonlinSVM.mat, created on 21-Apr-2015 13:51:12 ...
+[21-Apr-2015 14:35:32][I]  - Scaling data...
+[21-Apr-2015 14:35:32][I]  - Starting training...
+[21-Apr-2015 14:52:40][I]  - Training time of nonlinSVM elapsed: 1027.55.
+[21-Apr-2015 14:52:40][I]  - Saving the model.
+[21-Apr-2015 14:53:52][I] Classifying with nonlinSVM.
+[21-Apr-2015 14:53:52][I]  - Loading the model from ../outputLondon/work/classifier/nonlinSVM.mat, created at 21-Apr-2015 14:52:41.
+[21-Apr-2015 14:53:52][I]  - Loading the testing data...
+[21-Apr-2015 14:53:52][I]  - Found cache! Loading the cache...
+[21-Apr-2015 14:53:54][I]  - Scaling data...
+[21-Apr-2015 14:53:54][I]  - Predicting output...
+[21-Apr-2015 15:00:33][I]  - Evaluation of nonlinSVM done. Elapsed time: 399.36 seconds.
+[21-Apr-2015 15:00:33][I]  - Saving predictions...
+[21-Apr-2015 15:00:35][I]  - Marginal saving of nonlinSVM done. Elapsed time: 2.10 seconds.
+[21-Apr-2015 15:02:14][I] Starting 2D image labeling (ATLAS)...
+[21-Apr-2015 15:20:29][I] Starting 2D image labeling (ATLAS)...
+[21-Apr-2015 15:22:04][I] ATLAS finished. 0 results loaded from cache. Elapsed time: 94.98 seconds.
+[21-Apr-2015 17:38:35][I] Copied 400 images in 4.53 seconds.
+[21-Apr-2015 17:38:35][I] Removed 0 empty images.
+[21-Apr-2015 17:38:35][I] Meanshift segmentation ...
+[21-Apr-2015 17:38:35][I] Elapsed time: 0.58 seconds.
+[21-Apr-2015 17:38:35][I] Running 1 feature extractors...
+[21-Apr-2015 17:38:35][I] Running feature extractor: gould ...
+[21-Apr-2015 17:38:36][I] Elapsed time for gould: 0.50 seconds.
+[21-Apr-2015 17:38:36][I] Running 1 detectors...
+[21-Apr-2015 17:38:38][I] Running detector window-generic ...
+[21-Apr-2015 17:42:04][I] Detector window-generic elapsed time: 205.57 seconds.
+[22-Apr-2015 13:46:21][I] Copied 400 images in 4.21 seconds.
+[22-Apr-2015 13:46:21][I] Removed 0 empty images.
+[22-Apr-2015 13:46:21][I] Meanshift segmentation ...
+[22-Apr-2015 13:46:21][I] Elapsed time: 0.40 seconds.
+[22-Apr-2015 13:46:21][I] Running 1 feature extractors...
+[22-Apr-2015 13:46:21][I] Running feature extractor: gould ...
+[22-Apr-2015 13:46:21][I] Elapsed time for gould: 0.08 seconds.
+[22-Apr-2015 13:46:21][I] Running 1 detectors...
+[22-Apr-2015 13:46:23][I] Running detector window-generic ...
+[22-Apr-2015 13:46:28][E] Error running object detector: Stereo objects detection on a flat world. Rodrigo Benenson @ KULeuven. 2011-2012.
+Parsed the configuration file detector/configs/window-generic.ini
+Overwriting existing log file objects_detection.out.txt
+2015-04-22 13:46:24 {7ffa1dfb0a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:46:24 {7ffa1dfb0a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:46:24 {7ffa1dfb0a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:46:24 {7ffa1dfb0a40} [ SoftCascadeOverIntegralChannelsModel ] : Parsing model Model created via boosted_learning
+2015-04-22 13:46:24 {7ffa1dfb0a40} [ SoftCascadeOverIntegralChannelsModel ] : The soft cascade contains 2000 stages
+Stage 0 cascade_threshold == -inf
+Stage 999 cascade_threshold == -inf
+Stage 1999 cascade_threshold == -inf
+Single scale/occlusion model sanity check passed.
+2015-04-22 13:46:24 {7ffa1dfb0a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+object width: 52 object height: 88
+model width: 72 model height: 116
+2015-04-22 13:46:24 {7ffa1dfb0a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+2015-04-22 13:46:24 {7ffa1dfb0a40} [ BaseIntegralChannelsDetector ] : Will not use a soft cascade at run time
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : cv::gpu::CudaMem::canMapHostMemory() == 1
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 4020, scaled_y == 1600
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2872, scaled_y == 1600
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2234, scaled_y == 1600
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1828, scaled_y == 1600
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1547, scaled_y == 1600
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3854, scaled_y == 1534
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2753, scaled_y == 1534
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2141, scaled_y == 1534
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1752, scaled_y == 1534
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1483, scaled_y == 1534
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3695, scaled_y == 1471
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2639, scaled_y == 1471
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2053, scaled_y == 1471
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1680, scaled_y == 1471
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1421, scaled_y == 1471
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3542, scaled_y == 1410
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2530, scaled_y == 1410
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1968, scaled_y == 1410
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1610, scaled_y == 1410
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1362, scaled_y == 1410
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3395, scaled_y == 1352
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2425, scaled_y == 1352
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1886, scaled_y == 1352
+2015-04-22 13:46:26 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1544, scaled_y == 1352
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1306, scaled_y == 1352
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3255, scaled_y == 1296
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2325, scaled_y == 1296
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1808, scaled_y == 1296
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1480, scaled_y == 1296
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1252, scaled_y == 1296
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3120, scaled_y == 1242
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2229, scaled_y == 1242
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1734, scaled_y == 1242
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1418, scaled_y == 1242
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1200, scaled_y == 1242
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2991, scaled_y == 1191
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2136, scaled_y == 1191
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1662, scaled_y == 1191
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1360, scaled_y == 1191
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1151, scaled_y == 1191
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2867, scaled_y == 1141
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2048, scaled_y == 1141
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1593, scaled_y == 1141
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1303, scaled_y == 1141
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1103, scaled_y == 1141
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2748, scaled_y == 1094
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1963, scaled_y == 1094
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1527, scaled_y == 1094
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1250, scaled_y == 1094
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1057, scaled_y == 1094
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2635, scaled_y == 1049
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1882, scaled_y == 1049
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1464, scaled_y == 1049
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1198, scaled_y == 1049
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1014, scaled_y == 1049
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2526, scaled_y == 1006
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1804, scaled_y == 1006
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1403, scaled_y == 1006
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1148, scaled_y == 1006
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 972, scaled_y == 1006
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2421, scaled_y == 964
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1729, scaled_y == 964
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1345, scaled_y == 964
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1101, scaled_y == 964
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 931, scaled_y == 964
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2321, scaled_y == 924
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1658, scaled_y == 924
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1290, scaled_y == 924
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1055, scaled_y == 924
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 893, scaled_y == 924
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2225, scaled_y == 886
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1589, scaled_y == 886
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1236, scaled_y == 886
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1012, scaled_y == 886
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 856, scaled_y == 886
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2133, scaled_y == 849
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1524, scaled_y == 849
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1185, scaled_y == 849
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 970, scaled_y == 849
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 821, scaled_y == 849
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2045, scaled_y == 814
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1461, scaled_y == 814
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1136, scaled_y == 814
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 930, scaled_y == 814
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 787, scaled_y == 814
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1960, scaled_y == 780
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1400, scaled_y == 780
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1089, scaled_y == 780
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 891, scaled_y == 780
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 754, scaled_y == 780
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1879, scaled_y == 748
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1342, scaled_y == 748
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1044, scaled_y == 748
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 854, scaled_y == 748
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 723, scaled_y == 748
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1801, scaled_y == 717
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1287, scaled_y == 717
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1001, scaled_y == 717
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 819, scaled_y == 717
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 693, scaled_y == 717
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1727, scaled_y == 687
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1233, scaled_y == 687
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 959, scaled_y == 687
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 785, scaled_y == 687
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 664, scaled_y == 687
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1655, scaled_y == 659
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1182, scaled_y == 659
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 920, scaled_y == 659
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 753, scaled_y == 659
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 637, scaled_y == 659
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1587, scaled_y == 632
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1133, scaled_y == 632
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 882, scaled_y == 632
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 721, scaled_y == 632
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 611, scaled_y == 632
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1521, scaled_y == 606
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1087, scaled_y == 606
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 845, scaled_y == 606
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 692, scaled_y == 606
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 585, scaled_y == 606
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1458, scaled_y == 581
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1042, scaled_y == 581
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 810, scaled_y == 581
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 663, scaled_y == 581
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 561, scaled_y == 581
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1398, scaled_y == 557
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 998, scaled_y == 557
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 777, scaled_y == 557
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 636, scaled_y == 557
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 538, scaled_y == 557
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1340, scaled_y == 534
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 957, scaled_y == 534
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 745, scaled_y == 534
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 609, scaled_y == 534
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 516, scaled_y == 534
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1284, scaled_y == 512
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 918, scaled_y == 512
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 714, scaled_y == 512
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 584, scaled_y == 512
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 494, scaled_y == 512
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1231, scaled_y == 490
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 880, scaled_y == 490
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 684, scaled_y == 490
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 560, scaled_y == 490
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 474, scaled_y == 490
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1180, scaled_y == 470
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 843, scaled_y == 470
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 656, scaled_y == 470
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 537, scaled_y == 470
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 454, scaled_y == 470
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1131, scaled_y == 451
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 808, scaled_y == 451
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 629, scaled_y == 451
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 515, scaled_y == 451
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 435, scaled_y == 451
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1085, scaled_y == 432
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 775, scaled_y == 432
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 603, scaled_y == 432
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 493, scaled_y == 432
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 417, scaled_y == 432
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1040, scaled_y == 414
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 743, scaled_y == 414
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 578, scaled_y == 414
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 473, scaled_y == 414
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 400, scaled_y == 414
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 997, scaled_y == 397
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 712, scaled_y == 397
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 554, scaled_y == 397
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 453, scaled_y == 397
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 384, scaled_y == 397
+2015-04-22 13:46:27 {7ffa1dfb0a40} [ GpuIntegralChannelsDetector ] : scaled_x == 956, scaled_y == 381
+[1;31mA std::exception was raised:[0m CUDA error in /esat/sadr/amartino/atlas/biclop/src/applications/objects_detection/../../../libs/cudatemplates/include/cudatemplates/devicememorypitched.hpp:118
+void Cuda::DeviceMemoryPitched<Type, Dim>::realloc() [with Type = unsigned int; unsigned int Dim = 2u]
+#2: out of memory
+
+terminate called after throwing an instance of 'Cuda::Error'
+  what():  CUDA error in /esat/sadr/amartino/atlas/biclop/src/applications/objects_detection/../../../libs/cudatemplates/include/cudatemplates/devicememorypitched.hpp:118
+void Cuda::DeviceMemoryPitched<Type, Dim>::realloc() [with Type = unsigned int; unsigned int Dim = 2u]
+#2: out of memory
+
+/bin/bash: line 1: 14864 Aborted                 (core dumped) external/biclop/src/applications/objects_detection/objects_detection -c detector/configs/window-generic.ini --objects_detector.model detector/models/window-generic.bin --recording_path ../outputLondon/work/detections/ --process_folder ../outputLondon/work/detections/
+
+[22-Apr-2015 13:47:01][I] Copied 400 images in 3.38 seconds.
+[22-Apr-2015 13:47:01][I] Removed 0 empty images.
+[22-Apr-2015 13:47:01][I] Meanshift segmentation ...
+[22-Apr-2015 13:47:01][I] Elapsed time: 0.22 seconds.
+[22-Apr-2015 13:47:01][I] Running 1 feature extractors...
+[22-Apr-2015 13:47:01][I] Running feature extractor: gould ...
+[22-Apr-2015 13:47:02][I] Elapsed time for gould: 0.15 seconds.
+[22-Apr-2015 13:47:02][I] Running 1 detectors...
+[22-Apr-2015 13:47:04][I] Running detector window-generic ...
+[22-Apr-2015 13:47:10][E] Error running object detector: Stereo objects detection on a flat world. Rodrigo Benenson @ KULeuven. 2011-2012.
+Parsed the configuration file detector/configs/window-generic.ini
+Overwriting existing log file objects_detection.out.txt
+2015-04-22 13:47:04 {7f0c53ea2a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:47:04 {7f0c53ea2a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:47:04 {7f0c53ea2a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:47:04 {7f0c53ea2a40} [ SoftCascadeOverIntegralChannelsModel ] : Parsing model Model created via boosted_learning
+2015-04-22 13:47:04 {7f0c53ea2a40} [ SoftCascadeOverIntegralChannelsModel ] : The soft cascade contains 2000 stages
+Stage 0 cascade_threshold == -inf
+Stage 999 cascade_threshold == -inf
+Stage 1999 cascade_threshold == -inf
+Single scale/occlusion model sanity check passed.
+2015-04-22 13:47:04 {7f0c53ea2a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+object width: 52 object height: 88
+model width: 72 model height: 116
+2015-04-22 13:47:04 {7f0c53ea2a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+2015-04-22 13:47:04 {7f0c53ea2a40} [ BaseIntegralChannelsDetector ] : Will not use a soft cascade at run time
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : cv::gpu::CudaMem::canMapHostMemory() == 1
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 4020, scaled_y == 1600
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2872, scaled_y == 1600
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2234, scaled_y == 1600
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1828, scaled_y == 1600
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1547, scaled_y == 1600
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3854, scaled_y == 1534
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2753, scaled_y == 1534
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2141, scaled_y == 1534
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1752, scaled_y == 1534
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1483, scaled_y == 1534
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3695, scaled_y == 1471
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2639, scaled_y == 1471
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2053, scaled_y == 1471
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1680, scaled_y == 1471
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1421, scaled_y == 1471
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3542, scaled_y == 1410
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2530, scaled_y == 1410
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1968, scaled_y == 1410
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1610, scaled_y == 1410
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1362, scaled_y == 1410
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3395, scaled_y == 1352
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2425, scaled_y == 1352
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1886, scaled_y == 1352
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1544, scaled_y == 1352
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1306, scaled_y == 1352
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3255, scaled_y == 1296
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2325, scaled_y == 1296
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1808, scaled_y == 1296
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1480, scaled_y == 1296
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1252, scaled_y == 1296
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3120, scaled_y == 1242
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2229, scaled_y == 1242
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1734, scaled_y == 1242
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1418, scaled_y == 1242
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1200, scaled_y == 1242
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2991, scaled_y == 1191
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2136, scaled_y == 1191
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1662, scaled_y == 1191
+2015-04-22 13:47:06 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1360, scaled_y == 1191
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1151, scaled_y == 1191
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2867, scaled_y == 1141
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2048, scaled_y == 1141
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1593, scaled_y == 1141
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1303, scaled_y == 1141
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1103, scaled_y == 1141
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2748, scaled_y == 1094
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1963, scaled_y == 1094
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1527, scaled_y == 1094
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1250, scaled_y == 1094
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1057, scaled_y == 1094
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2635, scaled_y == 1049
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1882, scaled_y == 1049
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1464, scaled_y == 1049
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1198, scaled_y == 1049
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1014, scaled_y == 1049
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2526, scaled_y == 1006
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1804, scaled_y == 1006
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1403, scaled_y == 1006
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1148, scaled_y == 1006
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 972, scaled_y == 1006
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2421, scaled_y == 964
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1729, scaled_y == 964
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1345, scaled_y == 964
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1101, scaled_y == 964
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 931, scaled_y == 964
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2321, scaled_y == 924
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1658, scaled_y == 924
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1290, scaled_y == 924
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1055, scaled_y == 924
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 893, scaled_y == 924
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2225, scaled_y == 886
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1589, scaled_y == 886
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1236, scaled_y == 886
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1012, scaled_y == 886
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 856, scaled_y == 886
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2133, scaled_y == 849
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1524, scaled_y == 849
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1185, scaled_y == 849
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 970, scaled_y == 849
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 821, scaled_y == 849
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2045, scaled_y == 814
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1461, scaled_y == 814
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1136, scaled_y == 814
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 930, scaled_y == 814
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 787, scaled_y == 814
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1960, scaled_y == 780
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1400, scaled_y == 780
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1089, scaled_y == 780
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 891, scaled_y == 780
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 754, scaled_y == 780
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1879, scaled_y == 748
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1342, scaled_y == 748
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1044, scaled_y == 748
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 854, scaled_y == 748
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 723, scaled_y == 748
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1801, scaled_y == 717
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1287, scaled_y == 717
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1001, scaled_y == 717
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 819, scaled_y == 717
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 693, scaled_y == 717
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1727, scaled_y == 687
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1233, scaled_y == 687
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 959, scaled_y == 687
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 785, scaled_y == 687
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 664, scaled_y == 687
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1655, scaled_y == 659
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1182, scaled_y == 659
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 920, scaled_y == 659
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 753, scaled_y == 659
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 637, scaled_y == 659
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1587, scaled_y == 632
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1133, scaled_y == 632
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 882, scaled_y == 632
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 721, scaled_y == 632
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 611, scaled_y == 632
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1521, scaled_y == 606
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1087, scaled_y == 606
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 845, scaled_y == 606
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 692, scaled_y == 606
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 585, scaled_y == 606
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1458, scaled_y == 581
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1042, scaled_y == 581
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 810, scaled_y == 581
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 663, scaled_y == 581
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 561, scaled_y == 581
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1398, scaled_y == 557
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 998, scaled_y == 557
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 777, scaled_y == 557
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 636, scaled_y == 557
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 538, scaled_y == 557
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1340, scaled_y == 534
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 957, scaled_y == 534
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 745, scaled_y == 534
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 609, scaled_y == 534
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 516, scaled_y == 534
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1284, scaled_y == 512
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 918, scaled_y == 512
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 714, scaled_y == 512
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 584, scaled_y == 512
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 494, scaled_y == 512
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1231, scaled_y == 490
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 880, scaled_y == 490
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 684, scaled_y == 490
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 560, scaled_y == 490
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 474, scaled_y == 490
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1180, scaled_y == 470
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 843, scaled_y == 470
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 656, scaled_y == 470
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 537, scaled_y == 470
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 454, scaled_y == 470
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1131, scaled_y == 451
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 808, scaled_y == 451
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 629, scaled_y == 451
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 515, scaled_y == 451
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 435, scaled_y == 451
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1085, scaled_y == 432
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 775, scaled_y == 432
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 603, scaled_y == 432
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 493, scaled_y == 432
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 417, scaled_y == 432
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1040, scaled_y == 414
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 743, scaled_y == 414
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 578, scaled_y == 414
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 473, scaled_y == 414
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 400, scaled_y == 414
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 997, scaled_y == 397
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 712, scaled_y == 397
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 554, scaled_y == 397
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 453, scaled_y == 397
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 384, scaled_y == 397
+2015-04-22 13:47:07 {7f0c53ea2a40} [ GpuIntegralChannelsDetector ] : scaled_x == 956, scaled_y == 381
+[1;31mA std::exception was raised:[0m CUDA error in /esat/sadr/amartino/atlas/biclop/src/applications/objects_detection/../../../libs/cudatemplates/include/cudatemplates/devicememorypitched.hpp:138
+void Cuda::DeviceMemoryPitched<Type, Dim>::realloc() [with Type = unsigned char; unsigned int Dim = 3u]
+#2: out of memory
+
+terminate called after throwing an instance of 'Cuda::Error'
+  what():  CUDA error in /esat/sadr/amartino/atlas/biclop/src/applications/objects_detection/../../../libs/cudatemplates/include/cudatemplates/devicememorypitched.hpp:138
+void Cuda::DeviceMemoryPitched<Type, Dim>::realloc() [with Type = unsigned char; unsigned int Dim = 3u]
+#2: out of memory
+
+/bin/bash: line 1: 15657 Aborted                 (core dumped) external/biclop/src/applications/objects_detection/objects_detection -c detector/configs/window-generic.ini --objects_detector.model detector/models/window-generic.bin --recording_path ../outputLondon/work/detections/ --process_folder ../outputLondon/work/detections/
+
+[22-Apr-2015 13:51:00][I] Copied 400 images in 3.47 seconds.
+[22-Apr-2015 13:51:00][I] Removed 0 empty images.
+[22-Apr-2015 13:51:00][I] Meanshift segmentation ...
+[22-Apr-2015 13:51:18][I] Elapsed time: 18.52 seconds.
+[22-Apr-2015 13:51:18][I] Running 1 feature extractors...
+[22-Apr-2015 13:51:18][I] Running feature extractor: gould ...
+[22-Apr-2015 13:51:19][I] Elapsed time for gould: 0.12 seconds.
+[22-Apr-2015 13:51:19][I] Running 1 detectors...
+[22-Apr-2015 13:51:21][I] Running detector window-generic ...
+[22-Apr-2015 13:53:13][E] Error running object detector: Stereo objects detection on a flat world. Rodrigo Benenson @ KULeuven. 2011-2012.
+Parsed the configuration file detector/configs/window-generic.ini
+Overwriting existing log file objects_detection.out.txt
+2015-04-22 13:51:21 {7f3db13c5a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:51:21 {7f3db13c5a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:51:21 {7f3db13c5a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:51:21 {7f3db13c5a40} [ SoftCascadeOverIntegralChannelsModel ] : Parsing model Model created via boosted_learning
+2015-04-22 13:51:21 {7f3db13c5a40} [ SoftCascadeOverIntegralChannelsModel ] : The soft cascade contains 2000 stages
+Stage 0 cascade_threshold == -inf
+Stage 999 cascade_threshold == -inf
+Stage 1999 cascade_threshold == -inf
+Single scale/occlusion model sanity check passed.
+2015-04-22 13:51:21 {7f3db13c5a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+object width: 52 object height: 88
+model width: 72 model height: 116
+2015-04-22 13:51:21 {7f3db13c5a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+2015-04-22 13:51:21 {7f3db13c5a40} [ BaseIntegralChannelsDetector ] : Will not use a soft cascade at run time
+2015-04-22 13:53:11 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : cv::gpu::CudaMem::canMapHostMemory() == 1
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 3015, scaled_y == 1200
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2154, scaled_y == 1200
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1676, scaled_y == 1200
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1371, scaled_y == 1200
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1160, scaled_y == 1200
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2912, scaled_y == 1159
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2080, scaled_y == 1159
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1618, scaled_y == 1159
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1324, scaled_y == 1159
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1120, scaled_y == 1159
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2812, scaled_y == 1120
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2009, scaled_y == 1120
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1563, scaled_y == 1120
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1279, scaled_y == 1120
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1082, scaled_y == 1120
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2716, scaled_y == 1081
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1940, scaled_y == 1081
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1509, scaled_y == 1081
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1235, scaled_y == 1081
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1045, scaled_y == 1081
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2623, scaled_y == 1044
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1873, scaled_y == 1044
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1457, scaled_y == 1044
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1192, scaled_y == 1044
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1009, scaled_y == 1044
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2533, scaled_y == 1008
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1809, scaled_y == 1008
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1407, scaled_y == 1008
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1152, scaled_y == 1008
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 974, scaled_y == 1008
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2446, scaled_y == 974
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1747, scaled_y == 974
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1359, scaled_y == 974
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1112, scaled_y == 974
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 941, scaled_y == 974
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2362, scaled_y == 940
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1687, scaled_y == 940
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1312, scaled_y == 940
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1074, scaled_y == 940
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 909, scaled_y == 940
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2281, scaled_y == 908
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1629, scaled_y == 908
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1267, scaled_y == 908
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1037, scaled_y == 908
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 878, scaled_y == 908
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2203, scaled_y == 877
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1574, scaled_y == 877
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1224, scaled_y == 877
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1002, scaled_y == 877
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 848, scaled_y == 877
+2015-04-22 13:53:12 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2127, scaled_y == 847
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1520, scaled_y == 847
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1182, scaled_y == 847
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 967, scaled_y == 847
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 819, scaled_y == 847
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2054, scaled_y == 818
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1468, scaled_y == 818
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1142, scaled_y == 818
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 934, scaled_y == 818
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 790, scaled_y == 818
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1984, scaled_y == 790
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1417, scaled_y == 790
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1102, scaled_y == 790
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 902, scaled_y == 790
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 763, scaled_y == 790
+2015-04-22 13:53:13 {7f3db13c5a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1916, scaled_y == 763
+[1;31mA std::exception was raised:[0m CUDA error in /esat/sadr/amartino/atlas/biclop/src/applications/objects_detection/../../../libs/cudatemplates/include/cudatemplates/devicememorypitched.hpp:138
+void Cuda::DeviceMemoryPitched<Type, Dim>::realloc() [with Type = unsigned char; unsigned int Dim = 3u]
+#2: out of memory
+
+terminate called after throwing an instance of 'Cuda::Error'
+  what():  CUDA error in /esat/sadr/amartino/atlas/biclop/src/applications/objects_detection/../../../libs/cudatemplates/include/cudatemplates/devicememorypitched.hpp:138
+void Cuda::DeviceMemoryPitched<Type, Dim>::realloc() [with Type = unsigned char; unsigned int Dim = 3u]
+#2: out of memory
+
+/bin/bash: line 1: 26976 Aborted                 (core dumped) external/biclop/src/applications/objects_detection/objects_detection -c detector/configs/window-generic.ini --objects_detector.model detector/models/window-generic.bin --recording_path ../outputLondon/work/detections/ --process_folder ../outputLondon/work/detections/
+
+[22-Apr-2015 13:56:24][I] Copied 400 images in 3.32 seconds.
+[22-Apr-2015 13:56:24][I] Removed 0 empty images.
+[22-Apr-2015 13:56:24][I] Meanshift segmentation ...
+[22-Apr-2015 13:56:24][I] Elapsed time: 0.51 seconds.
+[22-Apr-2015 13:56:24][I] Running 1 feature extractors...
+[22-Apr-2015 13:56:24][I] Running feature extractor: gould ...
+[22-Apr-2015 13:56:25][I] Elapsed time for gould: 0.08 seconds.
+[22-Apr-2015 13:56:25][I] Running 1 detectors...
+[22-Apr-2015 13:56:27][I] Running detector window-generic ...
+[22-Apr-2015 13:56:38][E] Error running object detector: Stereo objects detection on a flat world. Rodrigo Benenson @ KULeuven. 2011-2012.
+Parsed the configuration file detector/configs/window-generic.ini
+Overwriting existing log file objects_detection.out.txt
+2015-04-22 13:56:27 {7fdb5e366a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:56:27 {7fdb5e366a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:56:27 {7fdb5e366a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:56:27 {7fdb5e366a40} [ SoftCascadeOverIntegralChannelsModel ] : Parsing model Model created via boosted_learning
+2015-04-22 13:56:27 {7fdb5e366a40} [ SoftCascadeOverIntegralChannelsModel ] : The soft cascade contains 2000 stages
+Stage 0 cascade_threshold == -inf
+Stage 999 cascade_threshold == -inf
+Stage 1999 cascade_threshold == -inf
+Single scale/occlusion model sanity check passed.
+2015-04-22 13:56:27 {7fdb5e366a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+object width: 52 object height: 88
+model width: 72 model height: 116
+2015-04-22 13:56:27 {7fdb5e366a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+2015-04-22 13:56:27 {7fdb5e366a40} [ BaseIntegralChannelsDetector ] : Will not use a soft cascade at run time
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : cv::gpu::CudaMem::canMapHostMemory() == 1
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2480, scaled_y == 960
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1772, scaled_y == 960
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1378, scaled_y == 960
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1128, scaled_y == 960
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 954, scaled_y == 960
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2409, scaled_y == 933
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1721, scaled_y == 933
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1339, scaled_y == 933
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1095, scaled_y == 933
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 927, scaled_y == 933
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2340, scaled_y == 906
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1672, scaled_y == 906
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1300, scaled_y == 906
+2015-04-22 13:56:36 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1064, scaled_y == 906
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 900, scaled_y == 906
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2273, scaled_y == 880
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1623, scaled_y == 880
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1263, scaled_y == 880
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1033, scaled_y == 880
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 874, scaled_y == 880
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2207, scaled_y == 855
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1577, scaled_y == 855
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1227, scaled_y == 855
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1004, scaled_y == 855
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 849, scaled_y == 855
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2144, scaled_y == 830
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1531, scaled_y == 830
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1191, scaled_y == 830
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 975, scaled_y == 830
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 825, scaled_y == 830
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2082, scaled_y == 806
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1487, scaled_y == 806
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1157, scaled_y == 806
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 947, scaled_y == 806
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 801, scaled_y == 806
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 2022, scaled_y == 783
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1445, scaled_y == 783
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1124, scaled_y == 783
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 920, scaled_y == 783
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 778, scaled_y == 783
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1964, scaled_y == 761
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1403, scaled_y == 761
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1091, scaled_y == 761
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 893, scaled_y == 761
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 756, scaled_y == 761
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1908, scaled_y == 739
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1363, scaled_y == 739
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1060, scaled_y == 739
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 867, scaled_y == 739
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 734, scaled_y == 739
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1853, scaled_y == 718
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1324, scaled_y == 718
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1030, scaled_y == 718
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 843, scaled_y == 718
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 713, scaled_y == 718
+2015-04-22 13:56:37 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1800, scaled_y == 697
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1286, scaled_y == 697
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1000, scaled_y == 697
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 818, scaled_y == 697
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 692, scaled_y == 697
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1748, scaled_y == 677
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1249, scaled_y == 677
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 971, scaled_y == 677
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 795, scaled_y == 677
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 673, scaled_y == 677
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1698, scaled_y == 657
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1213, scaled_y == 657
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 943, scaled_y == 657
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 772, scaled_y == 657
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 653, scaled_y == 657
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1649, scaled_y == 639
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1178, scaled_y == 639
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 916, scaled_y == 639
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 750, scaled_y == 639
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 635, scaled_y == 639
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1602, scaled_y == 620
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1144, scaled_y == 620
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 890, scaled_y == 620
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 728, scaled_y == 620
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 616, scaled_y == 620
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1555, scaled_y == 602
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1111, scaled_y == 602
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 864, scaled_y == 602
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 707, scaled_y == 602
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 599, scaled_y == 602
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1511, scaled_y == 585
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1079, scaled_y == 585
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 840, scaled_y == 585
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 687, scaled_y == 585
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 581, scaled_y == 585
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1467, scaled_y == 568
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1048, scaled_y == 568
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 815, scaled_y == 568
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 667, scaled_y == 568
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 565, scaled_y == 568
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1425, scaled_y == 552
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1018, scaled_y == 552
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 792, scaled_y == 552
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 648, scaled_y == 552
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 548, scaled_y == 552
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1384, scaled_y == 536
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 989, scaled_y == 536
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 769, scaled_y == 536
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 629, scaled_y == 536
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 533, scaled_y == 536
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1344, scaled_y == 521
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 960, scaled_y == 521
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 747, scaled_y == 521
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 611, scaled_y == 521
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 517, scaled_y == 521
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1306, scaled_y == 506
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 933, scaled_y == 506
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 726, scaled_y == 506
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 594, scaled_y == 506
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 503, scaled_y == 506
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1268, scaled_y == 491
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 906, scaled_y == 491
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 705, scaled_y == 491
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 577, scaled_y == 491
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 488, scaled_y == 491
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1232, scaled_y == 477
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 880, scaled_y == 477
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 685, scaled_y == 477
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 560, scaled_y == 477
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 474, scaled_y == 477
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1196, scaled_y == 463
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 855, scaled_y == 463
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 665, scaled_y == 463
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 544, scaled_y == 463
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 460, scaled_y == 463
+2015-04-22 13:56:38 {7fdb5e366a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1162, scaled_y == 450
+[1;31mA std::exception was raised:[0m CUDA error in /esat/sadr/amartino/atlas/biclop/src/applications/objects_detection/../../../libs/cudatemplates/include/cudatemplates/devicememorypitched.hpp:118
+void Cuda::DeviceMemoryPitched<Type, Dim>::realloc() [with Type = unsigned int; unsigned int Dim = 2u]
+#2: out of memory
+
+terminate called after throwing an instance of 'Cuda::Error'
+  what():  CUDA error in /esat/sadr/amartino/atlas/biclop/src/applications/objects_detection/../../../libs/cudatemplates/include/cudatemplates/devicememorypitched.hpp:118
+void Cuda::DeviceMemoryPitched<Type, Dim>::realloc() [with Type = unsigned int; unsigned int Dim = 2u]
+#2: out of memory
+
+/bin/bash: line 1: 27959 Aborted                 (core dumped) external/biclop/src/applications/objects_detection/objects_detection -c detector/configs/window-generic.ini --objects_detector.model detector/models/window-generic.bin --recording_path ../outputStrasbourg/work/detections/ --process_folder ../outputStrasbourg/work/detections/
+
+[22-Apr-2015 13:58:52][I] Copied 400 images in 2.90 seconds.
+[22-Apr-2015 13:58:52][I] Removed 0 empty images.
+[22-Apr-2015 13:58:52][I] Meanshift segmentation ...
+[22-Apr-2015 13:58:52][I] Elapsed time: 0.48 seconds.
+[22-Apr-2015 13:58:52][I] Running 1 feature extractors...
+[22-Apr-2015 13:58:52][I] Running feature extractor: gould ...
+[22-Apr-2015 13:58:53][I] Elapsed time for gould: 0.11 seconds.
+[22-Apr-2015 13:58:53][I] Running 1 detectors...
+[22-Apr-2015 13:58:54][I] Running detector window-generic ...
+[22-Apr-2015 14:01:32][E] Error running object detector: Stereo objects detection on a flat world. Rodrigo Benenson @ KULeuven. 2011-2012.
+Parsed the configuration file detector/configs/window-generic.ini
+Overwriting existing log file objects_detection.out.txt
+2015-04-22 13:58:54 {7f710cf56a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:58:54 {7f710cf56a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:58:54 {7f710cf56a40} [ ObjectsDetectorFactory ] : Parsed the binary model file detector/models/window-generic.bin
+2015-04-22 13:58:54 {7f710cf56a40} [ SoftCascadeOverIntegralChannelsModel ] : Parsing model Model created via boosted_learning
+2015-04-22 13:58:54 {7f710cf56a40} [ SoftCascadeOverIntegralChannelsModel ] : The soft cascade contains 2000 stages
+Stage 0 cascade_threshold == -inf
+Stage 999 cascade_threshold == -inf
+Stage 1999 cascade_threshold == -inf
+Single scale/occlusion model sanity check passed.
+2015-04-22 13:58:54 {7f710cf56a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+object width: 52 object height: 88
+model width: 72 model height: 116
+2015-04-22 13:58:54 {7f710cf56a40} [ SoftCascadeOverIntegralChannelsModel ] : Will ignore the trivial cascade thresholds of the detector model
+2015-04-22 13:58:54 {7f710cf56a40} [ BaseIntegralChannelsDetector ] : Will not use a soft cascade at run time
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : cv::gpu::CudaMem::canMapHostMemory() == 1
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1654, scaled_y == 640
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1181, scaled_y == 640
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 919, scaled_y == 640
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 752, scaled_y == 640
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 636, scaled_y == 640
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1623, scaled_y == 629
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1159, scaled_y == 629
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 902, scaled_y == 629
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 738, scaled_y == 629
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 625, scaled_y == 629
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1593, scaled_y == 617
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1138, scaled_y == 617
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 885, scaled_y == 617
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 724, scaled_y == 617
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 613, scaled_y == 617
+2015-04-22 13:59:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1563, scaled_y == 605
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1117, scaled_y == 605
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 869, scaled_y == 605
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 711, scaled_y == 605
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 602, scaled_y == 605
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1534, scaled_y == 594
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1096, scaled_y == 594
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 853, scaled_y == 594
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 698, scaled_y == 594
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 590, scaled_y == 594
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1506, scaled_y == 583
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1076, scaled_y == 583
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 837, scaled_y == 583
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 685, scaled_y == 583
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 579, scaled_y == 583
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1478, scaled_y == 572
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1056, scaled_y == 572
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 821, scaled_y == 572
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 672, scaled_y == 572
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 569, scaled_y == 572
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1450, scaled_y == 562
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1036, scaled_y == 562
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 806, scaled_y == 562
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 659, scaled_y == 562
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 558, scaled_y == 562
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1423, scaled_y == 551
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1017, scaled_y == 551
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 791, scaled_y == 551
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 647, scaled_y == 551
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 548, scaled_y == 551
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1397, scaled_y == 541
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 998, scaled_y == 541
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 776, scaled_y == 541
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 635, scaled_y == 541
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 538, scaled_y == 541
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1371, scaled_y == 531
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 979, scaled_y == 531
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 762, scaled_y == 531
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 623, scaled_y == 531
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 528, scaled_y == 531
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1345, scaled_y == 521
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 961, scaled_y == 521
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 748, scaled_y == 521
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 612, scaled_y == 521
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 518, scaled_y == 521
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1320, scaled_y == 511
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 943, scaled_y == 511
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 734, scaled_y == 511
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 600, scaled_y == 511
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 508, scaled_y == 511
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1296, scaled_y == 502
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 926, scaled_y == 502
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 720, scaled_y == 502
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 589, scaled_y == 502
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 499, scaled_y == 502
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1272, scaled_y == 493
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 908, scaled_y == 493
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 707, scaled_y == 493
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 578, scaled_y == 493
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 489, scaled_y == 493
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1248, scaled_y == 483
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 892, scaled_y == 483
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 694, scaled_y == 483
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 568, scaled_y == 483
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 480, scaled_y == 483
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1225, scaled_y == 474
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 875, scaled_y == 474
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 681, scaled_y == 474
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 557, scaled_y == 474
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 471, scaled_y == 474
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1202, scaled_y == 466
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 859, scaled_y == 466
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 668, scaled_y == 466
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 547, scaled_y == 466
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 463, scaled_y == 466
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1180, scaled_y == 457
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 843, scaled_y == 457
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 656, scaled_y == 457
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 536, scaled_y == 457
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 454, scaled_y == 457
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1158, scaled_y == 448
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 827, scaled_y == 448
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 643, scaled_y == 448
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 526, scaled_y == 448
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 446, scaled_y == 448
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1136, scaled_y == 440
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 812, scaled_y == 440
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 631, scaled_y == 440
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 517, scaled_y == 440
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 437, scaled_y == 440
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1115, scaled_y == 432
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 797, scaled_y == 432
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 620, scaled_y == 432
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 507, scaled_y == 432
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 429, scaled_y == 432
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1094, scaled_y == 424
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 782, scaled_y == 424
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 608, scaled_y == 424
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 498, scaled_y == 424
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 421, scaled_y == 424
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1074, scaled_y == 416
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 767, scaled_y == 416
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 597, scaled_y == 416
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 488, scaled_y == 416
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 413, scaled_y == 416
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1054, scaled_y == 408
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 753, scaled_y == 408
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 586, scaled_y == 408
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 479, scaled_y == 408
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 406, scaled_y == 408
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1034, scaled_y == 401
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 739, scaled_y == 401
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 575, scaled_y == 401
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 470, scaled_y == 401
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 398, scaled_y == 401
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 1015, scaled_y == 393
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 725, scaled_y == 393
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 564, scaled_y == 393
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 462, scaled_y == 393
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 391, scaled_y == 393
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 996, scaled_y == 386
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 712, scaled_y == 386
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 554, scaled_y == 386
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 453, scaled_y == 386
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 383, scaled_y == 386
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 978, scaled_y == 379
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 699, scaled_y == 379
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 543, scaled_y == 379
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 445, scaled_y == 379
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 376, scaled_y == 379
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 960, scaled_y == 372
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 686, scaled_y == 372
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 533, scaled_y == 372
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 436, scaled_y == 372
+2015-04-22 13:59:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 369, scaled_y == 372
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 942, scaled_y == 365
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 673, scaled_y == 365
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 523, scaled_y == 365
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 428, scaled_y == 365
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 363, scaled_y == 365
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 924, scaled_y == 358
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 660, scaled_y == 358
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 514, scaled_y == 358
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 420, scaled_y == 358
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 356, scaled_y == 358
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 907, scaled_y == 351
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 648, scaled_y == 351
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 504, scaled_y == 351
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 413, scaled_y == 351
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 349, scaled_y == 351
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 890, scaled_y == 345
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 636, scaled_y == 345
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 495, scaled_y == 345
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 405, scaled_y == 345
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 343, scaled_y == 345
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 874, scaled_y == 338
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 624, scaled_y == 338
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 486, scaled_y == 338
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 397, scaled_y == 338
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 336, scaled_y == 338
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 857, scaled_y == 332
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 613, scaled_y == 332
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 477, scaled_y == 332
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 390, scaled_y == 332
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 330, scaled_y == 332
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 841, scaled_y == 326
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 601, scaled_y == 326
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 468, scaled_y == 326
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 383, scaled_y == 326
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 324, scaled_y == 326
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 826, scaled_y == 320
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 590, scaled_y == 320
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 459, scaled_y == 320
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 376, scaled_y == 320
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 318, scaled_y == 320
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 810, scaled_y == 314
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 579, scaled_y == 314
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 450, scaled_y == 314
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 369, scaled_y == 314
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 312, scaled_y == 314
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 795, scaled_y == 308
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 568, scaled_y == 308
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 442, scaled_y == 308
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 362, scaled_y == 308
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : scaled_x == 306, scaled_y == 308
+2015-04-22 13:59:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 502030
+2015-04-22 13:59:09 {7f710cf56a40} [ ObjectsDetectionApplication ] : Created recording file ../outputStrasbourg/work/detections/detections.data_sequence
+2015-04-22 13:59:11 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 466587
+2015-04-22 13:59:13 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 571189
+2015-04-22 13:59:16 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 847259
+2015-04-22 13:59:19 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 731020
+2015-04-22 13:59:22 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 514540
+2015-04-22 13:59:24 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 771438
+2015-04-22 13:59:27 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 895090
+2015-04-22 13:59:30 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 572928
+2015-04-22 13:59:32 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 442522
+2015-04-22 13:59:34 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 780014
+2015-04-22 13:59:37 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 520136
+2015-04-22 13:59:40 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 824221
+2015-04-22 13:59:43 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 672313
+2015-04-22 13:59:45 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 433654
+2015-04-22 13:59:48 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 562887
+2015-04-22 13:59:50 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 962174
+2015-04-22 13:59:53 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 479778
+2015-04-22 13:59:55 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 560226
+2015-04-22 13:59:58 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 633126
+2015-04-22 14:00:00 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 286540
+2015-04-22 14:00:02 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 472231
+2015-04-22 14:00:04 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 647487
+2015-04-22 14:00:06 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 977882
+2015-04-22 14:00:09 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 588093
+2015-04-22 14:00:12 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 640741
+2015-04-22 14:00:15 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 601657
+2015-04-22 14:00:17 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 599249
+2015-04-22 14:00:20 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 817936
+2015-04-22 14:00:22 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 251268
+2015-04-22 14:00:24 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 402024
+2015-04-22 14:00:26 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 804194
+2015-04-22 14:00:29 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 1011660
+2015-04-22 14:00:33 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 674789
+2015-04-22 14:00:35 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 684067
+2015-04-22 14:00:38 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 234802
+2015-04-22 14:00:40 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 610376
+2015-04-22 14:00:43 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 910693
+2015-04-22 14:00:45 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 307502
+2015-04-22 14:00:47 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 580341
+2015-04-22 14:00:50 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 797250
+2015-04-22 14:00:53 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 795230
+2015-04-22 14:00:56 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 706787
+2015-04-22 14:00:59 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 755528
+2015-04-22 14:01:02 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 355249
+2015-04-22 14:01:04 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 403259
+2015-04-22 14:01:05 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 641005
+2015-04-22 14:01:07 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 372589
+2015-04-22 14:01:08 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 366667
+2015-04-22 14:01:10 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 526432
+2015-04-22 14:01:13 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 569947
+2015-04-22 14:01:15 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 490747
+2015-04-22 14:01:17 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 625943
+2015-04-22 14:01:19 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 590856
+2015-04-22 14:01:22 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 527333
+2015-04-22 14:01:24 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 830881
+2015-04-22 14:01:27 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 641678
+2015-04-22 14:01:30 {7f710cf56a40} [ GpuIntegralChannelsDetector ] : number of raw (before non maximal suppression) detections on this frame == 443698
+OpenCV Error: Gpu API call (out of memory) in mallocPitch, file /users/visics/amartino/no_backup/opencv-2.4.10/modules/dynamicuda/include/opencv2/dynamicuda/dynamicuda.hpp, line 1134
+[1;31mA std::exception was raised:[0m /users/visics/amartino/no_backup/opencv-2.4.10/modules/dynamicuda/include/opencv2/dynamicuda/dynamicuda.hpp:1134: error: (-217) out of memory in function mallocPitch
+
+terminate called after throwing an instance of 'cv::Exception'
+  what():  /users/visics/amartino/no_backup/opencv-2.4.10/modules/dynamicuda/include/opencv2/dynamicuda/dynamicuda.hpp:1134: error: (-217) out of memory in function mallocPitch
+
+/bin/bash: line 1: 29072 Aborted                 (core dumped) external/biclop/src/applications/objects_detection/objects_detection -c detector/configs/window-generic.ini --objects_detector.model detector/models/window-generic.bin --recording_path ../outputStrasbourg/work/detections/ --process_folder ../outputStrasbourg/work/detections/
+
+[22-Apr-2015 14:03:37][I] Copied 400 images in 2.70 seconds.
+[22-Apr-2015 14:03:37][I] Removed 0 empty images.
+[22-Apr-2015 14:03:37][I] Meanshift segmentation ...
+[22-Apr-2015 14:03:37][I] Elapsed time: 0.46 seconds.
+[22-Apr-2015 14:03:37][I] Running 1 feature extractors...
+[22-Apr-2015 14:03:37][I] Running feature extractor: gould ...
+[22-Apr-2015 14:03:38][I] Elapsed time for gould: 0.10 seconds.
+[22-Apr-2015 14:03:38][I] Running 1 detectors...
+[22-Apr-2015 14:03:39][I] Running detector window-generic ...
+[22-Apr-2015 14:09:39][I] Detector window-generic elapsed time: 359.31 seconds.
+[22-Apr-2015 14:10:04][I] Starting 2D image labeling (ATLAS)...
+[22-Apr-2015 14:10:26][I] Starting 2D image labeling (ATLAS)...
+[22-Apr-2015 14:11:40][I] ATLAS finished. 0 results loaded from cache. Elapsed time: 73.99 seconds.
+[22-Apr-2015 14:17:48][I] Copied 400 images in 2.79 seconds.
+[22-Apr-2015 14:17:49][I] Removed 0 empty images.
+[22-Apr-2015 14:17:49][I] Meanshift segmentation ...
+[22-Apr-2015 14:17:49][I] Elapsed time: 0.32 seconds.
+[22-Apr-2015 14:17:49][I] Running 1 feature extractors...
+[22-Apr-2015 14:17:49][I] Running feature extractor: gould ...
+[22-Apr-2015 14:17:49][I] Elapsed time for gould: 0.03 seconds.
+[22-Apr-2015 14:17:49][I] Running 1 detectors...
+[22-Apr-2015 14:17:51][I] Running detector window-generic ...
+[22-Apr-2015 14:28:52][I] Detector window-generic elapsed time: 661.85 seconds.
+[22-Apr-2015 14:31:27][I] Starting 2D image labeling (ATLAS)...
+[22-Apr-2015 14:31:40][I] Starting 2D image labeling (ATLAS)...
+[22-Apr-2015 14:33:35][I] ATLAS finished. 0 results loaded from cache. Elapsed time: 114.95 seconds.
+[23-Apr-2015 19:47:20][I] Copied 400 images in 3.37 seconds.
+[23-Apr-2015 19:47:20][I] Removed 0 empty images.
+[23-Apr-2015 19:47:20][I] Meanshift segmentation ...
+[23-Apr-2015 19:47:20][I] Elapsed time: 0.36 seconds.
+[23-Apr-2015 19:47:20][I] Running 1 feature extractors...
+[23-Apr-2015 19:47:20][I] Running feature extractor: gould ...
+[23-Apr-2015 19:47:20][I] Elapsed time for gould: 0.04 seconds.
+[23-Apr-2015 19:47:20][I] Running 1 detectors...
+[23-Apr-2015 19:47:22][I] Running detector window-generic ...
+[23-Apr-2015 21:13:42][I] Detector window-generic elapsed time: 5179.42 seconds.
+[24-Apr-2015 15:36:56][I] Starting 2D image labeling (ATLAS)...
+[24-Apr-2015 15:37:32][I] Starting 2D image labeling (ATLAS)...
+[24-Apr-2015 15:39:19][I] ATLAS finished. 0 results loaded from cache. Elapsed time: 107.79 seconds.

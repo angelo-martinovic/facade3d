@@ -23,7 +23,7 @@ function OrthoImagesBackProject(obj)
        if isempty(plane)
            dl.Log(VerbosityLevel.Error,...
                sprintf(' - No main plane found! Ortho-rectification cannot continue.\n'));
-           error('Critical error. Terminating.');
+           fatal();
        end
 
        v = bsxfun(@minus,points,plane.p');    % vectors from points to plane origin
@@ -92,7 +92,7 @@ function OrthoImagesBackProject(obj)
            dl.Log(VerbosityLevel.Error,...
                sprintf(' - - Read ortho image size: %d %d, sampled points: %d %d',...
                size(orthoImage,1),size(orthoImage,2),iHeight,iWidth));
-           error('Critical error. Terminating.');
+           fatal();
        end
 
        % Project the points to the world coordinate system

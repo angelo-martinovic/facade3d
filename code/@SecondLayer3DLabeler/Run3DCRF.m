@@ -22,7 +22,7 @@ function Run3DCRF(obj)
 
     if sum(unary(:))==0
         dl.Log(VerbosityLevel.Error,sprintf('No unaries found!'));
-        error('Critical error. Terminating.');
+        fatal();
     end
     
     n = size(points,1);

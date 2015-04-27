@@ -55,11 +55,12 @@ classdef featureExtractorCNN < featureExtractor2D
     
             % Extract features for every image
             for i=1:N
-
+                
                 imageName = get_adr('2D_image',obj.config,imageList(i).name(1:end-4));
                 segName = get_adr('2D_segmentation',obj.config,imageList(i).name(1:end-4));
                 featName = get_adr('2D_features',obj.config,imageList(i).name(1:end-4),obj.name);
 
+                dl.Log(VerbosityLevel.Debug,sprintf(' - Extracting features from image %d...\n',i));
                 if ~exist(featName,'file')
                     % Load image
                     im = imread(imageName);
@@ -83,7 +84,8 @@ classdef featureExtractorCNN < featureExtractor2D
     
     methods(Access=private)
         function features = extract_segment_features_rcnn_oneImage(obj,im,seg,net)
-
+            dl = DispatchingLogger.getInstance();
+             
             % Get the superpixel segmentation
             segIDs = unique(seg(:));
             nSuperpixels = numel(segIDs);
@@ -109,11 +111,11 @@ classdef featureExtractorCNN < featureExtractor2D
 
                 % Calculate the response of the network in the convolutional
                 % mode
-                dl.Log(VerbosityLevel.Debug,sprintf(' - Calling CNN...'));
+                dl.Log(VerbosityLevel.Debug,sprintf(' - - Calling CNN...\n'));
 
                 res = vl_simplenn(net, im_, [], [], 'keepLayerOutput',obj.layerOutputsIdx);
             catch err
-                dl.Log(VerbosityLevel.Warning,sprintf(['Error running on GPU: %s.\n'...
+                dl.Log(VerbosityLevel.Warning,sprintf([' - - Error running on GPU: %s.'...
                     'Disabling GPU and attempting to run on CPU...\n'],err.message));
                 
                 obj.useGpu = false;
@@ -122,8 +124,8 @@ classdef featureExtractorCNN < featureExtractor2D
                 
                 res = vl_simplenn(net, im_, [], [], 'keepLayerOutput',obj.layerOutputsIdx);
             end
-            dl.Log(VerbosityLevel.Debug,sprintf('CNN done.\n'));
-            dl.Log(VerbosityLevel.Debug,sprintf(' - Gathering features...'));
+            dl.Log(VerbosityLevel.Debug,sprintf(' - - CNN done.\n'));
+            dl.Log(VerbosityLevel.Debug,sprintf(' - - Gathering features...\n'));
 
             clear im im_ meanImage
             L = length(obj.layerOutputsIdx);
@@ -146,10 +148,10 @@ classdef featureExtractorCNN < featureExtractor2D
                 % The result is a H*W matrix, we need to upsample it to imSize
                 feats(:,:,filterSizeRanges(i)+1:filterSizeRanges(i+1)) = imresize(tmp,imSize,'bilinear');
             end
-            dl.Log(VerbosityLevel.Debug,sprintf('Done.\n'));
+            dl.Log(VerbosityLevel.Debug,sprintf(' - - Done.\n'));
             % Pool the features in each superpixel
 
-            dl.Log(VerbosityLevel.Debug,sprintf(' - Pooling features over superpixels...'));
+            dl.Log(VerbosityLevel.Debug,sprintf(' - - Pooling features over superpixels...\n'));
             feats = reshape(feats,[imSize(1)*imSize(2) nFeats]);
             segVec = reshape(seg,[imSize(1)*imSize(2) 1])+1;
 
@@ -161,7 +163,7 @@ classdef featureExtractorCNN < featureExtractor2D
 
             % Average pooling
             features = bsxfun(@rdivide,features,segSizes');
-            dl.Log(VerbosityLevel.Debug,sprintf('Done.\n'));
+            dl.Log(VerbosityLevel.Debug,sprintf(' - - Done.\n'));
         end
     end
     

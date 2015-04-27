@@ -62,16 +62,14 @@ function PrepareData(obj)
             end
             
         end
-        rectificationTime = toc;
-        dl.Log(VerbosityLevel.Info,sprintf('Rectified %d images in %.2f seconds.\n',length(imageFilenames),rectificationTime));
+        dl.Log(VerbosityLevel.Info,sprintf('Rectified %d images in %.2f seconds.\n',length(imageFilenames),toc));
     else
         % Otherwise just copy
         tic;
         for i=1:length(imageFilenames)
-            copyfile(imageFilenames{i},[workFolder get_adr('2D_image',cf,imageNames{i})]);
+            copyfile(imageFilenames{i}, get_adr('2D_image',cf,imageNames{i}));
         end
-        copyTime = toc;
-        dl.Log(VerbosityLevel.Info,sprintf('Copied %d images in %.2f seconds.\n',length(imageFilenames),copyTime));
+        dl.Log(VerbosityLevel.Info,sprintf('Copied %d images in %.2f seconds.\n',length(imageFilenames),toc));
     end
     %% Remove empty images
     cntRemoved = 0;
@@ -91,28 +89,32 @@ function PrepareData(obj)
     end
     dl.Log(VerbosityLevel.Info,sprintf('Removed %d empty images.\n',cntRemoved));
     
-    %% Resize images
-    tic;
-    dl.Log(VerbosityLevel.Info,sprintf('Resizing images to common height: %d ...\n',cf.c2D.resizedImagesHeight));
-    resizeCmd = ['mogrify -resize x' num2str(cf.c2D.resizedImagesHeight) ' ' workFolder '*.jpg'];
-    [stat,res] = system(resizeCmd); %,'-echo');
-    if stat~=0
-        error('Error running mogrify resize: %s\n',res);
-    end
-    resizeTime = toc;
-    dl.Log(VerbosityLevel.Info,sprintf('Image resize time: %.2f seconds.\n',resizeTime));
+    [~,nExisting]=system(['ls ' workFolder '/*.ppm | wc -l']);
+    nExisting = str2double(nExisting);
+    if nExisting~=length(imageFilenames)-cntRemoved
+        %% Resize images
+        if cf.resizeImages
+            tic;
+            dl.Log(VerbosityLevel.Info,sprintf('Resizing images to common height: %d ...\n',cf.c2D.resizedImagesHeight));
+            resizeCmd = ['mogrify -resize x' num2str(cf.c2D.resizedImagesHeight) ' ' workFolder '*.jpg'];
+            [stat,res] = system(resizeCmd); %,'-echo');
+            if stat~=0
+                error('Error running mogrify resize: %s\n',res);
+            end
+            dl.Log(VerbosityLevel.Info,sprintf('Image resize time: %.2f seconds.\n',toc));
+        end
     
-    %% Convert to ppm
-    tic;
-    dl.Log(VerbosityLevel.Info,sprintf('Converting to ppm (needed for meanshift) ...\n'));
-    convertCmd = ['mogrify -format ppm ' workFolder '*.jpg'];
-    [stat,res] = system(convertCmd); %,'-echo'); % add for debug
-    if stat~=0
-        dl.Log(VerbosityLevel.Error,sprintf('Error running mogrify convert: %s\n',res));
-        error('Critical error. Terminating.');
+        %% Convert to ppm
+        tic;
+        dl.Log(VerbosityLevel.Info,sprintf('Converting to ppm (needed for meanshift) ...\n'));
+        convertCmd = ['mogrify -format ppm ' workFolder '*.jpg'];
+        [stat,res] = system(convertCmd); %,'-echo'); % add for debug
+        if stat~=0
+            dl.Log(VerbosityLevel.Error,sprintf('Error running mogrify convert: %s\n',res));
+            fatal();
+        end
+        dl.Log(VerbosityLevel.Info,sprintf('Elapsed time: %.2f seconds.\n',toc));
     end
-    convertTime = toc;
-    dl.Log(VerbosityLevel.Info,sprintf('Mogrify convert time: %f seconds.\n',convertTime));
     
     %% Run meanshift
     tic;
@@ -122,96 +124,120 @@ function PrepareData(obj)
             
             ppmFile = get_adr('2D_ppm',cf,imageNames{i});
             if exist(ppmFile,'file')
-                copyfile(ppmFile,'edison/tmp/');
-                segCmd = ['edison/segmentImage.sh ' imageNames{i} '.ppm' ' '...
-                    num2str(cf.c2D.minRegionArea)];
+                copyfile(ppmFile,sprintf('edison/tmp/%08d.ppm',i));
+                segCmd = sprintf('edison/segmentImage.sh %08d.ppm %d',i,cf.c2D.minRegionArea); 
                 [stat,res] = system(segCmd); %,'-echo'); % add for debug
                 if stat~=0
                     dl.Log(VerbosityLevel.Error,sprintf('Error running segmentImage: %s\n',res)); %#ok<PFBNS>
-                    error('Critical error. Terminating.');
+                    fatal();
                 end
-                delete(['edison/tmp/' imageNames{i} '.ppm']);
-                movefile(['edison/tmp/' imageNames{i} '.seg'],workFolder);
+                delete(sprintf('edison/tmp/%08d.ppm',i));
+                movefile(sprintf('edison/tmp/%08d.seg',i),[ppmFile(1:end-4) '.seg']);
             end
         end
     end
-    segmentationTime = toc;
-    dl.Log(VerbosityLevel.Info,sprintf('Meanshift elapsed time: %.2f seconds.\n',segmentationTime));
+    dl.Log(VerbosityLevel.Info,sprintf('Elapsed time: %.2f seconds.\n',toc));
 
     %% Run feature extractor(s)
     featureExtractors = cf.c2D.featureExtractors;
-    if length(featureExtractors)<1
+    nFeatExtr = length(featureExtractors);
+    if nFeatExtr<1
         dl.Log(VerbosityLevel.Error,sprintf('No feature extractors defined!'));
-        error('Critical error. Terminating.');
+        fatal();
     end
-    for i=1:length(featureExtractors) 
+    dl.Log(VerbosityLevel.Info,sprintf('Running %d feature extractors...\n',nFeatExtr));
+    for i=1:nFeatExtr
         dl.Log(VerbosityLevel.Info,sprintf('Running feature extractor: %s ...\n',featureExtractors{i}.name));
         tic;
-        featureExtractors{i}.ExtractFeatures();
-        featureExtractionTime = toc;
+        try
+            featureExtractors{i}.ExtractFeatures();
+        catch ME
+            dl.Log(VerbosityLevel.Error,ME.message);
+            fatal();
+        end
         dl.Log(VerbosityLevel.Info,sprintf('Elapsed time for %s: %.2f seconds.\n',...
-            featureExtractors{i}.name,featureExtractionTime));
+            featureExtractors{i}.name,toc));
     end
    
     %% Run detector(s)
-    subset = 'eval';
-    imageNames = obj.LoadFilenames(subset);
-    
+    imageNamesTrain = obj.LoadFilenames('train');
+    imageNamesEval = obj.LoadFilenames('eval');
+    dl.Log(VerbosityLevel.Info,sprintf('Running %d detectors...\n',length(cf.c2D.detectors)));
     for d=1:length(cf.c2D.detectors)
         D = cf.c2D.detectors{d};
         
+        % Copy all images to a subfolder (only once, before the first detector)
         if d==1
-            % Copy all images to a subfolder (only once)
-            subfolder = get_adr('2D_detectionFolder',cf);
-            if ~exist(subfolder,'dir')
-                mkdir(subfolder);
+            subfolderEval = get_adr('2D_detectionFolderEval',cf);
+            if ~exist(subfolderEval,'dir')
+                mkdir(subfolderEval);
             else
                 if cf.useCache
                     dl.Log(VerbosityLevel.Info,sprintf('Found cache. Skipping detector %s ...\n',D.name));
                     continue;
                 else
-                    system(['rm -r ' subfolder]);  %,'-echo'); % add for debug
-                    mkdir(subfolder);
+                   system(['rm -r ' subfolderEval]);  %,'-echo'); % add for debug
+                   mkdir(subfolderEval);
                 end
             end
 
-            for i=1:length(imageNames)
-                 if exist(get_adr('2D_image',cf,imageNames{i}),'file')
-                    copyfile(get_adr('2D_image',cf,imageNames{i}),subfolder);
+            for i=1:length(imageNamesEval)
+                 if exist(get_adr('2D_image',cf,imageNamesEval{i}),'file')
+                   copyfile(get_adr('2D_image',cf,imageNamesEval{i}),subfolderEval);
+                 end
+            end
+            
+            subfolderTrain = get_adr('2D_detectionFolderTrain',cf);
+            if ~exist(subfolderTrain,'dir')
+                mkdir(subfolderTrain);
+            else
+               system(['rm -r ' subfolderTrain]);  %,'-echo'); % add for debug
+               mkdir(subfolderTrain);
+            end
+
+            for i=1:length(imageNamesTrain)
+                 if exist(get_adr('2D_image',cf,imageNamesTrain{i}),'file')
+                   copyfile(get_adr('2D_image',cf,imageNamesTrain{i}),subfolderTrain);
                  end
             end
         end
 
+        % Run detector on the eval subfolder
         dl.Log(VerbosityLevel.Info,sprintf('Running detector %s ...\n',D.name));
-
-        % Run detector on the subfolder
+        outputFolder = get_adr('2D_detectorOutputFolderEval',cf,D.name);
         tic;
-        detCmd = ['LD_LIBRARY_PATH="" && external/biclop/src/applications/objects_detection/objects_detection -c ' ...
-                    D.configFile ' --objects_detector.model ' D.modelFile ...
-                    ' --recording_path '  subfolder  ' --process_folder '  subfolder ];
-        [stat,res] = system(detCmd);   %,'-echo'); % add for debug
-        if stat~=0
-            dl.Log(VerbosityLevel.Error,sprintf('Error running object detector: %s\n',res));
+        try
+            D.DetectObjects(subfolderEval,outputFolder);
+        catch ME
+            dl.Log(VerbosityLevel.Error,ME.message);
+            fatal();
         end
-
-        dl.Log(VerbosityLevel.Info,sprintf('Creating detection files ...\n'));
-        detCmd2 = ['python external/biclop/tools/objects_detection/detections_to_wnd_eval_normalized.py -d ' subfolder ...
-            'detections.data_sequence -o ' get_adr('2D_detectorOutputFolder',cf,D.name) ' -m ' D.modelFile];
-        [stat,res] = system(detCmd2);%,'-echo'); % add for debug
-        if stat~=0
-            dl.Log(VerbosityLevel.Error,sprintf('Error creating detection files: %s\n',res));
-        end
-        delete([subfolder 'detections.data_sequence']); 
+        dl.Log(VerbosityLevel.Info,sprintf('Detector %s elapsed time: %.2f seconds.\n',D.name,toc));
         
+        % Create the mean detection on the train subfolder
+        dl.Log(VerbosityLevel.Info,sprintf('Creating mean detection file with detector %s ...\n',D.name));
+        outputFolder = get_adr('2D_detectorOutputFolderTrain',cf,D.name);
+        tic;
+        try
+            D.DetectObjects(subfolderTrain,outputFolder);
+            D.CalculateMeanDetection(cf,imageNamesTrain);
+        catch ME
+            dl.Log(VerbosityLevel.Error,ME.message);
+            fatal();
+        end
+        dl.Log(VerbosityLevel.Info,sprintf('Detector %s elapsed time: %.2f seconds.\n',D.name,toc));
+    
+        % Remove all images from the subfolder (only once, after the last detector)
         if d==length(cf.c2D.detectors)
-           % Remove all images from the subfolder (only once)
-           for i=1:length(imageNames)
-               delete([subfolder imageNames{i} '.jpg']);
-           end 
-        end
-        
-        detectorTime = toc;
-        dl.Log(VerbosityLevel.Info,sprintf('Detector %s elapsed time: %.2f seconds.\n',D.name,detectorTime));
+          
+          for i=1:length(imageNamesTrain)
+              delete([subfolderTrain imageNamesTrain{i} '.jpg']);
+              
+          end
+          for i=1:length(imageNamesEval)
+              delete([subfolderEval imageNamesEval{i} '.jpg']);
+          end 
+        end 
     end
 
 end

@@ -40,7 +40,7 @@ function OrthoImages(obj)
         if isempty(plane)
             dl.Log(VerbosityLevel.Error,...
                 sprintf(' - No main plane found! Ortho-rectification cannot continue.\n'));
-            error('Critical error. Terminating.');
+            fatal();
         end
   
         plane.b = [min(projPoints(1,:)) max(projPoints(1,:)) ...
@@ -48,23 +48,27 @@ function OrthoImages(obj)
                    min(projPoints(3,:)) max(projPoints(3,:))];
 
         g = ss.g;
-       
+        
         bestHP = 0;
         bestG = ss.g;
+        bestImg = zeros(10,10);
         % Fine tune the gravity vector
-        if obj.fineTuneGravityVector
+        if obj.orthoParams.fineTuneGravityVector
             dl.Log(VerbosityLevel.Debug,...
                         sprintf(' - - Fine-tuning the gravity vector...\n'));
                     
-            for xvec=0%-0.05:0.01:0.05
-                for zvec=-0.05:0.01:0.05
+            for xvec=ss.g(1)+obj.orthoParams.xVecRange
+                for zvec=ss.g(3)+obj.orthoParams.zVecRange
+                    
+                    % y is orthogonal to x and z
                     yvec = sqrt(1-xvec*xvec-zvec*zvec);
+                    
                     % Modified gravity vector
                     g=[xvec yvec zvec];
 
                     % Tentative ortho image
                     [orthoImage,~] = ProjectToOrtho(plane,g,projPoints,origColors);
-                    orthoImage = orthoImage/255;
+                    orthoImage = double(orthoImage)/255;
                     
                     % Get edge information, project on the vertical line
                     bw = edge(rgb2gray(orthoImage));
@@ -76,11 +80,17 @@ function OrthoImages(obj)
                     hp= sort(hp,'descend');
                     curHP = mean(hp(1:10));
                     dl.Log(VerbosityLevel.Debug,...
-                        sprintf(' - - xvec:%f,zvec:%f,curHP:%f\n',xvec,zvec,curHP));
+                        sprintf(' - - x:%.2f,z:%.2f,score:%f,best:%f\n',xvec,zvec,curHP,bestHP));
 
+                    if obj.orthoParams.visualize
+                        figure(100);
+                        subplot(121),imagesc(orthoImage);title(sprintf('x:%.2f,z:%.2f,score:%f\n',xvec,zvec,curHP));axis equal;
+                        subplot(122),imagesc(bestImg);title(sprintf('Best:x:%.2f,z:%.2f,score:%f\n',bestG(1),bestG(3),bestHP));axis equal;drawnow;
+                    end
                     if curHP>bestHP
                         bestHP = curHP;
                         bestG = g;
+                        bestImg = orthoImage;
                     end
                 end
             end
@@ -91,14 +101,14 @@ function OrthoImages(obj)
        % Get the ortho labeling, ortho potentials, and 3D positions of
        % ortho image
        [orthoImageOld,iPointsR] = ProjectToOrtho(plane,g,projPoints,origColors); 
-       [orthoLabel,~] = ProjectToOrtho(plane,g,projPoints,labelColors);
-       [orthoPotentials,~] = ProjectToOrtho(plane,g,projPoints,vertexSubsetPotentials);
+       [orthoLabel,~]           = ProjectToOrtho(plane,g,projPoints,labelColors);
+       [orthoPotentials,~]      = ProjectToOrtho(plane,g,projPoints,vertexSubsetPotentials);
      
        %% Create the ortho image by averaging the projected colors from different cameras
        % (Provides better quality than the nearest neighbor labeling from the point cloud)
 
        % Get nc closest cameras
-       nc = 10; % TODO: set as parameter
+       nc = obj.orthoParams.nClosestCameras; 
        idx = knnsearch(camerapos,plane.p','K',nc);
     
        colorsPerPoint = zeros(length(iPointsR),nc,3);    
@@ -123,7 +133,7 @@ function OrthoImages(obj)
                 else
                     dl.Log(VerbosityLevel.Error,...
                         sprintf(' - - Camera-image size mismatch!\n'));
-                    error('Critical error. Terminating.');
+                    fatal();
                 end
 
                 % Backproject the colors
@@ -131,9 +141,7 @@ function OrthoImages(obj)
                     colorsPerPoint(:,j,c) = BackProjectLabeling(iPointsR,origImg(:,:,c),cameras{camIdx});
                 end
 
-%                 fprintf('o');
             else
-%                 fprintf('x');
                 continue;
             end
 
@@ -149,19 +157,20 @@ function OrthoImages(obj)
        orthoImage = imrotate(orthoImage,180);
        orthoImage = fliplr(orthoImage);
        
-       orthoLabel = orthoLabel/255;
+       orthoLabel = double(orthoLabel)/255;
        
-       % TODO: set a flag for visualization
-       figure(200);imagesc(orthoImage);title('Ortho-projected image');axis equal;drawnow;
+       % Visualization
+       if obj.orthoParams.visualize
+           figure(200);imagesc(orthoImage);title('Ortho-projected image');axis equal;drawnow;
+           figure(300);imagesc(orthoLabel);title('Ortho-projected 2nd layer labeling');axis equal;drawnow;
+           figure(400);imagesc(orthoPotentials(:,:,1));title('Ortho-projected 2nd layer potentials - class 1');axis equal;drawnow;
+       end
+       
+       % Saving
        imwrite(orthoImage,get_adr('orthoColors',obj.config,obj.splitName,facadeID));
-        
-       figure(300);imagesc(orthoLabel);title('Ortho-projected 2nd layer labeling');axis equal;drawnow;
        imwrite(orthoLabel,get_adr('orthoLabels',obj.config,obj.splitName,facadeID));
-
-       figure(400);imagesc(orthoPotentials(:,:,1));title('Ortho-projected 2nd layer potentials - class 1');axis equal;drawnow;
        save(get_adr('orthoPotentials',obj.config,obj.splitName,facadeID),'orthoPotentials');
 
-       
     end
     dl.Log(VerbosityLevel.Info,sprintf('Done. Elapsed time: %.2f seconds.\n',toc));
 end

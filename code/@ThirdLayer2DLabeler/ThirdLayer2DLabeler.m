@@ -5,19 +5,40 @@ classdef ThirdLayer2DLabeler < handle
     properties
             config = [];  
             splitName = [];
-
-            nClasses = [];
-
-            fineTuneGravityVector = true;
+    
+            pcl_test = [];
+            pcl_all = [];
+        
+            orthoParams = [];
+            
+           
+            
             condorEnabled = true;
-
     end
     
     methods
-        function tl = ThirdLayer2DLabeler(datasetConfig,splitName)
+        function tl = ThirdLayer2DLabeler(datasetConfig,splitName,pcl_test,pcl_all)
             tl.config = datasetConfig;
             tl.splitName = splitName;
-            tl.nClasses = datasetConfig.nClasses;
+            tl.pcl_test = pcl_test;
+            tl.pcl_all = pcl_all;
+            
+            % Ortho images creation
+            % Visualization is useful for debugging but makes the code
+            % quite slow.
+            tl.orthoParams.visualize = false;
+            
+            % Initial gravity vector might not be precise enough. We can
+            % fine tune it by tilting the ortho camera and checking whether
+            % edges in the ortho images align with the vertical direction.
+            tl.orthoParams.fineTuneGravityVector = true; 
+            tl.orthoParams.xVecRange = 0;%-0.05:0.02:0.05;
+            tl.orthoParams.zVecRange = -0.05:0.02:0.05;
+            
+            % An ortho image is created by projecting images from 
+            % nClosestCameras onto the facade plane.
+            tl.orthoParams.nClosestCameras = 10; 
+            
         end
 
                
@@ -31,7 +52,6 @@ classdef ThirdLayer2DLabeler < handle
         
         OrthoImagesBackProject(obj);
         ReassemblePointCloud(obj);
-        
 
         %Calculates 3D positions of cameras
         function [camerapos,cameras] = GetCameraPos(obj)
@@ -57,31 +77,9 @@ classdef ThirdLayer2DLabeler < handle
             facadeIDs = facadeIDs(facadeIDs~=0); % Skip background
         end
        
-        function score = EvaluateLabeling(obj)
-
-            % After 3rd layer
-            labFilename = get_adr('3D_L3_Ortho2D_labeling',obj.config,obj.splitName);
-            gtFilename = get_adr('pcl_gt_test',obj.config);
-            fprintf('Evaluating %s...\n',labFilename);
-           
-            % Get labeling
-            [points_full,~,colors_full]=ReadPCLFromPly(labFilename);
-            labels_full = Colors2Labels(colors_full,obj.config.cm);
-
-            % Get GT
-            [pointsGT_full,~,colorsGT_full]=ReadPCLFromPly(gtFilename);
-            labelsGT_full = Colors2Labels(colorsGT_full,obj.config.cm);
-
-            assert(isequal(size(points_full),size(pointsGT_full)));
-            assert(isequal(size(colorsGT_full),size(colors_full)));
-
-            ignoreClasses = obj.config.ignoreClasses+1;
-
-            score = evaluation_multilabel(labelsGT_full,labels_full,ignoreClasses);
-            disp(score);
+        function outputPCLName = GetOutputName(obj)
+             outputPCLName = get_adr('3D_L3_Ortho2D_labeling',obj.config,obj.splitName);
         end
-        
-
     end
     
 end
