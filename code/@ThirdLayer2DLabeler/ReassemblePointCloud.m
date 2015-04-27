@@ -28,7 +28,10 @@ function ReassemblePointCloud(obj)
     end
 %     pb.stop;
 
-    [pointsFull,~,colorsFull] = ReadPCLFromPly(get_adr('pcl',obj.config));
+    pointsFull = obj.pcl_all.pts';
+    colorsFull = obj.pcl_all.rgb';
+    
+%     [pointsFull,~,colorsFull] = ReadPCLFromPly(get_adr('pcl',obj.config));
     
     dl.Log(VerbosityLevel.Debug,sprintf(' - KNN search...\n'));
     idx = knnsearch(pointsFull,points);

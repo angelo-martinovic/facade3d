@@ -1,0 +1,186 @@
+[17-Apr-2015 16:25:41][I] Rectifying images ...
+[17-Apr-2015 16:25:42][I] Rectified 428 images in 0.50 seconds.
+[17-Apr-2015 16:25:42][I] Removed 6 empty images.
+[17-Apr-2015 16:25:42][I] Resizing images to common height: 800 ...
+[17-Apr-2015 16:25:51][I] Image resize time: 8.77 seconds.
+[17-Apr-2015 16:25:51][I] Converting to ppm (needed for meanshift) ...
+[17-Apr-2015 16:25:57][I] Elapsed time: 6.15 seconds.
+[17-Apr-2015 16:25:57][I] Meanshift segmentation ...
+[17-Apr-2015 16:25:57][I] Elapsed time: 0.16 seconds.
+[17-Apr-2015 16:25:57][I] Running 1 feature extractors...
+[17-Apr-2015 16:25:57][I] Running feature extractor: CNN ...
+[17-Apr-2015 16:26:07][E] Undefined variable "dl" or class "dl.Log".
+[17-Apr-2015 16:27:20][I] Rectifying images ...
+[17-Apr-2015 16:27:20][I] Rectified 428 images in 0.29 seconds.
+[17-Apr-2015 16:27:20][I] Removed 6 empty images.
+[17-Apr-2015 16:27:20][I] Resizing images to common height: 800 ...
+[17-Apr-2015 16:27:29][I] Image resize time: 8.48 seconds.
+[17-Apr-2015 16:27:29][I] Converting to ppm (needed for meanshift) ...
+[17-Apr-2015 16:27:34][I] Elapsed time: 5.68 seconds.
+[17-Apr-2015 16:27:34][I] Meanshift segmentation ...
+[17-Apr-2015 16:27:34][I] Elapsed time: 0.17 seconds.
+[17-Apr-2015 16:27:34][I] Running 1 feature extractors...
+[17-Apr-2015 16:27:34][I] Running feature extractor: CNN ...
+[17-Apr-2015 16:27:43][W] Error running on GPU: Out of memory on device. To view more detail about available memory on the GPU, use 'gpuDevice()'. If the problem persists, reset the GPU by calling 'gpuDevice(1)'..
+Disabling GPU and attempting to run on CPU...
+[17-Apr-2015 16:52:54][I] Rectifying images ...
+[17-Apr-2015 16:52:55][I] Rectified 428 images in 1.23 seconds.
+[17-Apr-2015 16:52:55][I] Removed 6 empty images.
+[17-Apr-2015 16:52:55][I] Resizing images to common height: 800 ...
+[17-Apr-2015 16:53:12][I] Image resize time: 16.66 seconds.
+[17-Apr-2015 16:53:12][I] Converting to ppm (needed for meanshift) ...
+[17-Apr-2015 16:53:29][I] Elapsed time: 17.29 seconds.
+[17-Apr-2015 16:53:29][I] Meanshift segmentation ...
+[17-Apr-2015 16:53:30][I] Elapsed time: 0.50 seconds.
+[17-Apr-2015 16:53:30][I] Running 1 feature extractors...
+[17-Apr-2015 16:53:30][I] Running feature extractor: CNN ...
+[17-Apr-2015 16:53:43][W] Error running on GPU: Invalid MEX-file '/esat/sadr/amartino/Code/matconvnet_gpu/matlab/mex/vl_nnconv.mexa64': libcublas.so.6.5: cannot open shared object file: No such file or directory.
+Disabling GPU and attempting to run on CPU...
+[17-Apr-2015 16:53:44][E] Invalid MEX-file '/esat/sadr/amartino/Code/matconvnet_gpu/matlab/mex/vl_nnconv.mexa64': libcublas.so.6.5: cannot open shared object file: No such file or directory
+[17-Apr-2015 16:55:40][I] Rectifying images ...
+[17-Apr-2015 16:55:42][I] Rectified 428 images in 1.52 seconds.
+[17-Apr-2015 16:55:42][I] Removed 6 empty images.
+[17-Apr-2015 16:55:42][I] Resizing images to common height: 800 ...
+[17-Apr-2015 16:56:06][I] Image resize time: 23.28 seconds.
+[17-Apr-2015 16:56:06][I] Converting to ppm (needed for meanshift) ...
+[17-Apr-2015 16:56:24][E] Error running mogrify convert: ^C
+[17-Apr-2015 16:56:31][I] Rectifying images ...
+[17-Apr-2015 16:56:31][I] Rectified 428 images in 0.34 seconds.
+[17-Apr-2015 16:56:32][I] Removed 6 empty images.
+[17-Apr-2015 16:56:32][I] Resizing images to common height: 800 ...
+[17-Apr-2015 16:56:41][I] Image resize time: 9.66 seconds.
+[17-Apr-2015 16:56:41][I] Converting to ppm (needed for meanshift) ...
+[17-Apr-2015 17:00:06][I] Rectifying images ...
+[17-Apr-2015 17:00:07][I] Rectified 428 images in 1.61 seconds.
+[17-Apr-2015 17:00:08][I] Removed 6 empty images.
+[17-Apr-2015 17:00:08][I] Resizing images to common height: 800 ...
+[17-Apr-2015 17:03:20][I] Image resize time: 192.09 seconds.
+[17-Apr-2015 17:04:24][I] Rectifying images ...
+[17-Apr-2015 17:04:25][I] Rectified 428 images in 1.19 seconds.
+[17-Apr-2015 17:04:25][I] Removed 6 empty images.
+[17-Apr-2015 17:04:26][I] Meanshift segmentation ...
+[17-Apr-2015 17:04:26][I] Elapsed time: 0.53 seconds.
+[17-Apr-2015 17:04:26][I] Running 1 feature extractors...
+[17-Apr-2015 17:04:26][I] Running feature extractor: CNN ...
+[17-Apr-2015 17:04:59][W] Error running on GPU: Out of memory on device. To view more detail about available memory on the GPU, use 'gpuDevice()'. If the problem persists, reset the GPU by calling 'gpuDevice(1)'..
+Disabling GPU and attempting to run on CPU...
+[17-Apr-2015 17:09:11][I] Rectifying images ...
+[17-Apr-2015 17:09:12][I] Rectified 428 images in 0.58 seconds.
+[17-Apr-2015 17:09:12][I] Removed 6 empty images.
+[17-Apr-2015 17:09:12][I] Meanshift segmentation ...
+[17-Apr-2015 17:09:12][I] Elapsed time: 0.22 seconds.
+[17-Apr-2015 17:09:12][I] Running 1 feature extractors...
+[17-Apr-2015 17:09:12][I] Running feature extractor: CNN ...
+[17-Apr-2015 17:09:21][W] Error running on GPU: Out of memory on device. To view more detail about available memory on the GPU, use 'gpuDevice()'. If the problem persists, reset the GPU by calling 'gpuDevice(1)'..
+Disabling GPU and attempting to run on CPU...
+[17-Apr-2015 17:09:22][E] Out of memory. Type HELP MEMORY for your options.
+[17-Apr-2015 17:11:11][I] Rectifying images ...
+[17-Apr-2015 17:11:12][I] Rectified 428 images in 0.73 seconds.
+[17-Apr-2015 17:11:12][I] Removed 6 empty images.
+[17-Apr-2015 17:11:12][I] Meanshift segmentation ...
+[17-Apr-2015 17:11:13][I] Elapsed time: 0.32 seconds.
+[17-Apr-2015 17:11:13][I] Running 1 feature extractors...
+[17-Apr-2015 17:11:13][I] Running feature extractor: CNN ...
+[17-Apr-2015 19:02:21][I] Elapsed time for CNN: 6667.89 seconds.
+[17-Apr-2015 19:02:21][I] Running 0 detectors...
+[17-Apr-2015 19:04:12][I] Training the linSVM superpixel classifier...
+[17-Apr-2015 19:04:12][I]  - Loading training data...
+[17-Apr-2015 19:08:35][I]  - Training data loading: 263.66 seconds.
+[17-Apr-2015 19:09:01][I]  - Scaling data...
+[17-Apr-2015 19:09:02][I]  - Starting training...
+[17-Apr-2015 19:10:07][I]  - Training time of linSVM elapsed: 65.19.
+[17-Apr-2015 19:10:07][I]  - Saving the model.
+[17-Apr-2015 20:23:32][I] Classifying with linSVM.
+[17-Apr-2015 20:23:32][I]  - Loading the model from ../output/work/classifier/linSVM.mat, created at 17-Apr-2015 19:10:07.
+[17-Apr-2015 20:23:32][I]  - Loading the testing data...
+[17-Apr-2015 20:24:25][W] Image 22 ground truth not found
+[17-Apr-2015 20:24:38][W] Image 31 ground truth not found
+[17-Apr-2015 20:24:39][W] Image 32 ground truth not found
+[17-Apr-2015 20:24:40][W] Image 33 ground truth not found
+[17-Apr-2015 20:24:42][W] Image 34 ground truth not found
+[17-Apr-2015 20:24:43][W] Image 35 ground truth not found
+[17-Apr-2015 20:24:44][W] Image 36 ground truth not found
+[17-Apr-2015 20:24:45][W] Image 37 ground truth not found
+[17-Apr-2015 20:24:46][W] Image 38 ground truth not found
+[17-Apr-2015 20:24:47][W] Image 39 segmentation not found
+[17-Apr-2015 20:24:47][W] Image 40 ground truth not found
+[17-Apr-2015 20:24:48][W] Image 41 ground truth not found
+[17-Apr-2015 20:25:08][W] Image 50 ground truth not found
+[17-Apr-2015 20:25:11][W] Image 51 ground truth not found
+[17-Apr-2015 20:25:33][W] Image 59 ground truth not found
+[17-Apr-2015 20:25:36][W] Image 60 ground truth not found
+[17-Apr-2015 20:25:39][W] Image 61 ground truth not found
+[17-Apr-2015 20:25:42][W] Image 62 ground truth not found
+[17-Apr-2015 20:25:44][W] Image 63 ground truth not found
+[17-Apr-2015 20:25:47][W] Image 64 ground truth not found
+[17-Apr-2015 20:25:54][W] Image 67 ground truth not found
+[17-Apr-2015 20:25:57][W] Image 68 ground truth not found
+[17-Apr-2015 20:25:59][W] Image 69 ground truth not found
+[17-Apr-2015 20:26:02][W] Image 70 ground truth not found
+[17-Apr-2015 20:26:04][W] Image 71 ground truth not found
+[17-Apr-2015 20:26:07][W] Image 72 ground truth not found
+[17-Apr-2015 20:26:10][W] Image 73 ground truth not found
+[17-Apr-2015 20:26:13][W] Image 74 ground truth not found
+[17-Apr-2015 20:26:15][W] Image 75 ground truth not found
+[17-Apr-2015 20:26:18][W] Image 76 ground truth not found
+[17-Apr-2015 20:26:20][W] Image 77 ground truth not found
+[17-Apr-2015 20:26:23][W] Image 78 ground truth not found
+[17-Apr-2015 20:26:25][W] Image 79 ground truth not found
+[17-Apr-2015 20:26:28][W] Image 80 ground truth not found
+[17-Apr-2015 20:26:30][W] Image 81 ground truth not found
+[17-Apr-2015 20:26:33][W] Image 82 ground truth not found
+[17-Apr-2015 20:26:35][W] Image 83 ground truth not found
+[17-Apr-2015 20:26:37][W] Image 84 ground truth not found
+[17-Apr-2015 20:26:46][W] Image 88 ground truth not found
+[17-Apr-2015 20:26:48][W] Image 89 ground truth not found
+[17-Apr-2015 20:26:50][W] Image 90 ground truth not found
+[17-Apr-2015 20:26:51][W] Image 91 ground truth not found
+[17-Apr-2015 20:26:53][W] Image 92 ground truth not found
+[17-Apr-2015 20:26:55][W] Image 93 ground truth not found
+[17-Apr-2015 20:26:56][W] Image 94 ground truth not found
+[17-Apr-2015 20:26:58][W] Image 95 ground truth not found
+[17-Apr-2015 20:27:18][W] Image 103 ground truth not found
+[17-Apr-2015 20:27:20][W] Image 104 ground truth not found
+[17-Apr-2015 20:27:23][W] Image 105 ground truth not found
+[17-Apr-2015 20:27:25][W] Image 106 ground truth not found
+[17-Apr-2015 20:27:27][W] Image 107 ground truth not found
+[17-Apr-2015 20:27:30][W] Image 108 ground truth not found
+[17-Apr-2015 20:27:32][W] Image 109 ground truth not found
+[17-Apr-2015 20:27:35][W] Image 110 ground truth not found
+[17-Apr-2015 20:27:37][W] Image 111 ground truth not found
+[17-Apr-2015 20:27:39][W] Image 112 ground truth not found
+[17-Apr-2015 20:27:41][W] Image 113 ground truth not found
+[17-Apr-2015 20:27:43][W] Image 114 ground truth not found
+[17-Apr-2015 20:27:45][W] Image 115 ground truth not found
+[17-Apr-2015 20:27:47][W] Image 116 ground truth not found
+[17-Apr-2015 20:27:48][W] Image 117 ground truth not found
+[17-Apr-2015 20:28:45][W] Image 138 ground truth not found
+[17-Apr-2015 20:28:57][W] Image 143 ground truth not found
+[17-Apr-2015 20:28:59][W] Image 144 ground truth not found
+[17-Apr-2015 20:29:00][W] Image 145 ground truth not found
+[17-Apr-2015 20:29:02][W] Image 146 ground truth not found
+[17-Apr-2015 20:29:04][W] Image 147 ground truth not found
+[17-Apr-2015 20:29:06][W] Image 148 ground truth not found
+[17-Apr-2015 20:29:11][W] Image 150 ground truth not found
+[17-Apr-2015 20:29:13][W] Image 151 ground truth not found
+[17-Apr-2015 20:29:16][W] Image 152 ground truth not found
+[17-Apr-2015 20:29:27][W] Image 156 ground truth not found
+[17-Apr-2015 20:29:30][W] Image 157 ground truth not found
+[17-Apr-2015 20:29:32][W] Image 158 ground truth not found
+[17-Apr-2015 20:29:34][W] Image 159 ground truth not found
+[17-Apr-2015 20:29:35][W] Image 160 ground truth not found
+[17-Apr-2015 20:29:37][W] Image 161 ground truth not found
+[17-Apr-2015 20:29:38][W] Image 162 ground truth not found
+[17-Apr-2015 20:29:40][W] Image 163 ground truth not found
+[17-Apr-2015 20:29:42][W] Image 164 ground truth not found
+[17-Apr-2015 20:29:44][W] Image 165 ground truth not found
+[17-Apr-2015 20:29:47][W] Image 166 ground truth not found
+[17-Apr-2015 20:29:49][W] Image 167 ground truth not found
+[17-Apr-2015 20:29:52][W] Image 168 ground truth not found
+[17-Apr-2015 20:29:55][W] Image 169 ground truth not found
+[17-Apr-2015 20:29:58][W] Image 170 ground truth not found
+[17-Apr-2015 20:30:00][W] Image 171 ground truth not found
+[17-Apr-2015 20:30:02][W] Image 172 ground truth not found
+[17-Apr-2015 20:30:04][W] Image 173 ground truth not found
+[17-Apr-2015 20:30:05][W] Image 174 ground truth not found
+[17-Apr-2015 20:30:07][W] Image 175 ground truth not found

@@ -5,7 +5,7 @@ function TrainClassifier(obj)
     cf = obj.config;
     classifier = cf.c2D.classifier; 
     
-     if cf.useCache && ~exist(get_adr('2D_classifier',cf,classifier.name),'file')
+     if cf.useCache && exist(get_adr('2D_classifier',cf,classifier.name),'file')
          dl.Log(VerbosityLevel.Info,...
             sprintf('Classifier %s already trained. Will use cache.\n',classifier.name));
          return;

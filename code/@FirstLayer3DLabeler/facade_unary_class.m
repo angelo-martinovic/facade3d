@@ -39,8 +39,8 @@ p.parse(varargin{:}); fldnames = fieldnames(p.Results); for a=1:length(fldnames)
 out1=[]; out2=[]; out3=[]; out4=[];
 
 %%
-scene               = obj.test_data;
-train_data          = obj.train_data;
+scene               = obj.sceneTest;
+train_data          = obj.sceneTrain;
 
 c = obj.config.c3D.classifier;
 unary_classifier    =  c.unary_classifier;
@@ -140,9 +140,12 @@ switch method,
             Xa = X;
             Ya = Y;
         end
-        out1 = Xa;
-        out2 = Ya;
-        out3 = Xtest;
+         obj.Xtrain = Xa;
+         obj.Ytrain = Ya;
+         obj.Xtest = Xtest;
+%         out1 = Xa;
+%         out2 = Ya;
+%         out3 = Xtest;
         
     case 'learn' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         error = 0;

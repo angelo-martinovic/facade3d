@@ -40,36 +40,10 @@ classdef SScene_An
         
         
         function obj = SScene_An( )
-%             obj.path_data    = path_data;
-%             if iscell(file_name),
-%                 for a=1:length(file_name)
-%                     obj.source_file{a}  = fullfile(path_data,file_name{a});
-%                 end
-%             else
-%                 obj.source_file  = fullfile(path_data,file_name);
-%             end
-%             obj.read_file_name = file_name;
+
         end
         
-        
-%         function out = get_adr(obj,type,par1,par2)
-%              out = ['sdsd.sdsdsd'];
-% %             path_desc =  '/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge428_27/';
-% %             switch type
-% %                 case 'desc'
-% %                %     out = fullfile(path_desc,['desc_',par1,'-imSiz=',num2str(par2),'.mat']);
-% %                 case 'cameras'
-% %                     out = '/esat/sadr/amartino/monge428/reconstruction.nvm.cmvs/00/cameras_v2.txt';
-% %                     %[datasetConfig.dataLocation,datasetConfig.cameras]
-% %                 case 'wa_bboxes'
-% %                       out = fullfile('/esat/nihal/jknopp/3d_ret_recog_data/DT-SOL/monge428_27/','3rd_layer',['result_NEW',num2str(par1),'_facadeid=',num2str(par2),'.mat']);
-% %             end
-%             
-%             
-%         end
-%         
-
-      
+            
         
         %%=================================================================
         %%=================================================================
@@ -77,43 +51,23 @@ classdef SScene_An
         %%=================================================================
 
         function obj = keep_spec_data_ids(obj,id_keep)
-            obj.lindex  = obj.lindex(id_keep);
-            obj.oindex  = obj.oindex(id_keep);
-            obj.heigh   = obj.heigh(id_keep);
-            obj.pts     = obj.pts(:,id_keep);
-            obj.nxyz    = obj.nxyz(:,id_keep);
-            obj.rgb     = obj.rgb(:,id_keep);
-            obj.origIndices = find(id_keep);
-            if ~isempty(obj.dist2plane),    obj.dist2plane    = obj.dist2plane(:,id_keep); end;
-            if ~isempty(obj.p_index),       obj.p_index       = obj.p_index(id_keep); end;
-            if ~isempty(obj.desc),          obj.desc    = obj.desc(:,id_keep); end;
-            if ~isempty(obj.si),            obj.si      = obj.si(:,id_keep);  end;
-            if ~isempty(obj.heigh_inv),     obj.heigh_inv      = obj.heigh_inv(:,id_keep);  end;
-            if ~isempty(obj.flag),          obj.flag      = obj.flag(id_keep);  end;
+            if ~isempty(obj.lindex),        obj.lindex          = obj.lindex(id_keep);end;
+            if ~isempty(obj.oindex),        obj.oindex          = obj.oindex(id_keep);end;
+            if ~isempty(obj.heigh),         obj.heigh           = obj.heigh(id_keep);end;
+            if ~isempty(obj.pts),           obj.pts             = obj.pts(:,id_keep);end;
+            if ~isempty(obj.nxyz),          obj.nxyz            = obj.nxyz(:,id_keep);end;
+            if ~isempty(obj.rgb),           obj.rgb             = obj.rgb(:,id_keep);end;
+            if ~isempty(obj.origIndices),   obj.origIndices     = find(id_keep);end;
+            if ~isempty(obj.dist2plane),    obj.dist2plane      = obj.dist2plane(:,id_keep); end;
+            if ~isempty(obj.p_index),       obj.p_index         = obj.p_index(id_keep); end;
+            if ~isempty(obj.desc),          obj.desc            = obj.desc(:,id_keep); end;
+            if ~isempty(obj.si),            obj.si              = obj.si(:,id_keep);  end;
+            if ~isempty(obj.heigh_inv),     obj.heigh_inv       = obj.heigh_inv(:,id_keep);  end;
+            if ~isempty(obj.flag),          obj.flag            = obj.flag(id_keep);  end;
 %             if ~isempty(obj.facade_id),     obj.facade_id      = obj.facade_id(id_keep);  end;
         end
 
-    
-%         function cmap  = get_class_colormap(obj,type)
-%             type = 'monge428';
-%             switch type
-%                 case 'monge428'
-%                     cmap = [0 0 0;
-%                         255 0 0;         % red
-%                         255  255 0;      % yellow
-%                         128  0   255;    % purple
-%                         255  128 0;      % orange
-%                         0    0   255;    % blue
-%                         128  255 255;    % light blue
-%                         0    255 0;      % green
-%                         0    0   255];   % dark blue
-%             end
-%         end
-                
-        
-        
-        
-        
+           
         %%=================================================================
         %%=================================================================
         %% READ FUNCTION
@@ -146,7 +100,11 @@ classdef SScene_An
             %--- indexes
             obj.lindex  = lindex';
             obj.oindex  = lindex'*0;
-            dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:init: features pts+lindex+rgb+nxy done.\n'));
+            dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:init: pts+lindex+rgb+nxy done.\n'));
+        end
+        
+        function obj = calc_simple_features(obj,datasetConfig)
+            dl = DispatchingLogger.getInstance();
             %--- depth
             path_dist2plane = [datasetConfig.dataLocation,datasetConfig.depth];
             kk = load(path_dist2plane);
@@ -164,7 +122,7 @@ classdef SScene_An
             for a=unique(i)',
                 obj.heigh_inv(i==a) = -obj.heigh(i==a)+min(obj.heigh(i==a));
             end
-            dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:init: feature: height(2,:) according to cameras done.\n'));
+            dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:init: feature: height and inverse height done.\n'));
         end
         
         

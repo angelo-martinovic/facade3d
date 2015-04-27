@@ -11,9 +11,6 @@ classdef c2D_SVM_cnn < c2D
             
             f1 = featureExtractorCNN(config);
             c2D.featureExtractors = { f1 };
-            
-            c2D.resizedImagesHeight = 800; 
-            c2D.minRegionArea = 150;
 
             c2D.classifier = classifier_linearSVM();
             

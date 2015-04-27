@@ -38,7 +38,7 @@ function LabelImagesATLAS(obj)
     if failCount~=0
        dl.Log(VerbosityLevel.Error,sprintf('ATLAS finished. %d images failed.\n',failCount));
        dl.Log(VerbosityLevel.Error,sprintf('Fail messages: %s\n',msgs{retCodes==-1}));
-       error('Critical error. Terminating.');
+       fatal();
     end
     
     warningCount = sum(retCodes==1);
@@ -65,10 +65,9 @@ function [retCode,msg] = LabelOneImage(obj,imageName)
     
     % Rectified image
     image = imread(imageFilename);
-
-    height = size(image,1);
-    width = size(image,2);
     
+    height = size(image,1);
+    width  = size(image,2);
     % Original image - before rectification
     imOrig = imread(get_adr('2D_image_orig',obj.config,imageName));
     
@@ -117,78 +116,11 @@ function [retCode,msg] = LabelOneImage(obj,imageName)
     detectionData = cell(1,nDetectors);
     for i=1:nDetectors
         detector = obj.config.c2D.detectors{i};
-        detectionFilename = get_adr('2D_detections', obj.config, detector.name, imageName);
-
-        if ~isempty(detectionFilename)
-            s = dir(detectionFilename);
-            if s.bytes == 0
-%                 dl.Log(VerbosityLevel.Warning,sprintf('No %s detections found in this image.',detector.name));
-                dets =[];
-            else
-                dets = dlmread(detectionFilename);
-            end;   
-        else
-            dets =[];
-        end
-        load(get_adr('2D_detectorMeanDetection', obj.config, detector.name)); % loads meanDet
-        meanDet = meanDet(:,:,1:nClasses);
-        detectionMap = 1/nClasses* ones(height,width,nClasses);
-
-        numDetections = size(dets,1);
-
-        if numDetections>0
-%             rangeScores = [min(dets(:,5)) max(dets(:,5))];
-%             rangeProbs = [1/nClasses (1-0.001*(nClasses-1))];
-            
-            % Map detection bounding boxes to unary potentials
-            for d = 1:numDetections
-                detectionRect = dets(d,1:4);  % Detection bounding box rectangle
-%                 detectionScore = dets(d,5);   % Score of the detection
-
-                % Validation set-based mapping
-                % [~,pos] =min(abs([labelMaps.score]-detectionScore));
-
-                % Linear mapping
-%                 relScore = (detectionScore-min(rangeScores))/(max(rangeScores)-min(rangeScores));
-%                 if isnan(relScore)
-%                     relScore = min(rangeScores);
-%                 end
-%                 classProb = min(rangeProbs) + relScore* (max(rangeProbs)-min(rangeProbs));
-
-                % Max mapping
-                % classProb = max(rangeProbs);
-
-%                 nonClassProb = (1-classProb)/(nClasses-1);
-%                 assert(~isnan(nonClassProb),'NaN detector class probability!');
-                startRow = max(round(detectionRect(2)),1);
-                endRow = min(round(detectionRect(4)),height);
-                startColumn = max(round(detectionRect(1)),1);
-                endColumn = min(round(detectionRect(3)),width);
-
-%                 detHeight = endRow-startRow+1;
-%                 detWidth = endColumn-startColumn+1;
-
-                if (endRow-startRow<1) || (endColumn-startColumn<1)
-                 continue;
-                end
-
-%                 probMap = zeros(detHeight,detWidth,nClasses);
-%                 for c=1:nClasses
-%                     if c~=detector.class
-%                         probMap(:,:,c) = nonClassProb * ones(detHeight,detWidth);
-%                     else
-%                         probMap(:,:,c) = classProb * ones(detHeight,detWidth);
-%                     end
-%                 end
-
-                probMap = imresize(meanDet,[endRow-startRow+1 endColumn-startColumn+1],'nearest');
-                detectionMap(startRow:endRow,startColumn:endColumn,:) = probMap;
-            end   
-        end
-        detectionData{i} = detectionMap;
+        detectionFilename = get_adr('2D_detectionsEval', obj.config, detector.name, imageName);
+        detectionData{i} = detector.ProbabilityMapFromDetections(detectionFilename,nClasses,height,width);
     end
 
-    %% Unrectification
+    % Unrectification
     if obj.config.rectificationNeeded
         scale = dlmread(get_adr('2D_scale',obj.config,imageName));
         homography = dlmread(get_adr('2D_rectParams',obj.config,imageName));
@@ -225,10 +157,10 @@ function [retCode,msg] = LabelOneImage(obj,imageName)
         oldImg = rewarp(imOrig,oldImg,homography);
     end
     
-    %% Run CRF
+    % Run CRF
     [outImg,~,~] = obj.RunCRF(segMap,detectionData);
     
-    %% Output
+    % Output
     outputDir = get_adr('2D_classification',obj.config,obj.config.c2D.classifier.name);
     
     % Save overlayed result image to disk

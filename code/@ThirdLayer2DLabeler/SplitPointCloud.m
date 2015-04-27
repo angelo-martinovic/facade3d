@@ -7,30 +7,23 @@ function SplitPointCloud(obj)
     ss=load(get_adr('pcl_unaries',obj.config,obj.splitName));
     potentials = ss.unary';
     
-    %% Load original pcl
-    [points,~,colors] = ReadPCLFromPly(get_adr('pcl',obj.config));
-
     %% Load our pcl labeling
-    [pointsNoisy,~,colorsNoisy]=ReadPCLFromPly(get_adr('pcl_labeling',obj.config,obj.splitName));
-    assert(all(all(pointsNoisy-points<1e-3)))
+    [~,~,colorsNoisy]=ReadPCLFromPly(get_adr('pcl_labeling',obj.config,obj.splitName));
     labeling = Colors2Labels(colorsNoisy,obj.config.cm);
-
-    %% Load test GT
-    [pointsGT,~,colorsGT]=ReadPCLFromPly(get_adr('pcl_gt_test',obj.config));
-    assert(all(all(pointsGT-points<1e-3)))
-    labelingGT = Colors2Labels(colorsGT,obj.config.cm);
 
     %% Load splitting data
     ss=load (get_adr('split',obj.config));
     splitLabels = ss.splitLabels;
 
-    %% Get eval subset
-    idxs = find(labeling~=0);
-    points = points(idxs,:);
-    colors= colors(idxs,:);
+    %% Extract eval subset
+    points = obj.pcl_test.pts';
+    colors = obj.pcl_test.rgb';
+    labelingGT = obj.pcl_test.lindex';
+    
+    idxs = obj.pcl_test.p_index';
+    
     potentials = potentials(idxs,:);
     splitLabels = splitLabels(idxs,:);
-    labelingGT = labelingGT(idxs,:);
     labeling = labeling(idxs,:);
 
     %% For each facade
@@ -58,10 +51,14 @@ function SplitPointCloud(obj)
         vertexSubsetColors = round(255*obj.config.cm(vertexSubsetLabeling+1,:));
         vertexSubsetColorsGT = round(255*obj.config.cm(vertexSubsetLabelingGT+1,:));
 
-        save(get_adr('splitPotentials',obj.config,obj.splitName,num2str(facadeID)),'vertexSubsetPotentials');
-        ExportMesh(get_adr('splitLabeling',obj.config,obj.splitName,num2str(facadeID)),pointSubset,[],vertexSubsetColors,[],[]);
-        ExportMesh(get_adr('splitGT',obj.config,obj.splitName,num2str(facadeID)),      pointSubset,[],vertexSubsetColorsGT,[],[]);
-        ExportMesh(get_adr('splitColors',obj.config,obj.splitName,num2str(facadeID)),  pointSubset,[],vertexSubsetOrigColors,[],[]);
+        save(get_adr('splitPotentials',obj.config,obj.splitName,num2str(facadeID)),...
+            'vertexSubsetPotentials');
+        ExportMesh(get_adr('splitLabeling',obj.config,obj.splitName,num2str(facadeID)),...
+            pointSubset,[],vertexSubsetColors,[],[]);
+        ExportMesh(get_adr('splitGT',obj.config,obj.splitName,num2str(facadeID)),....
+            pointSubset,[],vertexSubsetColorsGT,[],[]);
+        ExportMesh(get_adr('splitColors',obj.config,obj.splitName,num2str(facadeID)),...
+            pointSubset,[],vertexSubsetOrigColors,[],[]);
     end
     dl.Log(VerbosityLevel.Info,sprintf(' - Done. Elapsed time: %.2f seconds.\n',toc));
 end

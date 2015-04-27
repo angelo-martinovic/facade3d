@@ -58,8 +58,8 @@ addpath(genpath('thirdLayer/'));
         % URL: http://cvxr.com/cvx/
         addpath external/cvx/ 
         
-        % Comment the following lines if your cvx is set-up at MATLAB startup.
-        %cvx_setup /users/visics/amartino/Documents/cvxLicense/cvx_license_4.dat % Point this to your license file
+        %Uncomment the following lines if your cvx is not properly set-up at MATLAB startup.
+        %cvx_setup /path/to/license/cvx_license.dat % Point this to your license file
         %cvx_solver mosek
         %cvx_save_prefs
 

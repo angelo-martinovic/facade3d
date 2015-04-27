@@ -25,7 +25,7 @@ function FitPlanes(obj)
 
         if isempty(plane)
             dl.Log(VerbosityLevel.Error,sprintf(' - No main plane found!\n'));
-            error('Critical error. Terminating.');
+            fatal();
         end
 
         % Normalize plane normal

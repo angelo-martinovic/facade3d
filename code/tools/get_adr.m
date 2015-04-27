@@ -40,14 +40,23 @@ switch type
         adr = [datasetConfig.outputLocation 'work/classifier/' par1 '/'];  
     case '2D_marginals'
         adr = [datasetConfig.outputLocation 'work/classifier/' par1 '/' par2 '.marginal.txt'];  
-    case '2D_detectionFolder'
-        adr = [datasetConfig.outputLocation 'work/detections/'];  
-    case '2D_detectorOutputFolder'
-        adr = [datasetConfig.outputLocation 'work/detections/detections-' par1];  
-    case '2D_detectorMeanDetection'
-        adr = [datasetConfig.outputLocation 'work/detections/detections-' par1 '/meanDet.mat'];  
-    case '2D_detections'
-        adr = [datasetConfig.outputLocation 'work/detections/detections-' par1 '/' par2 '.txt'];  
+        
+    case '2D_detectionFolderEval'
+        adr = [datasetConfig.outputLocation 'work/detectionsEval/'];  
+    case '2D_detectorOutputFolderEval'
+        adr = [datasetConfig.outputLocation 'work/detectionsEval/detections-' par1];  
+    case '2D_detectionsEval'
+        adr = [datasetConfig.outputLocation 'work/detectionsEval/detections-' par1 '/' par2 '.txt']; 
+        
+   case '2D_detectionFolderTrain'
+        adr = [datasetConfig.outputLocation 'work/detectionsTrain/'];         
+   case '2D_detectorMeanDetectionTrain'
+        adr = [datasetConfig.outputLocation 'work/detectionsTrain/detections-' par1 '/meanDet.mat'];
+   case '2D_detectorOutputFolderTrain'
+        adr = [datasetConfig.outputLocation 'work/detectionsTrain/detections-' par1];  
+   case '2D_detectionsTrain'
+        adr = [datasetConfig.outputLocation 'work/detectionsTrain/detections-' par1 '/' par2 '.txt']; 
+    
     case 'cache'
         adr = [datasetConfig.outputLocation 'work/cache/'];   
     case 'cache_classifier_train'

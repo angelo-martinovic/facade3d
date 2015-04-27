@@ -1,5 +1,5 @@
 setup; % Set paths
-datasetConfig = InitializeDataset('monge428'); % Set up the dataset: file locations, file names
+datasetConfig = InitializeDataset('nanLondon'); % Set up the dataset: file locations, file names
 
 if datasetConfig.nWorkers>1
     InitializeParallel(datasetConfig.nWorkers);
@@ -69,7 +69,7 @@ dl = DispatchingLogger.getInstance();
     %% ======================================
     % Preprocessing
     % =======================================
-    tl2D = ThirdLayer2DLabeler (datasetConfig, modelName);
+    tl2D = ThirdLayer2DLabeler (datasetConfig, modelName, pcl_test, pcl_all);
     tl2D.SplitPointCloud();   % Split point cloud into facade point clouds
     tl2D.FitPlanes();         % Fit a plane to each facade
     
@@ -78,22 +78,27 @@ dl = DispatchingLogger.getInstance();
     % =======================================
     tl2D.OrthoImages();       % Create ortho images, labelings, unaries by projecting onto the plane
 
-    submittedToCluster = tl2D.RunThirdLayer(); % Run ortho2D third layer
-    if submittedToCluster
-        dl.Log(VerbosityLevel.Info,...
-            sprintf(['Jobs submitted to condor.' ...
-            'Run the remaining commands when condor jobs have finished.\n']));
-        return;
-    end
-    
-    tl2D.OrthoImagesBackProject();  % Back-project the labeling to facade 3D point clouds
-    tl2D.ReassemblePointCloud();    % Join the labeled facades into the original point cloud
-    tl2D.EvaluateLabeling();        % Evaluate
+%     submittedToCluster = tl2D.RunThirdLayer(); % Run ortho2D third layer
+%     if submittedToCluster
+%         dl.Log(VerbosityLevel.Info,...
+%             sprintf(['Jobs submitted to condor.' ...
+%             'Run the remaining commands when condor jobs have finished.\n']));
+%         return;
+%     end
+%     
+%     tl2D.OrthoImagesBackProject();  % Back-project the labeling to facade 3D point clouds
+%     tl2D.ReassemblePointCloud();    % Join the labeled facades into the original point cloud
+    parsedPCLName = tl2D.GetOutputName();    
+    EvaluateMeshLabeling(datasetConfig,parsedPCLName); 
     
     %% ======================================
     % 3D version
     % =======================================
-    ThirdLayer3D(datasetConfig,modelName,pcl_test,pcl_all);
+    tl3D = ThirdLayer3DLabeler(datasetConfig,modelName,pcl_test,pcl_all);
+    tl3D.RunThirdLayer();
+    
+    parsedPCLName = tl3D.GetOutputName();
+    EvaluateMeshLabeling(datasetConfig,parsedPCLName); % Evaluate PCL labeling
     
 %=======================================
 %=======================================

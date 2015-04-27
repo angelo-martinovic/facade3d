@@ -29,7 +29,7 @@ function initialize(obj,scene)
     else
         if obj.config.c3D.crf.weight3DClassification~=0
             dl.Log(VerbosityLevel.Error,sprintf(' - No 3D potentials found!\n'));
-            error('Critical error. Terminating.');
+            fatal();
         end
     end
 
@@ -60,14 +60,14 @@ function initialize(obj,scene)
                 dl.Log(VerbosityLevel.Error,...
                     sprintf(' - Mismatch between expected (%d) and received (%d) number of detectors!\n',...
                             length(obj.config.c3D.crf.weights2DDetectors),nDet));
-                error('Critical error. Terminating.');
+                fatal();
             end
         end
 
     else
         if obj.config.c3D.crf.weight2DClassification~=0 
             dl.Log(VerbosityLevel.Error,sprintf(' - No 2D classification potentials found!\n'));
-            error('Critical error. Terminating.');
+            fatal();
         end
     end
 

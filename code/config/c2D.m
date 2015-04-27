@@ -7,8 +7,8 @@ classdef c2D < handle
         
         featureExtractors
         
-        resizedImagesHeight
-        minRegionArea 
+        resizedImagesHeight = 800;
+        minRegionArea = 150;
 
         classifier
 

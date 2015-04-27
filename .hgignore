@@ -5,6 +5,7 @@ syntax: glob
 *.log
 *.pdf
 *~
+*.eds
 *.backup
 *.directory
 *.mat
@@ -12,16 +13,10 @@ syntax: glob
 *.zip
 *.ply
 .smpd
-data/**
-output/**
-dataFullRes/**
-outputFullRes/**
-dataPMVS/**
-outputPMVS/**
-dataSfM/**
-outputSfM/**
+data*/**
+output*/**
 tmp/**
 code/condor/**
 code/objects_detection.out.txt
-
+progressbar*.txt
 

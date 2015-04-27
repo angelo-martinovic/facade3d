@@ -9,11 +9,16 @@ function file_str_idx = LoadFilenames(obj,subset)
         filelist_str = obj.config.fullList;
     else
         dl.Log(VerbosityLevel.Error,sprintf('Unknown subset!'));
-        error('Critical error. Terminating.');
+        fatal();
     end
 
     % LOAD DATA FILE NAMES & INDEX
-    fid = fopen([obj.config.dataLocation filelist_str]);
+    filename = [obj.config.dataLocation filelist_str];
+    fid = fopen(filename);
+    if fid==-1
+        dl.Log(VerbosityLevel.Error,sprintf('File %s could not be opened!\n',filename));
+        fatal();
+    end
     file_str_idx = textscan(fid, '%s'); fclose(fid);
     numViews = length(file_str_idx{1});
     dl.Log(VerbosityLevel.Debug,sprintf(' - - Loaded %d filenames.\n', numViews));

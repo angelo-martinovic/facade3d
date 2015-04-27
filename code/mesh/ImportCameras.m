@@ -16,7 +16,7 @@ function cameras = ImportCameras(filename)
 
 %% Initialize variables.
 if nargin<1
-    error('Critical error. Terminating.');
+    fatal();
 end
 
 if nargin<=2

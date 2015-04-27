@@ -2,11 +2,11 @@ function datasetConfig = InitializeDataset(datasetName)
 
     % General
     datasetConfig.name              = datasetName;
-    datasetConfig.nClasses          = 7;
-    datasetConfig.ignoreClasses     = [0 8];
-    datasetConfig.cm                = HaussmannColormap()/255;  
+    datasetConfig.nClasses          = 2;%7;
+    datasetConfig.ignoreClasses     = 0;%%[0 8];
+    datasetConfig.cm                = NanColormap()/255;%   HaussmannColormap()/255;  
     
-    datasetConfig.nWorkers = 4;    % Set to 0 to run everything in serial on 1 CPU
+    datasetConfig.nWorkers = 0;    % Set to 0 to run everything in serial on 1 CPU
 
     % Logging
     sl = ScreenLogger(VerbosityLevel.Verbose);
@@ -18,10 +18,22 @@ function datasetConfig = InitializeDataset(datasetName)
     dl.Subscribe(fl);
    
     % Paths
-    datasetConfig.useCache          = true;
-    datasetConfig.rectificationNeeded  = true;
-    datasetConfig.dataLocation      = '../data/'; 
-    datasetConfig.outputLocation    = '../output/';
+    datasetConfig.useCache          = false;
+    datasetConfig.rectificationNeeded  = false;
+    datasetConfig.resizeImages      = false;
+    
+    datasetConfig.dataLocation      = '../dataZubud/'; 
+    datasetConfig.outputLocation    = '../outputZubud/';
+
+%     datasetConfig.dataLocation      = '../dataGraz/'; 
+%     datasetConfig.outputLocation    = '../outputGraz/';
+
+%       datasetConfig.dataLocation      = '../dataStrasbourg/'; 
+%       datasetConfig.outputLocation    = '../outputStrasbourg/';
+      
+%     datasetConfig.dataLocation      = '../dataLondon/'; 
+%     datasetConfig.outputLocation    = '../outputLondon/';
+
 %     datasetConfig.dataLocation      = '../dataFullRes/'; 
 %     datasetConfig.outputLocation    = '../outputFullRes/';
 %     datasetConfig.dataLocation      = '../dataSfM/'; 
@@ -56,10 +68,10 @@ function datasetConfig = InitializeDataset(datasetName)
     
     
     % Parameters
-    datasetConfig.c3D = c3D_3D(datasetConfig);
+%     datasetConfig.c3D = c3D_3D(datasetConfig);
 %     datasetConfig.c3D = c3D_2D();
 %     datasetConfig.c3D = c3D_2D_winDet();
-%     datasetConfig.c3D = c3D_3D_2D(datasetConfig);
+    datasetConfig.c3D = c3D_3D_2D(datasetConfig);
 %     datasetConfig.c3D = c3D_3D_2D_winDet(datasetConfig);
 
 

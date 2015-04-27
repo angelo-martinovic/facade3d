@@ -1,4 +1,4 @@
-function [newLabels,nonZeroIndices]=BackProjectLabeling(points,image,camera)
+function [newLabels,nonZeroIndices,nonZeroLabels]=BackProjectLabeling(points,image,camera)
 
     height = floor(camera.principalPoint(2)*2);
     width = floor(camera.principalPoint(1)*2);
@@ -28,11 +28,11 @@ function [newLabels,nonZeroIndices]=BackProjectLabeling(points,image,camera)
         projection = image(sub2ind(size(image),yv,xv,repmat(i,size(yv))));
 
         nonzero = (projection>0);
-        nonZeroIndices = visibleIndices(nonzero);
+        nonZeroIndices = visibleIndices(nonzero)';
 
-        visibleNonZeroLabels = projection(nonzero);
+        nonZeroLabels = projection(nonzero)';
    
-        newLabels(nonZeroIndices,i) = visibleNonZeroLabels;
+        newLabels(nonZeroIndices,i) = nonZeroLabels;
     end
     
 end

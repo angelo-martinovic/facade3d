@@ -5,11 +5,10 @@ classdef detector < handle
     properties (SetAccess = protected)
         name 
         class 
-        configFile 
-        modelFile 
     end
     
     methods
+        
     end
     
 end
