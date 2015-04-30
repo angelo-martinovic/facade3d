@@ -67,10 +67,6 @@ classdef FirstLayer3DLabeler < handle
 
             obj.sceneFull = SScene_An();
             obj.sceneFull = obj.sceneFull.read_mat_data( obj.config );
-            
-            %--- separate into train/test
-            obj.sceneTest = obj.sceneFull.keep_spec_data_ids(obj.sceneFull.flag==2);
-            obj.sceneTrain  = obj.sceneFull.keep_spec_data_ids(obj.sceneFull.flag==1);
        end
 
 

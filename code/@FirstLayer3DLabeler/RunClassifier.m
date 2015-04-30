@@ -21,7 +21,7 @@ function RunClassifier(obj)
     % Save resulting labeled point cloud
     path_labeling = get_adr('pcl_labeling',obj.config,c3d.name);
     dl.Log(VerbosityLevel.Info,sprintf(' - Saving the results...\n')); 
-    obj.test_data.export_as_full_pcl_data( obj.config , obj.cprb , path_labeling ); %%% export labeling
+    obj.sceneTest.export_as_full_pcl_data( obj.config , obj.cprb , path_labeling ); %%% export labeling
     
     % Save resulting probability map per point
     pclProbDir = get_adr('pclProbDir',obj.config);

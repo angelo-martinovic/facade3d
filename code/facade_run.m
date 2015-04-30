@@ -1,5 +1,5 @@
 setup; % Set paths
-datasetConfig = InitializeDataset('nanLondon'); % Set up the dataset: file locations, file names
+datasetConfig = InitializeDataset('monge428'); % Set up the dataset: file locations, file names
 
 if datasetConfig.nWorkers>1
     InitializeParallel(datasetConfig.nWorkers);
@@ -36,10 +36,10 @@ dl = DispatchingLogger.getInstance();
 % First layer 3D: Point cloud labeling
 % =======================================
     fl3D = FirstLayer3DLabeler(datasetConfig); % Initialize data, calculate descriptors
-    pcl_test = fl3D.test_data;
-    pcl_all = fl3D.all_data;
-       
     fl3D.PrepareData();          % Prepare descriptors
+    pcl_test = fl3D.sceneTest;
+    pcl_all = fl3D.sceneFull;
+    
     fl3D.TrainClassifier();      % Train 3D point cloud classifier
     fl3D.RunClassifier();        % Run classifier on test set
     

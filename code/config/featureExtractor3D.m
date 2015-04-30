@@ -3,14 +3,11 @@ classdef featureExtractor3D < handle
     %   Detailed explanation goes here
     
     properties (SetAccess = protected)
-        config
         name
     end
     
     methods
-        function F = featureExtractor3D(config)
-            F.config = config;
-        end
+
     end
     
     methods (Abstract)

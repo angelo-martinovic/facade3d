@@ -1,18 +1,15 @@
-classdef c3D < handle
+classdef c3D < config
     %C3D Summary of this class goes here
     %   Detailed explanation goes here
     
     properties (SetAccess = protected)
-        name
         
         plotResults = false;
+
+    end
+    
+    methods (Access = public)
         
-        featureExtractors = {};
-        
-        classifier =[];
-        
-        crf=[];
-   
     end
         
 end

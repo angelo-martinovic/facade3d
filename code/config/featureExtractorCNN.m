@@ -11,9 +11,9 @@ classdef featureExtractorCNN < featureExtractor2D
     end
     
     methods
-        function F = featureExtractorCNN(config)
+        function F = featureExtractorCNN(workFolder)
            
-            F@featureExtractor2D(config);
+            F@featureExtractor2D(workFolder);
             F.name = 'CNN';
              
             run([vl_rootnn() '/matlab/vl_setupnn']);
@@ -46,7 +46,7 @@ classdef featureExtractorCNN < featureExtractor2D
             obj.layerOutputsIdx = targetLayersIdx+1;
             
             % Get the image names from the directory
-            imageList = dir([get_adr('work',obj.config) '*.jpg']);
+            imageList = dir([obj.workFolder '*.jpg']);
 
             N = length(imageList);
 
@@ -56,10 +56,10 @@ classdef featureExtractorCNN < featureExtractor2D
             % Extract features for every image
             for i=1:N
                 
-                imageName = get_adr('2D_image',obj.config,imageList(i).name(1:end-4));
-                segName = get_adr('2D_segmentation',obj.config,imageList(i).name(1:end-4));
-                featName = get_adr('2D_features',obj.config,imageList(i).name(1:end-4),obj.name);
-
+                imageName = [obj.workFolder imageList(i).name(1:end-4) '.jpg'];
+                segName = [obj.workFolder imageList(i).name(1:end-4) '.seg'];
+                featName = [obj.workFolder imageList(i).name(1:end-4) '.features.' obj.name '.mat'];
+                
                 dl.Log(VerbosityLevel.Debug,sprintf(' - Extracting features from image %d...\n',i));
                 if ~exist(featName,'file')
                     % Load image

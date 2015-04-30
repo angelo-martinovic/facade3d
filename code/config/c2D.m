@@ -1,26 +1,23 @@
-classdef c2D < handle
+classdef c2D < config
     %C2D Summary of this class goes here
     %   Detailed explanation goes here
     
     properties (SetAccess = protected)
-        name
-        
-        featureExtractors
         
         resizedImagesHeight = 800;
         minRegionArea = 150;
 
-        classifier
-
-        crf
-
-        detectors       
+        detectors = {};    
     end
     
     methods (Access = public)
-        function SetClassifier(obj, classifier)
-           obj.classifier = classifier; 
+
+        
+        function AddDetector(obj, detector)
+           obj.detectors{end+1} = detector;
         end
+        
+
         
     end
     
