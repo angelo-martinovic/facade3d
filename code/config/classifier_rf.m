@@ -5,7 +5,7 @@ classdef classifier_rf < classifier
     properties
         nTrees = 100;
         useParallel = true;
-        minLeaf = 3;
+        minLeaf = 30;
     end
     
     methods

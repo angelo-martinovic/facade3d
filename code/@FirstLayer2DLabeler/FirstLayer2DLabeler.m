@@ -19,7 +19,7 @@ classdef FirstLayer2DLabeler < handle
 
         TrainClassifier(obj);
         
-        EvaluateClassifier(obj);
+        RunClassifier(obj);
         
         LabelImagesATLAS(obj);
         

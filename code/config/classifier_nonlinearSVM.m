@@ -17,7 +17,7 @@ classdef classifier_nonlinearSVM < classifier
             n=length(y);
             trainExamples = min(obj.maxTrainExamples,n);
             cmd = ['-c ', num2str(2.^obj.log2c), ' -g ', num2str(2.^obj.log2g),...
-                ' -t ' num2str(obj.type) ' -m 2000 -h 0 -b 1 '];
+                ' -t ' num2str(obj.type) ' -m 2000 -h 0 -b 1 -q'];
             obj.model = svmtrain(y(1:trainExamples),x(1:trainExamples,1:end),cmd);
         end
         

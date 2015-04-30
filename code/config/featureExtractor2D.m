@@ -3,15 +3,15 @@ classdef featureExtractor2D < handle
     %   Detailed explanation goes here
     
     properties (SetAccess = protected)
-        config
+        workFolder
         name
         nFeats
         scaleFeats
     end
     
     methods
-        function F = featureExtractor2D(config)
-            F.config = config;
+        function F = featureExtractor2D(workFolder)
+            F.workFolder = workFolder;
         end
     end
     

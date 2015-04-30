@@ -51,7 +51,9 @@ function RunClassifier(obj)
     tic;
     [~,~,yProb] = classifier.Evaluate(y_test,x_test);
     dl.Log(VerbosityLevel.Info,sprintf(' - Evaluation of %s done. Elapsed time: %.2f seconds.\n',classifierName,toc));
-    save(predictionFilename,'yProb');
+    if obj.config.useCache
+        save(predictionFilename,'yProb');
+    end
     
     tic;    
     % Transpose the probability matrix to have rows corresponding to classes

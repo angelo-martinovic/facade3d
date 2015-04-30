@@ -10,13 +10,13 @@ properties
 end
 
 methods
-    function D = detector_window_generic(config)
+    function D = detector_window_generic()
         D.name = 'window-generic';
         D.class = 1;
         D.configFile = 'detector/configs/window-generic.ini';
         D.modelFile = 'detector/models/window-generic.bin';
         
-        D.meanDetection = get_adr('2D_detectorMeanDetectionTrain', config, D.name);
+        
     end
 
     function DetectObjects(obj,subfolder,outputFolder)
@@ -52,7 +52,7 @@ methods
     function CalculateMeanDetection(obj,config,imageNames)
 %         dl = DispatchingLogger.getInstance();
         
-        
+       
         meanDet = zeros(100,100,config.nClasses);
         totalNDet = 0;
         for i=1:length(imageNames)
@@ -62,14 +62,25 @@ methods
             dets = detector_window_generic.readDetections(detectionFilename);
             gt = imread(gtFilename);
             groundTruth = Image2Labels(double(gt), config.cm);     
-
+            img = imread(get_adr('2D_image',config,imageNames{i}));  
+            imgSize = [size(img,1) size(img,2)];
+            
+            % Scale
+            scaleFilename = get_adr('2D_scale',config,imageNames{i});
+            if exist(scaleFilename,'file')
+                sc = dlmread(scaleFilename);
+                target = zeros(sc(1),sc(2));
+            else  
+                target = zeros(imgSize);
+            end
+        
             % Rectify ground truth
             rectParamsFilename = get_adr('2D_rectParams',config,imageNames{i});
             if exist(rectParamsFilename,'file')
                 h = dlmread(rectParamsFilename);
                 h = reshape(inv(reshape(h,3,3)),1,9);
                 groundTruth = rewarp(target,groundTruth,h);
-                groundTruth = imresize(groundTruth,size(segmentation),'nearest');
+                groundTruth = imresize(groundTruth,imgSize,'nearest');
             end
         
             height = size(groundTruth,1);
@@ -106,6 +117,7 @@ methods
         meanDet=bsxfun(@rdivide,meanDet,sum(meanDet,3));
         meanDet(isnan(meanDet))=1/config.nClasses; %#ok<NASGU>
         
+        obj.meanDetection = get_adr('2D_detectorMeanDetectionTrain', config, obj.name);
         save(obj.meanDetection,'meanDet');
     end
     

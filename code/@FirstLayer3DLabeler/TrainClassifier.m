@@ -20,7 +20,7 @@ function TrainClassifier(obj)
             c.name,c.nrf_tree,c.min_leaf));  
        
         tic;
-        [model,error]       = fl.facade_unary_class('learn','X',Xtrain,'Y',Ytrain); %#ok<ASGLU>
+        [model,error]     = obj.facade_unary_class('learn','X',obj.Xtrain,'Y',obj.Ytrain); %#ok<ASGLU>
         trainTime = toc;
         dl.Log(VerbosityLevel.Info,sprintf(' - - done. Elapsed time: %.2f seconds.\n',trainTime));
         

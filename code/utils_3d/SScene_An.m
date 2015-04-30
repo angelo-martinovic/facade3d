@@ -51,13 +51,14 @@ classdef SScene_An
         %%=================================================================
 
         function obj = keep_spec_data_ids(obj,id_keep)
+            obj.origIndices     = find(id_keep);
+            
             if ~isempty(obj.lindex),        obj.lindex          = obj.lindex(id_keep);end;
             if ~isempty(obj.oindex),        obj.oindex          = obj.oindex(id_keep);end;
             if ~isempty(obj.heigh),         obj.heigh           = obj.heigh(id_keep);end;
             if ~isempty(obj.pts),           obj.pts             = obj.pts(:,id_keep);end;
             if ~isempty(obj.nxyz),          obj.nxyz            = obj.nxyz(:,id_keep);end;
             if ~isempty(obj.rgb),           obj.rgb             = obj.rgb(:,id_keep);end;
-            if ~isempty(obj.origIndices),   obj.origIndices     = find(id_keep);end;
             if ~isempty(obj.dist2plane),    obj.dist2plane      = obj.dist2plane(:,id_keep); end;
             if ~isempty(obj.p_index),       obj.p_index         = obj.p_index(id_keep); end;
             if ~isempty(obj.desc),          obj.desc            = obj.desc(:,id_keep); end;
@@ -357,7 +358,13 @@ classdef SScene_An
                     dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:: adding si,rgb,si+dist2plane :) ... to desc + normalize it!\n'));
                     lab = rgb2lab(obj.rgb')';
                     X_si = obj.si;
-                    X          = [obj.rgb ; lab ; obj.heigh ; obj.heigh_inv ; obj.nxyz ; obj.dist2plane ; X_si];
+                    X          = [double(obj.rgb) ;
+                        lab ; 
+                        obj.heigh ;
+                        obj.heigh_inv ;
+                        double(obj.nxyz) ;
+                        obj.dist2plane ;
+                        X_si];
                     if isempty(minX), minX = min(X,[],2); end;
                     X    = bsxfun(@plus , X , -minX);
                     if isempty(maxX), maxX = max(X,[],2); end;

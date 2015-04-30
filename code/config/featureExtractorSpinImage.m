@@ -9,9 +9,8 @@ classdef featureExtractorSpinImage < featureExtractor3D
     end
     
     methods
-        function F = featureExtractorSpinImage(config)
+        function F = featureExtractorSpinImage()
             
-            F@featureExtractor3D(config); 
             F.name = 'spinImage';
         end
         

@@ -2,12 +2,14 @@ classdef featureExtractorGould < featureExtractor2D
     %featureExtractorGould Summary of this class goes here
     %   Detailed explanation goes here
     properties
+        overwriteExistingFiles = false;
+        
     end
     
     methods
-        function F = featureExtractorGould(config)
+        function F = featureExtractorGould(workFolder)
             
-            F@featureExtractor2D(config); 
+            F@featureExtractor2D(workFolder); 
             F.name = 'gould';
         end
         
@@ -16,11 +18,11 @@ classdef featureExtractorGould < featureExtractor2D
             
             dl.Log(VerbosityLevel.Debug,...
                 sprintf(' - Gould feature extraction...\n'));
-            workFolder = get_adr('work',obj.config);
+            workFolder = obj.workFolder;
             
             % Check if files exist
             calculatedFiles = dir([workFolder '*.features.' obj.name '.mat']);
-            if isempty(calculatedFiles) %|| ~obj.config.useCache
+            if isempty(calculatedFiles) || F.overwriteExistingFiles
             
                 % Setup the external program
                 openCVLib = 'external/lasik/external/opencv/lib/';
@@ -47,8 +49,7 @@ classdef featureExtractorGould < featureExtractor2D
                 for i=1:length(calculatedFiles);
                     % Read the generated text file
                     features = dlmread([workFolder calculatedFiles(i).name]); %#ok<NASGU>
-                    featName = get_adr('2D_features',...
-                        obj.config,calculatedFiles(i).name(1:end-13),obj.name);
+                    featName = [workFolder calculatedFiles(i).name(1:end-13) '.features.' obj.name '.mat'];
                     
                     % Save features as a mat file
                     save(featName,'features');
