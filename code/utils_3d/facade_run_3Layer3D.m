@@ -24,7 +24,7 @@
 dl = DispatchingLogger.getInstance();
 
 
-
+scene = obj.pcl_test;
 
 %--- init some vars
 cprb_new_objs   = cprb*0;

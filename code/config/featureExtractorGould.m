@@ -22,7 +22,7 @@ classdef featureExtractorGould < featureExtractor2D
             
             % Check if files exist
             calculatedFiles = dir([workFolder '*.features.' obj.name '.mat']);
-            if isempty(calculatedFiles) || F.overwriteExistingFiles
+            if isempty(calculatedFiles) || obj.overwriteExistingFiles
             
                 % Setup the external program
                 openCVLib = 'external/lasik/external/opencv/lib/';

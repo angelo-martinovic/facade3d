@@ -10,8 +10,16 @@ function RunClassifier(obj)
     clear model;
     
     tic;
+    t = dir(classifierLoc);
+    dl.Log(VerbosityLevel.Info,...
+        sprintf(' - - Loading the classifier from %s, created on %s ...\n',classifierLoc,t.date));
     load(classifierLoc,'model');
-    [obj.prb,obj.cprb]  = obj.facade_unary_class('test','model',model,'Xtest',obj.Xtest); 
+    
+    % Prepares the test matrix
+    [~,~,Xtest] = obj.facade_unary_class('get_desc');
+    
+    dl.Log(VerbosityLevel.Info,sprintf(' - - Evaluating the classifier...\n'));
+    [obj.prb,obj.cprb]  = obj.facade_unary_class('test','model',model,'Xtest',Xtest); 
     testTime = toc;    
     dl.Log(VerbosityLevel.Info,sprintf(' - - done. Elapsed time: %.2f seconds.\n',testTime));
     

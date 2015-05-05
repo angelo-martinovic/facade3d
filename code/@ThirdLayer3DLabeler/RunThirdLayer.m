@@ -113,8 +113,8 @@ function RunThirdLayer(obj)
 %             if sum(ids_local)==0; continue; end;
             tmp_corners = tbox.corners(:,tbox.class==co);
             if isempty(tmp_corners), continue; end;
-            for obj=1:size(tmp_corners,2)
-                idx_pts_in_corners = pts_in_bbox(pts_facade,tmp_corners(:,obj));
+            for objID=1:size(tmp_corners,2)
+                idx_pts_in_corners = pts_in_bbox(pts_facade,tmp_corners(:,objID));
                 cprb_new_objs(idx_in_facade(idx_pts_in_corners)) = co;
             end
             
@@ -194,6 +194,12 @@ function RunThirdLayer(obj)
         for facade_id = facade_ids_go,
 
             im_path = get_adr('orthoLabels',datasetConfig,inputName,num2str(facade_id));
+            if ~exist(im_path,'file')
+                dl.Log(VerbosityLevel.Info,...
+                    sprintf('- - Ortho image not found. Skipping texture export for facade %d.\n',facade_id));
+                continue;
+            end
+            
     %         im_path = ['/esat/sadr/amartino/monge428New/data/work/pcl/split/monge428New_fullRes_layer1+3D_3DCRF/monge428New_fullRes_split_',num2str(facade_id),'_ortho_labeling.png'];
             path_fac_img = sprintf('%s/%i.png',path_3ds_export_fac,facade_id);
             path_fac_obj = sprintf('%s/%i',path_3ds_export_fac,facade_id);
@@ -250,6 +256,7 @@ function RunThirdLayer(obj)
 
     %--- project to full pcl (with background)  and save to andelo :)
     if export_result_to_full_obj.pcl_test_ply
+        dl.Log(VerbosityLevel.Info, sprintf('- Exporting results to a point cloud for evaluation.\n'));
         %--- project to full pcl
         cprb_full = zeros(1,size(obj.pcl_all.pts,2));
         cprb_full(obj.pcl_test.p_index) = cprb_new_objs;
@@ -263,7 +270,7 @@ function RunThirdLayer(obj)
         path2save_full = get_adr('3D_L3_Pure3D_labeling',datasetConfig,inputName); 
         ExportMesh(path2save_full , obj.pcl_all.pts',[],cmap(cprb_full+1,:),[],[]);
         dl.Log(VerbosityLevel.Info,...
-                sprintf('- - Result saved to %s as a point cloud for evaluation.\n',path2save_full));
+                sprintf('- - Result saved to %s.\n',path2save_full));
     end
     
     dl.Log(VerbosityLevel.Info,sprintf(' - Elapsed time for saving: %.2f\n',toc));

@@ -43,7 +43,7 @@ dl = DispatchingLogger.getInstance();
     fl3D.TrainClassifier();      % Train 3D point cloud classifier
     fl3D.RunClassifier();        % Run classifier on test set
     
-    EvaluateMeshLabeling(datasetConfig,fl3D.GetPCLLabeling()); % Evaluate PCL labeling
+    EvaluateMeshLabeling(datasetConfig,fl3D.GetPCLLabelingFilename()); % Evaluate PCL labeling
 
 %% =====================================
 % Second layer 3D: 3D CRF
