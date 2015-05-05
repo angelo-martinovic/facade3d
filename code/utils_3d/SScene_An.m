@@ -9,7 +9,7 @@
 %
 %%
 %
-classdef SScene_An
+classdef SScene_An < handle
     
     properties (GetAccess = 'public', SetAccess = 'public')
         pts;
@@ -32,6 +32,9 @@ classdef SScene_An
         
         source_file = '';
         read_file_name   = '';
+        
+        minDesc;
+        maxDesc;
 
     end
     
@@ -43,6 +46,30 @@ classdef SScene_An
 
         end
         
+        function obj2 = copy(obj)
+            obj2 = SScene_An();
+            obj2.pts = obj.pts;
+            obj2.tri = obj.tri;
+            obj2.desc = obj.desc;
+            obj2.si = obj.si;
+            obj2.dist2plane = obj.dist2plane;
+            obj2.nxyz = obj.nxyz;
+            obj2.heigh = obj.heigh;
+            obj2.heigh_inv = obj.heigh_inv; 
+            obj2.lindex = obj.lindex;
+            obj2.oindex = obj.oindex;
+            obj2.p_index = obj.p_index;
+            obj2.file_index = obj.file_index;
+            obj2.flag = obj.flag;
+            obj2.rgb = obj.rgb;
+            obj2.facade_id = obj.facade_id;
+
+            obj2.origIndices = obj.origIndices;
+
+            obj2.source_file =  obj.source_file;
+            obj2.read_file_name  = obj.read_file_name;
+        end
+        
             
         
         %%=================================================================
@@ -50,7 +77,7 @@ classdef SScene_An
         %% GET SET
         %%=================================================================
 
-        function obj = keep_spec_data_ids(obj,id_keep)
+        function keep_spec_data_ids(obj,id_keep)
             obj.origIndices     = find(id_keep);
             
             if ~isempty(obj.lindex),        obj.lindex          = obj.lindex(id_keep);end;
@@ -249,7 +276,7 @@ classdef SScene_An
         %% dataset processing
         %%=================================================================
         %--- fucntions to add negative descs and so on...
-        function [obj,out1,out2,out3,out4,out5] = process_data(obj,method,varargin)
+        function [out1,out2,out3,out4,out5] = process_data(obj,method,varargin)
 %             global ADD CFG
             dl = DispatchingLogger.getInstance();
             p = inputParser;
@@ -271,7 +298,7 @@ classdef SScene_An
             switch method
 
                 case 'monge428_delete_background_crap'
-                    obj = obj.keep_spec_data_ids(obj.lindex~=1);
+                    obj.keep_spec_data_ids(obj.lindex~=1);
                     obj.lindex = obj.lindex -1;
                     if 1 && ~isempty(obj.dist2plane),
                         tr_dist2plane = .8;
@@ -279,7 +306,7 @@ classdef SScene_An
                         dl.Log(VerbosityLevel.Debug,...
                             sprintf(' - - ...also deleting points which have > %f dist2plane.',...
                             num2str(tr_dist2plane)));
-                        obj = obj.keep_spec_data_ids(abs(obj.dist2plane)<tr_dist2plane);
+                        obj.keep_spec_data_ids(abs(obj.dist2plane)<tr_dist2plane);
                     end
                     
                 case 'compute_get_si', %%% if desc does not exists, compute it, otherwise, jsut load and store it in obj.desc where it shold be :) 
@@ -356,21 +383,30 @@ classdef SScene_An
                     
                 case 'create_desc_from_weak_descs',
                     dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:: adding si,rgb,si+dist2plane :) ... to desc + normalize it!\n'));
-                    lab = rgb2lab(obj.rgb')';
-                    X_si = obj.si;
-                    X          = [double(obj.rgb) ;
-                        lab ; 
+                    X  = [double(obj.rgb) ;
+                        rgb2lab(obj.rgb')' ; 
                         obj.heigh ;
                         obj.heigh_inv ;
                         double(obj.nxyz) ;
                         obj.dist2plane ;
-                        X_si];
+                        obj.si];
+                    
+                    % Get rid of individual descriptors
+                    obj.heigh=[];
+                    obj.heigh_inv=[];
+                    obj.dist2plane=[];
+                    obj.si=[];
+                    
                     if isempty(minX), minX = min(X,[],2); end;
                     X    = bsxfun(@plus , X , -minX);
                     if isempty(maxX), maxX = max(X,[],2); end;
                     obj.desc   = bsxfun(@times , X , 1./maxX);
-                    out1 = minX;
-                    out2 = maxX;
+                    
+                    obj.minDesc = minX;
+                    obj.maxDesc = maxX;
+                    
+%                     out1 = minX;
+%                     out2 = maxX;
                    
 
             end

@@ -9,7 +9,7 @@ function datasetConfig = InitializeDataset(datasetName)
     dl.Subscribe(sl);
     dl.Subscribe(fl);
     
-    datasetConfig.nWorkers = 0;    % Set to 0 to run everything in serial on 1 CPU
+    datasetConfig.nWorkers = 8;    % Set to 0 to run everything in serial on 1 CPU
    
     
     %% General

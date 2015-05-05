@@ -1,28 +1,43 @@
-% function ProjectImagesOntoPointCloud()
+function ProjectImagesOntoPointCloud()
 
-    subset = 'all';
-    nClasses = 3;
+    subset = 'train';
+    nColors = 3;
+    nLabels = 8;
     
-    dirName = '/esat/sadr/amartino/monge428New/data/';
-    imageLocation = '/esat/sadr/amartino/monge428New/data/image/';
+    dirName = '/esat/sadr/amartino/Facade3D/data/';
+    imageLocation = '/esat/sadr/amartino/Facade3D/data/images/';
+    labelLocation = '/esat/sadr/amartino/Facade3D/data/labels/';
     
     % Read the dense point cloud from CMVS
     % Low-res mesh
-%     [points,~,~]=ReadPCLFromPly([dirName 'pcloud_gt_train_new_GCO.ply']);
+    [points,normals,~]=ReadPCLFromPly([dirName 'pcl.ply']);
     
     % High-res mesh
-    [points,normals,~,faces,~]=ReadMeshFromPly([dirName '0_fullResMesh/mesh_normals.ply']);
+%     [points,normals,~,~,~]=ReadMeshFromPly([dirName '0_fullResMesh/mesh_normals.ply']);
     
     % Read camera information from CMVS
     cameras = ImportCameras([dirName 'cameras.txt']);
 
-    % Subset of images used to project the labeling
-    file_str_idx = LoadFilenames(dirName,subset);
-    nImages = length(file_str_idx);
+    
+    % LOAD DATA FILE NAMES & INDEX
+    filename = [dirName 'listtrain.txt'];
+    fid = fopen(filename);
+    if fid==-1
+        fatal();
+    end
+    file_str_idx = textscan(fid, '%s'); fclose(fid);
+    nImages = length(file_str_idx{1});
+    
+    file_str_idx = file_str_idx{1};
+    
+   
+    
+%     nImages = length(file_str_idx);
 
     % Mapping between cmvs images and labeled image
-    colorsPerPoint = zeros(length(points),nImages,nClasses);
-        
+    colorsPerPoint = zeros(length(points),nImages,nColors);
+    labelsPerPoint = zeros(length(points),nImages,nLabels);
+    
     % For each image
     fprintf('Projecting %d images onto the point cloud\n',nImages);
     cnt = 0;
@@ -41,12 +56,13 @@
         height = cameras{camIdx}.principalPoint(2)*2;
         width = cameras{camIdx}.principalPoint(1)*2;
         
-        labelingFilename = [imageLocation basename '.jpg'];
+        imageFilename = [imageLocation basename '.jpg'];
+        labelingFilename = [labelLocation basename '.png'];
 
-        if exist(labelingFilename,'file')
+        if exist(imageFilename,'file')
             cnt = cnt+1;
 
-            origImg = imread(labelingFilename);
+            origImg = imread(imageFilename);
           
             if height==size(origImg,2) && width==size(origImg,1)
                 origImg = imrotate(origImg,90);
@@ -55,7 +71,7 @@
             end
 
             % Backproject the colors
-            for c=1:nClasses
+            for c=1:nColors
                 colorsPerPoint(:,i,c) = BackProjectLabeling(points,origImg(:,:,c),cameras{camIdx});
             end
 
@@ -64,6 +80,32 @@
             fprintf('x');
             continue;
         end
+        
+        
+        if exist(imageFilename,'file')
+            cnt = cnt+1;
+
+            labeling = imread(labelingFilename);
+          
+            if height==size(labeling,2) && width==size(labeling,1)
+                labeling = imrotate(labeling,90);
+            else
+                error('Camera-image size mismatch!');
+            end
+            
+            labeling = Image2Label(labeling);
+
+            % Backproject the colors
+            for c=1:nLabels
+                labelsPerPoint(:,i,c) = BackProjectLabeling(points,(labeling==c),cameras{camIdx});
+            end
+
+            fprintf('o');
+        else
+            fprintf('x');
+            continue;
+        end
+        
 
     end
     
@@ -73,6 +115,6 @@
    
     fprintf('Projected %d images onto the %s point cloud.\n',cnt, subset);
 
-    ExportMesh([dirName 'fullRes_mesh_colors_normals.ply'],points,normals,colors,faces,[]);
+    ExportMesh([dirName 'pcl_colored.ply'],points,normals,colors,[],[]);
   
-% end
+end

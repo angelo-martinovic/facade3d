@@ -140,12 +140,12 @@ switch method,
             Xa = X;
             Ya = Y;
         end
-         obj.Xtrain = Xa;
-         obj.Ytrain = Ya;
-         obj.Xtest = Xtest;
-%         out1 = Xa;
-%         out2 = Ya;
-%         out3 = Xtest;
+%          obj.Xtrain = Xa;
+%          obj.Ytrain = Ya;
+%          obj.Xtest = Xtest;
+        out1 = Xa;
+        out2 = Ya;
+        out3 = Xtest;
         
     case 'learn' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         error = 0;

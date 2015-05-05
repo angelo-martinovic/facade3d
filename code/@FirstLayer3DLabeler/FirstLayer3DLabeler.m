@@ -9,12 +9,6 @@ classdef FirstLayer3DLabeler < handle
         sceneTrain = []; % Training subset
         sceneTest = [];  % Testing subset
 
-        
-        Xtrain =[]; % Training data
-        Ytrain =[];
-        
-        Xtest =[]; % Testing data
-        
         prb = [];   % Resulting class probability per point
         cprb = [];  % Resulting labeling per point
         
@@ -43,7 +37,7 @@ classdef FirstLayer3DLabeler < handle
          
         PlotResults(obj);
          
-        function pclLabeling = GetPCLLabeling(obj)
+        function pclLabeling = GetPCLLabelingFilename(obj)
             cf = obj.config;
             c3d = cf.c3D;
  
@@ -76,8 +70,11 @@ classdef FirstLayer3DLabeler < handle
             obj.sceneFull = obj.sceneFull.calc_simple_features( obj.config );
             
             %--- separate into train/test
-            obj.sceneTest = obj.sceneFull.keep_spec_data_ids(obj.sceneFull.flag==2);
-            obj.sceneTrain  = obj.sceneFull.keep_spec_data_ids(obj.sceneFull.flag==1);
+            obj.sceneTest = obj.sceneFull.copy();
+            obj.sceneTest.keep_spec_data_ids(obj.sceneFull.flag==2);
+            
+            obj.sceneTrain = obj.sceneFull.copy();
+            obj.sceneTrain.keep_spec_data_ids(obj.sceneFull.flag==1);
             
             % Remove unnecessary information
             obj.sceneFull.dist2plane=[];
@@ -99,7 +96,7 @@ classdef FirstLayer3DLabeler < handle
             %--- read/calc desc
             dl.Log(VerbosityLevel.Info,sprintf(' - Extracting spin images from train set...\n'));
         %     tic;
-            obj.sceneTrain = obj.sceneTrain.process_data(...
+            obj.sceneTrain.process_data(...
                 'compute_get_si',...
                 'split','train',...
                 'si_dimensions',spinImageExtractor.si_dimensions,...
@@ -110,7 +107,7 @@ classdef FirstLayer3DLabeler < handle
 
         %     tic;
             dl.Log(VerbosityLevel.Info,sprintf(' - Extracting spin images from test set...\n'));
-            obj.sceneTest = obj.sceneTest.process_data(...
+            obj.sceneTest.process_data(...
                 'compute_get_si',...
                 'split','test',...
                 'si_dimensions',spinImageExtractor.si_dimensions,...
@@ -123,15 +120,12 @@ classdef FirstLayer3DLabeler < handle
             obj.sceneTrain.lindex = obj.sceneTrain.lindex-1; %%% applies to monge where zero should be background...
             obj.sceneTest.lindex = obj.sceneTest.lindex-1; %%% applies to monge where zero should be background...
 
-            dl.Log(VerbosityLevel.Info,sprintf(' - Concatenating descriptors...\n'));
             %--- concatenate descriptors to one vector
-            [obj.sceneTrain, minDESC, maxDESC, V, D] = obj.sceneTrain.process_data('create_desc_from_weak_descs');
-
-            %--- also desc
-            obj.sceneTest = obj.sceneTest.process_data('create_desc_from_weak_descs','minX',minDESC,'maxX',maxDESC,'V',V,'D',D);
-       
-            % --- calculates the remaining features and prepares training matrices
-            obj.facade_unary_class('get_desc');
+            dl.Log(VerbosityLevel.Info,sprintf(' - Concatenating descriptors...\n'));
+            obj.sceneTrain.process_data('create_desc_from_weak_descs');
+            obj.sceneTest.process_data('create_desc_from_weak_descs','minX',obj.sceneTrain.minDesc,'maxX',obj.sceneTrain.maxDesc);
+               
+         
        end
 
        
