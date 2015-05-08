@@ -8,7 +8,7 @@ First, open the ```setup.m``` file and change the paths to the necessary librari
 #### Required libraries
 
 * ```STAIR``` vision library, http://ai.stanford.edu/~sgould/svl/ OR
-* ```CNN```-based region features, http://www.vlfeat.org/matconvnet/
+* ```MatConvNet``` for CNN-based region features, http://www.vlfeat.org/matconvnet/
 
 * ```libSVM``` , http://www.csie.ntu.edu.tw/~cjlin/libsvm/ (if using STAIR features) OR
 * ```liblinear``` , http://www.csie.ntu.edu.tw/~cjlin/liblinear/, (if using CNN features)
