@@ -6,8 +6,9 @@
 addpath batch/
 addpath condor/                 % Calculation on the cluster
 addpath config/
+addpath eccv2014_eval/          % URL: http://www.vision.ee.ethz.ch/~rhayko/paper/eccv2014_riemenschneider_multiviewsemseg/
 addpath logger/
-addpath tools/                  % Helper functions
+addpath tools/                  
 addpath mesh/                   
 addpath planes/
 addpath utils_3d/
@@ -17,7 +18,7 @@ addpath(genpath('thirdLayer/'));
     %% Layer 1
         % CNN 
         % Type: 2D feature extraction, recommended
-        % URL: http://www.vlfeat.org/matconvnet/
+        % URL: 
         addpath external/matconvnet/matlab/
         addpath external/matconvnet/models/ % Put the path to your CNN models here
 
@@ -28,6 +29,7 @@ addpath(genpath('thirdLayer/'));
 
         % BICLOP/DOPPIA 
         % Type: 2D object detector, optional
+        % https://bitbucket.org/rodrigob/doppia
         addpath external/biclop/
 
         % libLINEAR
@@ -41,7 +43,7 @@ addpath(genpath('thirdLayer/'));
         addpath external/libsvm/matlab/
 
         % KD-tree 
-        % type: library for 3D feature extraction (spinImages), required
+        % type: helper library for spin image calculation, required
         % URL: http://www.mathworks.com/matlabcentral/fileexchange/4586-k-d-tree
         addpath external/mat_kdtree/lib/ 
         addpath external/mat_kdtree/src/ 
@@ -64,13 +66,8 @@ addpath(genpath('thirdLayer/'));
         %cvx_save_prefs
 
     %% MISC
-        % ECCV 2014 
-        % Type: evaluation protocol from eccv14, required
-        % URL: http://www.vision.ee.ethz.ch/~rhayko/paper/eccv2014_riemenschneider_multiviewsemseg/
-        addpath external/eccv2014_eval/
-
         % export_fig
-        % Type: library for exporting matlab figures
+        % Type: library for exporting MATLAB figures, optional
         % URL: http://www.mathworks.com/matlabcentral/fileexchange/23629-export-fig
         addpath external/export_fig/ 
 
