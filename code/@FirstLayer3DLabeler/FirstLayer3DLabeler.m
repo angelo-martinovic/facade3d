@@ -4,7 +4,6 @@ classdef FirstLayer3DLabeler < handle
     %   Detailed explanation goes here
     
     properties
-        config = []; 
         sceneFull = [];  % Whole point cloud
         sceneTrain = []; % Training subset
         sceneTest = [];  % Testing subset
@@ -16,8 +15,7 @@ classdef FirstLayer3DLabeler < handle
     %%
     methods (Access = public)
         % Constructor
-        function fl = FirstLayer3DLabeler(datasetConfig)
-            fl.config = datasetConfig;
+        function fl = FirstLayer3DLabeler()
             facade_init_scene(fl);
         end
         
@@ -37,15 +35,18 @@ classdef FirstLayer3DLabeler < handle
          
         PlotResults(obj);
          
-        function pclLabeling = GetPCLLabelingFilename(obj)
-            cf = obj.config;
+    end
+
+    %%
+    methods (Static)
+        function pclLabeling = GetPCLLabelingFilename()
+            cf = DatasetConfig.getInstance();
             c3d = cf.c3D;
  
-            pclLabeling = get_adr('pcl_labeling',cf,c3d.name);
-        end
-        
-        
+            pclLabeling = get_adr('pcl_labeling',c3d.name);
+        end 
     end
+    
     %%
     methods(Access = private)
        
@@ -54,20 +55,21 @@ classdef FirstLayer3DLabeler < handle
        
        function facade_init_scene(obj)
             dl = DispatchingLogger.getInstance();
-
+            cf = DatasetConfig.getInstance();
             % read data + descriptors
             %---- read basic data
-            dl.Log(VerbosityLevel.Info,sprintf(' - read SScene_An.... dataset = ''%s'' \n',obj.config.name));
+            dl.Log(VerbosityLevel.Info,sprintf(' - read SScene_An.... dataset = ''%s'' \n',cf.name));
 
             obj.sceneFull = SScene_An();
-            obj.sceneFull = obj.sceneFull.read_mat_data( obj.config );
+            obj.sceneFull = obj.sceneFull.read_mat_data( );
        end
 
 
        function calc_features(obj)
+            cf = DatasetConfig.getInstance();
             dl = DispatchingLogger.getInstance();
             %---- calculate simple features from the entire point cloud
-            obj.sceneFull = obj.sceneFull.calc_simple_features( obj.config );
+            obj.sceneFull = obj.sceneFull.calc_simple_features( );
             
             %--- separate into train/test
             obj.sceneTest = obj.sceneFull.copy();
@@ -86,12 +88,12 @@ classdef FirstLayer3DLabeler < handle
             obj.sceneFull.p_index=[];
             
             %--- calculate spin images, separate for train, test
-            spinImageExtractorIdx = find(cellfun(@(x)strcmp(x.name,'spinImage'),obj.config.c3D.featureExtractors),1);
+            spinImageExtractorIdx = find(cellfun(@(x)strcmp(x.name,'spinImage'),cf.c3D.featureExtractors),1);
             if isempty(spinImageExtractorIdx)
                 dl.Log(VerbosityLevel.Error,sprintf('Spin image extractor undefined! Check InitializeDataset.m and set datasetConfig.c3D to a 3D extractor'));
                 error('Critical error. Terminating.');
             end
-            spinImageExtractor = obj.config.c3D.featureExtractors{spinImageExtractorIdx};
+            spinImageExtractor = cf.c3D.featureExtractors{spinImageExtractorIdx};
 
             %--- read/calc desc
             dl.Log(VerbosityLevel.Info,sprintf(' - Extracting spin images from train set...\n'));
@@ -101,8 +103,7 @@ classdef FirstLayer3DLabeler < handle
                 'split','train',...
                 'si_dimensions',spinImageExtractor.si_dimensions,...
                 'binSize',spinImageExtractor.binSize,...
-                'imgW',spinImageExtractor.imgW,...
-                'datasetConfig',obj.config);
+                'imgW',spinImageExtractor.imgW);
         %     dl.Log(VerbosityLevel.Info,sprintf(' - -  done in %.2fsec\n',toc));
 
         %     tic;
@@ -112,8 +113,7 @@ classdef FirstLayer3DLabeler < handle
                 'split','test',...
                 'si_dimensions',spinImageExtractor.si_dimensions,...
                 'binSize',spinImageExtractor.binSize,...
-                'imgW',spinImageExtractor.imgW,...
-                'datasetConfig',obj.config);
+                'imgW',spinImageExtractor.imgW);
         %     dl.Log(VerbosityLevel.Info,sprintf(' - -  done in %.2fsec\n',toc));
 
             %--- fix labeling ids

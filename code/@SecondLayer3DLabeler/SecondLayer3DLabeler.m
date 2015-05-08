@@ -3,10 +3,9 @@ classdef SecondLayer3DLabeler < handle
     %   Detailed explanation goes here
     
     properties
-        config = [];
-        
-        pointsFull = [];
-        idxs = [];
+       
+        scene = [];
+%         idxs = [];
         unaries = [];
         
         labelsMAP =[];
@@ -16,8 +15,7 @@ classdef SecondLayer3DLabeler < handle
 
     methods (Access = public)
         % Constructor
-        function sl = SecondLayer3DLabeler(datasetConfig,scene)
-            sl.config = datasetConfig;
+        function sl = SecondLayer3DLabeler(scene)
             initialize(sl,scene);
         end
         

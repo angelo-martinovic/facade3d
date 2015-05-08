@@ -1,18 +1,18 @@
 % Gets all images, rectifies, segments, extracts features, runs detectors on test set.
-function PrepareData(obj)
+function PrepareData()
     %% 1st layer - prepare data
-    cf = obj.config;
+    cf = DatasetConfig.getInstance();
     dl = DispatchingLogger.getInstance();
 
     % Create work folder
-    workFolder = get_adr('work',obj.config);
+    workFolder = get_adr('work',cf);
     mkdirIfNotExist(workFolder);
 
     %% Get the list of all images
     subset = 'all';
-    imageNames = obj.LoadFilenames(subset);
+    imageNames = LoadFilenames(subset);
 
-    imageFilenames = strcat(get_adr('2D_images',cf),strcat(imageNames,'.jpg'));
+    imageFilenames = strcat(get_adr('2D_images'),strcat(imageNames,'.jpg'));
 
     if cf.rectificationNeeded,
         %% Run rectification
@@ -21,8 +21,8 @@ function PrepareData(obj)
         dl.Log(VerbosityLevel.Info,'Rectifying images ...\n');
         parfor (i=1:length(imageFilenames),cf.nWorkers)
 %         for (i=1:length(imageFilenames))
-            outputImageName = get_adr('2D_image',cf,imageNames{i});
-            rectSkipName = get_adr('2D_rectSkip',cf,imageNames{i});
+            outputImageName = get_adr('2D_image',imageNames{i});
+            rectSkipName = get_adr('2D_rectSkip',imageNames{i});
             if ~exist(outputImageName,'file') && ~exist(rectSkipName,'file') 
                 rectCmd = ['LD_LIBRARY_PATH= python rectification/rectifyImage.py -t auto -i '...
                     imageFilenames{i} ' -o ' outputImageName];
@@ -67,23 +67,23 @@ function PrepareData(obj)
         % Otherwise just copy
         tic;
         for i=1:length(imageFilenames)
-            copyfile(imageFilenames{i}, get_adr('2D_image',cf,imageNames{i}));
+            copyfile(imageFilenames{i}, get_adr('2D_image',imageNames{i}));
         end
         dl.Log(VerbosityLevel.Info,sprintf('Copied %d images in %.2f seconds.\n',length(imageFilenames),toc));
     end
     %% Remove empty images
     cntRemoved = 0;
     for i=1:length(imageFilenames)
-        s = dir(get_adr('2D_image',cf,imageNames{i}));
+        s = dir(get_adr('2D_image',imageNames{i}));
         deleteFlag = 0;
         if isempty(s), deleteFlag=1;end;
         if ~deleteFlag, if s.bytes==0, deleteFlag = 1; end; end
         
         if deleteFlag
-            deleteIfExists(get_adr('2D_image',cf,imageNames{i}));
-            deleteIfExists(get_adr('2D_rectParams',cf,imageNames{i}));
-            deleteIfExists(get_adr('2D_scale',cf,imageNames{i}));
-            system(['touch ' get_adr('2D_rectSkip',cf,imageNames{i})]);
+            deleteIfExists(get_adr('2D_image',imageNames{i}));
+            deleteIfExists(get_adr('2D_rectParams',imageNames{i}));
+            deleteIfExists(get_adr('2D_scale',imageNames{i}));
+            system(['touch ' get_adr('2D_rectSkip',imageNames{i})]);
             cntRemoved = cntRemoved+1;
         end
     end
@@ -120,9 +120,9 @@ function PrepareData(obj)
     tic;
     dl.Log(VerbosityLevel.Info,sprintf('Meanshift segmentation ...\n'));
     parfor (i=1:length(imageFilenames),cf.nWorkers)
-        if ~exist(get_adr('2D_segmentation',cf,imageNames{i}),'file')
+        if ~exist(get_adr('2D_segmentation',imageNames{i}),'file')
             
-            ppmFile = get_adr('2D_ppm',cf,imageNames{i});
+            ppmFile = get_adr('2D_ppm',imageNames{i});
             if exist(ppmFile,'file')
                 copyfile(ppmFile,sprintf('edison/tmp/%08d.ppm',i));
                 segCmd = sprintf('edison/segmentImage.sh %08d.ppm %d',i,cf.c2D.minRegionArea); 
@@ -160,15 +160,15 @@ function PrepareData(obj)
     end
    
     %% Run detector(s)
-    imageNamesTrain = obj.LoadFilenames('train');
-    imageNamesEval = obj.LoadFilenames('eval');
+    imageNamesTrain = LoadFilenames('train');
+    imageNamesEval = LoadFilenames('eval');
     dl.Log(VerbosityLevel.Info,sprintf('Running %d detectors...\n',length(cf.c2D.detectors)));
     for d=1:length(cf.c2D.detectors)
         D = cf.c2D.detectors{d};
         
         % Copy all images to a subfolder (only once, before the first detector)
         if d==1
-            subfolderEval = get_adr('2D_detectionFolderEval',cf);
+            subfolderEval = get_adr('2D_detectionFolderEval');
             if ~exist(subfolderEval,'dir')
                 mkdir(subfolderEval);
             else
@@ -182,12 +182,12 @@ function PrepareData(obj)
             end
 
             for i=1:length(imageNamesEval)
-                 if exist(get_adr('2D_image',cf,imageNamesEval{i}),'file')
-                   copyfile(get_adr('2D_image',cf,imageNamesEval{i}),subfolderEval);
+                 if exist(get_adr('2D_image',imageNamesEval{i}),'file')
+                   copyfile(get_adr('2D_image',imageNamesEval{i}),subfolderEval);
                  end
             end
             
-            subfolderTrain = get_adr('2D_detectionFolderTrain',cf);
+            subfolderTrain = get_adr('2D_detectionFolderTrain');
             if ~exist(subfolderTrain,'dir')
                 mkdir(subfolderTrain);
             else
@@ -196,15 +196,15 @@ function PrepareData(obj)
             end
 
             for i=1:length(imageNamesTrain)
-                 if exist(get_adr('2D_image',cf,imageNamesTrain{i}),'file')
-                   copyfile(get_adr('2D_image',cf,imageNamesTrain{i}),subfolderTrain);
+                 if exist(get_adr('2D_image',imageNamesTrain{i}),'file')
+                   copyfile(get_adr('2D_image',imageNamesTrain{i}),subfolderTrain);
                  end
             end
         end
 
         % Run detector on the eval subfolder
         dl.Log(VerbosityLevel.Info,sprintf('Running detector %s ...\n',D.name));
-        outputFolder = get_adr('2D_detectorOutputFolderEval',cf,D.name);
+        outputFolder = get_adr('2D_detectorOutputFolderEval',D.name);
         tic;
         try
             D.DetectObjects(subfolderEval,outputFolder);
@@ -216,7 +216,7 @@ function PrepareData(obj)
         
         % Create the mean detection on the train subfolder
         dl.Log(VerbosityLevel.Info,sprintf('Creating mean detection file with detector %s ...\n',D.name));
-        outputFolder = get_adr('2D_detectorOutputFolderTrain',cf,D.name);
+        outputFolder = get_adr('2D_detectorOutputFolderTrain',D.name);
         tic;
         try
             D.DetectObjects(subfolderTrain,outputFolder);

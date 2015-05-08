@@ -15,18 +15,18 @@ function OrthoImages(obj)
 
         % Original colors
         [~,~,origColors] = ReadPCLFromPly(...
-            get_adr('splitColors',obj.config,obj.splitName,facadeID));
+            get_adr('splitColors',obj.splitName,facadeID));
 
         % Potentials
-        ss = load(get_adr('splitPotentials',obj.config,obj.splitName,facadeID));
+        ss = load(get_adr('splitPotentials',obj.splitName,facadeID));
         vertexSubsetPotentials = ss.vertexSubsetPotentials;
 
         % Labeling
         [points,~,labelColors] = ReadPCLFromPly(...
-            get_adr('splitLabeling',obj.config,obj.splitName,facadeID));
+            get_adr('splitLabeling',obj.splitName,facadeID));
 
         % Facade plane
-        ss=load(get_adr('splitPlane',obj.config,obj.splitName,facadeID));
+        ss=load(get_adr('splitPlane',obj.splitName,facadeID));
         plane = ss.plane;
         
         v = bsxfun(@minus,points,plane.p');    % vectors from points to plane origin
@@ -95,7 +95,7 @@ function OrthoImages(obj)
                 end
             end
            g = bestG;
-           save(get_adr('splitPlane',obj.config,obj.splitName,facadeID),'plane','g');
+           save(get_adr('splitPlane',obj.splitName,facadeID),'plane','g');
         end
         
        % Get the ortho labeling, ortho potentials, and 3D positions of
@@ -122,7 +122,7 @@ function OrthoImages(obj)
             width = cameras{camIdx}.principalPoint(1)*2;
 
             imgName = cameras{camIdx}.originalImageFilename(1:end-4);
-            imageFilename = [get_adr('2D_images',obj.config) imgName '.jpg'];
+            imageFilename = [get_adr('2D_images') imgName '.jpg'];
 
             if exist(imageFilename,'file')
 
@@ -167,9 +167,9 @@ function OrthoImages(obj)
        end
        
        % Saving
-       imwrite(orthoImage,get_adr('orthoColors',obj.config,obj.splitName,facadeID));
-       imwrite(orthoLabel,get_adr('orthoLabels',obj.config,obj.splitName,facadeID));
-       save(get_adr('orthoPotentials',obj.config,obj.splitName,facadeID),'orthoPotentials');
+       imwrite(orthoImage,get_adr('orthoColors',obj.splitName,facadeID));
+       imwrite(orthoLabel,get_adr('orthoLabels',obj.splitName,facadeID));
+       save(get_adr('orthoPotentials',obj.splitName,facadeID),'orthoPotentials');
 
     end
     dl.Log(VerbosityLevel.Info,sprintf('Done. Elapsed time: %.2f seconds.\n',toc));

@@ -4,49 +4,47 @@ classdef FirstLayer2DLabeler < handle
     %   Detailed explanation goes here
     
     properties
-            config = [];   
+
     end
     %%
-    methods (Access = public)
-        % Constructor
-        function fl = FirstLayer2DLabeler(datasetConfig)
-            fl.config = datasetConfig;
-        end
-        
-        PrepareData(obj);
-        
-        filenames = LoadFilenames(obj,subset);
+    methods (Static)
 
-        TrainClassifier(obj);
         
-        RunClassifier(obj);
+        PrepareData();
+
+        TrainClassifier();
         
-        LabelImagesATLAS(obj);
+        RunClassifier();
         
-        [f1,f2] = Project2DOntoPointCloud(obj);
+        LabelImagesATLAS();
+        
+        [f1,f2] = Project2DOntoPointCloud();
        
         
-        function outputFolder = GetOutputFolderLayer1(obj)
-            outputFolder = [get_adr('2D_classification',obj.config,obj.config.c2D.classifier.name) 'layer1/'];
+        function outputFolder = GetOutputFolderLayer1()
+            cf = DatasetConfig.getInstance();
+            outputFolder = [get_adr('2D_classification',cf.c2D.classifier.name) 'layer1/'];
         end
         
-        function outputFolder = GetOutputFolderLayer2(obj)
-            outputFolder = [get_adr('2D_classification',obj.config,obj.config.c2D.classifier.name) 'layer2/'];
+        function outputFolder = GetOutputFolderLayer2()
+            cf = DatasetConfig.getInstance();
+            outputFolder = [get_adr('2D_classification',cf.c2D.classifier.name) 'layer2/'];
         end
         
-        function outputFile = GetOutputProjectedLayer1(obj)
-            outputFile = get_adr('pcl_labeling',obj.config,'2D_layer1_majorityVote');
+        function outputFile = GetOutputProjectedLayer1()
+            outputFile = get_adr('pcl_labeling','2D_layer1_majorityVote');
         end
         
-        function outputFile = GetOutputProjectedLayer2(obj)
-            outputFile = get_adr('pcl_labeling',obj.config,'2D_layer2_majorityVote');
+        function outputFile = GetOutputProjectedLayer2()
+            outputFile = get_adr('pcl_labeling','2D_layer2_majorityVote');
         end
         
     end
     %%
     methods(Access = private)
-        [t,x,segsPerImage,imageNames] = LoadData(obj,subset);
+        [t,x,segsPerImage,imageNames] = LoadData(subset);
         
     end
+   
     
 end

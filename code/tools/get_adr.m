@@ -4,8 +4,9 @@
 %  get_adr('L1_res',datasetConfig,'2D')
 %
 
-function adr = get_adr(type , datasetConfig , par1 , par2 , par3)
+function adr = get_adr(type , par1 , par2 , par3)
 
+datasetConfig = DatasetConfig.getInstance();
 
 switch type
     case '2D_labels'

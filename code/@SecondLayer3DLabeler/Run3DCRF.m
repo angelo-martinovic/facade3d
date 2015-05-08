@@ -1,11 +1,16 @@
 function Run3DCRF(obj)
     
     dl = DispatchingLogger.getInstance();
+    cf = DatasetConfig.getInstance();
+    
     dl.Log(VerbosityLevel.Info,sprintf(' - Using the following energy function:\n'));
     
-    points = obj.pointsFull(obj.idxs,:);
+    % Indices of the labeled subset
+    idxs = find(obj.scene.flag==2)';
+    
+    points = obj.scene.pts(:,idxs)';
     unaries = obj.unaries;
-    pairwiseCost = obj.config.c3D.crf.weightPairwise;
+    pairwiseCost = cf.c3D.crf.weightPairwise;
     
     unary = 0;
     enFunString = ' - ';

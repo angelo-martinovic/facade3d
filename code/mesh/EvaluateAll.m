@@ -1,9 +1,10 @@
-dirName = datasetConfig.dataLocation;%'/esat/sadr/amartino/Facade3D/dataFullRes/';
+cf = DatasetConfig.getInstance();
+baseName = cf.name;
+dirName = cf.dataLocation;%'/esat/sadr/amartino/Facade3D/dataFullRes/';
 
-loc = get_adr('pclModelDir', datasetConfig);
+loc = get_adr('pclModelDir');
+gt = get_adr('pcl_gt_test');
 
-gt = get_adr('pcl_gt_test',datasetConfig);
-baseName = datasetConfig.name;
 % highRes = false;
 % if highRes
 %     % High-res mesh

@@ -1,4 +1,5 @@
 function RunThirdLayerSingle(splitName,facadeID,hyperSetup)
+    
     facadeID = num2str(facadeID);
     
     % Read config from temp file
@@ -12,15 +13,15 @@ function RunThirdLayerSingle(splitName,facadeID,hyperSetup)
 %     end
 
     % Labeled image
-    labImage = imread(get_adr('orthoLabels',datasetConfig,splitName,facadeID));
+    labImage = imread(get_adr('orthoLabels',splitName,facadeID));
     outImg = Image2Labels(double(labImage),datasetConfig.cm);
         
     % Original image
-    origImg = imread(get_adr('orthoColors',datasetConfig,splitName,facadeID));
+    origImg = imread(get_adr('orthoColors',splitName,facadeID));
     origImg = double(origImg)/256;
         
     % Per-pixel probabilities
-    ss = load(get_adr('orthoPotentials',datasetConfig,splitName,facadeID));
+    ss = load(get_adr('orthoPotentials',splitName,facadeID));
     segMap = ss.orthoPotentials;
     segMap  = exp(-segMap);
            
@@ -35,6 +36,6 @@ function RunThirdLayerSingle(splitName,facadeID,hyperSetup)
 
     thirdLayerImage = Label2Image(thirdLayerOutput,datasetConfig.cm);
 
-    imwrite(thirdLayerImage,get_adr('orthoLabelingLayer3Img',datasetConfig,splitName,facadeID));
+    imwrite(thirdLayerImage,get_adr('orthoLabelingLayer3Img',splitName,facadeID));
         
 end

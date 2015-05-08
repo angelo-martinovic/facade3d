@@ -1,18 +1,19 @@
 function submitted = RunThirdLayer(obj)
     dl = DispatchingLogger.getInstance();
+    datasetConfig = DatasetConfig.getInstance();
+    
     dl.Log(VerbosityLevel.Info,sprintf('Running the third layer...\n'));
     
     facadeIDs = obj.GetFacadeIDs();    
     N = length(facadeIDs);
 
-    datasetConfig = obj.config; %#ok<NASGU>
     save('datasetConfig.mat','datasetConfig');
     
     submitted = false;
     if obj.condorEnabled
         condorScriptFilename = GenerateCondorScript_ThirdLayer( ...
             facadeIDs, ...
-            obj.config.name, ...
+            datasetConfig.name, ...
             obj.splitName);
         condorSubmitCmd = ['condor_submit ' condorScriptFilename];
         system(condorSubmitCmd,'-echo');

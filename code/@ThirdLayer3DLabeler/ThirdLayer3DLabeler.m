@@ -3,7 +3,6 @@ classdef ThirdLayer3DLabeler
     %   Detailed explanation goes here
     
    properties
-        config = [];
         splitName = [];
         
         pcl_test = [];
@@ -12,8 +11,7 @@ classdef ThirdLayer3DLabeler
 
     methods (Access = public)
         % Constructor
-        function sl = ThirdLayer3DLabeler(datasetConfig,modelName,pcl_test,pcl_all)
-            sl.config = datasetConfig;
+        function sl = ThirdLayer3DLabeler(modelName,pcl_test,pcl_all)
             sl.splitName = modelName;
             sl.pcl_test = pcl_test;
             sl.pcl_all = pcl_all;
@@ -22,7 +20,7 @@ classdef ThirdLayer3DLabeler
         RunThirdLayer(obj);
         
         function outputPCLName = GetOutputName(obj)
-             outputPCLName = get_adr('3D_L3_Pure3D_labeling',obj.config,obj.splitName);
+             outputPCLName = get_adr('3D_L3_Pure3D_labeling',obj.splitName);
         end
       
     end

@@ -1,33 +1,35 @@
 % Runs the first two layers of ATLAS.
 % Collects the calculated marginals and the detector output on the test set.
-function LabelImagesATLAS(obj)
+function LabelImagesATLAS()
     dl = DispatchingLogger.getInstance();
     
     dl.Log(VerbosityLevel.Info,sprintf('Starting 2D image labeling (ATLAS)...\n'));
     
     % Image names
-    imageNames = obj.LoadFilenames('eval');
+    imageNames = LoadFilenames('eval');
         
     % Label each image
     tic;
     nImages = length(imageNames);
     
     disp('-----------------');
-    cf = obj.config;
+    cf = DatasetConfig.getInstance();
+    datasetName = cf.name;
     cacheFoundCount = 0;
     retCodes = zeros(1,nImages);
     msgs = cell(1,nImages);
     pb = ProgressBar(nImages);
-    parfor (i = 1:nImages,obj.config.nWorkers)
+    parfor (i = 1:nImages,cf.nWorkers)
 %     for i = 1:nImages
-        outputFilename = get_adr('image_classifier_unaries',cf,cf.c2D.classifier.name,imageNames{i});
+        cfLocal = DatasetConfig.getInstance(datasetName);
+        outputFilename = get_adr('image_classifier_unaries',cfLocal.c2D.classifier.name,imageNames{i});
         
-        if exist(outputFilename,'file') && cf.useCache
+        if exist(outputFilename,'file') && cfLocal.useCache
             cacheFoundCount = cacheFoundCount + 1;
             pb.progress();
             continue;
         else
-            [retCodes(i),msgs{i}] = LabelOneImage(obj, imageNames{i});
+            [retCodes(i),msgs{i}] = LabelOneImage(cfLocal,imageNames{i});
         end
         pb.progress();
     end
@@ -51,12 +53,12 @@ function LabelImagesATLAS(obj)
         sprintf('ATLAS finished. %d results loaded from cache. Elapsed time: %.2f seconds.\n',cacheFoundCount,atlasTime));   
 end
 
-function [retCode,msg] = LabelOneImage(obj,imageName)
+function [retCode,msg] = LabelOneImage(cf,imageName)
     retCode = 0;
     msg = [];
 %     dl = DispatchingLogger.getInstance();
     
-    imageFilename = get_adr('2D_image',obj.config,imageName);
+    imageFilename = get_adr('2D_image',imageName);
     if ~exist(imageFilename,'file')
         retCode = 1;
         msg = sprintf(' - Image %s does not exist. Skipping...',imageFilename);
@@ -69,14 +71,14 @@ function [retCode,msg] = LabelOneImage(obj,imageName)
     height = size(image,1);
     width  = size(image,2);
     % Original image - before rectification
-    imOrig = imread(get_adr('2D_image_orig',obj.config,imageName));
+    imOrig = imread(get_adr('2D_image_orig',imageName));
     
     % Non-rectified image size
     heightOrig = size(imOrig,1);
     widthOrig = size(imOrig,2);
     
     %% First layer
-    segmentation = dlmread(get_adr('2D_segmentation',obj.config,imageName));
+    segmentation = dlmread(get_adr('2D_segmentation',imageName));
     % Since segments start from 0
     segmentation = segmentation + 1;   
 
@@ -84,7 +86,7 @@ function [retCode,msg] = LabelOneImage(obj,imageName)
     numSegs = max(segmentation(:));
     
     % Classifier output
-    prob_estimates = dlmread(get_adr('2D_marginals',obj.config,obj.config.c2D.classifier.name,imageName));
+    prob_estimates = dlmread(get_adr('2D_marginals',cf.c2D.classifier.name,imageName));
 
     if length(prob_estimates)~=numSegs
         retCode = -1;
@@ -94,7 +96,7 @@ function [retCode,msg] = LabelOneImage(obj,imageName)
 
     % Label probability maps   
     nClasses = size(prob_estimates,2) - 1;
-    if nClasses~=obj.config.nClasses
+    if nClasses~=cf.nClasses
         retCode = -1;
         msg = sprintf('Mismatch in number of classes between the configuration and classifier output!');
         return;
@@ -111,19 +113,19 @@ function [retCode,msg] = LabelOneImage(obj,imageName)
     
     %% 2D Second layer 
     % Detectors
-    nDetectors = length(obj.config.c2D.detectors);
+    nDetectors = length(cf.c2D.detectors);
     
     detectionData = cell(1,nDetectors);
     for i=1:nDetectors
-        detector = obj.config.c2D.detectors{i};
-        detectionFilename = get_adr('2D_detectionsEval', obj.config, detector.name, imageName);
+        detector = cf.c2D.detectors{i};
+        detectionFilename = get_adr('2D_detectionsEval', detector.name, imageName);
         detectionData{i} = detector.ProbabilityMapFromDetections(detectionFilename,nClasses,height,width);
     end
 
     % Unrectification
-    if obj.config.rectificationNeeded
-        scale = dlmread(get_adr('2D_scale',obj.config,imageName));
-        homography = dlmread(get_adr('2D_rectParams',obj.config,imageName));
+    if cf.rectificationNeeded
+        scale = dlmread(get_adr('2D_scale',imageName));
+        homography = dlmread(get_adr('2D_rectParams',imageName));
 
         resizedImage = imresize(image,scale);
 
@@ -158,26 +160,26 @@ function [retCode,msg] = LabelOneImage(obj,imageName)
     end
     
     % Run CRF
-    [outImg,~,~] = obj.RunCRF(segMap,detectionData);
+    [outImg,~,~] = RunCRF(segMap,detectionData);
     
     % Output
-    outputDir = get_adr('2D_classification',obj.config,obj.config.c2D.classifier.name);
+    outputDir = get_adr('2D_classification',cf.c2D.classifier.name);
     
     % Save overlayed result image to disk
     mkdirIfNotExist([outputDir '/layer1/']);
     mkdirIfNotExist([outputDir '/layer2/']);
         
     alpha = 0.5;
-    imwrite(imlincomb(alpha, Label2Image(oldImg,obj.config.cm), 1-alpha, image),...
+    imwrite(imlincomb(alpha, Label2Image(oldImg,cf.cm), 1-alpha, image),...
         [outputDir '/layer1/' imageName '_overlay.png']);
-    imwrite(imlincomb(alpha, Label2Image(outImg,obj.config.cm), 1-alpha, image),...
+    imwrite(imlincomb(alpha, Label2Image(outImg,cf.cm), 1-alpha, image),...
         [outputDir '/layer2/' imageName '_overlay.png']);
     
-    imwrite(Label2Image(oldImg,obj.config.cm),[outputDir '/layer1/' imageName '.png']);
-    imwrite(Label2Image(outImg,obj.config.cm),[outputDir '/layer2/' imageName '.png']);
+    imwrite(Label2Image(oldImg,cf.cm),[outputDir '/layer1/' imageName '.png']);
+    imwrite(Label2Image(outImg,cf.cm),[outputDir '/layer2/' imageName '.png']);
     
     for i=1:nDetectors
-        dmap = detectionData{i}(:,:,obj.config.c2D.detectors{i}.class);
+        dmap = detectionData{i}(:,:,cf.c2D.detectors{i}.class);
         maxVal = max(dmap(:));
         minVal = min(dmap(:));
 
@@ -185,11 +187,61 @@ function [retCode,msg] = LabelOneImage(obj,imageName)
         detMap = repmat(detMap,[1 1 3]);
     
         imwrite(imlincomb(alpha, detMap, 1-alpha, image),...
-        [outputDir '/layer2/' imageName 'detections_' obj.config.c2D.detectors{i}.name '.png']);
+        [outputDir '/layer2/' imageName 'detections_' cf.c2D.detectors{i}.name '.png']);
     end
     
     % A big mat file
     segPotentials = segMap; layer1_labeling = oldImg; layer2_labeling = outImg; %#ok<NASGU>
-    save(get_adr('image_classifier_unaries',obj.config,obj.config.c2D.classifier.name,imageName),'segPotentials','detectionData','layer1_labeling','layer2_labeling');
+    save(get_adr('image_classifier_unaries',cf.c2D.classifier.name,imageName),'segPotentials','detectionData','layer1_labeling','layer2_labeling');
 
+end
+
+function [result,E_begin,E_end] = RunCRF(unarySegmentationPotentials,unaryDetectionPotentials)  
+    cf = DatasetConfig.getInstance();
+     
+    crf = cf.c2D.crf;
+    nClasses = cf.nClasses;
+    
+    %% Image size
+    H = size(unarySegmentationPotentials,1);
+    W = size(unarySegmentationPotentials,2);
+       
+    %% Initial labels
+    [~,oldImg] = max(unarySegmentationPotentials,[],3);
+    oldImg = oldImg-1;
+    segclass = reshape(oldImg',W*H,1);
+
+    %% Pairwise term
+    % 4 - neighborhood: 1-ball with L1 distance
+    [ii, jj] = sparse_adj_matrix([W H], 1, 1);
+    pairwise = sparse(ii,jj,ones(1,numel(ii)), W * H, W * H);
+    pairwise(1:size(pairwise,1)+1:end)=0;
+                                          
+    %% Unary term
+    unary = zeros(nClasses,W*H);
+    nDetectors = length(unaryDetectionPotentials);
+    unary_mat = crf.weightUnarySegmentation * (- log(unarySegmentationPotentials) );
+        
+    for d=1:nDetectors
+        unary_mat = unary_mat + crf.weightsUnaryDetectors(d) * (-log(unaryDetectionPotentials{d}));
+    end
+    
+    for c=1:nClasses
+        unary(c,:) = reshape(unary_mat(:,:,c)',1,W*H);
+    end
+           
+    %% Label term
+    labelcost = crf.labelCost;
+
+    % Final expression
+    pairwise = crf.weightPairwise*pairwise;
+
+	%% Calling the MEX file
+    [labels,E,Eafter] = GCMex(segclass, double(unary), pairwise, double(labelcost),0);
+    labels = labels + 1;
+
+    E_begin = E;
+    E_end = Eafter;
+    
+    result = reshape(labels,W,H)';
 end
