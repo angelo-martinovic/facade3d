@@ -7,6 +7,7 @@ First, open the ```setup.m``` file and change the paths to the necessary librari
 
 Required libraries:
 2D feature extraction: either
+
 * ```STAIR``` vision library, http://ai.stanford.edu/~sgould/svl/ or
 * ```CNN```-based region features, http://www.vlfeat.org/matconvnet/
 * ```libSVM``` SVM library, http://www.csie.ntu.edu.tw/~cjlin/libsvm/, for the first layer
@@ -14,6 +15,7 @@ Required libraries:
 * ```CVX``` Matlab software for disciplined convex programming, http://cvxr.com/cvx/, for the third layer
 
 Optional libraries:
+
 * ```libSVM``` SVM library, http://www.csie.ntu.edu.tw/~cjlin/libsvm/, for the first layer
 * ```GC_optimization``` software for energy minimization with graph cuts, http://www.csd.uwo.ca/faculty/olga/software.html, for the second layer
 * ```CVX``` Matlab software for disciplined convex programming, http://cvxr.com/cvx/, for the third layer
