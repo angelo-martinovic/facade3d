@@ -3,7 +3,6 @@ classdef ThirdLayer2DLabeler < handle
     %   Detailed explanation goes here
     
     properties
-            config = [];  
             splitName = [];
     
             pcl_test = [];
@@ -17,8 +16,7 @@ classdef ThirdLayer2DLabeler < handle
     end
     
     methods
-        function tl = ThirdLayer2DLabeler(datasetConfig,splitName,pcl_test,pcl_all)
-            tl.config = datasetConfig;
+        function tl = ThirdLayer2DLabeler(splitName,pcl_test,pcl_all)
             tl.splitName = splitName;
             tl.pcl_test = pcl_test;
             tl.pcl_all = pcl_all;
@@ -56,7 +54,7 @@ classdef ThirdLayer2DLabeler < handle
         %Calculates 3D positions of cameras
         function [camerapos,cameras] = GetCameraPos(obj)
             
-            cameras = ImportCameras(get_adr('cameras',obj.config));
+            cameras = ImportCameras(get_adr('cameras'));
             camerapos = zeros(length(cameras),3);
 
             for i=1:length(cameras)
@@ -71,14 +69,14 @@ classdef ThirdLayer2DLabeler < handle
         
         function facadeIDs = GetFacadeIDs(obj)
             % Get facade separation info
-            ss = load(get_adr('facadeIDs',obj.config,obj.splitName));
+            ss = load(get_adr('facadeIDs',obj.splitName));
             facadeIDs = ss.facadeIDs';
 
             facadeIDs = facadeIDs(facadeIDs~=0); % Skip background
         end
        
         function outputPCLName = GetOutputName(obj)
-             outputPCLName = get_adr('3D_L3_Ortho2D_labeling',obj.config,obj.splitName);
+             outputPCLName = get_adr('3D_L3_Ortho2D_labeling',obj.splitName);
         end
     end
     

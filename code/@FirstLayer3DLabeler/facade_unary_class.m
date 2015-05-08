@@ -42,7 +42,9 @@ out1=[]; out2=[]; out3=[]; out4=[];
 scene               = obj.sceneTest;
 train_data          = obj.sceneTrain;
 
-c = obj.config.c3D.classifier;
+cf = DatasetConfig.getInstance();
+
+c = cf.c3D.classifier;
 unary_classifier    =  c.unary_classifier;
 desc_reco           =  c.desc_reco;
 sample              =  c.sample;
@@ -151,8 +153,8 @@ switch method,
         error = 0;
         switch unary_classifier
             case 'rf'         
-                if obj.config.nWorkers>1
-                    InitializeParallel(obj.config.nWorkers);
+                if cf.nWorkers>1
+                    InitializeParallel(cf.nWorkers);
                     
                     % Reproducibility 
                     s = RandStream('mlfg6331_64');

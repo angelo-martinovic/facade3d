@@ -1,19 +1,20 @@
-function file_str_idx = LoadFilenames(obj,subset)
+function file_str_idx = LoadFilenames(subset)
     dl = DispatchingLogger.getInstance();
+    cf = DatasetConfig.getInstance();
     
     if strcmp(subset,'eval')
-        filelist_str = obj.config.evalList;
+        filelist_str = cf.evalList;
     elseif strcmp(subset,'train')
-        filelist_str = obj.config.trainList;
+        filelist_str = cf.trainList;
     elseif strcmp(subset,'all')
-        filelist_str = obj.config.fullList;
+        filelist_str = cf.fullList;
     else
         dl.Log(VerbosityLevel.Error,sprintf('Unknown subset!'));
         fatal();
     end
 
     % LOAD DATA FILE NAMES & INDEX
-    filename = [obj.config.dataLocation filelist_str];
+    filename = [cf.dataLocation filelist_str];
     fid = fopen(filename);
     if fid==-1
         dl.Log(VerbosityLevel.Error,sprintf('File %s could not be opened!\n',filename));

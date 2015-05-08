@@ -4,7 +4,7 @@ function RunThirdLayer(obj)
     tic;
     dl = DispatchingLogger.getInstance();
     
-    datasetConfig = obj.config;
+    cf = DatasetConfig.getInstance();
     inputName = obj.splitName; 
     
     dl.Log(VerbosityLevel.Debug,...
@@ -18,11 +18,11 @@ function RunThirdLayer(obj)
         pts_facade(2,:)>tmp_corner(5);
 
     %--- read cprb from before results
-    [~,~,rgb_data_cprb] = read_ply(get_adr('pcl_labeling',datasetConfig,inputName),'pcl');
+    [~,~,rgb_data_cprb] = read_ply(get_adr('pcl_labeling',inputName),'pcl');
     rgb_data_cprb = rgb_data_cprb(obj.pcl_test.p_index,:);
-    cprb = Colors2Labels(rgb_data_cprb,datasetConfig.cm)';
+    cprb = Colors2Labels(rgb_data_cprb,cf.cm)';
 
-    pts_split_label    = load([datasetConfig.dataLocation,datasetConfig.splitData]);
+    pts_split_label    = load([cf.dataLocation,cf.splitData]);
     obj.pcl_test.facade_id      = pts_split_label.splitLabels(obj.pcl_test.p_index)';
     
     %--- which facades to process
@@ -46,7 +46,7 @@ function RunThirdLayer(obj)
     store_bbox = 1;  %%% if I want to store all boxes (yes for export)
     estimate_door_box = 1; %%% always on!
 
-    cmap = round(datasetConfig.cm(2:end,:)*255);
+    cmap = round(cf.cm(2:end,:)*255);
 
     %--- init some vars
     cprb_new_objs = cprb;
@@ -58,7 +58,7 @@ function RunThirdLayer(obj)
     if estimate_door_box, %%% door needs probability map, not just labeling...
         labeling_cprb_doors = obj.pcl_test.create_oidx_from_lidx('cprb',cprb,'K',7,'cl',4,'max_objs',100);
         labeling_cprb_doors = labeling_cprb_doors.oindex;
-        prob_classes = load(get_adr('pcl_unaries',datasetConfig,inputName));
+        prob_classes = load(get_adr('pcl_unaries',inputName));
         %prob_classes = load(fullfile(path_cprb_probl,['3D_layer1-',num2str(2000),'-',num2str(200),'.mat']));
         prob_classes = prob_classes.unary(:,obj.pcl_test.origIndices);%prob_classes.prb(4:4+numel(obj.pcl_test.get_class_names),:);
         prob_classes = exp(-prob_classes) ./ repmat(sum(exp(-prob_classes)),size(prob_classes,1),1);
@@ -82,7 +82,7 @@ function RunThirdLayer(obj)
         dl.Log(VerbosityLevel.Info,...
          sprintf('- - facade id=%i, #pts=%.1fK\n',facade_id,length(idx_in_facade)/1e3));
 
-        path_data = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
+        path_data = get_adr('3DL_bboxes',inputName,facade_id);
         if ~exist(path_data,'file');
             dl.Log(VerbosityLevel.Warning,sprintf('- - - No boxes estimated for this facade!\n'));
             continue;
@@ -92,7 +92,7 @@ function RunThirdLayer(obj)
             sprintf('- - Reading from %s, created at %s\n',path_data,t.date));
         load(path_data);  %%% read normals, bbox, bbox_ga and bbox_new
         %--- read grav. vector
-        grav_vec = load(get_adr('splitPlane',datasetConfig,inputName,num2str(facade_id)));%load( get_adr('grav_vec',datasetConfig,facade_id) );
+        grav_vec = load(get_adr('splitPlane',inputName,num2str(facade_id)));%load( get_adr('grav_vec',cf,facade_id) );
         grav_vec = grav_vec.g';
 
 %         tic;
@@ -193,7 +193,7 @@ function RunThirdLayer(obj)
         path_3ds_export_fac = '../output/export/3D_3L_facades_3ds/';
         for facade_id = facade_ids_go,
 
-            im_path = get_adr('orthoLabels',datasetConfig,inputName,num2str(facade_id));
+            im_path = get_adr('orthoLabels',inputName,num2str(facade_id));
             if ~exist(im_path,'file')
                 dl.Log(VerbosityLevel.Info,...
                     sprintf('- - Ortho image not found. Skipping texture export for facade %d.\n',facade_id));
@@ -212,10 +212,10 @@ function RunThirdLayer(obj)
 
             %--- now 3D :) ----------------------------------------------------  
             %--- read angelo's datra to images and find corners
-            dt_plane_andelo = load(get_adr('splitPlane',datasetConfig,inputName,num2str(facade_id)));
+            dt_plane_andelo = load(get_adr('splitPlane',inputName,num2str(facade_id)));
             im_corners = dt_plane_andelo.plane.b;
 
-            boxFile = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
+            boxFile = get_adr('3DL_bboxes',inputName,facade_id);
             if ~exist(boxFile,'file');
                 dl.Log(VerbosityLevel.Warning,sprintf('File %s does not exist!\n',boxFile));
                 continue;
@@ -260,14 +260,14 @@ function RunThirdLayer(obj)
         %--- project to full pcl
         cprb_full = zeros(1,size(obj.pcl_all.pts,2));
         cprb_full(obj.pcl_test.p_index) = cprb_new_objs;
-        cmap = round(datasetConfig.cm*255);
+        cmap = round(cf.cm*255);
         %--- visualize
         if visualize_full_obj.pcl_test
             colors_show = uint8((cmap(cprb_full+1,:)+full_pcl.rgb'*2)/3);
             full_pcl.plot_opengl_obj.pcl_test([full_pcl.lindex',cprb_full',cprb(i_pcl2full)'],'Q_rgb',colors_show);
         end
 
-        path2save_full = get_adr('3D_L3_Pure3D_labeling',datasetConfig,inputName); 
+        path2save_full = get_adr('3D_L3_Pure3D_labeling',inputName); 
         ExportMesh(path2save_full , obj.pcl_all.pts',[],cmap(cprb_full+1,:),[],[]);
         dl.Log(VerbosityLevel.Info,...
                 sprintf('- - Result saved to %s.\n',path2save_full));

@@ -38,7 +38,7 @@ time_cumsum = 0;
 for facade_id = facade_ids_go,
     dl.Log(VerbosityLevel.Debug,...
     sprintf('- - Analyzing facade %d...\n',facade_id));
-    grav_vec = load(get_adr('splitPlane',datasetConfig,inputName,num2str(facade_id)));%load(get_adr('grav_vec',datasetConfig,facade_id));
+    grav_vec = load(get_adr('splitPlane',inputName,num2str(facade_id)));%load(get_adr('grav_vec',datasetConfig,facade_id));
     
     grav_vec = grav_vec.g';
     if isempty(grav_vec)
@@ -93,7 +93,7 @@ for facade_id = facade_ids_go,
     
 %     time_cumsum = time_cumsum+toc;
     if save_res_per_facade2file,
-        path2save = get_adr('3DL_bboxes',datasetConfig,inputName,facade_id);
+        path2save = get_adr('3DL_bboxes',inputName,facade_id);
         dl.Log(VerbosityLevel.Debug,...
             sprintf('- - Saving estimated bounding boxes to %s\n',path2save));
         checkAdr_and_createDir(path2save);

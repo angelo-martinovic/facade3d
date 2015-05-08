@@ -1,5 +1,19 @@
+% Entry point
+
 setup; % Set paths
-datasetConfig = InitializeDataset('monge428'); % Set up the dataset: file locations, file names
+datasetName = 'monge428';
+
+% Logging
+sl = ScreenLogger(VerbosityLevel.Verbose);
+fl = FileLogger(VerbosityLevel.Info,['log_' datasetName '.txt']);
+
+dl = DispatchingLogger.getInstance();
+dl.Clear();
+dl.Subscribe(sl);
+dl.Subscribe(fl);
+        
+% Set up the dataset: file locations, file names
+datasetConfig = DatasetConfig.getInstance(datasetName);
 
 if datasetConfig.nWorkers>1
     InitializeParallel(datasetConfig.nWorkers);
@@ -7,35 +21,30 @@ end
     
 rng(1); % For reproducibility
 
-dl = DispatchingLogger.getInstance();
  
 %% ======================================
 % First+second layer 2D: Image labeling
 % =======================================
-
-    fl2D = FirstLayer2DLabeler ( datasetConfig );
-    imageNames = fl2D.LoadFilenames('eval');
-    
-    fl2D.PrepareData();      % Resize, rectify, segment, extract features, run detectors
-    fl2D.TrainClassifier();  % Train SVM on region features from the train set
-    fl2D.RunClassifier();    % Use the trained SVM to classify superpixels in the test set
-    fl2D.LabelImagesATLAS(); % Label images with: - classified superpixels (layer 1)
-                             %                    - detectors and CRF (layer 2)
-
-    EvaluateImageLabeling(datasetConfig,imageNames,fl2D.GetOutputFolderLayer1()); % Eval layer 1
-    EvaluateImageLabeling(datasetConfig,imageNames,fl2D.GetOutputFolderLayer2()); % Eval layer 2
+    FirstLayer2DLabeler.PrepareData();      % Resize, rectify, segment, extract features, run detectors
+    FirstLayer2DLabeler.TrainClassifier();  % Train SVM on region features from the train set
+    FirstLayer2DLabeler.RunClassifier();    % Use the trained SVM to classify superpixels in the test set
+    FirstLayer2DLabeler.LabelImagesATLAS(); % Label images with: - classified superpixels (layer 1)
+                                            %                    - detectors and CRF (layer 2)
+    imageNames = LoadFilenames('eval');
+    EvaluateImageLabeling(imageNames,FirstLayer2DLabeler.GetOutputFolderLayer1()); % Eval layer 1
+    EvaluateImageLabeling(imageNames,FirstLayer2DLabeler.GetOutputFolderLayer2()); % Eval layer 2
     
 %% =====================================
 % Projection of 2D classification to point cloud
 % ======================================    
-    fl2D.Project2DOntoPointCloud(); 
-    EvaluateMeshLabeling(datasetConfig,fl2D.GetOutputProjectedLayer1()); % Eval layer 1 projected on PCL
-    EvaluateMeshLabeling(datasetConfig,fl2D.GetOutputProjectedLayer2()); % Eval layer 2 projected on PCL
+    FirstLayer2DLabeler.Project2DOntoPointCloud(); 
+    EvaluatePointCloudLabeling(FirstLayer2DLabeler.GetOutputProjectedLayer1()); % Eval layer 1 projected on PCL
+    EvaluatePointCloudLabeling(FirstLayer2DLabeler.GetOutputProjectedLayer2()); % Eval layer 2 projected on PCL
     
 %% ======================================
 % First layer 3D: Point cloud labeling
 % =======================================
-    fl3D = FirstLayer3DLabeler(datasetConfig); % Initialize data, calculate descriptors
+    fl3D = FirstLayer3DLabeler(); % Initialize data, calculate descriptors
     fl3D.PrepareData();          % Prepare descriptors
     pcl_test = fl3D.sceneTest;
     pcl_all = fl3D.sceneFull;
@@ -43,13 +52,13 @@ dl = DispatchingLogger.getInstance();
     fl3D.TrainClassifier();      % Train 3D point cloud classifier
     fl3D.RunClassifier();        % Run classifier on test set
     
-    EvaluateMeshLabeling(datasetConfig,fl3D.GetPCLLabelingFilename()); % Evaluate PCL labeling
+    EvaluatePointCloudLabeling(FirstLayer3DLabeler.GetPCLLabelingFilename()); % Evaluate PCL labeling
 
 %% =====================================
 % Second layer 3D: 3D CRF
 % ======================================
 
-    sl3D = SecondLayer3DLabeler(datasetConfig,pcl_all);     % Setup unary potentials
+    sl3D = SecondLayer3DLabeler(pcl_all);     % Setup unary potentials
     
     sl3D.Run3DCRF();                                % Run the CRF
     sl3D.SavePotentialsAndLabels();                 % Save the obtained labeling
@@ -60,8 +69,8 @@ dl = DispatchingLogger.getInstance();
 %% =====================================
 % Projection of 3D classification to images
 % ======================================
-    outputFolder = BatchGenerate2DLabelings(datasetConfig,imageNames,modelName); % Generate images
-    EvaluateImageLabeling(datasetConfig,imageNames,outputFolder);  % Evaluate projection
+    outputFolder = BatchGenerate2DLabelings(imageNames,modelName); % Generate images
+    EvaluateImageLabeling(imageNames,outputFolder);  % Evaluate projection
 
 %% =====================================
 % Third layer
@@ -69,7 +78,7 @@ dl = DispatchingLogger.getInstance();
     %% ======================================
     % Preprocessing
     % =======================================
-    tl2D = ThirdLayer2DLabeler (datasetConfig, modelName, pcl_test, pcl_all);
+    tl2D = ThirdLayer2DLabeler ( modelName, pcl_test, pcl_all);
     tl2D.SplitPointCloud();   % Split point cloud into facade point clouds
     tl2D.FitPlanes();         % Fit a plane to each facade
     
@@ -89,16 +98,16 @@ dl = DispatchingLogger.getInstance();
 %     tl2D.OrthoImagesBackProject();  % Back-project the labeling to facade 3D point clouds
 %     tl2D.ReassemblePointCloud();    % Join the labeled facades into the original point cloud
     parsedPCLName = tl2D.GetOutputName();    
-    EvaluateMeshLabeling(datasetConfig,parsedPCLName); 
+    EvaluatePointCloudLabeling(parsedPCLName); 
     
     %% ======================================
     % 3D version
     % =======================================
-    tl3D = ThirdLayer3DLabeler(datasetConfig,modelName,pcl_test,pcl_all);
+    tl3D = ThirdLayer3DLabeler(modelName,pcl_test,pcl_all);
     tl3D.RunThirdLayer();
     
     parsedPCLName = tl3D.GetOutputName();
-    EvaluateMeshLabeling(datasetConfig,parsedPCLName); % Evaluate PCL labeling
+    EvaluatePointCloudLabeling(parsedPCLName); % Evaluate PCL labeling
     
 %=======================================
 %=======================================

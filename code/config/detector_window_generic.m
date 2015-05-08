@@ -6,7 +6,6 @@ properties
         configFile 
         modelFile 
         
-        meanDetection
 end
 
 methods
@@ -49,24 +48,24 @@ methods
         delete([subfolder 'detections.data_sequence']); 
     end
     
-    function CalculateMeanDetection(obj,config,imageNames)
+    function CalculateMeanDetection(obj,imageNames)
 %         dl = DispatchingLogger.getInstance();
-        
+        cf = DatasetConfig.getInstance();
        
-        meanDet = zeros(100,100,config.nClasses);
+        meanDet = zeros(100,100,cf.nClasses);
         totalNDet = 0;
         for i=1:length(imageNames)
-            detectionFilename = get_adr('2D_detectionsTrain',config,obj.name,imageNames{i});
-            gtFilename = get_adr('2D_label',config,imageNames{i});
+            detectionFilename = get_adr('2D_detectionsTrain',obj.name,imageNames{i});
+            gtFilename = get_adr('2D_label',imageNames{i});
             
             dets = detector_window_generic.readDetections(detectionFilename);
             gt = imread(gtFilename);
-            groundTruth = Image2Labels(double(gt), config.cm);     
-            img = imread(get_adr('2D_image',config,imageNames{i}));  
+            groundTruth = Image2Labels(double(gt), cf.cm);     
+            img = imread(get_adr('2D_image',imageNames{i}));  
             imgSize = [size(img,1) size(img,2)];
             
             % Scale
-            scaleFilename = get_adr('2D_scale',config,imageNames{i});
+            scaleFilename = get_adr('2D_scale',imageNames{i});
             if exist(scaleFilename,'file')
                 sc = dlmread(scaleFilename);
                 target = zeros(sc(1),sc(2));
@@ -75,7 +74,7 @@ methods
             end
         
             % Rectify ground truth
-            rectParamsFilename = get_adr('2D_rectParams',config,imageNames{i});
+            rectParamsFilename = get_adr('2D_rectParams',imageNames{i});
             if exist(rectParamsFilename,'file')
                 h = dlmread(rectParamsFilename);
                 h = reshape(inv(reshape(h,3,3)),1,9);
@@ -104,7 +103,7 @@ methods
                     end
 
                     gtDet = groundTruth(startRow:endRow,startColumn:endColumn);
-                    for c=1:config.nClasses
+                    for c=1:cf.nClasses
                         meanDet(:,:,c) = meanDet(:,:,c) + imresize((gtDet==c),[100 100],'nearest');
                     end
                     totalNDet = totalNDet+1;
@@ -115,10 +114,10 @@ methods
             
         end
         meanDet=bsxfun(@rdivide,meanDet,sum(meanDet,3));
-        meanDet(isnan(meanDet))=1/config.nClasses; %#ok<NASGU>
+        meanDet(isnan(meanDet))=1/cf.nClasses; %#ok<NASGU>
         
-        obj.meanDetection = get_adr('2D_detectorMeanDetectionTrain', config, obj.name);
-        save(obj.meanDetection,'meanDet');
+        meanDetectionFilename = get_adr('2D_detectorMeanDetectionTrain', obj.name);
+        save(meanDetectionFilename,'meanDet');
     end
     
    
@@ -127,9 +126,15 @@ methods
         
         dets = detector_window_generic.readDetections(detectionFilename);
         
-        
-        load(obj.meanDetection); % loads meanDet
+        meanDetectionFilename = get_adr('2D_detectorMeanDetectionTrain', obj.name);
+        if ~exist(meanDetectionFilename,'file')
+            ME = MException('WindowDetector:noDetectionMap', ...
+                          'Mean detection file %s does not exist! Cannot transfer detections to probability map!\n',meanDetectionFilename);
+            throw(ME);
+        end
+        load(meanDetectionFilename); % loads meanDet
         meanDet = meanDet(:,:,1:nClasses); %#ok<NODEF>
+        meanDet(meanDet==0)=eps;
         detectionMap = 1/nClasses* ones(height,width,nClasses);
 
         numDetections = size(dets,1);

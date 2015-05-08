@@ -16,7 +16,7 @@ function FitPlanes(obj)
             sprintf(' - Processing facade %d (%d of %d) ...\n',facadeID,i,N));
 
         % Get facade points
-        [points,~,~] = ReadPCLFromPly(get_adr('splitLabeling',obj.config,obj.splitName,num2str(facadeID)));
+        [points,~,~] = ReadPCLFromPly(get_adr('splitLabeling',obj.splitName,num2str(facadeID)));
 
         % Fit a plane to the facade
         dl.Log(VerbosityLevel.Debug,sprintf(' - - Fitting plane ...\n'));
@@ -68,7 +68,7 @@ function FitPlanes(obj)
         if facadeID==0, continue; end;
         plane = planes{i}; %#ok<NASGU>
 %         g = gravityVectors{i}; %#ok<NASGU>
-        save(get_adr('splitPlane',obj.config,obj.splitName,num2str(facadeID)),'plane','g');
+        save(get_adr('splitPlane',obj.splitName,num2str(facadeID)),'plane','g');
     end
     dl.Log(VerbosityLevel.Info,sprintf('Done. Elapsed time: %.2f seconds.\n',toc));
 end

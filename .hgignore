@@ -17,6 +17,8 @@ data*/**
 output*/**
 tmp/**
 code/condor/**
+code/log*.txt
 code/objects_detection.out.txt
 progressbar*.txt
+
 

@@ -13,10 +13,10 @@ function OrthoImagesBackProject(obj)
             sprintf(' - Processing facade ID %s (%d of %d) ...\n',facadeID,i,length(facadeIDs)));
 
        % Labeling
-       [points,~,~] = ReadPCLFromPly(get_adr('splitLabeling',obj.config,obj.splitName,facadeID));
+       [points,~,~] = ReadPCLFromPly(get_adr('splitLabeling',obj.splitName,facadeID));
 
        % Facade plane
-       ss=load(get_adr('splitPlane',obj.config,obj.splitName,facadeID));
+       ss=load(get_adr('splitPlane',obj.splitName,facadeID));
        plane = ss.plane;
        g= ss.g;
 
@@ -77,7 +77,7 @@ function OrthoImagesBackProject(obj)
        iPoints=[xx(:) yy(:) repmat(meanZ,numel(xx),1)]';
 
        % Get the ortho-image
-       orthoImageFilename = get_adr('orthoLabelingLayer3Img',obj.config,obj.splitName,facadeID);
+       orthoImageFilename = get_adr('orthoLabelingLayer3Img',obj.splitName,facadeID);
        if ~exist(orthoImageFilename,'file')
            dl.Log(VerbosityLevel.Warning,...
                sprintf(' - Ortho labeling %s does not exist.\n',orthoImageFilename));
@@ -105,7 +105,7 @@ function OrthoImagesBackProject(obj)
        % Label the pcl points with the appropriate ortho colors
        pointSubsetColors = orthoImageColors(idx,:);
 
-       ExportMesh(get_adr('orthoLabelingLayer3Ply',obj.config,obj.splitName,facadeID),points,[],pointSubsetColors,[],[]);
+       ExportMesh(get_adr('orthoLabelingLayer3Ply',obj.splitName,facadeID),points,[],pointSubsetColors,[],[]);
     end
     dl.Log(VerbosityLevel.Info,sprintf('Done. Elapsed time: %.2f seconds.\n',toc));
 end

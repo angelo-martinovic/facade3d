@@ -1,5 +1,6 @@
-function score = EvaluateImageLabeling(config,imageNames,outputFolder)
+function score = EvaluateImageLabeling(imageNames,outputFolder)
         dl = DispatchingLogger.getInstance();
+        cf = DatasetConfig.getInstance();
 
         numViews = length(imageNames);
         dl.Log(VerbosityLevel.Info,sprintf(' - Evaluating on %d images.\n',numViews));
@@ -7,11 +8,11 @@ function score = EvaluateImageLabeling(config,imageNames,outputFolder)
         % EVALUATION TASK 1 - Image labeling - vanilla 2d img labeling task
         dl.Log(VerbosityLevel.Debug,sprintf(' - - Loading data...\n'));
 
-        [gt, res] = evaluation_load_folder (get_adr('2D_labels',config), outputFolder,...
-            {imageNames}, numViews, config.cm);
+        [gt, res] = evaluation_load_folder (get_adr('2D_labels'), outputFolder,...
+            {imageNames}, numViews, cf.cm);
 
         dl.Log(VerbosityLevel.Debug,sprintf(' - - Done! Evaluating...\n'));
-        score = evaluation_multilabel(gt,res,config.ignoreClasses + 1);
+        score = evaluation_multilabel(gt,res,cf.ignoreClasses + 1);
         dl.Log(VerbosityLevel.Debug,sprintf(' - - Done!\n'));
 
         % Save the output

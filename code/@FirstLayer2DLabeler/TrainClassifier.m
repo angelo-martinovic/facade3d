@@ -1,11 +1,11 @@
 %     - Uses the output of PrepareData.m to train a superpixel classifier on the training set.
-function TrainClassifier(obj)
+function TrainClassifier()
 
     dl = DispatchingLogger.getInstance();
-    cf = obj.config;
+    cf = DatasetConfig.getInstance();
     classifier = cf.c2D.classifier; 
     
-     if cf.useCache && exist(get_adr('2D_classifier',cf,classifier.name),'file')
+     if cf.useCache && exist(get_adr('2D_classifier',classifier.name),'file')
          dl.Log(VerbosityLevel.Info,...
             sprintf('Classifier %s already trained. Will use cache.\n',classifier.name));
          return;
@@ -15,7 +15,7 @@ function TrainClassifier(obj)
         sprintf('Training the %s superpixel classifier...\n',classifier.name));
     
     dl.Log(VerbosityLevel.Info,sprintf(' - Loading training data...\n'));
-    cacheFilename = get_adr('cache_classifier_train',cf, cf.name, cf.c2D.classifier.name); 
+    cacheFilename = get_adr('cache_classifier_train', cf.name, cf.c2D.classifier.name); 
     
     if cf.useCache && exist(cacheFilename,'file')
         % Load cached data
@@ -26,14 +26,14 @@ function TrainClassifier(obj)
     else
         % Loading training data
         tic;
-        [t1,x1] = obj.LoadData('train');
+        [t1,x1] = LoadData('train');
         dl.Log(VerbosityLevel.Info,sprintf(' - Training data loading: %.2f seconds.\n',toc));
 
-        if obj.config.useCache
-          cacheFolder = get_adr('cache',cf);
+%         if cf.useCache
+          cacheFolder = get_adr('cache');
           mkdirIfNotExist(cacheFolder);
           save(cacheFilename,'t1','x1');%,'t3','x3');
-        end
+%         end
     end
     
     % Data scaling
@@ -49,9 +49,9 @@ function TrainClassifier(obj)
     dl.Log(VerbosityLevel.Info,sprintf(' - Training time of %s elapsed: %.2f.\n',classifier.name,toc));
     
     dl.Log(VerbosityLevel.Info,sprintf(' - Saving the model.\n'));
-    classifierFolder = get_adr('2D_classifier_folder',cf);
+    classifierFolder = get_adr('2D_classifier_folder');
     mkdirIfNotExist(classifierFolder);
 
     % Save the classifier and scaling data from the training set
-    save(get_adr('2D_classifier',cf,cf.c2D.classifier.name),'classifier','sc');   
+    save(get_adr('2D_classifier',cf.c2D.classifier.name),'classifier','sc');   
 end

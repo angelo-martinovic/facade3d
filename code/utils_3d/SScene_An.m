@@ -102,7 +102,8 @@ classdef SScene_An < handle
         %%=================================================================     
         
 
-        function obj = read_mat_data(obj,datasetConfig)
+        function obj = read_mat_data(obj)
+            datasetConfig = DatasetConfig.getInstance();
             %--- read plys with pts, rgb, labelings...
             dl = DispatchingLogger.getInstance();
             dl.Log(VerbosityLevel.Debug,sprintf(' - SScene: reading plys %s \n',datasetConfig.dataLocation));
@@ -131,7 +132,8 @@ classdef SScene_An < handle
             dl.Log(VerbosityLevel.Debug,sprintf(' - SScene:init: pts+lindex+rgb+nxy done.\n'));
         end
         
-        function obj = calc_simple_features(obj,datasetConfig)
+        function obj = calc_simple_features(obj)
+            datasetConfig = DatasetConfig.getInstance();
             dl = DispatchingLogger.getInstance();
             %--- depth
             path_dist2plane = [datasetConfig.dataLocation,datasetConfig.depth];
@@ -243,7 +245,8 @@ classdef SScene_An < handle
         end
         
         
-        function export_as_full_pcl_data(obj,datasetConfig,cprb,path2save)
+        function export_as_full_pcl_data(obj,cprb,path2save)
+            datasetConfig = DatasetConfig.getInstance();
             dl = DispatchingLogger.getInstance();
             dl.Log(VerbosityLevel.Debug,sprintf(' - - saving result\n'));
  
@@ -261,7 +264,7 @@ classdef SScene_An < handle
             
             %--- save to andelo
             cmap = round(datasetConfig.cm*255);%obj.get_class_colormap();
-%             path2save =  get_adr('L1_labeling',datasetConfig,type);%'[ADD.data.dtsol,'/2andelo/full_pcl_labeling_',input_type_into_3rd,'_3D3rdLayer.ply'];
+%             path2save =  get_adr('L1_labeling',type);%'[ADD.data.dtsol,'/2andelo/full_pcl_labeling_',input_type_into_3rd,'_3D3rdLayer.ply'];
             checkAdr_and_createDir( path2save );
             ExportMesh(path2save , pts_full ,[],cmap(cprb_full+1,:),[],[]);
             dl.Log(VerbosityLevel.Debug,sprintf(' - - result saved as pcl in the full-pcl.ply format for evaluation. path=%s\n',path2save));
@@ -292,7 +295,6 @@ classdef SScene_An < handle
             p.addOptional('binSize', []);
             p.addOptional('imgW', []);
             p.addOptional('split', []);
-            p.addOptional('datasetConfig', []);
             p.parse(varargin{:}); fldnames = fieldnames(p.Results); for a=1:length(fldnames), eval([fldnames{a},' = p.Results.',fldnames{a},';']); end;
             out1=[]; out2=[]; out3=[]; out4=[]; out5=[];
             switch method
@@ -321,7 +323,6 @@ classdef SScene_An < handle
                     
                     % Variables required when running in parallel
                     dims = si_dimensions;
-                    dc = datasetConfig;
                     subset = split;
                     binSz = binSize;
                     imW = imgW;
@@ -332,7 +333,7 @@ classdef SScene_An < handle
                     tic;
                     for dimIdx = 1:nDim % use parfor(dimIdx = 1:nDim,dc.nWorkers) for parallel
                         imSize = dims(dimIdx);
-                        paths_all{dimIdx} = get_adr('desc3d',dc,['spinImagePC_split' subset],imSize);
+                        paths_all{dimIdx} = get_adr('desc3d',['spinImagePC_split' subset],imSize);
                         if ~exist(paths_all{dimIdx},'file');
                             %--- compute desc
                             dl.Log(VerbosityLevel.Debug,sprintf(' - - SScene:: calculating spin images with size %.2f\n',imSize));
