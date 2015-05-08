@@ -10,8 +10,8 @@ First, open the ```setup.m``` file and change the paths to the necessary librari
 * ```STAIR``` vision library, http://ai.stanford.edu/~sgould/svl/ OR
 * ```MatConvNet``` for CNN-based region features, http://www.vlfeat.org/matconvnet/
 
-* ```libSVM``` , http://www.csie.ntu.edu.tw/~cjlin/libsvm/ (if using STAIR features) OR
-* ```liblinear``` , http://www.csie.ntu.edu.tw/~cjlin/liblinear/, (if using CNN features)
+* ```libSVM``` , http://www.csie.ntu.edu.tw/~cjlin/libsvm/ OR
+* ```liblinear``` , http://www.csie.ntu.edu.tw/~cjlin/liblinear/, (recommended if using CNN features)
 
 * ```KD tree``` helper library for spin image calculation, http://www.mathworks.com/matlabcentral/fileexchange/4586-k-d-tree
 * ```GCMex``` MATLAB wrapper for graph cuts multi-label energy minimization, http://vision.ucla.edu/~brian/gcmex.html
