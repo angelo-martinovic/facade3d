@@ -5,20 +5,21 @@
 ### Running the application
 First, open the ```setup.m``` file and change the paths to the necessary libraries on your system. 
 
-Required libraries:
-2D feature extraction: either
+#### Required libraries
 
-* ```STAIR``` vision library, http://ai.stanford.edu/~sgould/svl/ or
+* ```STAIR``` vision library, http://ai.stanford.edu/~sgould/svl/ OR
 * ```CNN```-based region features, http://www.vlfeat.org/matconvnet/
-* ```libSVM``` SVM library, http://www.csie.ntu.edu.tw/~cjlin/libsvm/, for the first layer
-* ```GC_optimization``` software for energy minimization with graph cuts, http://www.csd.uwo.ca/faculty/olga/software.html, for the second layer
-* ```CVX``` Matlab software for disciplined convex programming, http://cvxr.com/cvx/, for the third layer
+* ```libSVM``` , http://www.csie.ntu.edu.tw/~cjlin/libsvm/ (if using STAIR features) OR
+* ```liblinear``` , http://www.csie.ntu.edu.tw/~cjlin/liblinear/, (if using CNN features)
+* ```KD tree``` helper library for spin image calculation, http://www.mathworks.com/matlabcentral/fileexchange/4586-k-d-tree
+* ```GCMex``` MATLAB wrapper for graph cuts multi-label energy minimization, http://vision.ucla.edu/~brian/gcmex.html
+* ```CVX``` MATLAB software for disciplined convex programming, http://cvxr.com/cvx/
 
-Optional libraries:
+#### Optional libraries
 
-* ```libSVM``` SVM library, http://www.csie.ntu.edu.tw/~cjlin/libsvm/, for the first layer
-* ```GC_optimization``` software for energy minimization with graph cuts, http://www.csd.uwo.ca/faculty/olga/software.html, for the second layer
-* ```CVX``` Matlab software for disciplined convex programming, http://cvxr.com/cvx/, for the third layer
+* ```Doppia``` object detector, https://bitbucket.org/rodrigob/doppia
+* ```ExportFig``` library for exporting MATLAB figures, http://www.mathworks.com/matlabcentral/fileexchange/23629-export-fig
+
 
 Next, set up your dataset. Our code comes with an example dataset, with parameters provided in ```InitializeDataset.m```. Modify this file if your dataset requires it.
 
