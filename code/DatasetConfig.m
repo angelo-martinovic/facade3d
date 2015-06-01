@@ -117,7 +117,7 @@ classdef (Sealed) DatasetConfig < handle
         workFolder = [datasetConfig.outputLocation 'work/'];
         
         %% Semantic image segmentation - configuration
-        selector = 6;
+        selector = 1;
 
         if selector==1
             % ---- CVPR15 submission version ----
