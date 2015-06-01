@@ -14,12 +14,14 @@ function PrepareData()
 
     imageFilenames = strcat(get_adr('2D_images'),strcat(imageNames,'.jpg'));
 
+    checkAdr_and_createDir('../tmp/');
     if cf.rectificationNeeded,
         %% Run rectification
         tic;
 
         dl.Log(VerbosityLevel.Info,'Rectifying images ...\n');
         parfor (i=1:length(imageFilenames),cf.nWorkers)
+          cfLocal = DatasetConfig.getInstance(cf.name);
 %         for (i=1:length(imageFilenames))
             outputImageName = get_adr('2D_image',imageNames{i});
             rectSkipName = get_adr('2D_rectSkip',imageNames{i});
@@ -119,6 +121,7 @@ function PrepareData()
     %% Run meanshift
     tic;
     dl.Log(VerbosityLevel.Info,sprintf('Meanshift segmentation ...\n'));
+    checkAdr_and_createDir('edison/tmp/');
     parfor (i=1:length(imageFilenames),cf.nWorkers)
         if ~exist(get_adr('2D_segmentation',imageNames{i}),'file')
             
@@ -173,7 +176,7 @@ function PrepareData()
                 mkdir(subfolderEval);
             else
                 if cf.useCache
-                    dl.Log(VerbosityLevel.Info,sprintf('Found cache. Skipping detector %s ...\n',D.name));
+                    dl.Log(VerbosityLevel.Info,sprintf('Found cache in %s. Skipping detector %s ...\n',subfolderEval,D.name));
                     continue;
                 else
                    system(['rm -r ' subfolderEval]);  %,'-echo'); % add for debug
@@ -220,7 +223,7 @@ function PrepareData()
         tic;
         try
             D.DetectObjects(subfolderTrain,outputFolder);
-            D.CalculateMeanDetection(cf,imageNamesTrain);
+            D.CalculateMeanDetection(imageNamesTrain);
         catch ME
             dl.Log(VerbosityLevel.Error,ME.message);
             fatal();
