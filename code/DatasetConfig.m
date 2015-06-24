@@ -41,7 +41,17 @@ classdef (Sealed) DatasetConfig < handle
         datasetConfig.name              = datasetName;
         datasetConfig.useCache          = true;
 
-        if strcmp(datasetName,'monge428')
+        if strcmp(datasetName,'mongeToy')
+            datasetConfig.nWorkers          = 0;     % Run in serial for the toy dataset
+            datasetConfig.nClasses          = 7;
+            datasetConfig.ignoreClasses     = [0 8];
+            datasetConfig.cm                = HaussmannColormap()/255;  
+            datasetConfig.dataLocation      = '../dataToy/'; 
+            datasetConfig.outputLocation    = '../outputToy/';
+            datasetConfig.rectificationNeeded  = true;
+            datasetConfig.resizeImages      = true;
+            
+        elseif strcmp(datasetName,'monge428')
             datasetConfig.nClasses          = 7;
             datasetConfig.ignoreClasses     = [0 8];
             datasetConfig.cm                = HaussmannColormap()/255;  

@@ -1,7 +1,7 @@
 % Entry point
 
 setup; % Set paths
-datasetName = 'monge428';
+datasetName = 'mongeToy'; % checked in DatasetConfig 
 
 % Logging
 sl = ScreenLogger(VerbosityLevel.Verbose);
@@ -44,7 +44,7 @@ rng(1); % For reproducibility
 %% ======================================
 % First layer 3D: Point cloud labeling
 % =======================================
-    fl3D = FirstLayer3DLabeler(); % Initialize data, calculate descriptors
+    fl3D = FirstLayer3DLabeler(); % Initialize data, calculate some descriptors
     fl3D.PrepareData();          % Prepare descriptors
     pcl_test = fl3D.sceneTest;
     pcl_all = fl3D.sceneFull;

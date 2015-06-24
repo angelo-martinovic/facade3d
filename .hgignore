@@ -13,7 +13,7 @@ syntax: glob
 *.zip
 *.ply
 .smpd
-data*/**
+data/**
 output*/**
 tmp/**
 code/condor/**
