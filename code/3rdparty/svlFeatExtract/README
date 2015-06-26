@@ -1,0 +1,9 @@
+This folder is a very small subset of STAIR Vision Library (codename lasik), http://ai.stanford.edu/~sgould/svl/. for It performs feature extraction on a set of images segmented into superpixels.
+
+
+Requirements: OpenCV 2.4 (may work with other versions).
+
+To compile:
+0. Open segImageExtractFeatures.pro and change the INCLUDEPATH to point to your openCV installation.
+1. Run qmake-qt4 segImageExtractFeatures.pro to create the Makefile.
+2. make
