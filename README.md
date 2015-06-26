@@ -26,16 +26,17 @@ Next, set up your dataset. A toy dataset with 4 images and a low-resolution poin
 * ```listeval.txt``` evaluation (test) set (list of filenames without extensions)
 * ```listall.txt``` all filenames in images/
 * ```pcl.ply``` the point cloud (e.g. from SfM, PMVS, CMP MVS)
-* ```pcl_depth.mat``` TODO: depth of each point from the estimated facade plane
+* ```pcl_depth.mat``` depth of each point from the estimated facade plane
 * ```pcl_gt_train.ply``` ground truth point cloud of the training set (colormap maps point colors to classes)
 * ```pcl_gt_test.ply``` ground truth point cloud of the test set (colormap maps point colors to classes)
-* ```pcl_split.mat``` TODO: output of facade splitting: list of integers, each 3D point assigned to one facade ID
+* ```pcl_split.mat``` output of facade splitting: list of integers, each 3D point assigned to one facade ID
 
 The parameters are set-up in ```DatasetConfig.m```. Modify this file to reflect the particularities of your dataset.
 
 Finally, run the main script ```facade_run.m```.
 
-TODO: Facade splitting in 3D has not yet been integrated. A precalculated split file is provided in ```dataToy/pcl_split.mat```.
+TODO: Facade splitting in 3D has not yet been integrated. A precalculated split file is provided in ```dataToy/pcl_split.mat```. A depth 3D feature needs to be integrated too. A precalculated depth file is provided in ```dataToy/pcl_depth.mat```.
+
 ### Creating 3D facade models
 
 After running all three layers in 3D, the code will result in a set of labeled facades, each facade represented as a set of elements, such as windows, balconies, doors... All of these elements are represented as bounding boxes. To create a realistic-looking model from the labeling, we provide additional code that exports the result in 3dsMax and renders the result. 
