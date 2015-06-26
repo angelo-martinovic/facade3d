@@ -25,14 +25,13 @@ classdef featureExtractorGould < featureExtractor2D
             if isempty(calculatedFiles) || obj.overwriteExistingFiles
             
                 % Setup the external program
-                openCVLib = 'external/lasik/external/opencv/lib/';
+                openCVLib = 'external/opencv/lib/';
 
-                featCmd = ['LD_LIBRARY_PATH=' openCVLib ' '...
-                    'external/lasik/bin/segImageExtractFeatures -o ' workFolder ' '...
+                featCmd = ['LD_LIBRARY_PATH=' openCVLib ' 3rdparty/svlFeatExtract/segImageExtractFeatures -o ' workFolder ' '...
                     workFolder(1:end-1)];
 
                 % Run the command
-                [stat,res] = system(featCmd); %,'-echo');
+                [stat,res] = system(featCmd);%,'-echo');
                 
                 % Check that it finished succesfully
                 if stat~=0

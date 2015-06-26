@@ -121,21 +121,21 @@ function PrepareData()
     %% Run meanshift
     tic;
     dl.Log(VerbosityLevel.Info,sprintf('Meanshift segmentation ...\n'));
-    checkAdr_and_createDir('edison/tmp/');
+    checkAdr_and_createDir('3rdparty/edison/tmp/');
     parfor (i=1:length(imageFilenames),cf.nWorkers)
         if ~exist(get_adr('2D_segmentation',imageNames{i}),'file')
             
             ppmFile = get_adr('2D_ppm',imageNames{i});
             if exist(ppmFile,'file')
-                copyfile(ppmFile,sprintf('edison/tmp/%08d.ppm',i));
-                segCmd = sprintf('edison/segmentImage.sh %08d.ppm %d',i,cf.c2D.minRegionArea); 
+                copyfile(ppmFile,sprintf('3rdparty/edison/tmp/%08d.ppm',i));
+                segCmd = sprintf('3rdparty/edison/segmentImage.sh %08d.ppm %d',i,cf.c2D.minRegionArea); 
                 [stat,res] = system(segCmd); %,'-echo'); % add for debug
                 if stat~=0
                     dl.Log(VerbosityLevel.Error,sprintf('Error running segmentImage: %s\n',res)); %#ok<PFBNS>
                     fatal();
                 end
-                delete(sprintf('edison/tmp/%08d.ppm',i));
-                movefile(sprintf('edison/tmp/%08d.seg',i),[ppmFile(1:end-4) '.seg']);
+                delete(sprintf('3rdparty/edison/tmp/%08d.ppm',i));
+                movefile(sprintf('3rdparty/edison/tmp/%08d.seg',i),[ppmFile(1:end-4) '.seg']);
             end
         end
     end

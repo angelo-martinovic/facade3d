@@ -2,29 +2,39 @@
 
 ![pipeline.jpg](http://homes.esat.kuleuven.be/~amartino/2015_cvpr_www/pics/pipeline04.jpg)
 
-### Running the application
-First, open the ```setup.m``` file and change the paths to the necessary libraries on your system. 
-
 #### Required libraries
 
-* ```STAIR``` vision library, http://ai.stanford.edu/~sgould/svl/ OR
+* OpenCV (recommended version: 2.4) for region-based features from ```STAIR``` vision library (integrated) OR
 ```MatConvNet``` for CNN-based region features, http://www.vlfeat.org/matconvnet/
 * ```libSVM``` library for Support Vector Machines, http://www.csie.ntu.edu.tw/~cjlin/libsvm/ OR
 ```liblinear``` library for large linear classification (recommended if using CNN features), http://www.csie.ntu.edu.tw/~cjlin/liblinear/
-* ```KD tree``` helper library for spin image calculation, http://www.mathworks.com/matlabcentral/fileexchange/4586-k-d-tree
-* ```GCMex``` MATLAB wrapper for graph cuts multi-label energy minimization, http://vision.ucla.edu/~brian/gcmex.html
 * ```CVX``` MATLAB software for disciplined convex programming, http://cvxr.com/cvx/
 
 #### Optional libraries
 
 * ```Doppia``` object detector, https://bitbucket.org/rodrigob/doppia
-* ```ExportFig``` library for exporting MATLAB figures, http://www.mathworks.com/matlabcentral/fileexchange/23629-export-fig
 
+### Running the application
+First, compile the dependencies in the ```code/3rdparty/``` subfolder. Next, open the ```code/setup.m``` file and either change the paths or redirect the symlinks in the ```code/external/``` subfolder to the installed libraries on your system. 
 
-Next, set up your dataset. Our code comes with several example parameter setups provided in ```DatasetConfig.m```. Modify this file as required.
+Next, set up your dataset. A toy dataset with 4 images and a low-resolution point cloud is provided in the ```dataToy/``` subfolder. Use this as a template for your new dataset. The data folder should have the following structure:
+* ```images/``` folder with jpg images
+* ```labels/``` folder with ground truth labels in the form of png images (colormap maps pixel colors into classes)
+* ```cameras.txt``` camera file, VisualSFM output
+* ```listtrain.txt``` training set (list of filenames without extensions)
+* ```listeval.txt``` evaluation (test) set (list of filenames without extensions)
+* ```listall.txt``` all filenames in images/
+* ```pcl.ply``` the point cloud (e.g. from SfM, PMVS, CMP MVS)
+* ```pcl_depth.mat``` TODO: depth of each point from the estimated facade plane
+* ```pcl_gt_train.ply``` ground truth point cloud of the training set (colormap maps point colors to classes)
+* ```pcl_gt_test.ply``` ground truth point cloud of the test set (colormap maps point colors to classes)
+* ```pcl_split.mat``` TODO: output of facade splitting: list of integers, each 3D point assigned to one facade ID
+
+The parameters are set-up in ```DatasetConfig.m```. Modify this file to reflect the particularities of your dataset.
 
 Finally, run the main script ```facade_run.m```.
 
+TODO: Facade splitting in 3D has not yet been integrated. A precalculated split file is provided in ```dataToy/pcl_split.mat```.
 ### Creating 3D facade models
 
 After running all three layers in 3D, the code will result in a set of labeled facades, each facade represented as a set of elements, such as windows, balconies, doors... All of these elements are represented as bounding boxes. To create a realistic-looking model from the labeling, we provide additional code that exports the result in 3dsMax and renders the result. 
