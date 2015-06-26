@@ -8,7 +8,7 @@
 ```MatConvNet``` for CNN-based region features, http://www.vlfeat.org/matconvnet/
 * ```libSVM``` library for Support Vector Machines, http://www.csie.ntu.edu.tw/~cjlin/libsvm/ OR
 ```liblinear``` library for large linear classification (recommended if using CNN features), http://www.csie.ntu.edu.tw/~cjlin/liblinear/
-* ```CVX``` MATLAB software for disciplined convex programming, http://cvxr.com/cvx/
+* ```CVX``` MATLAB software for disciplined convex programming, http://cvxr.com/cvx/  (needed only if running the third layer)
 
 #### Optional libraries
 
