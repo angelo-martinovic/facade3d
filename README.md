@@ -33,15 +33,15 @@ In the next step you need to set up your dataset. A toy dataset with 4 images an
 * ```pcl_gt_test.ply``` ground truth point cloud of the test set (colormap maps point colors to classes)
 * ```pcl_split.mat``` output of facade splitting: list of integers, each 3D point assigned to one facade ID
 
-The parameters are set-up in ```DatasetConfig.m```. Modify this file to reflect the particularities of your dataset.
+The parameters are set-up in ```code/DatasetConfig.m```. Modify this file to reflect the particularities of your dataset.
 
-Finally, run the main script ```facade_run.m```.
+Finally, run the main script ```code/facade_run.m```.
 
 TODO: Facade splitting in 3D has not yet been integrated. A precalculated split file is provided in ```dataToy/pcl_split.mat```. A depth 3D feature needs to be integrated too. A precalculated depth file is provided in ```dataToy/pcl_depth.mat```.
 
 ### Creating 3D facade models
 
-After running all three layers in 3D, the code will result in a set of labeled facades, each facade represented as a set of elements, such as windows, balconies, doors... All of these elements are represented as bounding boxes. To create a realistic-looking model from the labeling, we provide additional code that exports the result in 3dsMax and renders the result. 
+After running all three layers in 3D, the result will be a set of labeled facades, each facade represented as a set of elements, such as windows, balconies, doors... All of these elements are represented as bounding boxes. To create a realistic-looking model from the labeling, we provide additional code that exports the result in 3dsMax and renders the result. 
 
 In short, elements such as windows are modeled as intrusions in the wall. This boolean operation for ,,digging'' window holes is performed directly in 3ds Max. The facade texture is then orthographically projected on the final mesh. The environment also allows us to set lights, cast shadows, use shaders or other kind of post-processing techniques. Now, we will show how to run this code. 
 
