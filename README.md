@@ -17,9 +17,9 @@ This code implements the approach detailed in the paper ```3D All The Way: Seman
 * ```Doppia``` object detector, https://bitbucket.org/rodrigob/doppia
 
 ### Running the application
-First, compile the dependencies in the ```code/3rdparty/``` subfolder. Next, open the ```code/setup.m``` file and either change the paths or redirect the symlinks in the ```code/external/``` subfolder to the installed libraries on your system. 
+First, open the ```code/setup.m``` file and either change the paths or redirect the symlinks in the ```code/external/``` subfolder to the installed libraries on your system. Second, compile the dependencies in the ```code/3rdparty/``` subfolder.
 
-Next, set up your dataset. A toy dataset with 4 images and a low-resolution point cloud is provided in the ```dataToy/``` subfolder. Use this as a template for your new dataset. The data folder should have the following structure:
+In the next step you need to set up your dataset. A toy dataset with 4 images and a low-resolution point cloud is provided in the ```dataToy/``` subfolder. Use this as a template for your new dataset. The data folder should have the following structure:
 
 * ```images/``` folder with jpg images
 * ```labels/``` folder with ground truth labels in the form of png images (colormap maps pixel colors into classes)
