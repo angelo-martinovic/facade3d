@@ -2,7 +2,7 @@
 
 %% Local folder structure
 addpath batch/
-addpath condor/                 % Calculation on the cluster
+%addpath condor/                 % Calculation on the cluster
 addpath config/
 addpath eccv2014_eval/          % URL: http://www.vision.ee.ethz.ch/~rhayko/paper/eccv2014_riemenschneider_multiviewsemseg/
 addpath logger/    
@@ -12,18 +12,25 @@ addpath tools/
 addpath utils_3d/
 addpath(genpath('thirdLayer/'));
 
-%% External software
-    %% Layer 1   
-        % CNN 
-        % Type: 2D feature extraction, recommended
-        % URL: 
-        addpath external/matconvnet/matlab/
-        addpath external/matconvnet/models/ % Put the path to your CNN models here
 
-        % STAIR vision library v2.4 
+%% External software
+%
+% Make sure that the symlinks in the external/ subfolder point to your
+% local installations, or simply edit this file!
+%
+    %% Layer 1   
+        % STAIR vision library v2.4, recommended
         % Type: 2D feature extraction
         % http://ai.stanford.edu/~sgould/svl/
-        addpath external/lasik/
+        % Integrated in the codebase, under 3rdparty/svlFeatExtract
+        % Requires OpenCV (2.4) during compilation and execution
+        addpath external/opencv/
+
+        % CNN 
+        % Type: 2D feature extraction, optional
+        % URL: http://www.vlfeat.org/matconvnet/
+        addpath external/matconvnet/matlab/
+        addpath external/matconvnet/models/ % Put the path to your CNN models here
 
         % libLINEAR
         % Type: classifier, recommended
@@ -40,18 +47,6 @@ addpath(genpath('thirdLayer/'));
         % https://bitbucket.org/rodrigob/doppia
         addpath external/biclop/
 
-        % KD-tree 
-        % type: helper library for spin image calculation, required
-        % URL: http://www.mathworks.com/matlabcentral/fileexchange/4586-k-d-tree
-        addpath external/mat_kdtree/lib/ 
-        addpath external/mat_kdtree/src/ 
-        
-    %% Layer 2
-        % MEX Graph cuts
-        % Type: CRF solver, required
-        % URL: http://vision.ucla.edu/~brian/gcmex.html
-        addpath external/GCMex2.3/
-
     %% Layer 3
         % CVX
         % Type: library for disciplined convex programming, required
@@ -66,7 +61,19 @@ addpath(genpath('thirdLayer/'));
         % cvx_save_prefs
 
     %% MISC
+    % Integrated in the codebase
+        % MEX Graph cuts
+        % Type: CRF solver, required
+        % URL: http://vision.ucla.edu/~brian/gcmex.html
+        addpath 3rdparty/GCMex2.3/
+        
+        % KD-tree 
+        % type: helper library for spin image calculation
+        % URL: http://www.mathworks.com/matlabcentral/fileexchange/4586-k-d-tree
+        addpath 3rdparty/mat_kdtree/lib/ 
+        addpath 3rdparty/mat_kdtree/src/ 
+        
         % export_fig
-        % Type: library for exporting MATLAB figures, optional
+        % Type: library for exporting MATLAB figures
         % URL: http://www.mathworks.com/matlabcentral/fileexchange/23629-export-fig
-        addpath external/export_fig/ 
+        addpath 3rdparty/export_fig/ 

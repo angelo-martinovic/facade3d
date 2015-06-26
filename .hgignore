@@ -8,7 +8,7 @@ syntax: glob
 *.eds
 *.backup
 *.directory
-
+*.o
 *.eps
 *.zip
 *.ply
