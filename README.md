@@ -2,7 +2,7 @@
 
 ![pipeline.jpg](http://homes.esat.kuleuven.be/~amartino/2015_cvpr_www/pics/pipeline04.jpg)
 
-This code implements the approach detailed in the paper '3D All The Way: Semantic Segmentation of Urban Scenes From Start to End in 3D', check the project page: http://homes.esat.kuleuven.be/~amartino/2015_cvpr_www/index.html.
+This code implements the approach detailed in the paper ```3D All The Way: Semantic Segmentation of Urban Scenes From Start to End in 3D```, check the project page: http://homes.esat.kuleuven.be/~amartino/2015_cvpr_www/index.html.
 
 #### Required libraries
 
