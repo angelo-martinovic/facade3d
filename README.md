@@ -4,7 +4,7 @@
 
 #### Required libraries
 
-* OpenCV (recommended version: 2.4), http://opencv.org/downloads.html for region-based features from ```STAIR``` vision library (integrated) OR
+* ```OpenCV``` (recommended version: 2.4), http://opencv.org/downloads.html for region-based features from STAIR vision library (integrated) OR
 ```MatConvNet``` for CNN-based region features, http://www.vlfeat.org/matconvnet/
 * ```libSVM``` library for Support Vector Machines, http://www.csie.ntu.edu.tw/~cjlin/libsvm/ OR
 ```liblinear``` library for large linear classification (recommended if using CNN features), http://www.csie.ntu.edu.tw/~cjlin/liblinear/
