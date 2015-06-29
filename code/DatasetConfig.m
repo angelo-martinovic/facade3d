@@ -28,7 +28,7 @@ classdef (Sealed) DatasetConfig < handle
         groundTruthTrain    = 'pcl_gt_train.ply';
         groundTruthTest     = 'pcl_gt_test.ply';
         splitData           = 'pcl_split.mat';  % Generated - TODO!
-        depth               = 'pcl_depth.mat';  % Generated - TODO!
+        depth               = 'pcl_depth.mat';  % Generated
         
         c2D = [];
         c3D = [];

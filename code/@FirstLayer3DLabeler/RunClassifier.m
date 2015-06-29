@@ -25,10 +25,10 @@ function RunClassifier(obj)
     dl.Log(VerbosityLevel.Info,sprintf(' - - done. Elapsed time: %.2f seconds.\n',testTime));
     
     % Save timing
-    save(get_adr('classifier3d_testTime',c3d.name),'testTime');
+    save(get_adr('classifier3d_testTime','3D'),'testTime');
     
     % Save resulting labeled point cloud
-    path_labeling = get_adr('pcl_labeling',c3d.name);
+    path_labeling = get_adr('pcl_labeling','3D');
     dl.Log(VerbosityLevel.Info,sprintf(' - Saving the results...\n')); 
     obj.sceneTest.export_as_full_pcl_data(  obj.cprb , path_labeling ); %%% export labeling
     
@@ -36,7 +36,7 @@ function RunClassifier(obj)
     pclProbDir = get_adr('pclProbDir');
     mkdirIfNotExist(pclProbDir);
     
-    path_prb = get_adr('pcl_unaries',c3d.name);
+    path_prb = get_adr('pcl_unaries','3D');
     prb = obj.prb; %#ok<NASGU>
     save( path_prb , 'prb' );
     dl.Log(VerbosityLevel.Info,sprintf(' - Results saved to: %s and %s\n',path_labeling,path_prb)); 

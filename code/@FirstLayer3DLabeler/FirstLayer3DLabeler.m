@@ -43,7 +43,7 @@ classdef FirstLayer3DLabeler < handle
             cf = DatasetConfig.getInstance();
             c3d = cf.c3D;
  
-            pclLabeling = get_adr('pcl_labeling',c3d.name);
+            pclLabeling = get_adr('pcl_labeling','3D');
         end 
     end
     
