@@ -136,6 +136,7 @@ classdef SScene_An < handle
             datasetConfig = DatasetConfig.getInstance();
             dl = DispatchingLogger.getInstance();
             %--- depth
+            calculateDepthMaps();
             path_dist2plane = [datasetConfig.dataLocation,datasetConfig.depth];
             kk = load(path_dist2plane);
             kk.depth(isnan(kk.depth)) = 0;

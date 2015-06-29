@@ -37,7 +37,7 @@ The parameters are set-up in ```code/DatasetConfig.m```. Modify this file to ref
 
 Finally, run the main script ```code/facade_run.m```.
 
-TODO: Facade splitting in 3D has not yet been integrated. A precalculated split file is provided in ```dataToy/pcl_split.mat```. A depth 3D feature needs to be integrated too. A precalculated depth file is provided in ```dataToy/pcl_depth.mat```.
+TODO: Facade splitting in 3D has not yet been integrated. A precalculated split file is provided in ```dataToy/pcl_split.mat```.
 
 ### Creating 3D facade models
 

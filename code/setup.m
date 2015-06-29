@@ -1,7 +1,6 @@
 % clear all classes;
 
 %% Local folder structure
-addpath batch/
 %addpath condor/                 % Calculation on the cluster
 addpath config/
 addpath eccv2014_eval/          % URL: http://www.vision.ee.ethz.ch/~rhayko/paper/eccv2014_riemenschneider_multiviewsemseg/
