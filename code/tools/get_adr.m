@@ -140,7 +140,7 @@ switch type
     case '3D_L3_Pure3D_labeling'
         adr = [datasetConfig.outputLocation 'work/pcl/models/' datasetConfig.name '_' par1 '_L3_Pure3D.ply'];
     case '3DL_bboxes'
-        adr = [get_adr('3D_L3_Pure3D',datasetConfig,par1),'bbox/','facid=',num2str(par2),'.mat'];
+        adr = [get_adr('3D_L3_Pure3D',par1),'bbox/','facid=',num2str(par2),'.mat'];
     case 'desc3d'
         adr = fullfile(datasetConfig.outputLocation,['work/pcl/desc/' datasetConfig.name '_' par1,'_imSiz=',num2str(par2),'.mat']);
     case 'classifier3d'
