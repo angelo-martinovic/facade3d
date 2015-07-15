@@ -113,16 +113,15 @@ classdef featureExtractorCNN < featureExtractor2D
                 % mode
                 dl.Log(VerbosityLevel.Debug,sprintf(' - - Calling CNN...\n'));
 
-                res = vl_simplenn(net, im_, [], [], 'keepLayerOutput',obj.layerOutputsIdx);
+                res = vl_simplenn(net, im_);%, [], [], 'keepLayerOutput',obj.layerOutputsIdx);
             catch err
-                dl.Log(VerbosityLevel.Warning,sprintf([' - - Error running on GPU: %s.'...
-                    'Disabling GPU and attempting to run on CPU...\n'],err.message));
-                
+                dl.Log(VerbosityLevel.Warning,sprintf(' - - Error running on GPU: %s.\n',err.message));
+                dl.Log(VerbosityLevel.Warning,' - - Disabling GPU and attempting to run on CPU...\n');
                 obj.useGpu = false;
                 net = vl_simplenn_move(net, 'cpu');
                 im_ = gather(im_);
                 
-                res = vl_simplenn(net, im_, [], [], 'keepLayerOutput',obj.layerOutputsIdx);
+                res = vl_simplenn(net, im_);%, [], [], 'keepLayerOutput',obj.layerOutputsIdx);
             end
             dl.Log(VerbosityLevel.Debug,sprintf(' - - CNN done.\n'));
             dl.Log(VerbosityLevel.Debug,sprintf(' - - Gathering features...\n'));
