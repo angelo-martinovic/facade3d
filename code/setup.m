@@ -29,7 +29,7 @@ addpath(genpath('thirdLayer/'));
         % Type: 2D feature extraction, optional
         % URL: http://www.vlfeat.org/matconvnet/
         addpath external/matconvnet/matlab/
-        addpath external/matconvnet/models/ % Put the path to your CNN models here
+        addpath /esat/sadr/amartino/Code/matconvnet_gpu/models/ % Put the path to your CNN models here
 
         % libLINEAR
         % Type: classifier, recommended
